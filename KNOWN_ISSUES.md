@@ -15,3 +15,7 @@
 Не са проверени ръчен workflow_dispatch, runtime backup exclusions, интеграционен тест на устройство, пълна Drift schema migration verification и реализиран snapshot. Не е извършен повторен Full Rebuild. Точният текущ Billing не е достъпен; не са активирани платени ресурси.
 
 Документационният CI е потвърден: 31 s, общите Flutter проверки и двата build jobs са правилно пропуснати, финалният gate е зелен. https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45785774552
+
+## Фаза 03 — начални блокери
+- Main няма branch protection/ruleset при началната проверка; административният endpoint отказва достъп на GitHub integration (403). Защитата не е активирана от изпълнителя.
+- Постоянен Android ключ, подписан release, iPhone signing, известия, snapshots и физически upgrade тестове предстоят. Текущ Billing не е потвърден. Фаза 04 не е започната.

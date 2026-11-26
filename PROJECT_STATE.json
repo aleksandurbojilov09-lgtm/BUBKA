@@ -2,9 +2,9 @@
   "project": "BUBKA",
   "version": "0.1.0",
   "build_number": 2,
-  "phase": 2,
-  "phase_status": "partial_pending_architect_review",
-  "branch": "main",
+  "phase": 3,
+  "phase_status": "in_progress",
+  "branch": "phase/03-installation-updates",
   "verified_source_commit": "e09d29f1562ca56d42ceec5328c233042c5ec51d",
   "verified_ci_url": "https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45784294996",
   "application_identity": {
@@ -14,11 +14,15 @@
   "architecture_implemented": true,
   "business_modules": [],
   "next_phase_requires_approval": true,
-  "final_tag": "v0.1.0",
-  "billing_verified": true,
+  "billing_verified": false,
   "codespaces_rebuild_verified": true,
   "codespaces_default_idle_timeout_minutes": 30,
   "ci_optimization": "full_and_docs_only_verified_partial_cache_measurement",
-  "final_commit_note": "Tag v0.1.0 is the intended label of this final documentation commit; existence must be verified externally after its docs-only CI. Exact source SHA is unchanged. Remaining acceptance criteria are recorded in PHASE-02.json.",
-  "verified_docs_ci_url": "https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45785774552"
+  "verified_docs_ci_url": "https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45786033755",
+  "phase_02_status": "accepted_with_followups",
+  "phase_03_authorized": true,
+  "phase_04_authorized": false,
+  "target_version": "0.2.0",
+  "target_build_number": 3,
+  "baseline_tag": "v0.1.0"
 }
