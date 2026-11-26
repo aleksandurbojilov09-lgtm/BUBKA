@@ -38,3 +38,5 @@ https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45773199863
 - Архитектурно приемане: фаза 02 accepted_with_followups; фаза 03 authorized; фаза 04 not authorized.
 - Потвърден main и tag v0.1.0: c5fa13e0b6be87e341249f117e1e96559e200d17. Пълен CI на e09d29f1562ca56d42ceec5328c233042c5ec51d (45784294996); docs-only CI на c5fa13e0b6be87e341249f117e1e96559e200d17 (45786033755). Diff между тях е само документация.
 - Работен клон phase/03-installation-updates. Защитата на main липсва при началната проверка; integration получава 403 при административния protection endpoint. Изисква се настройка от собственика, после верификация; без merge преди успешен BUBKA CI gate и потвърдена защита.
+
+- На 26.11.2026 собственикът активира ruleset 28151743. Потвърдено чрез GitHub API: active, default branch, deletion, non_fast_forward, PR с 0 approvals, strict required BUBKA CI gate от GitHub Actions (15368), без bypass actors; main protected=true. Началният docs-only PR CI 45786928579 е успешен.

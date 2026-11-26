@@ -24,5 +24,11 @@
   "phase_04_authorized": false,
   "target_version": "0.2.0",
   "target_build_number": 3,
-  "baseline_tag": "v0.1.0"
+  "baseline_tag": "v0.1.0",
+  "branch_protection": {
+    "status": "verified_active",
+    "ruleset_id": 28151743,
+    "required_gate": "BUBKA CI gate",
+    "integration_id": 15368
+  }
 }
