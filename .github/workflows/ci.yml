@@ -1,0 +1,172 @@
+name: BUBKA CI
+
+on:
+  push:
+    branches:
+      - main
+      - 'phase/**'
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bubka-ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  FLUTTER_SUPPRESS_ANALYTICS: 'true'
+  DART_SUPPRESS_ANALYTICS: 'true'
+
+jobs:
+  checks:
+    name: Format, analyze, test and Android APK
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+
+      - name: Install pinned Flutter SDK
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP"
+          curl --fail --location --retry 3 --output flutter.tar.xz https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.50.1-stable.tar.xz
+          echo '4ad17fc8462fbcef2ba19ff4a78c0a16b7147fde1add8578e267ea62cdb92678  flutter.tar.xz' | sha256sum --check -
+          tar -xJf flutter.tar.xz
+          rm flutter.tar.xz
+          echo "$RUNNER_TEMP/flutter/bin" >> "$GITHUB_PATH"
+
+      - name: Tool versions and dependency resolution
+        run: |
+          flutter --disable-analytics
+          flutter --version
+          dart --version
+          flutter pub get --enforce-lockfile
+
+      - name: Dart formatting
+        run: dart format --output=none --set-exit-if-changed lib test
+
+      - name: Flutter analyze
+        run: flutter analyze --no-pub --fatal-infos --fatal-warnings
+
+      - name: Flutter tests
+        run: flutter test --no-pub
+
+      - name: Prepare Android SDK and JDK
+        shell: bash
+        run: |
+          set -euo pipefail
+          export JAVA_HOME="$JAVA_HOME_17_X64"
+          export PATH="$JAVA_HOME/bin:$PATH"
+          echo "JAVA_HOME=$JAVA_HOME" >> "$GITHUB_ENV"
+          echo "$JAVA_HOME/bin" >> "$GITHUB_PATH"
+          java -version
+          flutter config --jdk-dir "$JAVA_HOME" --android-sdk "$ANDROID_HOME"
+          "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --sdk_root="$ANDROID_HOME" 'platforms;android-36' 'build-tools;36.0.0' 'ndk;28.2.13676358'
+
+      - name: Build debug APK
+        run: flutter build apk --debug --no-pub
+
+      - name: Verify APK and record build environment
+        shell: bash
+        run: |
+          set -euo pipefail
+          bash scripts/verify-android-apk.sh build/app/outputs/flutter-apk/app-debug.apk
+          (cd android && ./gradlew --version)
+          mkdir -p build/bubka-artifacts
+          cp build/app/outputs/flutter-apk/app-debug.apk build/bubka-artifacts/BUBKA-0.0.1-debug.apk
+          (cd build/bubka-artifacts && sha256sum BUBKA-0.0.1-debug.apk > SHA256SUMS.txt)
+
+      - name: Upload verified test APK
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: BUBKA-0.0.1-android-debug
+          path: build/bubka-artifacts/
+          if-no-files-found: error
+          retention-days: 7
+          compression-level: 0
+
+  ios:
+    name: iOS unsigned IPA
+    needs: checks
+    runs-on: macos-26
+    timeout-minutes: 45
+    steps:
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+
+      - name: Select Xcode and record environment
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(uname -m)" = arm64
+          sudo xcode-select --switch /Applications/Xcode_26.6.app/Contents/Developer
+          xcodebuild -version
+          xcodebuild -version -sdk iphoneos
+          sw_vers
+
+      - name: Install pinned Flutter SDK
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP"
+          curl --fail --location --retry 3 --output releases_macos.json https://storage.googleapis.com/flutter_infra_release/releases/releases_macos.json
+          python3 - <<'PY_SDK'
+          import json, re
+          from pathlib import Path
+          archive = 'stable/macos/flutter_macos_arm64_3.50.1-stable.zip'
+          data = json.loads(Path('releases_macos.json').read_text())
+          matches = [r for r in data['releases'] if r.get('channel') == 'stable' and r.get('version') == '3.50.1' and r.get('archive') == archive and r.get('hash') == 'ae9b586f34a8443573f82ef57c3bf914a908cbf7']
+          assert len(matches) == 1, 'Pinned release not found in official manifest'
+          digest = matches[0]['sha256']
+          assert re.fullmatch(r'[0-9a-f]{64}', digest)
+          Path('flutter.sha256').write_text(digest + '  flutter.zip\n')
+          PY_SDK
+          curl --fail --location --retry 3 --output flutter.zip https://storage.googleapis.com/flutter_infra_release/releases/stable/macos/flutter_macos_arm64_3.50.1-stable.zip
+          shasum -a 256 -c flutter.sha256
+          unzip -q flutter.zip
+          rm flutter.zip
+          echo "$RUNNER_TEMP/flutter/bin" >> "$GITHUB_PATH"
+
+      - name: Resolve locked dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          flutter --disable-analytics
+          flutter --version
+          dart --version
+          flutter pub get --enforce-lockfile
+
+      - name: Build release app without signing
+        run: flutter build ios --release --no-codesign --no-pub
+
+      - name: Package and verify unsigned IPA
+        shell: bash
+        run: |
+          set -euo pipefail
+          bash scripts/package-ios-ipa.sh
+          {
+            sw_vers
+            uname -m
+            xcodebuild -version
+            xcodebuild -version -sdk iphoneos
+            flutter --version
+            dart --version
+          } > build/bubka-ios-artifacts/ENVIRONMENT.txt 2>&1
+          cat build/bubka-ios-artifacts/ENVIRONMENT.txt
+
+      - name: Upload unsigned IPA
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: BUBKA-0.0.1-ios-unsigned
+          path: build/bubka-ios-artifacts/
+          if-no-files-found: error
+          retention-days: 7
+          compression-level: 0
