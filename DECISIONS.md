@@ -31,3 +31,5 @@ https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45773199863
 
 Пълният CI на точния source SHA е успешен два пъти (PR 571 s, main 560 s; baseline 447 s). Android и iOS стартират паралелно. Linux Flutter/Pub кешовете са възстановени в Android job, Gradle и macOS кешовете са записани, но повторното им възстановяване не е наблюдавано. Няма измерен изцяло warm run; не е доказано ускорение. Не се стартира излишен пълен build.
 Проверен source SHA: e09d29f1562ca56d42ceec5328c233042c5ec51d; PR CI: https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45782729262; main CI: https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45784294996. Версия 0.1.0+2. APK 168598167 bytes, IPA 7796559 bytes. Fast-forward към main без промяна на source SHA. Следващият commit е само документация и не изменя build входовете.
+
+Реалният docs-only CI е успешен за 31 s: https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45785774552. Спрямо baseline 447 s това е 93.06% по-кратко време за документация, не за пълен build. Финалният таг е планиран за последния документационен commit след неговия docs-only gate.

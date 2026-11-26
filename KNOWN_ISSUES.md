@@ -12,4 +12,6 @@
 ## Фаза 02 — незавършени проверки
 Двата пълни CI са зелени. Пълният CI на точния source SHA е успешен два пъти (PR 571 s, main 560 s; baseline 447 s). Android и iOS стартират паралелно. Linux Flutter/Pub кешовете са възстановени в Android job, Gradle и macOS кешовете са записани, но повторното им възстановяване не е наблюдавано. Няма измерен изцяло warm run; не е доказано ускорение. Не се стартира излишен пълен build. Постоянният setup е актуализиран, но не е правен нов Full Rebuild. Android debug/unsigned IPA не са окончателно подписани.
 
-Не са проверени ръчен workflow_dispatch, реален docs-only CI (до този документационен commit), runtime backup exclusions, интеграционен тест на устройство, пълна Drift schema migration verification и реализиран snapshot. Не е извършен повторен Full Rebuild. Точният текущ Billing не е достъпен; не са активирани платени ресурси.
+Не са проверени ръчен workflow_dispatch, runtime backup exclusions, интеграционен тест на устройство, пълна Drift schema migration verification и реализиран snapshot. Не е извършен повторен Full Rebuild. Точният текущ Billing не е достъпен; не са активирани платени ресурси.
+
+Документационният CI е потвърден: 31 s, общите Flutter проверки и двата build jobs са правилно пропуснати, финалният gate е зелен. https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45785774552

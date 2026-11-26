@@ -9,14 +9,15 @@
   "branch": "phase/02-architecture-core",
   "final_commit_sha": null,
   "verified_source_commit_sha": "e09d29f1562ca56d42ceec5328c233042c5ec51d",
-  "tag": null,
+  "tag": "v0.1.0",
   "merged_to_main": true,
   "completed_tasks": [
     "Prepared phase 02 source, generated Drift schema, local analysis and Flutter tests passed",
     "Два успешни пълни CI за точния source SHA",
     "Проверени APK и IPA, SHA-256 и идентификатори",
     "Fast-forward към main, PR #1 merged",
-    "Проверени cache hit на Linux Flutter и Pub, паралелни build jobs"
+    "Проверени cache hit на Linux Flutter и Pub, паралелни build jobs",
+    "Реален docs-only CI за 31 секунди; common, Android и iOS правилно skipped"
   ],
   "created_files": [
     "android/app/src/main/res/xml/bubka_backup_rules.xml",
@@ -138,19 +139,20 @@
   "ci_optimization": {
     "baseline_duration_seconds": 447,
     "new_full_ci_duration_seconds": 560,
-    "documentation_only_ci_duration_seconds": null,
+    "documentation_only_ci_duration_seconds": 31,
     "ordinary_dart_ci_duration_seconds": null,
     "cold_cache_duration_seconds": null,
     "warm_cache_duration_seconds": null,
     "speed_improvement_percent": -25.28,
-    "selective_ci": "full_path_and_unit_tests_passed_docs_only_pending",
+    "selective_ci": "full_and_docs_only_passed_classifier_tests_passed",
     "parallel_builds": "passed",
     "flutter_cache": "linux_restore_passed_macos_save_passed",
     "pub_cache": "linux_restore_passed_macos_save_passed",
     "gradle_cache": "save_passed_restore_not_tested",
     "final_ci_gate": "passed",
     "manual_full_ci": "configured_not_tested",
-    "dynamic_artifact_versioning": "passed"
+    "dynamic_artifact_versioning": "passed",
+    "documentation_only_savings_vs_baseline_percent": 93.06
   },
   "architecture": {
     "main_dart_minimal": true,
@@ -197,11 +199,11 @@
     "CI PR 45782729262 и main 45784294996 success за e09d29f1562ca56d42ceec5328c233042c5ec51d",
     "8 Flutter теста, 8 classifier и 7 gate теста; analyze без проблеми",
     "APK/IPA верификация от CI логове и налични артефакти",
-    "Linux Flutter/Pub cache restore; Gradle и macOS cache save"
+    "Linux Flutter/Pub cache restore; Gradle и macOS cache save",
+    "Docs-only CI 45785774552 success; gate success; builds skipped"
   ],
   "unverified_results": [
     "Реален warm full CI, Gradle/macOS cache restore, отделен ordinary Dart и manual workflow_dispatch",
-    "Проверка на docs-only CI предстои след документационния commit",
     "Реална инсталация, runtime backup exclusions, integration test на устройство",
     "Drift schema validation/migration verifier за реални версии, snapshot реализация, пълна проверка на цикли",
     "Текущ Billing и пълен правен преглед на лицензи"
@@ -218,7 +220,7 @@
     "Няма достъп за създаване на tag през наличния GitHub интерфейс"
   ],
   "unfinished_tasks": [
-    "Проверка на docs-only CI и tag v0.1.0",
+    "Верификация на финалния documentation-only commit и създаване/проверка на tag v0.1.0",
     "Архитектурно решение за останалите непроверени критерии; фаза 03 не е разрешена"
   ],
   "recommendations_for_phase_03": [
@@ -229,5 +231,7 @@
   "next_phase_started": false,
   "removed_files": [
     "lib/app.dart"
-  ]
+  ],
+  "tag_semantics": "Intended tag for this final documentation commit; external verification required. final_commit_sha is null in the repository file because a commit cannot contain its own SHA.",
+  "documentation_only_ci_url": "https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45785774552"
 }
