@@ -40,3 +40,5 @@ https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45773199863
 - Работен клон phase/03-installation-updates. Защитата на main липсва при началната проверка; integration получава 403 при административния protection endpoint. Изисква се настройка от собственика, после верификация; без merge преди успешен BUBKA CI gate и потвърдена защита.
 
 - На 26.11.2026 собственикът активира ruleset 28151743. Потвърдено чрез GitHub API: active, default branch, deletion, non_fast_forward, PR с 0 approvals, strict required BUBKA CI gate от GitHub Actions (15368), без bypass actors; main protected=true. Началният docs-only PR CI 45786928579 е успешен.
+
+- Android release certificate SHA-256: `a431369f4e84aebe18c87de7630bd364d248153e537251a8dfd0501de30d85f0`. Owner terminal evidence confirms PKCS12 key creation and two environment secrets in android-release, with custom main branch deployment policy. Owner authorized CI secrets. Independent off-Codespace backup is not verified. Build unsigned release APK, then sign only in protected release job, using apksigner and checking the pinned certificate. Debug CI remains diagnostic until release pipeline is integrated.

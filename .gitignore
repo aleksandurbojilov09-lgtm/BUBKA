@@ -50,3 +50,11 @@ app.*.map.json
 # Python tooling
 __pycache__/
 *.pyc
+
+# Private signing material must never enter source control.
+*.p12
+*.jks
+*.keystore
+**/key.properties
+/.bubka-private-backup/
+/BUBKA-PRIVATE-BACKUP/

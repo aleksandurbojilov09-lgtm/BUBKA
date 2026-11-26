@@ -30,5 +30,13 @@
     "ruleset_id": 28151743,
     "required_gate": "BUBKA CI gate",
     "integration_id": 15368
+  },
+  "android_signing": {
+    "status": "key_created_secrets_configured_owner_evidence",
+    "certificate_sha256": "a431369f4e84aebe18c87de7630bd364d248153e537251a8dfd0501de30d85f0",
+    "environment": "android-release",
+    "allowed_branch": "main",
+    "signed_apk_verified": false,
+    "independent_backup_verified": false
   }
 }
