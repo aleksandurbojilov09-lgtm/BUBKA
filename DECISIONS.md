@@ -26,5 +26,8 @@ https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45773199863
 - Оптимизацията на CI е задължителна задача за следващия одобрен етап; виж AGENTS.md.
 - Финалният документационен commit е различен от source SHA; build входовете са идентични. Тагът v0.0.1 обозначава финалния документационен commit след проверка на diff, без нова компилация само за текста.
 
-## Фаза 02 — решения за проверка
+## Фаза 02 — решения и проверка
 Използваме standalone material_ui, GoRouter, Provider и Drift native. Flutter архивът в CI се проверява със SHA-256 при всяко разархивиране, включително cache hit. PR се проверява на точния head SHA; push на main и ръчен full CI са налични. Фазовият PR включва общи архитектурни промени и изисква двете компилации. Версията се извлича от pubspec.yaml.
+
+Пълният CI на точния source SHA е успешен два пъти (PR 571 s, main 560 s; baseline 447 s). Android и iOS стартират паралелно. Linux Flutter/Pub кешовете са възстановени в Android job, Gradle и macOS кешовете са записани, но повторното им възстановяване не е наблюдавано. Няма измерен изцяло warm run; не е доказано ускорение. Не се стартира излишен пълен build.
+Проверен source SHA: e09d29f1562ca56d42ceec5328c233042c5ec51d; PR CI: https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45782729262; main CI: https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45784294996. Версия 0.1.0+2. APK 168598167 bytes, IPA 7796559 bytes. Fast-forward към main без промяна на source SHA. Следващият commit е само документация и не изменя build входовете.

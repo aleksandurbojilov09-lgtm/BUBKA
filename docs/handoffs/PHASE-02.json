@@ -8,11 +8,15 @@
   "repository_url": "https://github.com/aleksandurbojilov09-lgtm/BUBKA",
   "branch": "phase/02-architecture-core",
   "final_commit_sha": null,
-  "verified_source_commit_sha": null,
+  "verified_source_commit_sha": "e09d29f1562ca56d42ceec5328c233042c5ec51d",
   "tag": null,
-  "merged_to_main": false,
+  "merged_to_main": true,
   "completed_tasks": [
-    "Prepared phase 02 source, generated Drift schema, local analysis and Flutter tests passed"
+    "Prepared phase 02 source, generated Drift schema, local analysis and Flutter tests passed",
+    "Два успешни пълни CI за точния source SHA",
+    "Проверени APK и IPA, SHA-256 и идентификатори",
+    "Fast-forward към main, PR #1 merged",
+    "Проверени cache hit на Linux Flutter и Pub, паралелни build jobs"
   ],
   "created_files": [
     "android/app/src/main/res/xml/bubka_backup_rules.xml",
@@ -67,7 +71,6 @@
     "android/app/src/main/AndroidManifest.xml",
     "docs/dependency-licenses.txt",
     "ios/Runner/AppDelegate.swift",
-    "lib/app.dart",
     "lib/main.dart",
     "pubspec.lock",
     "pubspec.yaml",
@@ -134,20 +137,20 @@
   },
   "ci_optimization": {
     "baseline_duration_seconds": 447,
-    "new_full_ci_duration_seconds": null,
+    "new_full_ci_duration_seconds": 560,
     "documentation_only_ci_duration_seconds": null,
     "ordinary_dart_ci_duration_seconds": null,
     "cold_cache_duration_seconds": null,
     "warm_cache_duration_seconds": null,
-    "speed_improvement_percent": null,
-    "selective_ci": "classifier_local_tests_passed",
-    "parallel_builds": "configured_not_tested",
-    "flutter_cache": "configured_not_tested",
-    "pub_cache": "configured_not_tested",
-    "gradle_cache": "configured_not_tested",
-    "final_ci_gate": "configured_not_tested",
+    "speed_improvement_percent": -25.28,
+    "selective_ci": "full_path_and_unit_tests_passed_docs_only_pending",
+    "parallel_builds": "passed",
+    "flutter_cache": "linux_restore_passed_macos_save_passed",
+    "pub_cache": "linux_restore_passed_macos_save_passed",
+    "gradle_cache": "save_passed_restore_not_tested",
+    "final_ci_gate": "passed",
     "manual_full_ci": "configured_not_tested",
-    "dynamic_artifact_versioning": "configured_not_tested"
+    "dynamic_artifact_versioning": "passed"
   },
   "architecture": {
     "main_dart_minimal": true,
@@ -172,38 +175,59 @@
     "dart_format": "passed",
     "flutter_analyze": "passed",
     "flutter_test": "passed",
-    "test_count": null,
-    "github_actions": "not_tested"
+    "test_count": 8,
+    "github_actions": "passed"
   },
   "builds": {
     "android": {
-      "status": "not_tested",
-      "artifact_url": null,
-      "file_size_mb": null
+      "status": "success",
+      "artifact_url": "https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45784294996/artifacts/15100431557",
+      "file_size_mb": 168.598167
     },
     "ios": {
-      "status": "not_tested",
-      "artifact_url": null,
-      "file_size_mb": null,
+      "status": "success",
+      "artifact_url": "https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45784294996/artifacts/15099773427",
+      "file_size_mb": 7.796559,
       "signed": false
     }
   },
-  "github_actions_run_url": null,
+  "github_actions_run_url": "https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45784294996",
   "verified_results": [
-    "Local checks in Codespace passed before commit"
+    "Локални проверки в съществуващия Codespace",
+    "CI PR 45782729262 и main 45784294996 success за e09d29f1562ca56d42ceec5328c233042c5ec51d",
+    "8 Flutter теста, 8 classifier и 7 gate теста; analyze без проблеми",
+    "APK/IPA верификация от CI логове и налични артефакти",
+    "Linux Flutter/Pub cache restore; Gradle и macOS cache save"
   ],
   "unverified_results": [
-    "Full Android and iOS CI; cache performance; physical installation; backup exclusion on devices; license legal review"
+    "Реален warm full CI, Gradle/macOS cache restore, отделен ordinary Dart и manual workflow_dispatch",
+    "Проверка на docs-only CI предстои след документационния commit",
+    "Реална инсталация, runtime backup exclusions, integration test на устройство",
+    "Drift schema validation/migration verifier за реални версии, snapshot реализация, пълна проверка на цикли",
+    "Текущ Billing и пълен правен преглед на лицензи"
   ],
-  "problems": [],
+  "problems": [
+    "Първоначално липсващ gh и analyzer lint в конструктора са поправени локално",
+    "Първите два пълни CI са по-бавни от baseline"
+  ],
   "known_limitations": [
-    "Final signing and physical device installation deferred. No actual production migration exists yet."
+    "Debug APK и unsigned IPA не са окончателно подписани",
+    "Migration тестът използва отделна SQL схема; production migration и snapshot реализация няма",
+    "CI кешове не са напълно проверени при warm run",
+    "Не е активирана branch protection; gate работи, но не е наложен чрез repository settings",
+    "Няма достъп за създаване на tag през наличния GitHub интерфейс"
   ],
   "unfinished_tasks": [
-    "Verify exact source commit CI, artifact logs, gate, review, merge and tag; finalize handoff"
+    "Проверка на docs-only CI и tag v0.1.0",
+    "Архитектурно решение за останалите непроверени критерии; фаза 03 не е разрешена"
   ],
-  "recommendations_for_phase_03": [],
+  "recommendations_for_phase_03": [
+    "Само след изрично архитектурно одобрение; устойчив Android подпис, iOS инсталация и запазване на данни."
+  ],
   "additional_cost_eur": null,
-  "ready_for_architect_review": false,
-  "next_phase_started": false
+  "ready_for_architect_review": true,
+  "next_phase_started": false,
+  "removed_files": [
+    "lib/app.dart"
+  ]
 }
