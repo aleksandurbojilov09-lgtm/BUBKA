@@ -12,6 +12,9 @@ command -v flutter
 command -v dart
 command -v python3
 : "${ANDROID_HOME:?Android SDK environment missing}"
+for api in 35 36; do
+  test -s "$ANDROID_HOME/platforms/android-$api/android.jar" || { echo "STOP: Android SDK $api missing"; exit 1; }
+done
 logs=$(mktemp -d "$HOME/bubka-repair.XXXXXXXX")
 echo "Private logs: $logs"
 # The launcher passes the exact staged commit; diagnose before merging it.

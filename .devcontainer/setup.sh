@@ -42,7 +42,7 @@ flutter config --android-sdk "$ANDROID_HOME" --jdk-dir "$JAVA_HOME"
 set +o pipefail
 yes | sdkmanager --sdk_root="$ANDROID_HOME" --licenses
 set -o pipefail
-sdkmanager --sdk_root="$ANDROID_HOME" 'platform-tools' 'platforms;android-36' 'build-tools;36.0.0' 'ndk;28.2.13676358'
+sdkmanager --sdk_root="$ANDROID_HOME" 'platform-tools' 'platforms;android-35' 'platforms;android-36' 'build-tools;36.0.0' 'ndk;28.2.13676358'
 flutter precache --android
 cat > "$HOME/.config/bubka/env.sh" <<'ENV'
 export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
