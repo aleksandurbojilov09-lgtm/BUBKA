@@ -24,3 +24,5 @@
 
 ## Phase 03 grouped candidate
 - Candidate includes update transport, Android installer, iOS share flow, release workflow, and notification scheduling; no final CI or physical installation has validated this batch yet. Independent signing-key backup and current billing remain unverified. iOS initial signing needs a compatible computer; 7-day refresh remains necessary.
+
+- CI 45803519611: common checks and iOS build succeeded, Android release failed at compileReleaseJavaWithJavac because GeneratedPluginRegistrant references the dev-only integration_test plugin. Known Flutter issue https://github.com/flutter/flutter/issues/169336. Candidate workaround: normal release build without --no-pub, retain lockfile enforcement and verify no dev plugin registration. Pending local release validation and required CI.
