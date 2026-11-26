@@ -6,8 +6,9 @@ for p in [Path('PROJECT_STATE.json'), *Path('docs/handoffs').glob('*.json')]:
     assert data['project']=='BUBKA', p
     assert isinstance(data['phase'], int), p
     if p.parent.name=='handoffs':
-        assert data['task_id']==f"BUBKA-{data['phase']:03d}", p
-        assert p.stem==f"PHASE-{data['phase']:02d}", p
+        suffix = 'A' if p.stem == 'PHASE-03A' and data['phase'] == 3 else ''
+        assert data['task_id']==f"BUBKA-{data['phase']:03d}{suffix}", p
+        assert p.stem==f"PHASE-{data['phase']:02d}{suffix}", p
 for p in ['README.md','AGENTS.md','ARCHITECTURE.md','ROADMAP.md','MODULES.md','DECISIONS.md','KNOWN_ISSUES.md','CHANGELOG.md']:
     assert Path(p).read_text().strip(),p
 state=json.loads(Path('PROJECT_STATE.json').read_text())

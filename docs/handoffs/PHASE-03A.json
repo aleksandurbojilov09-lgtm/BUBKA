@@ -1,0 +1,79 @@
+{
+  "project": "BUBKA",
+  "task_id": "BUBKA-003A",
+  "phase": 3,
+  "status": "local_preflight_passed_pending_ci",
+  "main_sha": "8c109f28c8b149511f79c5c11722d9dff6e92252",
+  "pr_number": null,
+  "changed_files": [
+    ".github/workflows/ci.yml",
+    ".github/workflows/release.yml",
+    "AGENTS.md",
+    "DECISIONS.md",
+    "KNOWN_ISSUES.md",
+    "PROJECT_STATE.json",
+    "docs/handoffs/PHASE-03A.json",
+    "docs/release-policy.md",
+    "scripts/check_docs.py",
+    "scripts/check_git_diff.py",
+    "scripts/ci_classify.py",
+    "scripts/ci_gate.py",
+    "scripts/release_provenance.py",
+    "scripts/test_ci_classify.py",
+    "scripts/test_ci_gate.py",
+    "scripts/test_release_provenance.py"
+  ],
+  "push_count": 0,
+  "ci_runs_and_durations": {
+    "baseline_pr": 537,
+    "baseline_main": 588,
+    "baseline_release": 71,
+    "candidate": null
+  },
+  "full_build_count": 0,
+  "classifier_tests": "16 passed",
+  "gate_tests": "15 passed",
+  "provenance_tests": "11 passed",
+  "ruleset_verified": true,
+  "release_workflow_verified": false,
+  "observed_vs_projected_savings": {
+    "observed": null,
+    "projected_pr_lite_seconds": [
+      160,
+      180
+    ],
+    "projected_total_seconds": [
+      819,
+      839
+    ]
+  },
+  "verified_results": [
+    "Existing main SHA matched at preparation",
+    "Existing CI and release jobs successful",
+    "Android install/update/data retention owner report",
+    "Local classifier/gate/provenance/manifest/docs/architecture checks passed",
+    "Ruleset checked before push"
+  ],
+  "unverified_results": [
+    "Candidate CI",
+    "Real PR-lite timing",
+    "Live release and rerun behavior",
+    "iOS physical checks",
+    "Current billing and backup"
+  ],
+  "risks": [
+    "CI policy requires full PR and main checks",
+    "API/archive behavior needs live validation",
+    "Notification lifecycle risk deferred"
+  ],
+  "pending_tasks": [
+    "Physical iOS",
+    "Notification lifecycle",
+    "Independent signing key backup",
+    "Snapshot backup",
+    "Billing",
+    "Next natural PR and release validation"
+  ],
+  "additional_cost_eur_or_null": null,
+  "ready_for_architect_review": false
+}

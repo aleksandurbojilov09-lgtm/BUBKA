@@ -25,6 +25,7 @@ jobs:
     outputs:
       version: ${{ steps.verify.outputs.version }}
       build: ${{ steps.verify.outputs.build }}
+      selection: ${{ steps.verify.outputs.selection }}
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with:
@@ -36,18 +37,17 @@ jobs:
         run: |
           set -euo pipefail
           [[ "$RUN_ID" =~ ^[0-9]+$ ]]
-          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$RUN_ID" > /tmp/run.json
-          jq -e --arg sha "$GITHUB_SHA" '.head_sha == $sha and .head_branch == "main" and .path == ".github/workflows/ci.yml" and .conclusion == "success" and (.event == "push" or .event == "workflow_dispatch")' /tmp/run.json
-          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$RUN_ID/jobs" > /tmp/jobs.json
-          for job in "Common checks" "Android unsigned release APK" "iOS unsigned IPA" "BUBKA CI gate"; do
-            jq -e --arg job "$job" 'any(.jobs[]; .name == $job and .conclusion == "success")' /tmp/jobs.json
-          done
+          selection=$(python3 scripts/release_provenance.py resolve --run-id "$RUN_ID")
+          echo "selection=$selection" >> "$GITHUB_OUTPUT"
           version=$(python3 scripts/version.py version)
           build=$(python3 scripts/version.py build)
           echo "version=$version" >> "$GITHUB_OUTPUT"
           echo "build=$build" >> "$GITHUB_OUTPUT"
   sign:
     needs: validate
+    outputs:
+      artifact_id: ${{ steps.signed.outputs.artifact-id }}
+      artifact_digest: ${{ steps.signed.outputs.artifact-digest }}
     runs-on: ubuntu-24.04
     environment: android-release
     steps:
@@ -58,14 +58,12 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           RUN_ID: ${{ inputs.ci_run_id }}
+          SELECTION: ${{ needs.validate.outputs.selection }}
           VERSION: ${{ needs.validate.outputs.version }}
           BUILD: ${{ needs.validate.outputs.build }}
         run: |
           set -euo pipefail
-          gh run download "$RUN_ID" --repo "$GITHUB_REPOSITORY" --name "BUBKA-$VERSION-$BUILD-android-unsigned" --dir android-input
-          gh run download "$RUN_ID" --repo "$GITHUB_REPOSITORY" --name "BUBKA-$VERSION-$BUILD-ios-unsigned" --dir ios-input
-          (cd android-input && sha256sum -c SHA256SUMS.txt)
-          (cd ios-input && sha256sum -c SHA256SUMS.txt)
+          python3 scripts/release_provenance.py download --run-id "$RUN_ID" --selection "$SELECTION"
           mkdir dist
           cp "ios-input/BUBKA-$VERSION+$BUILD-unsigned.ipa" "dist/BUBKA-$VERSION-$BUILD-unsigned.ipa"
           "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" 'build-tools;36.0.0'
@@ -79,9 +77,10 @@ jobs:
       - env:
           CHANNEL: ${{ inputs.channel }}
         run: python3 scripts/create-update-manifest.py dist "$CHANNEL"
-      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+      - id: signed
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
-          name: verified-release
+          name: verified-release-attempt-${{ github.run_attempt }}
           path: dist/
           if-no-files-found: error
           retention-days: 7
@@ -93,22 +92,44 @@ jobs:
       contents: write
       actions: read
     steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          persist-credentials: false
       - name: Publish new release only
         env:
           GH_TOKEN: ${{ github.token }}
           VERSION: ${{ needs.validate.outputs.version }}
+          ARTIFACT_ID: ${{ needs.sign.outputs.artifact_id }}
+          ARTIFACT_DIGEST: ${{ needs.sign.outputs.artifact_digest }}
           CHANNEL: ${{ inputs.channel }}
         run: |
           set -euo pipefail
-          gh run download "$GITHUB_RUN_ID" --repo "$GITHUB_REPOSITORY" --name verified-release --dir dist
+          [[ "$ARTIFACT_ID" =~ ^[0-9]+$ && "$ARTIFACT_DIGEST" =~ ^[a-f0-9]{64}$ ]]
+          gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/$ARTIFACT_ID" > /tmp/signed-artifact.json
+          jq -e --arg sha "$GITHUB_SHA" --arg name "verified-release-attempt-$GITHUB_RUN_ATTEMPT" --arg digest "sha256:$ARTIFACT_DIGEST" --arg run "$GITHUB_RUN_ID" '.name == $name and .digest == $digest and .expired == false and .workflow_run.head_sha == $sha and .workflow_run.head_branch == "main" and (.workflow_run.id|tostring) == $run' /tmp/signed-artifact.json
+          gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/$ARTIFACT_ID/zip" > /tmp/signed-release.zip
+          printf '%s  %s\n' "$ARTIFACT_DIGEST" /tmp/signed-release.zip | sha256sum -c -
+          mkdir dist
+          python3 - <<'PY_ZIP'
+          import zipfile
+          from pathlib import Path
+          import subprocess
+          version=subprocess.check_output(['python3','scripts/version.py','version'],text=True).strip()
+          build=subprocess.check_output(['python3','scripts/version.py','build'],text=True).strip()
+          expected={f'BUBKA-{version}-{build}.apk',f'BUBKA-{version}-{build}-unsigned.ipa','SHA256SUMS.txt','update-manifest.json'}
+          with zipfile.ZipFile('/tmp/signed-release.zip') as z:
+              assert len(z.namelist())==len(expected) and set(z.namelist())==expected
+              for n in expected:
+                  with z.open(n) as src, (Path('dist')/n).open('xb') as dst:
+                      import shutil
+                      shutil.copyfileobj(src,dst)
+          PY_ZIP
           (cd dist && sha256sum -c SHA256SUMS.txt)
           tag="v$VERSION"
-          if gh release view "$tag" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
-            echo "Existing release must not be replaced"; exit 1
-          fi
-          if gh api "repos/$GITHUB_REPOSITORY/git/ref/tags/$tag" >/dev/null 2>&1; then
-            echo "Existing tag must not be replaced"; exit 1
-          fi
+          python3 scripts/release_provenance.py prepublish
+          gh api "repos/$GITHUB_REPOSITORY/git/matching-refs/tags/$tag" > /tmp/tag-refs.json
+          jq -e --arg ref "refs/tags/$tag" 'all(.[]; .ref != $ref)' /tmp/tag-refs.json
+          test "$(gh api "repos/$GITHUB_REPOSITORY/git/ref/heads/main" --jq '.object.sha')" = "$GITHUB_SHA"
           args=()
           if [[ "$CHANNEL" == testing ]]; then args+=(--prerelease --latest=false); fi
           gh release create "$tag" dist/* --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --title "BUBKA $VERSION" --notes "Technical installation and update validation. iOS IPA requires SideStore signing." "${args[@]}"
