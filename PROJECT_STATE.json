@@ -1,0 +1,19 @@
+{
+  "project": "BUBKA",
+  "version": "0.0.1",
+  "build_number": 1,
+  "phase": 1,
+  "phase_status": "final_verification_pending",
+  "branch": "phase/01-infrastructure",
+  "verified_source_commit": "1734430b421512eaf154fe7c0602b3ad6fdc53b5",
+  "verified_ci_url": "https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45773199863",
+  "application_identity": {
+    "android_application_id": "io.github.aleksandurbojilov09.garage",
+    "ios_bundle_id": "io.github.aleksandurbojilov09.garage"
+  },
+  "architecture_implemented": false,
+  "business_modules": [],
+  "next_phase_requires_approval": true,
+  "final_tag": null,
+  "billing_verified": false
+}

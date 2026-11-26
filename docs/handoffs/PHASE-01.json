@@ -1,0 +1,227 @@
+{
+  "project": "BUBKA",
+  "task_id": "BUBKA-001",
+  "phase": 1,
+  "status": "partial",
+  "version": "0.0.1",
+  "repository_url": "https://github.com/aleksandurbojilov09-lgtm/BUBKA",
+  "repository_visibility": "public",
+  "branch": "phase/01-infrastructure",
+  "commit_sha": "1734430b421512eaf154fe7c0602b3ad6fdc53b5",
+  "tag": null,
+  "environment": {
+    "flutter_version": "3.50.1",
+    "dart_version": "3.14.0",
+    "java_version": "17.0.21 CI; 17.0.21.1 Codespaces",
+    "android_sdk": "API 36; min 24; Build Tools 36.0.0; NDK 28.2.13676358; command-line tools 22.0 (Codespace)",
+    "gradle_version": "9.5.0",
+    "xcode_version": "26.6 (17F113); iPhoneOS26.5.sdk; SDK product version 26.5.1",
+    "android_runner": "ubuntu-24.04",
+    "ios_runner": "macos-26 ARM64 (macOS 26.7.2)"
+  },
+  "application_identity": {
+    "android_application_id": "io.github.aleksandurbojilov09.garage",
+    "ios_bundle_id": "io.github.aleksandurbojilov09.garage"
+  },
+  "completed_tasks": [
+    "Официално проучване",
+    "Публично хранилище с main и phase/01-infrastructure",
+    "Codespaces инсталация и flutter doctor",
+    "Native Flutter bootstrap",
+    "Локални и CI проверки на проверения SHA",
+    "Android debug APK и iOS unsigned IPA с успешно качване",
+    "Документационна стъпка: създадени документи, премахната неизползвана зависимост, повторни локални проверки"
+  ],
+  "created_files": [
+    ".devcontainer/devcontainer.json",
+    ".devcontainer/setup.sh",
+    ".github/workflows/ci.yml",
+    ".gitignore",
+    ".metadata",
+    "AGENTS.md",
+    "ARCHITECTURE.md",
+    "CHANGELOG.md",
+    "DECISIONS.md",
+    "KNOWN_ISSUES.md",
+    "MODULES.md",
+    "PROJECT_STATE.json",
+    "ROADMAP.md",
+    "analysis_options.yaml",
+    "android/.gitignore",
+    "android/app/build.gradle.kts",
+    "android/app/src/debug/AndroidManifest.xml",
+    "android/app/src/main/AndroidManifest.xml",
+    "android/app/src/main/kotlin/io/github/aleksandurbojilov09/garage/MainActivity.kt",
+    "android/app/src/main/res/drawable-v21/launch_background.xml",
+    "android/app/src/main/res/drawable/launch_background.xml",
+    "android/app/src/main/res/mipmap-hdpi/ic_launcher.png",
+    "android/app/src/main/res/mipmap-mdpi/ic_launcher.png",
+    "android/app/src/main/res/mipmap-xhdpi/ic_launcher.png",
+    "android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png",
+    "android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png",
+    "android/app/src/main/res/values-night/styles.xml",
+    "android/app/src/main/res/values/styles.xml",
+    "android/app/src/profile/AndroidManifest.xml",
+    "android/build.gradle.kts",
+    "android/gradle.properties",
+    "android/gradle/wrapper/gradle-wrapper.properties",
+    "android/settings.gradle.kts",
+    "docs/dependency-licenses.txt",
+    "docs/handoffs/PHASE-01.json",
+    "ios/.gitignore",
+    "ios/Flutter/AppFrameworkInfo.plist",
+    "ios/Flutter/Debug.xcconfig",
+    "ios/Flutter/Release.xcconfig",
+    "ios/Runner.xcodeproj/project.pbxproj",
+    "ios/Runner.xcodeproj/project.xcworkspace/contents.xcworkspacedata",
+    "ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist",
+    "ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings",
+    "ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme",
+    "ios/Runner.xcworkspace/contents.xcworkspacedata",
+    "ios/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist",
+    "ios/Runner.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings",
+    "ios/Runner/AppDelegate.swift",
+    "ios/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json",
+    "ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-1024x1024@1x.png",
+    "ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@1x.png",
+    "ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@2x.png",
+    "ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@3x.png",
+    "ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@1x.png",
+    "ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@2x.png",
+    "ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@3x.png",
+    "ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@1x.png",
+    "ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@2x.png",
+    "ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@3x.png",
+    "ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@2x.png",
+    "ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@3x.png",
+    "ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@1x.png",
+    "ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@2x.png",
+    "ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-83.5x83.5@2x.png",
+    "ios/Runner/Assets.xcassets/LaunchImage.imageset/Contents.json",
+    "ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage.png",
+    "ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@2x.png",
+    "ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@3x.png",
+    "ios/Runner/Assets.xcassets/LaunchImage.imageset/README.md",
+    "ios/Runner/Base.lproj/LaunchScreen.storyboard",
+    "ios/Runner/Base.lproj/Main.storyboard",
+    "ios/Runner/Info.plist",
+    "ios/Runner/Runner-Bridging-Header.h",
+    "ios/Runner/SceneDelegate.swift",
+    "ios/RunnerTests/RunnerTests.swift",
+    "lib/app.dart",
+    "lib/main.dart",
+    "pubspec.lock",
+    "pubspec.yaml",
+    "scripts/package-ios-ipa.sh",
+    "scripts/verify-android-apk.sh",
+    "test/app_smoke_test.dart"
+  ],
+  "modified_files": [
+    "README.md",
+    "pubspec.yaml",
+    "pubspec.lock",
+    "lib/app.dart",
+    "scripts/package-ios-ipa.sh",
+    ".github/workflows/ci.yml"
+  ],
+  "dependencies": [
+    {
+      "name": "flutter",
+      "version": "SDK 3.50.1"
+    },
+    {
+      "name": "flutter_test",
+      "version": "SDK 3.50.1",
+      "scope": "dev"
+    },
+    {
+      "name": "flutter_lints",
+      "version": "6.0.0",
+      "scope": "dev"
+    }
+  ],
+  "technical_decisions": [
+    "Фиксиран Flutter stable и lockfile; SHA-256 проверки",
+    "Android API 36/JDK 17/Gradle 9.5.0; AGP 9.3.1; Kotlin plugin 2.4.20",
+    "Стандартни Ubuntu и macOS runners; Xcode 26.6",
+    "Native Android/iOS; без бизнес функционалности",
+    "Постоянни идентификатори; временен WidgetsApp",
+    "CI read-only permissions, pinned actions, 7 дни retention",
+    "Debug APK; unsigned IPA; окончателно подписване във фаза 03",
+    "Премахната неизползвана material_ui от Flutter шаблона; нов CI предстои"
+  ],
+  "tests": {
+    "format": "passed",
+    "flutter_analyze": "passed",
+    "flutter_test": "passed",
+    "github_actions": "passed_on_verified_sha_final_ci_pending"
+  },
+  "builds": {
+    "android": {
+      "status": "success_on_verified_sha",
+      "artifact_url": "https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45773199863/artifacts/15094719380",
+      "signing_type": "Android debug (temporary)",
+      "file_size_mb": 142.107594
+    },
+    "ios": {
+      "status": "success_on_verified_sha",
+      "artifact_url": "https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45773199863/artifacts/15095142742",
+      "signed": false,
+      "file_size_mb": 5.636512
+    }
+  },
+  "github_actions_run_url": "https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45773199863",
+  "documentation_completed": [
+    "AGENTS.md",
+    "ARCHITECTURE.md",
+    "CHANGELOG.md",
+    "DECISIONS.md",
+    "KNOWN_ISSUES.md",
+    "MODULES.md",
+    "PROJECT_STATE.json",
+    "README.md",
+    "ROADMAP.md",
+    "docs/dependency-licenses.txt",
+    "docs/handoffs/PHASE-01.json"
+  ],
+  "verified_results": [
+    "GitHub public repo, branch и CI run 45773199863; conclusion success",
+    "Локални формат, анализ и smoke test след премахване на material_ui",
+    "APK структура, identity, version, Android Debug cert и SHA-256 в CI",
+    "IPA Payload, identity, version, unsigned status, ARM64 и SHA-256 в CI",
+    "Двата артефакта съществуват и не са изтекли към 2026-11-26",
+    "Локални hosted LICENSE файлове са налични"
+  ],
+  "unverified_results": [
+    "Финален CI след документационния commit и премахването на material_ui",
+    "Чисто създаване/rebuild на devcontainer",
+    "Idle timeout и billing/остатъчни квоти",
+    "Инсталация на физически телефони (извън фаза 01)",
+    "Пълен правен преглед на лицензите"
+  ],
+  "problems": [
+    "Поправен deprecated material.dart import",
+    "Поправена lipo проверка",
+    "Отстранена неизползвана template зависимост material_ui; повторен CI предстои"
+  ],
+  "known_limitations": [
+    "IPA не е директно инсталационен; APK е временно подписан",
+    "Артефактите изтичат 2026-12-03 за предишния проверен CI",
+    "Chrome/Linux desktop инструменти не са нужни",
+    "GitHub runner и apt patch версии се променят",
+    "Devcontainer приема Android лицензи автоматично; собственикът е дал съгласие, други потребители трябва да го дадат самостоятелно",
+    "Съществува GitHub Pro; 0 EUR означава планирани допълнителни разходи, фактурата не е проверена"
+  ],
+  "unfinished_tasks": [
+    "Потвърждение на финалния CI и артефактите",
+    "Проверка на чист devcontainer и настройките за разход/idle timeout",
+    "Финализиране на handoff с новия проверен SHA, merge и v0.0.1 tag след успешни проверки"
+  ],
+  "architecture_deviations": [],
+  "recommendations_for_phase_02": [
+    "След одобрение от архитекта изграждане на feature-first ядро с MVVM, Provider/ChangeNotifier, GoRouter, static registry, Drift/SQLite и централизирана design system.",
+    "Запази идентификаторите и CI защитите. Не въвеждай бизнес модули предсрочно."
+  ],
+  "total_cost_eur": 0,
+  "ready_for_architect_review": false
+}
