@@ -6,6 +6,7 @@ import '../../design_system/theme.dart';
 import '../modules/module_availability.dart';
 import '../modules/module_registry.dart';
 import '../version.dart';
+import 'update_panel.dart';
 
 GoRouter createRouter(
   ModuleRegistry registry,
@@ -46,6 +47,7 @@ class _Home extends StatelessWidget {
         children: [
           const Text(appVersion),
           const Text('Build $appBuild'),
+          const UpdatePanel(),
           if (!availability.loaded) ...[
             Text(availability.error ?? 'Зареждане…'),
             if (availability.error != null)

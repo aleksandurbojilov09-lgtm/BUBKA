@@ -11,12 +11,14 @@ import '../features/diagnostics/diagnostics.dart';
 import 'modules/module_availability.dart';
 import 'modules/module_registry.dart';
 import 'providers/composition.dart';
+import 'providers/update_controller.dart';
 import 'router/router.dart';
 
 class BubkaApp extends StatefulWidget {
-  const BubkaApp({super.key, required this.database, this.notifications});
+  const BubkaApp({super.key, required this.database, this.notifications, this.updates});
   final AppDatabase database;
   final NotificationService? notifications;
+  final UpdateController? updates;
 
   @override
   State<BubkaApp> createState() => _BubkaAppState();
@@ -34,6 +36,10 @@ class _BubkaAppState extends State<BubkaApp> {
     _availability = ModuleAvailability(widget.database);
     _router = createRouter(_registry, _availability);
     unawaited(_availability.load());
+    final updates = widget.updates;
+    if (updates != null) {
+      unawaited(updates.check());
+    }
     final notifications = widget.notifications;
     if (notifications != null) {
       unawaited(_restoreNotifications(notifications));
@@ -61,6 +67,7 @@ class _BubkaAppState extends State<BubkaApp> {
     providers: [
       Provider<AppDatabase>.value(value: widget.database),
       Provider<NotificationService?>.value(value: widget.notifications),
+      ChangeNotifierProvider<UpdateController?>.value(value: widget.updates),
       Provider<ModuleRegistry>.value(value: _registry),
       Provider<DiagnosticsRepository>(
         create: (_) => LocalDiagnosticsRepository(widget.database),

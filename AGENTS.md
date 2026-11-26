@@ -21,3 +21,6 @@
 
 ## Фаза 03 — одобрена
 Фаза 02 е приета с последващи задачи. BUBKA-003 е разрешена; фаза 04 не е разрешена. Работи в `phase/03-installation-updates` чрез PR. Не използвай debug подпис като release подпис. Постоянен Android ключ само с разрешение на собственика; CI secrets само с отделно изрично съгласие. Не променяй schema v1 без реална необходимост. Физическите инсталации и запазването на данните при update и на двете платформи са задължителни за приключване.
+
+## Grouped implementation rule
+Do not push small implementation commits to an open PR one at a time. Prepare a coherent batch on a non-PR staging branch, run formatting, analysis and targeted/full local tests, then advance the PR branch once. Do not repeat full builds solely to measure performance. Release workflow consumes a successful full CI run for the exact protected main SHA; signing secrets restricted to main.

@@ -1,0 +1,114 @@
+name: BUBKA release
+on:
+  workflow_dispatch:
+    inputs:
+      ci_run_id:
+        description: Successful full CI run for the exact main commit
+        required: true
+        type: string
+      channel:
+        description: Release channel
+        required: true
+        type: choice
+        options: [testing, stable]
+        default: testing
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: bubka-release
+  cancel-in-progress: false
+jobs:
+  validate:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    outputs:
+      version: ${{ steps.verify.outputs.version }}
+      build: ${{ steps.verify.outputs.build }}
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          persist-credentials: false
+      - id: verify
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_ID: ${{ inputs.ci_run_id }}
+        run: |
+          set -euo pipefail
+          [[ "$RUN_ID" =~ ^[0-9]+$ ]]
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$RUN_ID" > /tmp/run.json
+          jq -e --arg sha "$GITHUB_SHA" '.head_sha == $sha and .head_branch == "main" and .path == ".github/workflows/ci.yml" and .conclusion == "success" and (.event == "push" or .event == "workflow_dispatch")' /tmp/run.json
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$RUN_ID/jobs" > /tmp/jobs.json
+          for job in "Common checks" "Android unsigned release APK" "iOS unsigned IPA" "BUBKA CI gate"; do
+            jq -e --arg job "$job" 'any(.jobs[]; .name == $job and .conclusion == "success")' /tmp/jobs.json
+          done
+          version=$(python3 scripts/version.py version)
+          build=$(python3 scripts/version.py build)
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "build=$build" >> "$GITHUB_OUTPUT"
+  sign:
+    needs: validate
+    runs-on: ubuntu-24.04
+    environment: android-release
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          persist-credentials: false
+      - name: Retrieve verified CI assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_ID: ${{ inputs.ci_run_id }}
+          VERSION: ${{ needs.validate.outputs.version }}
+          BUILD: ${{ needs.validate.outputs.build }}
+        run: |
+          set -euo pipefail
+          gh run download "$RUN_ID" --repo "$GITHUB_REPOSITORY" --name "BUBKA-$VERSION-$BUILD-android-unsigned" --dir android-input
+          gh run download "$RUN_ID" --repo "$GITHUB_REPOSITORY" --name "BUBKA-$VERSION-$BUILD-ios-unsigned" --dir ios-input
+          (cd android-input && sha256sum -c SHA256SUMS.txt)
+          (cd ios-input && sha256sum -c SHA256SUMS.txt)
+          mkdir dist
+          cp "ios-input/BUBKA-$VERSION+$BUILD-unsigned.ipa" dist/
+          "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" 'build-tools;36.0.0'
+      - name: Sign approved APK
+        env:
+          BUBKA_KEYSTORE_BASE64: ${{ secrets.BUBKA_KEYSTORE_BASE64 }}
+          BUBKA_KEYSTORE_PASSWORD: ${{ secrets.BUBKA_KEYSTORE_PASSWORD }}
+          VERSION: ${{ needs.validate.outputs.version }}
+          BUILD: ${{ needs.validate.outputs.build }}
+        run: bash scripts/sign-release-apk.sh "android-input/BUBKA-$VERSION+$BUILD-unsigned.apk" "dist/BUBKA-$VERSION+$BUILD.apk"
+      - env:
+          CHANNEL: ${{ inputs.channel }}
+        run: python3 scripts/create-update-manifest.py dist "$CHANNEL"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: verified-release
+          path: dist/
+          if-no-files-found: error
+          retention-days: 7
+          compression-level: 0
+  publish:
+    needs: [validate, sign]
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+      actions: read
+    steps:
+      - name: Publish new release only
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ needs.validate.outputs.version }}
+          CHANNEL: ${{ inputs.channel }}
+        run: |
+          set -euo pipefail
+          gh run download "$GITHUB_RUN_ID" --repo "$GITHUB_REPOSITORY" --name verified-release --dir dist
+          (cd dist && sha256sum -c SHA256SUMS.txt)
+          tag="v$VERSION"
+          if gh release view "$tag" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "Existing release must not be replaced"; exit 1
+          fi
+          if gh api "repos/$GITHUB_REPOSITORY/git/ref/tags/$tag" >/dev/null 2>&1; then
+            echo "Existing tag must not be replaced"; exit 1
+          fi
+          args=()
+          if [[ "$CHANNEL" == testing ]]; then args+=(--prerelease --latest=false); fi
+          gh release create "$tag" dist/* --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --title "BUBKA $VERSION" --notes "Technical installation and update validation. iOS IPA requires SideStore signing." "${args[@]}"

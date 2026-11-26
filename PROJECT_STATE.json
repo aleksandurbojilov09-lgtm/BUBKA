@@ -1,12 +1,12 @@
 {
   "project": "BUBKA",
-  "version": "0.1.0",
-  "build_number": 2,
+  "version": "0.2.0",
+  "build_number": 3,
   "phase": 3,
-  "phase_status": "in_progress",
+  "phase_status": "implementation_pending_validation",
   "branch": "phase/03-installation-updates",
-  "verified_source_commit": "e09d29f1562ca56d42ceec5328c233042c5ec51d",
-  "verified_ci_url": "https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45784294996",
+  "verified_source_commit": "8b02bcff5b9dd640598a8956e3243af576c22654",
+  "verified_ci_url": "https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45800449286",
   "application_identity": {
     "android_application_id": "io.github.aleksandurbojilov09.garage",
     "ios_bundle_id": "io.github.aleksandurbojilov09.garage"
@@ -38,5 +38,6 @@
     "allowed_branch": "main",
     "signed_apk_verified": false,
     "independent_backup_verified": false
-  }
+  },
+  "update_channel": "testing"
 }

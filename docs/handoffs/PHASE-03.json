@@ -1,0 +1,26 @@
+{
+  "project": "BUBKA",
+  "task_id": "BUBKA-003",
+  "phase": 3,
+  "status": "partial",
+  "version": "0.2.0",
+  "build_number": 3,
+  "repository_url": "https://github.com/aleksandurbojilov09-lgtm/BUBKA",
+  "final_commit_sha": null,
+  "merged_to_main": false,
+  "completed_tasks": [
+    "Protected main verified via API",
+    "Owner evidence of permanent Android key and CI environment secrets",
+    "Previous full CI green for snapshot and dependency preparation"
+  ],
+  "unverified_results": [
+    "Grouped implementation CI",
+    "Signed release APK",
+    "iOS signing",
+    "Physical installation and update on both platforms",
+    "Independent key backup",
+    "Billing"
+  ],
+  "next_phase_started": false,
+  "ready_for_architect_review": false
+}
