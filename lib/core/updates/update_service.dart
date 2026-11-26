@@ -78,7 +78,7 @@ class UpdateService {
         }
         if (!assets.any((a) => a['name'] == asset.filename &&
             a['size'] == asset.size &&
-            a['browser_download_url'] == asset.url.toString())) {
+            Uri.parse(a['browser_download_url'] as String).pathSegments.join('/') == asset.url.pathSegments.join('/'))) {
           throw const FormatException('Missing published asset');
         }
         if (best == null || asset.version.isUpgradeFrom(best.asset.version)) {

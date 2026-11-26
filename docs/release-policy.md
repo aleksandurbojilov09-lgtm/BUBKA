@@ -6,3 +6,5 @@
 - Testing prereleases are only offered by testing channel; stable excludes them. The initial diagnostic build uses testing channel. No vehicle data or token sent to GitHub. Files checked for SHA-256 and size; Android verifies certificate, package, and increasing build before system installation.
 - The owner's independent signing-key backup remains unverified. No paid resources are authorized.
 - Physical install/update and runtime notification scenarios remain pending.
+
+Phase 03 workflow permits testing releases only; stable publication is intentionally disabled until acceptance and a stable-channel build. The existing CI gate remains required. Release reuses full main CI artifacts without rebuilding.

@@ -36,7 +36,13 @@ class UpdateAsset {
     if (version.version.isPreRelease ||
         !RegExp(r'^[A-Za-z0-9.+_-]+$').hasMatch(filename) ||
         !filename.endsWith(suffix) ||
-        url != expected ||
+        url.scheme != 'https' ||
+        url.host != expected.host ||
+        url.port != 443 ||
+        url.userInfo.isNotEmpty ||
+        url.hasQuery ||
+        url.hasFragment ||
+        url.pathSegments.join('/') != expected.pathSegments.join('/') ||
         !RegExp(r'^[a-f0-9]{64}$').hasMatch(sha256) ||
         size < 1 ||
         size > 512 * 1024 * 1024) {

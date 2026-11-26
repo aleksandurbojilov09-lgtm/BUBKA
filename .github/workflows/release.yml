@@ -10,7 +10,7 @@ on:
         description: Release channel
         required: true
         type: choice
-        options: [testing, stable]
+        options: [testing]
         default: testing
 permissions:
   contents: read

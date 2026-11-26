@@ -21,3 +21,6 @@
 - Постоянен Android ключ, подписан release, iPhone signing, известия, snapshots и физически upgrade тестове предстоят. Текущ Billing не е потвърден. Фаза 04 не е започната.
 
 - Блокерът за branch protection е отстранен: ruleset 28151743 е активен и проверен чрез API. Административните промени продължават да изискват собственика.
+
+## Phase 03 grouped candidate
+- Candidate includes update transport, Android installer, iOS share flow, release workflow, and notification scheduling; no final CI or physical installation has validated this batch yet. Independent signing-key backup and current billing remain unverified. iOS initial signing needs a compatible computer; 7-day refresh remains necessary.
