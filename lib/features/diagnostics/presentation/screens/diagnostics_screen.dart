@@ -32,7 +32,8 @@ class DiagnosticsScreen extends StatelessWidget {
       message = 'Неуспешно планиране на известието.';
     }
     if (context.mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(message)));
     }
   }
 

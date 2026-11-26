@@ -14,7 +14,12 @@ void bootstrap() {
   runApp(
     BubkaApp(
       database: createDatabase(),
-      updates: UpdateController(UpdateService(current: ReleaseVersion(appVersion, int.parse(appBuild)), channel: UpdateChannel.testing)),
+      updates: UpdateController(
+        UpdateService(
+          current: ReleaseVersion(appVersion, int.parse(appBuild)),
+          channel: UpdateChannel.testing,
+        ),
+      ),
       notifications: NotificationService(PlatformNotificationAdapter()),
     ),
   );

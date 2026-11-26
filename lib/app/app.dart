@@ -15,7 +15,12 @@ import 'providers/update_controller.dart';
 import 'router/router.dart';
 
 class BubkaApp extends StatefulWidget {
-  const BubkaApp({super.key, required this.database, this.notifications, this.updates});
+  const BubkaApp({
+    super.key,
+    required this.database,
+    this.notifications,
+    this.updates,
+  });
   final AppDatabase database;
   final NotificationService? notifications;
   final UpdateController? updates;

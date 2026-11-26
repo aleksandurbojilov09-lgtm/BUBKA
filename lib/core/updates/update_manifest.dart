@@ -3,7 +3,8 @@ import 'package:pub_semver/pub_semver.dart';
 const releaseRepository = 'aleksandurbojilov09-lgtm/BUBKA';
 
 class ReleaseVersion {
-  ReleaseVersion(String version, this.build) : version = Version.parse(version) {
+  ReleaseVersion(String version, this.build)
+    : version = Version.parse(version) {
     if (build < 1 || this.version.build.isNotEmpty) {
       throw const FormatException('Invalid release version/build');
     }
@@ -19,7 +20,10 @@ class ReleaseVersion {
 class UpdateAsset {
   UpdateAsset.fromJson(Map<String, dynamic> json)
     : platform = json['platform'] as String,
-      version = ReleaseVersion(json['version'] as String, json['build_number'] as int),
+      version = ReleaseVersion(
+        json['version'] as String,
+        json['build_number'] as int,
+      ),
       filename = json['filename'] as String,
       url = Uri.parse(json['download_url'] as String),
       sha256 = json['sha256'] as String,

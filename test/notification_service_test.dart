@@ -68,7 +68,10 @@ void main() {
         ),
       );
     }
-    expect(adapter.pending.keys, unorderedEquals(List.generate(60, (i) => i + 1)));
+    expect(
+      adapter.pending.keys,
+      unorderedEquals(List.generate(60, (i) => i + 1)),
+    );
     await service.cancel(1);
     expect(adapter.pending.keys, contains(61));
   });

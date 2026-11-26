@@ -116,10 +116,9 @@ class NotificationService {
   Future<void> _reconcile(List<LocalReminder> plan) async {
     await _adapter.initialize();
     final now = DateTime.now();
-    final future = plan
-        .where((entry) => entry.localDateTime.isAfter(now))
-        .toList()
-      ..sort((a, b) => a.localDateTime.compareTo(b.localDateTime));
+    final future =
+        plan.where((entry) => entry.localDateTime.isAfter(now)).toList()
+          ..sort((a, b) => a.localDateTime.compareTo(b.localDateTime));
     final selected = _adapter.limitedPending ? future.take(60) : future;
     final wanted = selected.map((entry) => entry.id).toSet();
     final pending = await _adapter.pendingIds();

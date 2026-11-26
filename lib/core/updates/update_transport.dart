@@ -11,8 +11,12 @@ class UpdateTransport {
     'objects.githubusercontent.com',
   };
 
-  Future<T> get<T>(Uri uri, Future<T> Function(HttpClientResponse) consume) async {
-    final client = HttpClient()..connectionTimeout = const Duration(seconds: 12);
+  Future<T> get<T>(
+    Uri uri,
+    Future<T> Function(HttpClientResponse) consume,
+  ) async {
+    final client = HttpClient()
+      ..connectionTimeout = const Duration(seconds: 12);
     try {
       for (var redirects = 0; redirects <= 5; redirects++) {
         if (uri.scheme != 'https' ||
@@ -21,10 +25,14 @@ class UpdateTransport {
             uri.port != 443) {
           throw const FormatException('Untrusted update host');
         }
-        final request = await client.getUrl(uri).timeout(const Duration(seconds: 15));
+        final request = await client
+            .getUrl(uri)
+            .timeout(const Duration(seconds: 15));
         request.followRedirects = false;
         request.headers.set('User-Agent', 'BUBKA');
-        final response = await request.close().timeout(const Duration(seconds: 20));
+        final response = await request.close().timeout(
+          const Duration(seconds: 20),
+        );
         if (const {301, 302, 303, 307, 308}.contains(response.statusCode)) {
           final location = response.headers.value('location');
           if (location == null) {

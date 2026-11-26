@@ -17,20 +17,29 @@ class UpdatePanel extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         if (update != null && !controller.dismissed) ...[
-          Text('Нова версия: ${update.asset.version.version}+${update.asset.version.build}'),
-          Text('Размер: ${(update.asset.size / 1000000).toStringAsFixed(1)} MB'),
+          Text(
+            'Нова версия: ${update.asset.version.version}+${update.asset.version.build}',
+          ),
+          Text(
+            'Размер: ${(update.asset.size / 1000000).toStringAsFixed(1)} MB',
+          ),
           if (update.notes.isNotEmpty) Text(update.notes),
           FilledButton(
             onPressed: controller.busy ? null : controller.install,
             child: const Text('Актуализирай сега'),
           ),
-          TextButton(onPressed: controller.later, child: const Text('По-късно')),
+          TextButton(
+            onPressed: controller.later,
+            child: const Text('По-късно'),
+          ),
         ],
         if (controller.progress != null)
           LinearProgressIndicator(value: controller.progress),
         if (controller.message != null) Text(controller.message!),
         TextButton(
-          onPressed: controller.busy ? null : () => controller.check(manual: true),
+          onPressed: controller.busy
+              ? null
+              : () => controller.check(manual: true),
           child: const Text('Провери за актуализации'),
         ),
       ],

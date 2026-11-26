@@ -45,7 +45,9 @@ class UpdateService {
     await marker.writeAsString(now.toIso8601String(), flush: true);
     final platform = Platform.isAndroid ? 'android' : 'ios';
     final raw = await _transport.json(
-      Uri.https('api.github.com', '/repos/$releaseRepository/releases', {'per_page': '20'}),
+      Uri.https('api.github.com', '/repos/$releaseRepository/releases', {
+        'per_page': '20',
+      }),
     ) as List<dynamic>;
     AvailableUpdate? best;
     for (final item in raw) {
@@ -63,10 +65,14 @@ class UpdateService {
         continue;
       }
       final manifest = await _transport.json(
-        Uri.https('github.com', '/$releaseRepository/releases/download/$tag/update-manifest.json'),
+        Uri.https(
+          'github.com',
+          '/$releaseRepository/releases/download/$tag/update-manifest.json',
+        ),
       ) as Map<String, dynamic>;
       if (manifest['tag'] != tag ||
-          manifest['channel'] != (release['prerelease'] == true ? 'testing' : 'stable')) {
+          manifest['channel'] !=
+              (release['prerelease'] == true ? 'testing' : 'stable')) {
         throw const FormatException('Release manifest mismatch');
       }
       for (final entry in manifest['assets'] as List<dynamic>) {
@@ -76,20 +82,31 @@ class UpdateService {
             !asset.version.isUpgradeFrom(current)) {
           continue;
         }
-        if (!assets.any((a) => a['name'] == asset.filename &&
-            a['size'] == asset.size &&
-            Uri.parse(a['browser_download_url'] as String).pathSegments.join('/') == asset.url.pathSegments.join('/'))) {
+        if (!assets.any(
+          (a) =>
+              a['name'] == asset.filename &&
+              a['size'] == asset.size &&
+              Uri.parse(a['browser_download_url'] as String).pathSegments
+                      .join('/') ==
+                  asset.url.pathSegments.join('/'),
+        )) {
           throw const FormatException('Missing published asset');
         }
         if (best == null || asset.version.isUpgradeFrom(best.asset.version)) {
-          best = AvailableUpdate(asset, (release['body'] as String? ?? '').trim());
+          best = AvailableUpdate(
+            asset,
+            (release['body'] as String? ?? '').trim(),
+          );
         }
       }
     }
     return _available = best;
   }
 
-  Future<String> install(AvailableUpdate update, void Function(double) progress) async {
+  Future<String> install(
+    AvailableUpdate update,
+    void Function(double) progress,
+  ) async {
     final asset = update.asset;
     if (!asset.version.isUpgradeFrom(current)) {
       throw const FormatException('Not an upgrade');
@@ -109,10 +126,11 @@ class UpdateService {
     });
     try {
       return await _native.invokeMethod<String>('install', {
-        'path': file.path,
-        'build': asset.version.build,
-        'version': asset.version.version.toString(),
-      }) ?? 'opened';
+            'path': file.path,
+            'build': asset.version.build,
+            'version': asset.version.version.toString(),
+          }) ??
+          'opened';
     } catch (_) {
       if (await file.exists()) {
         await file.delete();
