@@ -188,7 +188,20 @@ void main() {
             );
           }
 
-          await tester.scrollUntilVisible(find.text('Toyota Corolla'), 100);
+          final garageScroll = find.descendant(
+            of: find.byType(GarageScreen),
+            matching: find.byWidgetPredicate(
+              (widget) =>
+                  widget is Scrollable &&
+                  widget.axisDirection == AxisDirection.down,
+            ),
+          );
+          expect(garageScroll, findsOneWidget);
+          await tester.scrollUntilVisible(
+            find.text('Toyota Corolla'),
+            100,
+            scrollable: garageScroll,
+          );
           await tester.pumpAndSettle();
           expect(find.text('Toyota Corolla').hitTestable(), findsOneWidget);
 
