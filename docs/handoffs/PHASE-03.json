@@ -3,24 +3,30 @@
   "task_id": "BUBKA-003",
   "phase": 3,
   "status": "partial",
-  "version": "0.2.0",
-  "build_number": 3,
+  "version": "0.2.1",
+  "build_number": 4,
   "repository_url": "https://github.com/aleksandurbojilov09-lgtm/BUBKA",
   "final_commit_sha": null,
   "merged_to_main": false,
   "completed_tasks": [
     "Protected main verified via API",
     "Owner evidence of permanent Android key and CI environment secrets",
-    "Previous full CI green for snapshot and dependency preparation"
+    "Previous full CI green for snapshot and dependency preparation",
+    "Full PR and main CI successful for 0.2.0+3",
+    "Testing prerelease v0.2.0 published; release validation, signing and publishing successful",
+    "Android tablet installed and opened version 0.2.0 Build 3 (owner screenshot)",
+    "Manual update check reported no available update by owner"
   ],
   "unverified_results": [
-    "Grouped implementation CI",
-    "Signed release APK",
-    "iOS signing",
-    "Physical installation and update on both platforms",
+    "0.2.1+4 CI and publication",
+    "Android update and preservation of diagnostic records",
+    "Physical notification and backup scenarios",
+    "iOS SideStore setup, physical install and update",
     "Independent key backup",
     "Billing"
   ],
   "next_phase_started": false,
-  "ready_for_architect_review": false
+  "ready_for_architect_review": false,
+  "last_published_source_commit": "eaeb72fee5a1228f5fbb9b01d40747e2e3c20ed8",
+  "last_published_release": "v0.2.0"
 }
