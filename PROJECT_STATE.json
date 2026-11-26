@@ -3,10 +3,10 @@
   "version": "0.0.1",
   "build_number": 1,
   "phase": 1,
-  "phase_status": "final_verification_pending",
-  "branch": "phase/01-infrastructure",
-  "verified_source_commit": "1734430b421512eaf154fe7c0602b3ad6fdc53b5",
-  "verified_ci_url": "https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45773199863",
+  "phase_status": "completed_pending_architect_approval",
+  "branch": "main",
+  "verified_source_commit": "148b68ac6b67e5d67821bbdc3e1f124e0184e68f",
+  "verified_ci_url": "https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45774920131",
   "application_identity": {
     "android_application_id": "io.github.aleksandurbojilov09.garage",
     "ios_bundle_id": "io.github.aleksandurbojilov09.garage"
@@ -14,6 +14,10 @@
   "architecture_implemented": false,
   "business_modules": [],
   "next_phase_requires_approval": true,
-  "final_tag": null,
-  "billing_verified": false
+  "final_tag": "v0.0.1",
+  "billing_verified": true,
+  "codespaces_rebuild_verified": true,
+  "codespaces_default_idle_timeout_minutes": 30,
+  "ci_optimization": "mandatory_pending_architect_assignment",
+  "final_commit_note": "Тагът и main сочат финалния документационен commit, който запазва всички build входове от проверения source SHA."
 }

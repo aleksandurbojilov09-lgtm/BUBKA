@@ -2,7 +2,7 @@
 Личен дигитален гараж за Android и iOS. Версия 0.0.1+1. Само локални данни; без акаунти, реклама, телеметрия, платени API, облачна база или синхронизация.
 
 ## Състояние
-Фаза 01: минимален Flutter проект и CI. Екранът показва BUBKA и 0.0.1. Няма реални автомобилни функции. Не започвай фаза 02 без главния архитект.
+Фаза 01: успешно компилиран минимален Flutter проект и CI. Екранът показва BUBKA и 0.0.1. Няма реални автомобилни функции. Не започвай фаза 02 без главния архитект.
 
 ## Разработка
 Отвори GitHub Codespaces (2 cores) на правилния клон. Devcontainer използва Ubuntu 24.04 и `.devcontainer/setup.sh`. При първоначално създаване прегледай Android SDK terms (https://developer.android.com/studio/terms); текущият setup приема SDK лицензите автоматично за вече далия съгласие собственик. Не използвай без съгласие. След инсталиране в нов терминал:
@@ -23,3 +23,5 @@ Android локално: `flutter build apk --debug --no-pub`, след това 
 
 ## Правила
 Работи само по BUBKA, не по KMX. Не качвай лични данни, пароли, ключове или build артефакти в Git. Спирай Codespace при неактивност и проверявай остатъчните квоти. Виж AGENTS.md, ARCHITECTURE.md, PROJECT_STATE.json, ROADMAP.md, CHANGELOG.md, MODULES.md, DECISIONS.md, KNOWN_ISSUES.md и docs/handoffs/PHASE-01.json.
+
+Последен пълен CI: https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45774920131; за бъдеща оптимизация на CI виж AGENTS.md. Артефактите са временни, няма публикуван Release.

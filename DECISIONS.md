@@ -5,9 +5,9 @@
 - macos-26 стандартен ARM64 runner, наблюдаван macOS 26.7.2, Xcode 26.6 (17F113), iPhoneOS26.5.sdk (SDK product version 26.5.1). `flutter build ios --release --no-codesign` и ZIP Payload/Runner.app. Няма provisioning profile или дистрибуционен подпис. iOS минимум според Flutter: 15; реална инсталация не е проверена.
 - Постоянна идентичност io.github.aleksandurbojilov09.garage; версия 0.0.1+1. Публичното repo е създадено от собственика. CI `contents: read`, checkout без запазване на credentials, actions фиксирани с commit SHA, concurrency и timeout. Артефакти 7 дни.
 - CLI analytics са изключени. Няма cloud/app backend. Базовите runner образи и JDK patch версии могат да се обновяват.
-- Flutter template material_ui не се използва в WidgetsApp и е премахнат в документационната стъпка; повторна CI проверка предстои.
+- Flutter template material_ui не се използва в WidgetsApp и е премахнат в документационната стъпка; повторната пълна CI проверка е успешна.
 - Успешен проверен код преди документационната стъпка: 1734430b421512eaf154fe7c0602b3ad6fdc53b5; CI: https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45773199863. APK 142107594 bytes; IPA 5636512 bytes (размери на самите файлове от логовете, не на ZIP артефактите).
-- Без допълнителни платени услуги; потребителят има съществуващ GitHub Pro. Реалният billing и idle timeout не са проверени.
+- Без допълнителни платени услуги; потребителят има съществуващ GitHub Pro. Billing: $0 допълнително потребление и блокирани платени бюджети за Codespaces/Actions по снимките на собственика; idle timeout 30 минути за нови Codespaces, потвърден от собственика.
 
 ## Източници
 https://docs.flutter.dev/install/archive
@@ -19,3 +19,9 @@ https://docs.github.com/en/actions/reference/runners/github-hosted-runners
 https://docs.github.com/en/billing/reference/product-usage-included
 https://docs.github.com/en/codespaces/setting-your-user-preferences/setting-your-timeout-period-for-github-codespaces
 https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45773199863
+
+## Финални решения
+- Последен напълно проверен source SHA: 148b68ac6b67e5d67821bbdc3e1f124e0184e68f; CI: https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45774920131. APK 142101073 bytes, IPA 5633546 bytes.
+- Full Rebuild изпълнен; Flutter и Android toolchain проверени в новия контейнер. Съществуващ терминал може да изисква source на env.sh. Не повтаряй rebuild без основание.
+- Оптимизацията на CI е задължителна задача за следващия одобрен етап; виж AGENTS.md.
+- Финалният документационен commit е различен от source SHA; build входовете са идентични. Тагът v0.0.1 обозначава финалния документационен commit след проверка на diff, без нова компилация само за текста.

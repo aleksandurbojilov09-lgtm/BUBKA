@@ -2,13 +2,13 @@
   "project": "BUBKA",
   "task_id": "BUBKA-001",
   "phase": 1,
-  "status": "partial",
+  "status": "completed",
   "version": "0.0.1",
   "repository_url": "https://github.com/aleksandurbojilov09-lgtm/BUBKA",
   "repository_visibility": "public",
-  "branch": "phase/01-infrastructure",
-  "commit_sha": "1734430b421512eaf154fe7c0602b3ad6fdc53b5",
-  "tag": null,
+  "branch": "main",
+  "commit_sha": "148b68ac6b67e5d67821bbdc3e1f124e0184e68f",
+  "tag": "v0.0.1",
   "environment": {
     "flutter_version": "3.50.1",
     "dart_version": "3.14.0",
@@ -30,7 +30,13 @@
     "Native Flutter bootstrap",
     "Локални и CI проверки на проверения SHA",
     "Android debug APK и iOS unsigned IPA с успешно качване",
-    "Документационна стъпка: създадени документи, премахната неизползвана зависимост, повторни локални проверки"
+    "Документационна стъпка: създадени документи, премахната неизползвана зависимост, повторни локални проверки",
+    "Повторен пълен CI след премахване на material_ui: успешен",
+    "Завършена документация и инвентаризация на зависимости",
+    "Full Rebuild, Flutter и Android doctor потвърдени",
+    "Проверени нулеви платени бюджети и настройка 30 минути",
+    "Правила за оптимизация на CI и минимизиране на потребителските действия",
+    "Финализиране чрез fast-forward и v0.0.1 (скриптът отчита успех само след атомичен push)"
   ],
   "created_files": [
     ".devcontainer/devcontainer.json",
@@ -117,12 +123,19 @@
     "test/app_smoke_test.dart"
   ],
   "modified_files": [
+    ".github/workflows/ci.yml",
+    "AGENTS.md",
+    "CHANGELOG.md",
+    "DECISIONS.md",
+    "KNOWN_ISSUES.md",
+    "PROJECT_STATE.json",
     "README.md",
-    "pubspec.yaml",
-    "pubspec.lock",
+    "ROADMAP.md",
+    "docs/handoffs/PHASE-01.json",
     "lib/app.dart",
-    "scripts/package-ios-ipa.sh",
-    ".github/workflows/ci.yml"
+    "pubspec.lock",
+    "pubspec.yaml",
+    "scripts/package-ios-ipa.sh"
   ],
   "dependencies": [
     {
@@ -148,29 +161,33 @@
     "Постоянни идентификатори; временен WidgetsApp",
     "CI read-only permissions, pinned actions, 7 дни retention",
     "Debug APK; unsigned IPA; окончателно подписване във фаза 03",
-    "Премахната неизползвана material_ui от Flutter шаблона; нов CI предстои"
+    "Премахната неизползвана material_ui от Flutter шаблона; нов CI е успешен",
+    "30 минути default idle timeout за нови Codespaces; платени бюджети 0",
+    "CI оптимизацията е задължителна, но не е реализирана; виж AGENTS.md",
+    "Еднократен docs-only финализиращ commit след проверен пълен CI, локални проверки на документацията и доказана идентичност на build входовете; без повторна компилация."
   ],
   "tests": {
     "format": "passed",
     "flutter_analyze": "passed",
     "flutter_test": "passed",
-    "github_actions": "passed_on_verified_sha_final_ci_pending"
+    "github_actions": "passed_on_verified_source_sha",
+    "final_documentation": "json_parse_and_git_diff_check; build inputs identical to verified SHA"
   },
   "builds": {
     "android": {
-      "status": "success_on_verified_sha",
-      "artifact_url": "https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45773199863/artifacts/15094719380",
+      "status": "success",
+      "artifact_url": "https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45774920131/artifacts/15095204595",
       "signing_type": "Android debug (temporary)",
-      "file_size_mb": 142.107594
+      "file_size_mb": 142.101073
     },
     "ios": {
-      "status": "success_on_verified_sha",
-      "artifact_url": "https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45773199863/artifacts/15095142742",
+      "status": "success",
+      "artifact_url": "https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45774920131/artifacts/15096196610",
       "signed": false,
-      "file_size_mb": 5.636512
+      "file_size_mb": 5.633546
     }
   },
-  "github_actions_run_url": "https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45773199863",
+  "github_actions_run_url": "https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45774920131",
   "documentation_completed": [
     "AGENTS.md",
     "ARCHITECTURE.md",
@@ -185,43 +202,65 @@
     "docs/handoffs/PHASE-01.json"
   ],
   "verified_results": [
-    "GitHub public repo, branch и CI run 45773199863; conclusion success",
-    "Локални формат, анализ и smoke test след премахване на material_ui",
-    "APK структура, identity, version, Android Debug cert и SHA-256 в CI",
-    "IPA Payload, identity, version, unsigned status, ARM64 и SHA-256 в CI",
-    "Двата артефакта съществуват и не са изтекли към 2026-11-26",
-    "Локални hosted LICENSE файлове са налични"
+    "Пълен CI 45774920131, conclusion success, SHA 148b68ac6b67e5d67821bbdc3e1f124e0184e68f",
+    "Двете CI jobs и качването на APK/IPA успешни; двата артефакта налични към 26.11.2026",
+    "APK identity/version/structure/debug signature и SHA-256; IPA identity/version/Payload/ARM64/unsigned и SHA-256",
+    "Flutter 3.50.1 и Dart 3.14.0 след Full Rebuild, Android toolchain и лицензи проверени",
+    "Billing screenshots: $0 допълнителни разходи, $0 бюджети с Usage blocked; собственикът потвърди 30 минути timeout",
+    "Финални JSON и git diff проверки, само документация спрямо зеления source SHA"
   ],
   "unverified_results": [
-    "Финален CI след документационния commit и премахването на material_ui",
-    "Чисто създаване/rebuild на devcontainer",
-    "Idle timeout и billing/остатъчни квоти",
-    "Инсталация на физически телефони (извън фаза 01)",
-    "Пълен правен преглед на лицензите"
+    "Точен остатък от месечните Codespaces квоти",
+    "Физическа инсталация, устойчиво подписване и update preservation (фаза 03)",
+    "Пълен правен преглед на лицензи",
+    "Реално ускорение след бъдещата CI оптимизация",
+    "Timeout за съществуващия Codespace (промяната е default за нови)"
   ],
   "problems": [
     "Поправен deprecated material.dart import",
-    "Поправена lipo проверка",
-    "Отстранена неизползвана template зависимост material_ui; повторен CI предстои"
+    "Поправен lipo ред на аргументите",
+    "Премахната неизползвана material_ui; повторен CI зелен",
+    "Поправен празен ред EOF в лицензионния файл",
+    "Full Rebuild беше бавен и създаде излишно потребителско натоварване; след source на env.sh Flutter работи; не се повтаря без основание",
+    "Пълният CI се стартира за всяка промяна; селективният CI предстои"
   ],
   "known_limitations": [
-    "IPA не е директно инсталационен; APK е временно подписан",
-    "Артефактите изтичат 2026-12-03 за предишния проверен CI",
-    "Chrome/Linux desktop инструменти не са нужни",
-    "GitHub runner и apt patch версии се променят",
-    "Devcontainer приема Android лицензи автоматично; собственикът е дал съгласие, други потребители трябва да го дадат самостоятелно",
-    "Съществува GitHub Pro; 0 EUR означава планирани допълнителни разходи, фактурата не е проверена"
+    "IPA не е директно инсталационен; APK има временен debug подпис",
+    "Артефактите от финалния пълен CI изтичат на 03.12.2026; няма GitHub Release",
+    "Chrome/Linux desktop не са нужни; Xcode само в macOS runner",
+    "Runner images и apt patch версии могат да се променят",
+    "SDK license acceptance автоматично при rebuild за вече далия съгласие собственик; друг потребител трябва сам да даде съгласие",
+    "0 EUR допълнителни разходи, извън съществуващия GitHub Pro; точната остатъчна квота не е видима",
+    "Последният документационен commit не стартира повторен full CI, тъй като build входовете са непроменени; selective CI предстои."
   ],
-  "unfinished_tasks": [
-    "Потвърждение на финалния CI и артефактите",
-    "Проверка на чист devcontainer и настройките за разход/idle timeout",
-    "Финализиране на handoff с новия проверен SHA, merge и v0.0.1 tag след успешни проверки"
-  ],
+  "unfinished_tasks": [],
   "architecture_deviations": [],
   "recommendations_for_phase_02": [
     "След одобрение от архитекта изграждане на feature-first ядро с MVVM, Provider/ChangeNotifier, GoRouter, static registry, Drift/SQLite и централизирана design system.",
-    "Запази идентификаторите и CI защитите. Не въвеждай бизнес модули предсрочно."
+    "Запази идентификаторите и CI защитите. Не въвеждай бизнес модули предсрочно.",
+    "Преди или в следващия одобрен етап главният архитект възлага селективен CI, кеширане и паралелни build jobs; пълно CI при phase/release gates. Виж задължителните правила в AGENTS.md.",
+    "Минимално ангажиране на собственика; без излишни стъпки, повторни проверки и rebuild на работеща инфраструктура. Групирай операции в един скрипт."
   ],
   "total_cost_eur": 0,
-  "ready_for_architect_review": false
+  "ready_for_architect_review": true,
+  "commit_sha_semantics": "Проверен source SHA от пълния CI; финалният docs-only commit се идентифицира чрез v0.0.1/main. Не е възможно JSON да съдържа собствения си commit SHA без самоотнасяне.",
+  "mandatory_ci_optimization": {
+    "status": "pending_not_implemented",
+    "owner": "Главният архитект разпределя задачата към следващите чатове",
+    "rules": [
+      "- Главният архитект предава тези правила на всеки следващ изпълнител. Оптимизацията на workflow е предстояща задача, не е реализирана във фаза 01.",
+      "- Само документи: проверка на JSON, форматиране и съдържание; без компилация, когато доказано няма промяна на build входовете. Dart код: format/analyze/test. Android-only конфигурация: проверки и Android build. iOS-only: проверки и iOS build. Общи зависимости, архитектура, CI/toolchain, неизвестни/смесени промени, край на фаза и release: пълни проверки и двете компилации.",
+      "- Използвай надеждна класификация на променените файлове (вкл. всички commits в push/PR); при грешка или неяснота изпълни пълния CI. Запази общ задължителен CI gate, който отчита и проверките по документацията; не оставяй required checks в pending чрез blanket skip/path filters. Осигури ръчен full CI (workflow_dispatch).",
+      "- Кеширай Flutter SDK, Dart pub и Gradle с ключове според OS/архитектура, версии и lockfiles; проверявай целостта на SDK и не кеширай ключове/секрети. Android и iOS да се изпълняват паралелно след общите проверки, когато са необходими и двете; запази cancel-in-progress. Измери реалното време преди/след. Не обещавай конкретно ускорение без измерване.",
+      "- Никога не пропускай необходим тест, не скривай грешки и не изключвай защити. Не повтаряй вече успешни проверки при непроменени входове. Предпочитай един готов TXT скрипт, минимален брой действия от собственика, автоматизация и проверка директно през GitHub, когато е възможно.",
+      "- Без Full Rebuild, преинсталация или нов Codespace при работеща среда, освен при обоснована необходимост. Първо оцени време, риск, полза и по-лек вариант; поискай съгласие за тежки операции. Не повтаряй теста за възстановяване без промяна на инфраструктурата.",
+      "- Еднократно във фаза 01: последният документационен commit може да не стартира повторна пълна компилация само след локална валидация и доказан diff, ограничен до документация спрямо напълно зелен source SHA. Не заобикаляй branch protection. Това не заменя бъдещия селективен CI."
+    ],
+    "acceptance": [
+      "Селективни jobs с общ required gate и fail-safe full CI",
+      "Ръчен full CI и пълен CI при край на фаза/release",
+      "Проверени кешове и паралелни Android/iOS jobs",
+      "Измерено ускорение без намаляване на надеждността"
+    ]
+  }
 }
