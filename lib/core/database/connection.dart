@@ -5,7 +5,7 @@ import 'package:drift/native.dart';
 import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
 
-QueryExecutor localExecutor() => LazyDatabase(() async {
+Future<Directory> localDataDirectory() async {
   final support = await getApplicationSupportDirectory();
   final folder = Directory('${support.path}/bubka-data');
   await folder.create(recursive: true);
@@ -14,5 +14,10 @@ QueryExecutor localExecutor() => LazyDatabase(() async {
     await const MethodChannel('bubka/local_storage')
         .invokeMethod<void>('excludeFromBackup', folder.path);
   }
+  return folder;
+}
+
+QueryExecutor localExecutor() => LazyDatabase(() async {
+  final folder = await localDataDirectory();
   return NativeDatabase.createInBackground(File('${folder.path}/bubka.sqlite'));
 });

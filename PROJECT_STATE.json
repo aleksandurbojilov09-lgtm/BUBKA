@@ -1,12 +1,12 @@
 {
   "project": "BUBKA",
-  "version": "0.1.0",
-  "build_number": 2,
-  "phase": 2,
-  "phase_status": "partial_pending_architect_review",
-  "branch": "main",
-  "verified_source_commit": "e09d29f1562ca56d42ceec5328c233042c5ec51d",
-  "verified_ci_url": "https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45784294996",
+  "version": "0.2.0",
+  "build_number": 3,
+  "phase": 3,
+  "phase_status": "implementation_pending_validation",
+  "branch": "phase/03-installation-updates",
+  "verified_source_commit": "8b02bcff5b9dd640598a8956e3243af576c22654",
+  "verified_ci_url": "https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45800449286",
   "application_identity": {
     "android_application_id": "io.github.aleksandurbojilov09.garage",
     "ios_bundle_id": "io.github.aleksandurbojilov09.garage"
@@ -14,11 +14,30 @@
   "architecture_implemented": true,
   "business_modules": [],
   "next_phase_requires_approval": true,
-  "final_tag": "v0.1.0",
-  "billing_verified": true,
+  "billing_verified": false,
   "codespaces_rebuild_verified": true,
   "codespaces_default_idle_timeout_minutes": 30,
   "ci_optimization": "full_and_docs_only_verified_partial_cache_measurement",
-  "final_commit_note": "Tag v0.1.0 is the intended label of this final documentation commit; existence must be verified externally after its docs-only CI. Exact source SHA is unchanged. Remaining acceptance criteria are recorded in PHASE-02.json.",
-  "verified_docs_ci_url": "https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45785774552"
+  "verified_docs_ci_url": "https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45786033755",
+  "phase_02_status": "accepted_with_followups",
+  "phase_03_authorized": true,
+  "phase_04_authorized": false,
+  "target_version": "0.2.0",
+  "target_build_number": 3,
+  "baseline_tag": "v0.1.0",
+  "branch_protection": {
+    "status": "verified_active",
+    "ruleset_id": 28151743,
+    "required_gate": "BUBKA CI gate",
+    "integration_id": 15368
+  },
+  "android_signing": {
+    "status": "key_created_secrets_configured_owner_evidence",
+    "certificate_sha256": "a431369f4e84aebe18c87de7630bd364d248153e537251a8dfd0501de30d85f0",
+    "environment": "android-release",
+    "allowed_branch": "main",
+    "signed_apk_verified": false,
+    "independent_backup_verified": false
+  },
+  "update_channel": "testing"
 }

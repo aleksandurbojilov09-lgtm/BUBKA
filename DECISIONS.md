@@ -33,3 +33,14 @@ https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45773199863
 Проверен source SHA: e09d29f1562ca56d42ceec5328c233042c5ec51d; PR CI: https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45782729262; main CI: https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45784294996. Версия 0.1.0+2. APK 168598167 bytes, IPA 7796559 bytes. Fast-forward към main без промяна на source SHA. Следващият commit е само документация и не изменя build входовете.
 
 Реалният docs-only CI е успешен за 31 s: https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45785774552. Спрямо baseline 447 s това е 93.06% по-кратко време за документация, не за пълен build. Финалният таг е планиран за последния документационен commit след неговия docs-only gate.
+
+## Фаза 03 — начало
+- Архитектурно приемане: фаза 02 accepted_with_followups; фаза 03 authorized; фаза 04 not authorized.
+- Потвърден main и tag v0.1.0: c5fa13e0b6be87e341249f117e1e96559e200d17. Пълен CI на e09d29f1562ca56d42ceec5328c233042c5ec51d (45784294996); docs-only CI на c5fa13e0b6be87e341249f117e1e96559e200d17 (45786033755). Diff между тях е само документация.
+- Работен клон phase/03-installation-updates. Защитата на main липсва при началната проверка; integration получава 403 при административния protection endpoint. Изисква се настройка от собственика, после верификация; без merge преди успешен BUBKA CI gate и потвърдена защита.
+
+- На 26.11.2026 собственикът активира ruleset 28151743. Потвърдено чрез GitHub API: active, default branch, deletion, non_fast_forward, PR с 0 approvals, strict required BUBKA CI gate от GitHub Actions (15368), без bypass actors; main protected=true. Началният docs-only PR CI 45786928579 е успешен.
+
+- Android release certificate SHA-256: `a431369f4e84aebe18c87de7630bd364d248153e537251a8dfd0501de30d85f0`. Owner terminal evidence confirms PKCS12 key creation and two environment secrets in android-release, with custom main branch deployment policy. Owner authorized CI secrets. Independent off-Codespace backup is not verified. Build unsigned release APK, then sign only in protected release job, using apksigner and checking the pinned certificate. Debug CI remains diagnostic until release pipeline is integrated.
+
+- Owner requested grouped work, not a full build after each small change. Prepared one staging branch and local preflight; advance PR once after local validation. CI produces unsigned release APK and IPA; signing and publication reuse full main CI artifacts. Phase 03 publishes only testing prereleases.

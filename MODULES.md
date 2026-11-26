@@ -21,3 +21,8 @@
 
 ## Runtime registry — фаза 02
 `diagnostics`: технически модул, ID diagnostics, маршрут /diagnostics; наличността се съхранява локално, без изтриване на данни. Няма реални автомобилни модули.
+
+## Phase 03 — implementation pending validation
+`core/notifications`: local calendar reminders, stable integer IDs, local JSON plan, platform adapter, nearest 60 on iOS; diagnostic controls. `core/updates`: version and manifest validation foundation. No business modules.
+
+`core/updates` includes transport, manifest, daily/manual checks, checksum-verified downloads, Android system installer and iOS share flow. Testing channel is temporary for phase 03; stable channel excludes prereleases. All pending physical verification.

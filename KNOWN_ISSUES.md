@@ -15,3 +15,18 @@
 Не са проверени ръчен workflow_dispatch, runtime backup exclusions, интеграционен тест на устройство, пълна Drift schema migration verification и реализиран snapshot. Не е извършен повторен Full Rebuild. Точният текущ Billing не е достъпен; не са активирани платени ресурси.
 
 Документационният CI е потвърден: 31 s, общите Flutter проверки и двата build jobs са правилно пропуснати, финалният gate е зелен. https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45785774552
+
+## Фаза 03 — начални блокери
+- Main няма branch protection/ruleset при началната проверка; административният endpoint отказва достъп на GitHub integration (403). Защитата не е активирана от изпълнителя.
+- Постоянен Android ключ, подписан release, iPhone signing, известия, snapshots и физически upgrade тестове предстоят. Текущ Billing не е потвърден. Фаза 04 не е започната.
+
+- Блокерът за branch protection е отстранен: ruleset 28151743 е активен и проверен чрез API. Административните промени продължават да изискват собственика.
+
+## Phase 03 grouped candidate
+- Candidate includes update transport, Android installer, iOS share flow, release workflow, and notification scheduling; no final CI or physical installation has validated this batch yet. Independent signing-key backup and current billing remain unverified. iOS initial signing needs a compatible computer; 7-day refresh remains necessary.
+
+- CI 45803519611: common checks and iOS build succeeded, Android release failed at compileReleaseJavaWithJavac because GeneratedPluginRegistrant references the dev-only integration_test plugin. Known Flutter issue https://github.com/flutter/flutter/issues/169336. Candidate workaround: normal release build without --no-pub, retain lockfile enforcement and verify no dev plugin registration. Pending local release validation and required CI.
+
+Architect review RC-02: Codespace Gradle daemon disappeared with 8 GiB heap, 4 GiB metaspace; OOM not confirmed. Candidate 3 GiB heap, 768 MiB metaspace, 2 workers and bounded Kotlin daemon, subject to effective memory diagnostics. RC-01 preflight uses release config-only before build. Grouped repair pending local validation; no new CI until local success. Prior iOS artifact is not eligible for release under exact-main-SHA policy. Cupertino font warning is non-blocking; dependency origin remains to be checked.
+
+- Local retry at e4da637: release config and preflight passed, Gradle 3 GiB daemon stopped during automatic Android SDK Platform 35 installation (25%); cgroup oom_kill delta 0. Owner reports standalone SDK 35 installation succeeded. Add SDK 35 to setup and CI; actual release build still pending. Root cause of daemon shutdown not proven.

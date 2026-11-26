@@ -28,3 +28,6 @@ Android локално: `flutter build apk --debug --no-pub`, след това 
 
 ## Фаза 02 — проверено ядро
 Архитектурно ядро 0.1.0+2: локална SQLite/Drift, диагностичен модул, регистър, Provider/MVVM и GoRouter. Пълните CI проверки са зелени; приемането от архитекта предстои. Фаза 03 не е започната.
+
+## Phase 03 candidate
+Version 0.2.0+3 is under validation, not a published release. See docs/release-policy.md for installation and update limitations.

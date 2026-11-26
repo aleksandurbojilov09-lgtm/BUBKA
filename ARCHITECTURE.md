@@ -18,3 +18,6 @@ Flutter + Dart; modular monolith; feature-first; MVVM; Provider + ChangeNotifier
 `lib/app/` композира Provider, GoRouter и статичния регистър. `lib/core/database/` управлява една локална база с инжектиран executor. `lib/features/diagnostics/` демонстрира repository, ViewModel и View. `lib/design_system/` съдържа базова тъмна тема. Виж docs/database-policy.md.
 
 Автоматичните тестове проверяват CRUD, persistence, транзакции, FK, регистър, навигация и ViewModel. Миграционният тест е отделна SQL тестова схема, не production upgrade; schema v1 е експортирана. Бъдещият snapshot е политика, не реализирана функция. Статичната проверка на import граници не е пълен анализ на цикли.
+
+## Phase 03 candidate
+Local notification plan and snapshots in the backup-excluded private directory. Separate core updates transport, manifest, service, app controller and native platform adapter; no changes to production SQLite schema or application identity. Release signing separate from untrusted PR builds.

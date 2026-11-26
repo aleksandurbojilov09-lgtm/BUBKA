@@ -1,5 +1,6 @@
 import Flutter
 import UIKit
+import UserNotifications
 
 @main
 @objc class AppDelegate: FlutterAppDelegate, FlutterImplicitEngineDelegate {
@@ -7,11 +8,42 @@ import UIKit
     _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
+    UNUserNotificationCenter.current().delegate = self
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
 
   func didInitializeImplicitFlutterEngine(_ engineBridge: FlutterImplicitEngineBridge) {
     GeneratedPluginRegistrant.register(with: engineBridge.pluginRegistry)
+    let updates = FlutterMethodChannel(name: "bubka/updates",
+      binaryMessenger: engineBridge.applicationRegistrar.messenger())
+    updates.setMethodCallHandler { call, result in
+      guard call.method == "install" else { result(FlutterMethodNotImplemented); return }
+      do {
+        let support = try FileManager.default.url(for: .applicationSupportDirectory,
+          in: .userDomainMask, appropriateFor: nil, create: false)
+        let folder = support.appendingPathComponent("bubka-data/updates").resolvingSymlinksInPath()
+        guard let args = call.arguments as? [String: Any],
+              let path = args["path"] as? String else {
+          result(FlutterError(code: "INVALID_PATH", message: nil, details: nil)); return
+        }
+        let file = URL(fileURLWithPath: path).resolvingSymlinksInPath()
+        guard file.deletingLastPathComponent().path == folder.path,
+              file.pathExtension == "ipa", FileManager.default.fileExists(atPath: file.path),
+              let scene = UIApplication.shared.connectedScenes.compactMap({ $0 as? UIWindowScene })
+                .first(where: { $0.activationState == .foregroundActive }),
+              var controller = scene.windows.first(where: { $0.isKeyWindow })?.rootViewController else {
+          result(FlutterError(code: "INVALID_PATH", message: nil, details: nil)); return
+        }
+        while let presented = controller.presentedViewController { controller = presented }
+        let share = UIActivityViewController(activityItems: [file], applicationActivities: nil)
+        share.popoverPresentationController?.sourceView = controller.view
+        share.popoverPresentationController?.sourceRect = controller.view.bounds
+        controller.present(share, animated: true)
+        result("opened")
+      } catch {
+        result(FlutterError(code: "UPDATE_SHARE_FAILED", message: nil, details: nil))
+      }
+    }
     let channel = FlutterMethodChannel(name: "bubka/local_storage",
       binaryMessenger: engineBridge.applicationRegistrar.messenger())
     channel.setMethodCallHandler { call, result in
