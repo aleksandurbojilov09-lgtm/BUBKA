@@ -1,0 +1,500 @@
+{
+  "project": "BUBKA",
+  "assets": [
+    {
+      "path": "assets/MONOGRAM_B_APPROVED.png",
+      "sha256": "0e609fc915247f34db9a4bab3ea96fb3e97a4aa1c2bc2e4fc866f2c24407531b",
+      "bytes": 1977953,
+      "provenance": "owner-approved generated image, original bytes retained",
+      "rights_status": "AI-generated/assistant-authored design reference; no third-party asset license claimed; final rights/trademark check by architect before release",
+      "production_ready": false,
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "path": "assets/monogram_preview_1024.png",
+      "sha256": "416ba35baac59b130c67592ca1c3cca96cbc4413d168c9c30c34ccf59cf16d78",
+      "bytes": 1216642,
+      "provenance": "resized reference only",
+      "rights_status": "AI-generated/assistant-authored design reference; no third-party asset license claimed; final rights/trademark check by architect before release",
+      "production_ready": false,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "assets/monogram_preview_192.png",
+      "sha256": "4ffe7d1c66b303d6532a7095f92682ae4a21ec40e6e42280e85c934359f4722e",
+      "bytes": 38927,
+      "provenance": "resized reference only",
+      "rights_status": "AI-generated/assistant-authored design reference; no third-party asset license claimed; final rights/trademark check by architect before release",
+      "production_ready": false,
+      "dimensions": [
+        192,
+        192
+      ]
+    },
+    {
+      "path": "assets/monogram_preview_48.png",
+      "sha256": "175d88ecb91166df5abf4f2c13eabe3824ec761ae2f3790ceec55ba8d2de93e1",
+      "bytes": 3991,
+      "provenance": "resized reference only",
+      "rights_status": "AI-generated/assistant-authored design reference; no third-party asset license claimed; final rights/trademark check by architect before release",
+      "production_ready": false,
+      "dimensions": [
+        48,
+        48
+      ]
+    },
+    {
+      "path": "assets/monogram_preview_512.png",
+      "sha256": "6e206793771316239e8091f4a012ac7f21b7ae24003158097714452484a58d95",
+      "bytes": 278266,
+      "provenance": "resized reference only",
+      "rights_status": "AI-generated/assistant-authored design reference; no third-party asset license claimed; final rights/trademark check by architect before release",
+      "production_ready": false,
+      "dimensions": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "assets/monogram_preview_64.png",
+      "sha256": "52b28ebb0a311247f1b29fd74ce73ce1430b3408603a8e85e77c8b81e02704bd",
+      "bytes": 6183,
+      "provenance": "resized reference only",
+      "rights_status": "AI-generated/assistant-authored design reference; no third-party asset license claimed; final rights/trademark check by architect before release",
+      "production_ready": false,
+      "dimensions": [
+        64,
+        64
+      ]
+    },
+    {
+      "path": "assets/scene_beams.svg",
+      "sha256": "682d6bf1c6831ba862211c6b6328a9515f7762e40ab3064e4e2d1f27534cf83e",
+      "bytes": 1421,
+      "provenance": "SVG geometry extracted from visible prior chat code; separate wrapper; wordmark SVG is a reference approximation",
+      "rights_status": "AI-generated/assistant-authored design reference; no third-party asset license claimed; final rights/trademark check by architect before release",
+      "production_ready": false
+    },
+    {
+      "path": "assets/scene_body.svg",
+      "sha256": "844e5c449417a16aac034d312d9f49cff66b3c083382d40415aa7e9488d04478",
+      "bytes": 1630,
+      "provenance": "SVG geometry extracted from visible prior chat code; separate wrapper; wordmark SVG is a reference approximation",
+      "rights_status": "AI-generated/assistant-authored design reference; no third-party asset license claimed; final rights/trademark check by architect before release",
+      "production_ready": false
+    },
+    {
+      "path": "assets/scene_combined.svg",
+      "sha256": "43cd69c023d6437cafb85e45ac05292b29b587abd7b68b1589564b1b77b47d2c",
+      "bytes": 1771,
+      "provenance": "SVG geometry extracted from visible prior chat code; separate wrapper; wordmark SVG is a reference approximation",
+      "rights_status": "AI-generated/assistant-authored design reference; no third-party asset license claimed; final rights/trademark check by architect before release",
+      "production_ready": false
+    },
+    {
+      "path": "assets/scene_flare.svg",
+      "sha256": "898ab79a1223898c99e6c79658a7d525bcfea33163346e3ee345d23778b92eed",
+      "bytes": 654,
+      "provenance": "SVG geometry extracted from visible prior chat code; separate wrapper; wordmark SVG is a reference approximation",
+      "rights_status": "AI-generated/assistant-authored design reference; no third-party asset license claimed; final rights/trademark check by architect before release",
+      "production_ready": false
+    },
+    {
+      "path": "assets/scene_ground.svg",
+      "sha256": "364918c21bc43a8a29c9b9105990a3dad78593713f4e115b256a67c37cb749a8",
+      "bytes": 1437,
+      "provenance": "SVG geometry extracted from visible prior chat code; separate wrapper; wordmark SVG is a reference approximation",
+      "rights_status": "AI-generated/assistant-authored design reference; no third-party asset license claimed; final rights/trademark check by architect before release",
+      "production_ready": false
+    },
+    {
+      "path": "assets/scene_left_headlight.svg",
+      "sha256": "e0c3240830ca7a68621dfce19ba55eb5018077b60b6b4fd6ea27d84bc23078e9",
+      "bytes": 187,
+      "provenance": "SVG geometry extracted from visible prior chat code; separate wrapper; wordmark SVG is a reference approximation",
+      "rights_status": "AI-generated/assistant-authored design reference; no third-party asset license claimed; final rights/trademark check by architect before release",
+      "production_ready": false
+    },
+    {
+      "path": "assets/scene_reflection.svg",
+      "sha256": "aa131c37f96fb72282ebf176b2ae219ac16a7812818e3706c29e53e79dca2db7",
+      "bytes": 358,
+      "provenance": "SVG geometry extracted from visible prior chat code; separate wrapper; wordmark SVG is a reference approximation",
+      "rights_status": "AI-generated/assistant-authored design reference; no third-party asset license claimed; final rights/trademark check by architect before release",
+      "production_ready": false
+    },
+    {
+      "path": "assets/scene_right_headlight.svg",
+      "sha256": "dac17379e1052e91301d5726d1e01ff901bb5671a3b791c7495d456456987982",
+      "bytes": 194,
+      "provenance": "SVG geometry extracted from visible prior chat code; separate wrapper; wordmark SVG is a reference approximation",
+      "rights_status": "AI-generated/assistant-authored design reference; no third-party asset license claimed; final rights/trademark check by architect before release",
+      "production_ready": false
+    },
+    {
+      "path": "assets/scene_wordmark.svg",
+      "sha256": "6157490f696969969c8f577e61eb80e12cee3e279d6a916add9386e882795383",
+      "bytes": 218,
+      "provenance": "SVG geometry extracted from visible prior chat code; separate wrapper; wordmark SVG is a reference approximation",
+      "rights_status": "AI-generated/assistant-authored design reference; no third-party asset license claimed; final rights/trademark check by architect before release",
+      "production_ready": false
+    },
+    {
+      "path": "assets/signature_car_body.svg",
+      "sha256": "c16e2224d9789ba177a71928617c06cf6d939a2d577026ed7ff3b37c6720e111",
+      "bytes": 1578,
+      "provenance": "SVG geometry extracted from visible prior chat code; separate wrapper; wordmark SVG is a reference approximation",
+      "rights_status": "AI-generated/assistant-authored design reference; no third-party asset license claimed; final rights/trademark check by architect before release",
+      "production_ready": false
+    },
+    {
+      "path": "assets/signature_car_combined.svg",
+      "sha256": "f52af551f09c53df9de9e2c90f9ddfc0753ee8293f8be81fa04d4aa9c88859b5",
+      "bytes": 1719,
+      "provenance": "SVG geometry extracted from visible prior chat code; separate wrapper; wordmark SVG is a reference approximation",
+      "rights_status": "AI-generated/assistant-authored design reference; no third-party asset license claimed; final rights/trademark check by architect before release",
+      "production_ready": false
+    },
+    {
+      "path": "assets/signature_car_left_headlight.svg",
+      "sha256": "ce95b2652c8ec5c5704b9e3de97b80af18b244ce25133b00963e7a18a1467883",
+      "bytes": 135,
+      "provenance": "SVG geometry extracted from visible prior chat code; separate wrapper; wordmark SVG is a reference approximation",
+      "rights_status": "AI-generated/assistant-authored design reference; no third-party asset license claimed; final rights/trademark check by architect before release",
+      "production_ready": false
+    },
+    {
+      "path": "assets/signature_car_right_headlight.svg",
+      "sha256": "bbecca54978283d81b1b82577037fefb5279deec52a8cfd2fd8f708fe2a2806c",
+      "bytes": 142,
+      "provenance": "SVG geometry extracted from visible prior chat code; separate wrapper; wordmark SVG is a reference approximation",
+      "rights_status": "AI-generated/assistant-authored design reference; no third-party asset license claimed; final rights/trademark check by architect before release",
+      "production_ready": false
+    },
+    {
+      "path": "frames/document_go.png",
+      "sha256": "e3be9cd058e5fe167c59322664844eef8a49e1ecee5f4ab87832b24048c6889a",
+      "bytes": 92329,
+      "provenance": "browser capture/contact sheet of reconstructed demo",
+      "rights_status": "AI-generated/assistant-authored design reference; no third-party asset license claimed; final rights/trademark check by architect before release",
+      "production_ready": false,
+      "dimensions": [
+        390,
+        741
+      ]
+    },
+    {
+      "path": "frames/documents.png",
+      "sha256": "212565c5bd169533b0b057a3f3bbf91f133e222fa08d65f1ec89cb9472ac096e",
+      "bytes": 84825,
+      "provenance": "browser capture/contact sheet of reconstructed demo",
+      "rights_status": "AI-generated/assistant-authored design reference; no third-party asset license claimed; final rights/trademark check by architect before release",
+      "production_ready": false,
+      "dimensions": [
+        390,
+        741
+      ]
+    },
+    {
+      "path": "frames/empty.png",
+      "sha256": "7e87e4a05917d77d49e5cf4e1bb34205b77895efc5bb8e839904454648b35af4",
+      "bytes": 97672,
+      "provenance": "browser capture/contact sheet of reconstructed demo",
+      "rights_status": "AI-generated/assistant-authored design reference; no third-party asset license claimed; final rights/trademark check by architect before release",
+      "production_ready": false,
+      "dimensions": [
+        390,
+        741
+      ]
+    },
+    {
+      "path": "frames/fuel_form.png",
+      "sha256": "439fe422ad45c9ef2a6e2597770d104541d5db9adfab043560b9030330e69a99",
+      "bytes": 68775,
+      "provenance": "browser capture/contact sheet of reconstructed demo",
+      "rights_status": "AI-generated/assistant-authored design reference; no third-party asset license claimed; final rights/trademark check by architect before release",
+      "production_ready": false,
+      "dimensions": [
+        390,
+        741
+      ]
+    },
+    {
+      "path": "frames/garage.png",
+      "sha256": "ed68bdf38daea6c3689eee97a4a7286610761fac8d9c5e04eab58576d1cb2db6",
+      "bytes": 87168,
+      "provenance": "browser capture/contact sheet of reconstructed demo",
+      "rights_status": "AI-generated/assistant-authored design reference; no third-party asset license claimed; final rights/trademark check by architect before release",
+      "production_ready": false,
+      "dimensions": [
+        390,
+        741
+      ]
+    },
+    {
+      "path": "frames/home_320.png",
+      "sha256": "2f96a59dfe2265df1fdba57ec8d54d65d5ed10c882db3789bd772b855db251df",
+      "bytes": 95595,
+      "provenance": "browser capture/contact sheet of reconstructed demo",
+      "rights_status": "AI-generated/assistant-authored design reference; no third-party asset license claimed; final rights/trademark check by architect before release",
+      "production_ready": false,
+      "dimensions": [
+        320,
+        741
+      ]
+    },
+    {
+      "path": "frames/home_320_large.png",
+      "sha256": "44e431d1f3566a1c476a80eb6156c19af116833db69a0d5066dee884e9eaf4cf",
+      "bytes": 98000,
+      "provenance": "browser capture/contact sheet of reconstructed demo",
+      "rights_status": "AI-generated/assistant-authored design reference; no third-party asset license claimed; final rights/trademark check by architect before release",
+      "production_ready": false,
+      "dimensions": [
+        320,
+        741
+      ]
+    },
+    {
+      "path": "frames/home_390.png",
+      "sha256": "9ac56071b2cd9ee38a3db415634099056448265673d610f6fb916da28e3c4e80",
+      "bytes": 112520,
+      "provenance": "browser capture/contact sheet of reconstructed demo",
+      "rights_status": "AI-generated/assistant-authored design reference; no third-party asset license claimed; final rights/trademark check by architect before release",
+      "production_ready": false,
+      "dimensions": [
+        390,
+        741
+      ]
+    },
+    {
+      "path": "frames/home_low.png",
+      "sha256": "78d72c262e881e1e2d05d7d0bf5b8b62d1fb4280510194744d64c920517289f2",
+      "bytes": 110208,
+      "provenance": "browser capture/contact sheet of reconstructed demo",
+      "rights_status": "AI-generated/assistant-authored design reference; no third-party asset license claimed; final rights/trademark check by architect before release",
+      "production_ready": false,
+      "dimensions": [
+        390,
+        741
+      ]
+    },
+    {
+      "path": "frames/home_tablet.png",
+      "sha256": "552e6a6c8cd987ba4e137c7d4cb3ee624364af7ede3cdec47256001222baa410",
+      "bytes": 120914,
+      "provenance": "browser capture/contact sheet of reconstructed demo",
+      "rights_status": "AI-generated/assistant-authored design reference; no third-party asset license claimed; final rights/trademark check by architect before release",
+      "production_ready": false,
+      "dimensions": [
+        700,
+        531
+      ]
+    },
+    {
+      "path": "frames/home_unknown.png",
+      "sha256": "ee1892b905ddbd2bbaa1d1358bda9a167bd6d9252af712f3c4c6249d9a82a6d9",
+      "bytes": 107928,
+      "provenance": "browser capture/contact sheet of reconstructed demo",
+      "rights_status": "AI-generated/assistant-authored design reference; no third-party asset license claimed; final rights/trademark check by architect before release",
+      "production_ready": false,
+      "dimensions": [
+        390,
+        741
+      ]
+    },
+    {
+      "path": "frames/ignition_0000ms.png",
+      "sha256": "c464ee0bb4434a5e78eafcce783535a6533d5592dbd937d84702831d5d593494",
+      "bytes": 2226,
+      "provenance": "browser capture/contact sheet of reconstructed demo",
+      "rights_status": "AI-generated/assistant-authored design reference; no third-party asset license claimed; final rights/trademark check by architect before release",
+      "production_ready": false,
+      "dimensions": [
+        360,
+        740
+      ]
+    },
+    {
+      "path": "frames/ignition_0500ms.png",
+      "sha256": "9b07b805099ce21867bdb86f2be2607b7f6fe9e514622e2461d9363a90581b10",
+      "bytes": 5434,
+      "provenance": "browser capture/contact sheet of reconstructed demo",
+      "rights_status": "AI-generated/assistant-authored design reference; no third-party asset license claimed; final rights/trademark check by architect before release",
+      "production_ready": false,
+      "dimensions": [
+        360,
+        740
+      ]
+    },
+    {
+      "path": "frames/ignition_1000ms.png",
+      "sha256": "c464ee0bb4434a5e78eafcce783535a6533d5592dbd937d84702831d5d593494",
+      "bytes": 2226,
+      "provenance": "browser capture/contact sheet of reconstructed demo",
+      "rights_status": "AI-generated/assistant-authored design reference; no third-party asset license claimed; final rights/trademark check by architect before release",
+      "production_ready": false,
+      "dimensions": [
+        360,
+        740
+      ]
+    },
+    {
+      "path": "frames/ignition_1350ms.png",
+      "sha256": "ff2e045845c1c4bc67295d4969f7b3f2bb51b836e16c8beaa046bbcf30176d5e",
+      "bytes": 69543,
+      "provenance": "browser capture/contact sheet of reconstructed demo",
+      "rights_status": "AI-generated/assistant-authored design reference; no third-party asset license claimed; final rights/trademark check by architect before release",
+      "production_ready": false,
+      "dimensions": [
+        360,
+        740
+      ]
+    },
+    {
+      "path": "frames/ignition_1700ms.png",
+      "sha256": "68417294dead4ad455c871177f072954a3390dc5701c0f28077a1e0bb20ff300",
+      "bytes": 72405,
+      "provenance": "browser capture/contact sheet of reconstructed demo",
+      "rights_status": "AI-generated/assistant-authored design reference; no third-party asset license claimed; final rights/trademark check by architect before release",
+      "production_ready": false,
+      "dimensions": [
+        360,
+        740
+      ]
+    },
+    {
+      "path": "frames/ignition_2200ms.png",
+      "sha256": "109c13ed7ea3d8d20a9075646ea6e35d27aa3c34ac633c6b8403dd05ff715ca7",
+      "bytes": 106674,
+      "provenance": "browser capture/contact sheet of reconstructed demo",
+      "rights_status": "AI-generated/assistant-authored design reference; no third-party asset license claimed; final rights/trademark check by architect before release",
+      "production_ready": false,
+      "dimensions": [
+        360,
+        740
+      ]
+    },
+    {
+      "path": "frames/ignition_2700ms.png",
+      "sha256": "2172fa2eeec3c9340a52ff750953dd06048947e03f4d2b2477b0c91f47c33667",
+      "bytes": 118121,
+      "provenance": "browser capture/contact sheet of reconstructed demo",
+      "rights_status": "AI-generated/assistant-authored design reference; no third-party asset license claimed; final rights/trademark check by architect before release",
+      "production_ready": false,
+      "dimensions": [
+        360,
+        740
+      ]
+    },
+    {
+      "path": "frames/ignition_3400ms.png",
+      "sha256": "16e70b571167ba127a92fa9efe1328d1507824ab976f1ebbe3f413b2455178b4",
+      "bytes": 102321,
+      "provenance": "browser capture/contact sheet of reconstructed demo",
+      "rights_status": "AI-generated/assistant-authored design reference; no third-party asset license claimed; final rights/trademark check by architect before release",
+      "production_ready": false,
+      "dimensions": [
+        360,
+        740
+      ]
+    },
+    {
+      "path": "frames/service.png",
+      "sha256": "ab0b4c6e51b169e07db1bbda1d8382bbdbb596899f01aa1f3510972562146ade",
+      "bytes": 84453,
+      "provenance": "browser capture/contact sheet of reconstructed demo",
+      "rights_status": "AI-generated/assistant-authored design reference; no third-party asset license claimed; final rights/trademark check by architect before release",
+      "production_ready": false,
+      "dimensions": [
+        390,
+        741
+      ]
+    },
+    {
+      "path": "frames/settings.png",
+      "sha256": "cf4d1c420536e1665ea8d857cdc9629e0b348f20d171d165314d17fab4589d68",
+      "bytes": 78879,
+      "provenance": "browser capture/contact sheet of reconstructed demo",
+      "rights_status": "AI-generated/assistant-authored design reference; no third-party asset license claimed; final rights/trademark check by architect before release",
+      "production_ready": false,
+      "dimensions": [
+        390,
+        741
+      ]
+    },
+    {
+      "path": "frames/statistics.png",
+      "sha256": "72de4f5becc2fd6f2788d16460949016628e0be2c1f15546c99f777ba41774ae",
+      "bytes": 82386,
+      "provenance": "browser capture/contact sheet of reconstructed demo",
+      "rights_status": "AI-generated/assistant-authored design reference; no third-party asset license claimed; final rights/trademark check by architect before release",
+      "production_ready": false,
+      "dimensions": [
+        390,
+        741
+      ]
+    },
+    {
+      "path": "reference/COCKPIT_APPROVED.png",
+      "sha256": "270f8b99ab685df2db404fc4dd327692a44162127773b7863c07829e66536382",
+      "bytes": 1736406,
+      "provenance": "owner-approved generated image, original bytes retained",
+      "rights_status": "AI-generated/assistant-authored design reference; no third-party asset license claimed; final rights/trademark check by architect before release",
+      "production_ready": false,
+      "dimensions": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "path": "reference/COCKPIT_CONTACT_SHEET.png",
+      "sha256": "3edf5e556c2357cec3cbe4f54e37ee37a726d8dc5e8b15200d1dece02301acd9",
+      "bytes": 286499,
+      "provenance": "browser capture/contact sheet of reconstructed demo",
+      "rights_status": "AI-generated/assistant-authored design reference; no third-party asset license claimed; final rights/trademark check by architect before release",
+      "production_ready": false,
+      "dimensions": [
+        920,
+        1008
+      ]
+    },
+    {
+      "path": "reference/IGNITION_CONTACT_SHEET.png",
+      "sha256": "1e0ac0a6efc885bc9d2fc5fbd7cf8fd1bd5fb0236c75b4a4188f1ac5cee391d5",
+      "bytes": 273470,
+      "provenance": "browser capture/contact sheet of reconstructed demo",
+      "rights_status": "AI-generated/assistant-authored design reference; no third-party asset license claimed; final rights/trademark check by architect before release",
+      "production_ready": false,
+      "dimensions": [
+        920,
+        1008
+      ]
+    }
+  ],
+  "fonts": {
+    "family": "system sans-serif",
+    "bundled_files": [],
+    "note": "No font redistributed. Platform system fonts only; verify target Flutter typography and Cyrillic."
+  },
+  "icons": {
+    "source": "assistant-authored SVG paths in prototype; no downloaded icon packs",
+    "third_party_assets": [],
+    "brand_emblems": "none; BMW/Toyota names used only in fictitious demonstration; trademark review before brand asset use"
+  },
+  "app_icon": {
+    "approved_original": "assets/MONOGRAM_B_APPROVED.png",
+    "source_size": [
+      1254,
+      1254
+    ],
+    "preview_only": "1024/512/192/64/48 are resized references, not store-ready exports. Rounded frame is baked into master; production platform mask/layer adaptation and owner review required."
+  },
+  "licenses": "No paid services or external assets added. No claim of independent legal clearance. Third-party brand mark licensing remains unverified."
+}

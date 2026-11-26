@@ -1,0 +1,730 @@
+{
+  "project": "BUBKA",
+  "status": "approved_visual_direction_not_implementation",
+  "supersedes": "Fuel form in assignment rev2 superseded only by explicit owner change after group B",
+  "functional_rules": {
+    "status": "owner_approved_locked",
+    "ring": {
+      "count": 1,
+      "selection": "Потребителят избира какво да следи на началния екран, независимо за всеки автомобил. Запазва се локално. Няма автоматична смяна към най-близкия срок и няма няколко кръга.",
+      "choices": [
+        "Гражданска отговорност",
+        "Технически преглед",
+        "Винетка",
+        "Смяна на масло",
+        "Други налични сервизни интервали",
+        "Данък МПС при въведен срок"
+      ],
+      "visual": "Запазва металическата форма, дълбочина и Signature Car; при пълен оставащ ресурс целият пръстен е зелен; запълването намалява с ресурса, около средата преминава към жълто, после оранжево и към края червено. Плавен преход на цвета на целия оставащ сегмент, не постоянна многоцветна дъга. При достигнат/просрочен срок видим червен статус дори при нулево запълване.",
+      "text": "Име на избрания показател, оставащи дни или километри, ясен текстов статус. Цветът не е единствен индикатор.",
+      "basis": "Оставаща част от действителния период или сервизен интервал, а не фиксиран 30-дневен прозорец. При календарен срок са необходими достоверни начало и край за процент; при липса на начало покажи известните дни, но не измисляй процент. За сервиз — последен километраж на обслужване и зададен интервал, текущ километраж.",
+      "thresholds": "Точните цветови прагове са за уточняване със собственика; 100% зелено, около 50% жълто, близо до 0% червено са заключена посока. Демонстрационните междинни стойности не са production правила."
+    },
+    "fuel": {
+      "required": [
+        "Литри гориво",
+        "Текущ общ километраж"
+      ],
+      "optional": [
+        "Обща цена в EUR"
+      ],
+      "date": "Автоматично текуща дата, редактируема.",
+      "calculations": "Пълно/частично зареждане е премахнато по изрично решение на собственика след група B. Метод пълен до пълен вече не е приложим. Без точен измерен среден разход; показвай тире до утвърден алгоритъм. Цена/литър при известни литри и цена. Общи известни суми с индикация за липсващи цени.",
+      "odometer": "Един общ километраж за автомобил; нов запис за гориво обновява актуалния километраж, като стар запис не го връща назад. Ръчно обновяване също е достъпно. Проектирай състояния за грешни/исторически записи и корекции, без да решаваш окончателни правила за миграции.",
+      "history": "Няма отметка за исторически запис. Редактируема дата, автоматично хронологично подреждане; стар запис не намалява общия километраж. Конфликти — ясна грешка, отделна корекция."
+    },
+    "maintenance": {
+      "example": "Смяна на масло на 180 000 км, интервал 10 000 км, цел 190 000 км. При 185 000 км остават 5 000 км, пръстен около 50% жълт. При 189 500 км остават 500 км, червено. При 190 000 км срокът е достигнат.",
+      "logic": "Гориво и ръчно въведен километраж актуализират всички релевантни сервизни интервали. При ново потвърдено обслужване се задават нова начална стойност и интервал. Няма GPS/OBD.",
+      "reminders": "Всички въведени задължения продължават да се следят чрез локални напомняния независимо от показателя на кокпита. Километровите срокове се преизчисляват при нов километраж, не при недоказано фоново движение. Точни прагове и график на напомнянията предстои да бъдат уточнени."
+    }
+  },
+  "navigation": {
+    "primary": [
+      "Начало",
+      "Гараж",
+      "+",
+      "Статистика",
+      "Настройки"
+    ],
+    "modal": [
+      "ring_select",
+      "quick_actions",
+      "vehicle_select"
+    ],
+    "back": "return to previous context; preserve user selection",
+    "deep_link": "do not block target page with intro"
+  },
+  "screens": [
+    {
+      "id": "home",
+      "group": "A",
+      "title": "Начало",
+      "layout": [
+        "Header BUBKA / гараж / известия",
+        "Избран автомобил с табела, стрелки и точки",
+        "Един Signature Car пръстен",
+        "Гориво / Сервиз / Документи / Срокове",
+        "Месечни известни разходи и среден разход",
+        "Долна навигация"
+      ],
+      "actions": [
+        "vehicle_select",
+        "ring_select",
+        "fuel",
+        "service",
+        "documents",
+        "deadlines",
+        "quick_actions"
+      ],
+      "states": [
+        "empty garage",
+        "unknown ring",
+        "days only",
+        "full",
+        "half",
+        "low",
+        "zero",
+        "overdue",
+        "missing metrics"
+      ],
+      "notes": "Без автоматична смяна на показателя. Среден разход — тире до утвърден метод.",
+      "visual_status": "owner_approved_direction"
+    },
+    {
+      "id": "ring_select",
+      "group": "A",
+      "title": "Какво да следи Cockpit?",
+      "layout": [
+        "Bottom sheet",
+        "Списък налични и липсващи показатели",
+        "Отметка на текущия избор"
+      ],
+      "actions": [
+        "select one",
+        "close"
+      ],
+      "states": [
+        "unknown selection retained",
+        "switch vehicle restores its own choice"
+      ],
+      "notes": "ГО, ГТП, винетка, масло, други сервизни интервали, данък при срок.",
+      "visual_status": "owner_approved_direction"
+    },
+    {
+      "id": "garage",
+      "group": "A",
+      "title": "Гараж",
+      "layout": [
+        "Карти със силует, марка/модел, табела, година и гориво",
+        "Златист избран контур",
+        "Добави автомобил"
+      ],
+      "actions": [
+        "select",
+        "vehicle_profile",
+        "vehicle_form"
+      ],
+      "states": [
+        "empty",
+        "selected",
+        "missing plate"
+      ],
+      "notes": "Без километраж в списъка и без големи снимки.",
+      "visual_status": "owner_approved_direction"
+    },
+    {
+      "id": "vehicle_profile",
+      "group": "A",
+      "title": "Автомобил",
+      "layout": [
+        "Силует и табела",
+        "Общ километраж",
+        "VIN по желание",
+        "Показател / обслужване / срокове"
+      ],
+      "actions": [
+        "edit",
+        "odometer",
+        "ring_select"
+      ],
+      "states": [
+        "missing optional fields"
+      ],
+      "notes": "",
+      "visual_status": "owner_approved_direction"
+    },
+    {
+      "id": "vehicle_form",
+      "group": "A",
+      "title": "Нов / редактиране",
+      "layout": [
+        "Марка и модел",
+        "Рег. номер / VIN по желание",
+        "Година, гориво, километраж"
+      ],
+      "actions": [
+        "save",
+        "cancel"
+      ],
+      "states": [
+        "validation",
+        "empty",
+        "edit"
+      ],
+      "notes": "Марка и модел задължителни в одобрения демо екран; техническа валидация предстои.",
+      "visual_status": "owner_approved_direction"
+    },
+    {
+      "id": "first_launch",
+      "group": "A",
+      "title": "Първо отваряне",
+      "layout": [
+        "Празен Cockpit, Signature Car",
+        "Добави автомобил",
+        "Данните остават локално"
+      ],
+      "actions": [
+        "vehicle_form"
+      ],
+      "states": [
+        "no car"
+      ],
+      "notes": "",
+      "visual_status": "owner_approved_direction"
+    },
+    {
+      "id": "quick_actions",
+      "group": "A",
+      "title": "Бързи действия",
+      "layout": [
+        "Матов bottom sheet",
+        "Зареждане, километраж, сервиз, документ, напомняне, автомобил"
+      ],
+      "actions": [
+        "open form",
+        "close"
+      ],
+      "states": [
+        "no vehicle only add"
+      ],
+      "notes": "Маршрутите са предложения за архитектурно уточняване.",
+      "visual_status": "owner_approved_direction"
+    },
+    {
+      "id": "notifications",
+      "group": "A/C",
+      "title": "Известия",
+      "layout": [
+        "Всички въведени задължения",
+        "Автомобил, тип, дата/километри, статус"
+      ],
+      "actions": [
+        "detail",
+        "reminder_settings"
+      ],
+      "states": [
+        "none entered",
+        "none upcoming",
+        "due",
+        "overdue"
+      ],
+      "notes": "",
+      "visual_status": "owner_approved_direction"
+    },
+    {
+      "id": "fuel",
+      "group": "B",
+      "title": "Гориво",
+      "layout": [
+        "Среден разход (— докато няма утвърден метод)",
+        "Литри и известни разходи за периода",
+        "История на зарежданията"
+      ],
+      "actions": [
+        "fuel_form",
+        "edit record"
+      ],
+      "states": [
+        "first",
+        "empty",
+        "price missing",
+        "history"
+      ],
+      "notes": "Няма етикети пълен/частичен.",
+      "visual_status": "owner_approved_direction"
+    },
+    {
+      "id": "fuel_form",
+      "group": "B",
+      "title": "Зареждане",
+      "layout": [
+        "Литри",
+        "Общ километраж",
+        "Обща цена EUR",
+        "Дата по подразбиране днес, редактируема",
+        "Автоматична цена/литър при известна цена",
+        "Запази"
+      ],
+      "actions": [
+        "save",
+        "edit date"
+      ],
+      "states": [
+        "historical automatic ordering",
+        "invalid inputs",
+        "optional price blank"
+      ],
+      "notes": "Изрична последна промяна на собственика: без пълен/частичен резервоар и без отметка за исторически запис. Цена остава по желание от предходната логика, потребителят не е поискал задължителност; архитектът да потвърди.",
+      "visual_status": "owner_approved_direction"
+    },
+    {
+      "id": "odometer",
+      "group": "B",
+      "title": "Километраж",
+      "layout": [
+        "Текущ общ километраж",
+        "Нова стойност",
+        "Отделен път за корекция"
+      ],
+      "actions": [
+        "save",
+        "correction"
+      ],
+      "states": [
+        "lower value",
+        "invalid",
+        "success"
+      ],
+      "notes": "",
+      "visual_status": "owner_approved_direction"
+    },
+    {
+      "id": "correction",
+      "group": "B",
+      "title": "Корекция",
+      "layout": [
+        "Коригиран километраж",
+        "Причина",
+        "Изрично потвърждение за корекция, не за зареждане"
+      ],
+      "actions": [
+        "confirm"
+      ],
+      "states": [
+        "conflict with history",
+        "success"
+      ],
+      "notes": "Окончателна семантика на конфликтните записи предстои.",
+      "visual_status": "owner_approved_direction"
+    },
+    {
+      "id": "service",
+      "group": "B",
+      "title": "Сервиз",
+      "layout": [
+        "Общ километраж",
+        "Независими карти за масло и филтри с ресурс",
+        "Сервизна история"
+      ],
+      "actions": [
+        "interval",
+        "service_form",
+        "odometer"
+      ],
+      "states": [
+        "unknown interval",
+        "due",
+        "overdue",
+        "no history"
+      ],
+      "notes": "",
+      "visual_status": "owner_approved_direction"
+    },
+    {
+      "id": "interval",
+      "group": "B",
+      "title": "Сервизен интервал",
+      "layout": [
+        "Последно обслужване",
+        "Интервал км",
+        "Следващ километраж",
+        "Оставащ ресурс"
+      ],
+      "actions": [
+        "save interval",
+        "record service"
+      ],
+      "states": [
+        "no data",
+        "invalid",
+        "due"
+      ],
+      "notes": "",
+      "visual_status": "owner_approved_direction"
+    },
+    {
+      "id": "service_form",
+      "group": "B",
+      "title": "Ново обслужване",
+      "layout": [
+        "Наименование, километраж, дата, цена по желание, бележка",
+        "Избор действително сменени компоненти и нови интервали"
+      ],
+      "actions": [
+        "save"
+      ],
+      "states": [
+        "repair without interval reset",
+        "multiple parts",
+        "historical",
+        "conflict"
+      ],
+      "notes": "Няма GPS/OBD. Само потвърдените сменени компоненти се обновяват.",
+      "visual_status": "owner_approved_direction"
+    },
+    {
+      "id": "documents",
+      "group": "C",
+      "title": "Документи",
+      "layout": [
+        "Карти ГО, Каско, ГТП, винетка, данък",
+        "Статус, дата, оставащи дни"
+      ],
+      "actions": [
+        "document_detail",
+        "deadlines"
+      ],
+      "states": [
+        "missing",
+        "expired",
+        "known",
+        "stale"
+      ],
+      "notes": "",
+      "visual_status": "owner_approved_direction"
+    },
+    {
+      "id": "document_go",
+      "group": "C",
+      "title": "Гражданска отговорност",
+      "layout": [
+        "Данни от ръчен запис, статус и дата",
+        "Начало/край когато приложимо",
+        "Цена по желание",
+        "Последна ръчна проверка",
+        "Застраховател, полица и отделни вноски"
+      ],
+      "actions": [
+        "edit",
+        "official_browser_handoff",
+        "installments"
+      ],
+      "states": [
+        "missing",
+        "expired",
+        "future start",
+        "unknown beginning",
+        "stale"
+      ],
+      "notes": "В срок по запис, не потвърден автоматично.",
+      "visual_status": "owner_approved_direction"
+    },
+    {
+      "id": "document_kasko",
+      "group": "C",
+      "title": "Каско",
+      "layout": [
+        "Данни от ръчен запис, статус и дата",
+        "Начало/край когато приложимо",
+        "Цена по желание",
+        "Последна ръчна проверка",
+        "Застраховател, полица и отделни вноски"
+      ],
+      "actions": [
+        "edit",
+        "official_browser_handoff",
+        "installments"
+      ],
+      "states": [
+        "missing",
+        "expired",
+        "future start",
+        "unknown beginning",
+        "stale"
+      ],
+      "notes": "В срок по запис, не потвърден автоматично.",
+      "visual_status": "owner_approved_direction"
+    },
+    {
+      "id": "document_gtp",
+      "group": "C",
+      "title": "Технически преглед",
+      "layout": [
+        "Данни от ръчен запис, статус и дата",
+        "Начало/край когато приложимо",
+        "Цена по желание",
+        "Последна ръчна проверка"
+      ],
+      "actions": [
+        "edit",
+        "official_browser_handoff"
+      ],
+      "states": [
+        "missing",
+        "expired",
+        "future start",
+        "unknown beginning",
+        "stale"
+      ],
+      "notes": "В срок по запис, не потвърден автоматично.",
+      "visual_status": "owner_approved_direction"
+    },
+    {
+      "id": "document_vignette",
+      "group": "C",
+      "title": "Винетка",
+      "layout": [
+        "Данни от ръчен запис, статус и дата",
+        "Начало/край когато приложимо",
+        "Цена по желание",
+        "Последна ръчна проверка"
+      ],
+      "actions": [
+        "edit",
+        "official_browser_handoff"
+      ],
+      "states": [
+        "missing",
+        "expired",
+        "future start",
+        "unknown beginning",
+        "stale"
+      ],
+      "notes": "В срок по запис, не потвърден автоматично.",
+      "visual_status": "owner_approved_direction"
+    },
+    {
+      "id": "document_tax",
+      "group": "C",
+      "title": "Данък МПС",
+      "layout": [
+        "Данни от ръчен запис, статус и дата",
+        "Начало/край когато приложимо",
+        "Цена по желание",
+        "Последна ръчна проверка",
+        "Ръчен статус платен"
+      ],
+      "actions": [
+        "edit",
+        "official_browser_handoff"
+      ],
+      "states": [
+        "missing",
+        "expired",
+        "future start",
+        "unknown beginning",
+        "stale"
+      ],
+      "notes": "В срок по запис, не потвърден автоматично.",
+      "visual_status": "owner_approved_direction"
+    },
+    {
+      "id": "document_edit",
+      "group": "C",
+      "title": "Въвеждане на данни",
+      "layout": [
+        "Ръчни дати и полета според типа документ",
+        "Дата на последна ръчна проверка"
+      ],
+      "actions": [
+        "save"
+      ],
+      "states": [
+        "invalid dates",
+        "missing start"
+      ],
+      "notes": "",
+      "visual_status": "owner_approved_direction"
+    },
+    {
+      "id": "installments",
+      "group": "C",
+      "title": "Вноски",
+      "layout": [
+        "Падеж, сума по желание, ръчен платен статус"
+      ],
+      "actions": [
+        "add",
+        "mark paid",
+        "undo"
+      ],
+      "states": [
+        "unpaid",
+        "paid",
+        "overdue"
+      ],
+      "notes": "Без реално плащане; отделен падеж от валидност на полица.",
+      "visual_status": "owner_approved_direction"
+    },
+    {
+      "id": "official_browser_handoff",
+      "group": "C",
+      "title": "Официална справка",
+      "layout": [
+        "Име на източник",
+        "Отвори браузър",
+        "Върни се и въведи резултата"
+      ],
+      "actions": [
+        "external link",
+        "manual edit"
+      ],
+      "states": [
+        "offline",
+        "unavailable",
+        "manual unconfirmed"
+      ],
+      "notes": "Без автоматично изпращане на VIN/рег. номер или scraping.",
+      "visual_status": "owner_approved_direction"
+    },
+    {
+      "id": "deadlines",
+      "group": "C",
+      "title": "Срокове",
+      "layout": [
+        "Хронологично всички автомобили, документи, вноски и сервизни срокове",
+        "Календарни и километрови статуси отделно"
+      ],
+      "actions": [
+        "detail",
+        "reminder_settings"
+      ],
+      "states": [
+        "none entered",
+        "none upcoming",
+        "overdue",
+        "unknown"
+      ],
+      "notes": "Група C демото показваше календарни записи; обединението със сервизните от B е изискване, не тествана интеграция.",
+      "visual_status": "owner_approved_direction"
+    },
+    {
+      "id": "stats",
+      "group": "C",
+      "title": "Статистика",
+      "layout": [
+        "Селектор автомобил и период месец/година",
+        "Общо известни разходи, графика",
+        "Категории гориво/сервиз/документи/други",
+        "Среден разход при утвърден метод"
+      ],
+      "actions": [
+        "switch vehicle",
+        "period"
+      ],
+      "states": [
+        "partial price",
+        "no data"
+      ],
+      "notes": "Примерните графики от C не са обвързани с реални записи; production изчисления предстоят.",
+      "visual_status": "owner_approved_direction"
+    },
+    {
+      "id": "settings",
+      "group": "A/C",
+      "title": "Настройки",
+      "layout": [
+        "Cockpit, Български, EUR/км/л",
+        "По-голям текст и намалено движение",
+        "Напомняния, локален архив, актуализации"
+      ],
+      "actions": [
+        "reminder_settings",
+        "archive",
+        "updates"
+      ],
+      "states": [
+        "permission denied",
+        "offline"
+      ],
+      "notes": "",
+      "visual_status": "owner_approved_direction"
+    },
+    {
+      "id": "reminder_settings",
+      "group": "C",
+      "title": "Напомняния",
+      "layout": [
+        "Включени/изключени",
+        "Системно разрешение",
+        "График"
+      ],
+      "actions": [
+        "toggle",
+        "system settings"
+      ],
+      "states": [
+        "denied",
+        "enabled",
+        "disabled"
+      ],
+      "notes": "Праг и график за архитектурно решение.",
+      "visual_status": "owner_approved_direction"
+    },
+    {
+      "id": "archive",
+      "group": "C",
+      "title": "Локален архив",
+      "layout": [
+        "Създай архив",
+        "Последен архив",
+        "Възстанови с преглед и предупреждение"
+      ],
+      "actions": [
+        "export",
+        "restore",
+        "cancel"
+      ],
+      "states": [
+        "no backup",
+        "incompatible",
+        "corrupt",
+        "success"
+      ],
+      "notes": "Демо не създава реални файлове; формат и merge/replace политика предстоят.",
+      "visual_status": "owner_approved_direction"
+    },
+    {
+      "id": "updates",
+      "group": "C",
+      "title": "Актуализации",
+      "layout": [
+        "Версия",
+        "Локално съхранение",
+        "Платформен статус"
+      ],
+      "actions": [
+        "check where supported"
+      ],
+      "states": [
+        "offline",
+        "no update",
+        "available"
+      ],
+      "notes": "Механизмът според Android/iOS дистрибуция; без фиктивна проверка.",
+      "visual_status": "owner_approved_direction"
+    }
+  ],
+  "sample_data_only": true,
+  "architecture_open": [
+    "fuel estimation",
+    "production ring color thresholds",
+    "notification schedule",
+    "historical conflict/correction",
+    "document staleness definition",
+    "archive format/restore",
+    "update channels",
+    "data model and routes"
+  ]
+}

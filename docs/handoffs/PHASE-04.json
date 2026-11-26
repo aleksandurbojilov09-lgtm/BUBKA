@@ -1,0 +1,100 @@
+{
+  "project": "BUBKA",
+  "phase": 4,
+  "task_id": "BUBKA-004",
+  "status": "authorized_for_PR_CI_pending_preflight",
+  "baseline_sha": "7b52f78a5861bd68411f364431d88240b27a7950",
+  "branch": "phase/04-design-ui",
+  "candidate_version": "0.3.0+5",
+  "owner_visual_approved": true,
+  "commit_created": false,
+  "push_performed": false,
+  "phase_completed": false,
+  "next_action": "Live manifest and local preflight; one commit/push/PR and required FULL CI; independent architect review before merge/release/phase05",
+  "polish_task_id": "BUBKA-004-V5-FINAL-POLISH",
+  "prior_v5_review": {
+    "sha256": "6c95d59495359b5826e8a476a55726e4e3add05f07d85c37f6f1712538307276",
+    "source_hashes": 113,
+    "local_test_logs": 43,
+    "visual_test_logs": 20,
+    "owner_visual_approved": false
+  },
+  "physical_tests_pending": true,
+  "ci_started": false,
+  "release_authorized": false,
+  "phase_05_authorized": false,
+  "polish_local_test_counts": {
+    "targeted_visual_passed": 20,
+    "full_local_passed": 43,
+    "failed": 0
+  },
+  "display_name": "BUBA",
+  "previous_display_name": "BUBKA",
+  "architect_visual_accepted": true,
+  "approved_archive_sha256": "32e7e7f4e3d45743a226eb0f9418e242fd2bf64f50a98d9aea311015581c55ed",
+  "owner_rebrand_render_approved": true,
+  "public_push_authorized": true,
+  "public_push_risk_accepted": true,
+  "rebrand_task_id": "BUBA-004-REBRAND-PR-VALIDATION",
+  "rights_review": {
+    "status": "preliminary_not_legal_clearance",
+    "findings": [
+      "Съществуват Buba – Self-Care Buddy, Buba: Meditation & Breathwork и Buba: Kids Bedtime Stories. Не е установено идентично автомобилно приложение при ограниченото търсене, но това не доказва свободна марка.",
+      "Вторични източници показват EUTM 015062235 за хранителни продукти и US заявка 50214428 за софтуер за работна сила; официалният статус, сходството и обхватът не са напълно проверени.",
+      "Не прави правно заключение, не купувай услуги, не сменяй отново името по своя инициатива."
+    ],
+    "sources": [
+      "https://meetbuba.com/",
+      "https://apps.apple.com/us/app/buba-self-care-buddy/id6759255909",
+      "https://apps.apple.com/gr/app/buba-meditation-breathwork/id6761009999",
+      "https://apps.apple.com/us/app/buba-kids-bedtime-stories/id6738710726",
+      "https://www.trademarkelite.com/europe/trademark/trademark-detail/015062235/BUBA",
+      "https://www.trademarkelite.com/trademark/trademark-detail/50214428/BUBA",
+      "https://www.euipo.europa.eu/en/trade-marks/before-applying/availability",
+      "https://www.tmdn.org/tmview/",
+      "https://portal.bpo.bg/bpo-registers/marks"
+    ]
+  },
+  "phase_03_status": "accepted_with_followups",
+  "phase_03_followups": [
+    "notification timing/reconciliation",
+    "iOS refresh",
+    "local backups",
+    "independent signing-key backup"
+  ],
+  "rebrand_local_test_counts": {
+    "targeted_visual_passed": 20,
+    "full_local_passed": 43,
+    "failed": 0
+  },
+  "architect_rebrand_diff_accepted": true,
+  "pr_authorization": {
+    "task_id": "BUBA-004-PR-AUTHORIZATION",
+    "date": "2026-11-26",
+    "display_name": "BUBA",
+    "owner_render_approved": true,
+    "public_push_risk_accepted": true,
+    "architect_rebrand_diff_accepted": true,
+    "approved_rebrand_archive_sha256": "33a636586c2d049c3943afdf180552f01b86c0ed80b6474de3c0601e3ae9fc96",
+    "approved_source_files": 119,
+    "rights_status": "preliminary_not_legal_clearance",
+    "legal_clearance": false,
+    "authorization": {
+      "local_preflight": true,
+      "single_commit": true,
+      "single_push": true,
+      "one_pr": true,
+      "required_ci": true,
+      "merge": false,
+      "tag": false,
+      "release": false,
+      "phase05": false
+    },
+    "phase_completed": false,
+    "published_version": "0.2.1+4",
+    "candidate_version": "0.3.0+5",
+    "status": "authorized_for_PR_CI_pending_preflight"
+  },
+  "merge_authorized": false,
+  "operation_flags_as_of": "Preflight snapshot before commit; actual PR/CI evidence is external handoff, no additional docs push."
+}

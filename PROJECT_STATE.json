@@ -1,12 +1,12 @@
 {
   "project": "BUBKA",
-  "version": "0.2.1",
-  "build_number": 4,
-  "phase": 3,
-  "phase_status": "partial_physical_validation",
-  "branch": "phase/03-installation-updates",
-  "verified_source_commit": "eaeb72fee5a1228f5fbb9b01d40747e2e3c20ed8",
-  "verified_ci_url": "https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45811621345",
+  "version": "0.3.0",
+  "build_number": 5,
+  "phase": 4,
+  "phase_status": "in_progress",
+  "branch": "phase/04-design-ui",
+  "verified_source_commit": "7b52f78a5861bd68411f364431d88240b27a7950",
+  "verified_ci_url": "https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45830140460",
   "application_identity": {
     "android_application_id": "io.github.aleksandurbojilov09.garage",
     "ios_bundle_id": "io.github.aleksandurbojilov09.garage"
@@ -17,13 +17,13 @@
   "billing_verified": false,
   "codespaces_rebuild_verified": true,
   "codespaces_default_idle_timeout_minutes": 30,
-  "ci_optimization": "003A_candidate_pending_ci",
+  "ci_optimization": "003A_accepted",
   "verified_docs_ci_url": "https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45786033755",
   "phase_02_status": "accepted_with_followups",
   "phase_03_authorized": true,
-  "phase_04_authorized": false,
-  "target_version": "0.2.1",
-  "target_build_number": 4,
+  "phase_04_authorized": true,
+  "target_version": "0.3.0",
+  "target_build_number": 5,
   "baseline_tag": "v0.1.0",
   "branch_protection": {
     "status": "verified_active",
@@ -43,6 +43,93 @@
   "last_published_testing_release": "v0.2.1",
   "last_published_release_run": "https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45821848648",
   "android_initial_install": "verified_owner_screenshot",
-  "ios_initial_install": "pending_computer_setup",
-  "android_update_and_data_retention": "passed_owner_report"
+  "ios_initial_install": "passed_owner_report",
+  "android_update_and_data_retention": "passed_owner_report",
+  "phase_03_status": "accepted_with_followups",
+  "baseline": {
+    "main_sha": "7b52f78a5861bd68411f364431d88240b27a7950",
+    "version": "0.2.1+4",
+    "last_published_testing_release": "v0.2.1",
+    "release_target": "8c109f28c8b149511f79c5c11722d9dff6e92252",
+    "verified_full_main_ci_run": 45830140460
+  },
+  "candidate": {
+    "version": "0.3.0+5",
+    "status": "authorized_for_PR_CI_pending_preflight",
+    "head_sha": null,
+    "pr": null,
+    "ci": null,
+    "release": null
+  },
+  "ios_update_and_data_retention": "passed_owner_report",
+  "ios_notification_received": "passed_owner_report",
+  "phase_03_followups": [
+    "notification timing/reconciliation",
+    "iOS refresh",
+    "local backups",
+    "independent signing-key backup"
+  ],
+  "phase_04_v5": {
+    "status": "v5_final_polish_accepted_rebrand_accepted",
+    "design_reconstruction_owner_approved": true,
+    "flutter_visual_owner_approved": true,
+    "prior_v5_local_tests": 43,
+    "prior_v5_visual_tests": 20,
+    "physical_tests_pending": true,
+    "polish_local_tests": 43,
+    "polish_visual_tests": 20,
+    "architect_visual_accepted": true,
+    "approved_archive_sha256": "32e7e7f4e3d45743a226eb0f9418e242fd2bf64f50a98d9aea311015581c55ed",
+    "commit_push_pr_ci_authorized": true,
+    "release_authorized": false
+  },
+  "display_name": "BUBA",
+  "display_name_bg": "Буба",
+  "previous_display_name": "BUBKA",
+  "phase_04_rebrand": {
+    "task_id": "BUBA-004-REBRAND-PR-VALIDATION",
+    "status": "owner_and_architect_accepted_authorized_for_PR_CI",
+    "owner_name_approved": true,
+    "owner_rebrand_render_approved": true,
+    "public_push_risk_accepted": true,
+    "public_push_authorized": true,
+    "phase_completed": false,
+    "release_authorized": false,
+    "phase05_authorized": false,
+    "rights_status": "preliminary_not_legal_clearance",
+    "local_test_counts": {
+      "targeted_visual_passed": 20,
+      "full_local_passed": 43,
+      "failed": 0
+    },
+    "architect_rebrand_diff_accepted": true,
+    "approved_rebrand_archive_sha256": "33a636586c2d049c3943afdf180552f01b86c0ed80b6474de3c0601e3ae9fc96"
+  },
+  "phase_04_pr_authorization": {
+    "task_id": "BUBA-004-PR-AUTHORIZATION",
+    "date": "2026-11-26",
+    "display_name": "BUBA",
+    "owner_render_approved": true,
+    "public_push_risk_accepted": true,
+    "architect_rebrand_diff_accepted": true,
+    "approved_rebrand_archive_sha256": "33a636586c2d049c3943afdf180552f01b86c0ed80b6474de3c0601e3ae9fc96",
+    "approved_source_files": 119,
+    "rights_status": "preliminary_not_legal_clearance",
+    "legal_clearance": false,
+    "authorization": {
+      "local_preflight": true,
+      "single_commit": true,
+      "single_push": true,
+      "one_pr": true,
+      "required_ci": true,
+      "merge": false,
+      "tag": false,
+      "release": false,
+      "phase05": false
+    },
+    "phase_completed": false,
+    "published_version": "0.2.1+4",
+    "candidate_version": "0.3.0+5",
+    "status": "authorized_for_PR_CI_pending_preflight"
+  }
 }

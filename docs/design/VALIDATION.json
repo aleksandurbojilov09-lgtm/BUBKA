@@ -1,0 +1,52 @@
+{
+  "scope": "Chromium local HTML only, not Flutter or physical device",
+  "checks": [
+    {
+      "name": "initial home oil 5000",
+      "passed": true
+    },
+    {
+      "name": "Toyota retains GTP",
+      "passed": true
+    },
+    {
+      "name": "BMW retains GO",
+      "passed": true
+    },
+    {
+      "name": "four fuel inputs no checkbox",
+      "passed": true
+    },
+    {
+      "name": "fuel updates oil to 500",
+      "passed": true
+    },
+    {
+      "name": "historical fuel does not reduce odo",
+      "passed": true
+    },
+    {
+      "name": "unknown ring retains choice",
+      "passed": true
+    },
+    {
+      "name": "compact content scroll and nav separate",
+      "passed": true
+    },
+    {
+      "name": "empty garage",
+      "passed": true
+    },
+    {
+      "name": "ignition 8 frames",
+      "passed": true
+    }
+  ],
+  "page_errors": [],
+  "all_checks_passed": true,
+  "notes": [
+    "No FPS measurement.",
+    "Reconstructed reference HTML is not byte-identical to original chat AppBlock.",
+    "Only selected paths tested; no production accessibility certification."
+  ]
+}

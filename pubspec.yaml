@@ -1,7 +1,7 @@
 name: garage
 description: Personal digital garage for Android and iOS.
 publish_to: 'none'
-version: 0.2.1+4
+version: 0.3.0+5
 
 environment:
   sdk: ^3.14.0
@@ -30,3 +30,34 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/design/cockpit/car/body.png
+    - assets/design/cockpit/car/contours.png
+    - assets/design/cockpit/car/glow_left.png
+    - assets/design/cockpit/car/glow_right.png
+    - assets/design/cockpit/car/highlights.png
+    - assets/design/cockpit/car/lamp_left.png
+    - assets/design/cockpit/car/lamp_right.png
+    - assets/design/cockpit/car/shadow.png
+    - assets/design/cockpit/icons/bell.png
+    - assets/design/cockpit/icons/coins.png
+    - assets/design/cockpit/icons/deadlines.png
+    - assets/design/cockpit/icons/documents.png
+    - assets/design/cockpit/icons/fuel.png
+    - assets/design/cockpit/icons/garage.png
+    - assets/design/cockpit/icons/home.png
+    - assets/design/cockpit/icons/plus.png
+    - assets/design/cockpit/icons/service.png
+    - assets/design/cockpit/icons/settings.png
+    - assets/design/cockpit/icons/stats.png
+    - assets/design/cockpit/ignition/asphalt.png
+    - assets/design/cockpit/ignition/beam_left.png
+    - assets/design/cockpit/ignition/beam_right.png
+    - assets/design/cockpit/ignition/halo_left.png
+    - assets/design/cockpit/ignition/halo_right.png
+    - assets/design/cockpit/ignition/road_pool.png
+    - assets/design/cockpit/ignition/wordmark_reflection.png
+    - assets/design/cockpit/surfaces/grain_tile.png
+    - assets/design/cockpit/surfaces/selected_inner_glow.png
+    - assets/design/cockpit/surfaces/soft_light.png
+    - assets/design/cockpit/wordmark/bubka.png

@@ -1,0 +1,697 @@
+{
+  "project": "BUBKA",
+  "status": "local_uncompiled_draft; paths for future modules are proposed, not activated",
+  "screen_count": 30,
+  "additional_modal_contract": "vehicle_select is a future modal; fixture arrows only",
+  "screens": [
+    {
+      "id": "home",
+      "title": "Начало",
+      "route_or_modal_proposed": "/",
+      "phase_of_business_binding": 4,
+      "local_draft_component": "CockpitHome",
+      "contract_only": false,
+      "approved_layout": [
+        "Header BUBKA / гараж / известия",
+        "Избран автомобил с табела, стрелки и точки",
+        "Един Signature Car пръстен",
+        "Гориво / Сервиз / Документи / Срокове",
+        "Месечни известни разходи и среден разход",
+        "Долна навигация"
+      ],
+      "actions": [
+        "vehicle_select",
+        "ring_select",
+        "fuel",
+        "service",
+        "documents",
+        "deadlines",
+        "quick_actions"
+      ],
+      "states": [
+        "empty garage",
+        "unknown ring",
+        "days only",
+        "full",
+        "half",
+        "low",
+        "zero",
+        "overdue",
+        "missing metrics"
+      ]
+    },
+    {
+      "id": "ring_select",
+      "title": "Какво да следи Cockpit?",
+      "route_or_modal_proposed": "modal:ring_select",
+      "phase_of_business_binding": 4,
+      "local_draft_component": "showRingSelector (fixture only)",
+      "contract_only": false,
+      "approved_layout": [
+        "Bottom sheet",
+        "Списък налични и липсващи показатели",
+        "Отметка на текущия избор"
+      ],
+      "actions": [
+        "select one",
+        "close"
+      ],
+      "states": [
+        "unknown selection retained",
+        "switch vehicle restores its own choice"
+      ]
+    },
+    {
+      "id": "garage",
+      "title": "Гараж",
+      "route_or_modal_proposed": "/garage",
+      "phase_of_business_binding": 5,
+      "local_draft_component": "GarageScreen",
+      "contract_only": false,
+      "approved_layout": [
+        "Карти със силует, марка/модел, табела, година и гориво",
+        "Златист избран контур",
+        "Добави автомобил"
+      ],
+      "actions": [
+        "select",
+        "vehicle_profile",
+        "vehicle_form"
+      ],
+      "states": [
+        "empty",
+        "selected",
+        "missing plate"
+      ]
+    },
+    {
+      "id": "vehicle_profile",
+      "title": "Автомобил",
+      "route_or_modal_proposed": "/garage/vehicle/:id",
+      "phase_of_business_binding": 5,
+      "local_draft_component": null,
+      "contract_only": true,
+      "approved_layout": [
+        "Силует и табела",
+        "Общ километраж",
+        "VIN по желание",
+        "Показател / обслужване / срокове"
+      ],
+      "actions": [
+        "edit",
+        "odometer",
+        "ring_select"
+      ],
+      "states": [
+        "missing optional fields"
+      ]
+    },
+    {
+      "id": "vehicle_form",
+      "title": "Нов / редактиране",
+      "route_or_modal_proposed": "/garage/vehicle/edit",
+      "phase_of_business_binding": 5,
+      "local_draft_component": null,
+      "contract_only": true,
+      "approved_layout": [
+        "Марка и модел",
+        "Рег. номер / VIN по желание",
+        "Година, гориво, километраж"
+      ],
+      "actions": [
+        "save",
+        "cancel"
+      ],
+      "states": [
+        "validation",
+        "empty",
+        "edit"
+      ]
+    },
+    {
+      "id": "first_launch",
+      "title": "Първо отваряне",
+      "route_or_modal_proposed": "/",
+      "phase_of_business_binding": 5,
+      "local_draft_component": "CockpitHome(empty)",
+      "contract_only": false,
+      "approved_layout": [
+        "Празен Cockpit, Signature Car",
+        "Добави автомобил",
+        "Данните остават локално"
+      ],
+      "actions": [
+        "vehicle_form"
+      ],
+      "states": [
+        "no car"
+      ]
+    },
+    {
+      "id": "quick_actions",
+      "title": "Бързи действия",
+      "route_or_modal_proposed": "modal:quick_actions",
+      "phase_of_business_binding": 4,
+      "local_draft_component": "showQuickSheet",
+      "contract_only": false,
+      "approved_layout": [
+        "Матов bottom sheet",
+        "Зареждане, километраж, сервиз, документ, напомняне, автомобил"
+      ],
+      "actions": [
+        "open form",
+        "close"
+      ],
+      "states": [
+        "no vehicle only add"
+      ]
+    },
+    {
+      "id": "notifications",
+      "title": "Известия",
+      "route_or_modal_proposed": "/notifications",
+      "phase_of_business_binding": 7,
+      "local_draft_component": "_FutureScreen",
+      "contract_only": false,
+      "approved_layout": [
+        "Всички въведени задължения",
+        "Автомобил, тип, дата/километри, статус"
+      ],
+      "actions": [
+        "detail",
+        "reminder_settings"
+      ],
+      "states": [
+        "none entered",
+        "none upcoming",
+        "due",
+        "overdue"
+      ]
+    },
+    {
+      "id": "fuel",
+      "title": "Гориво",
+      "route_or_modal_proposed": "/fuel",
+      "phase_of_business_binding": 6,
+      "local_draft_component": "_FutureScreen",
+      "contract_only": false,
+      "approved_layout": [
+        "Среден разход (— докато няма утвърден метод)",
+        "Литри и известни разходи за периода",
+        "История на зарежданията"
+      ],
+      "actions": [
+        "fuel_form",
+        "edit record"
+      ],
+      "states": [
+        "first",
+        "empty",
+        "price missing",
+        "history"
+      ]
+    },
+    {
+      "id": "fuel_form",
+      "title": "Зареждане",
+      "route_or_modal_proposed": "/fuel/new",
+      "phase_of_business_binding": 6,
+      "local_draft_component": "FuelFormPreview (fixture only)",
+      "contract_only": false,
+      "approved_layout": [
+        "Литри",
+        "Общ километраж",
+        "Обща цена EUR",
+        "Дата по подразбиране днес, редактируема",
+        "Автоматична цена/литър при известна цена",
+        "Запази"
+      ],
+      "actions": [
+        "save",
+        "edit date"
+      ],
+      "states": [
+        "historical automatic ordering",
+        "invalid inputs",
+        "optional price blank"
+      ]
+    },
+    {
+      "id": "odometer",
+      "title": "Километраж",
+      "route_or_modal_proposed": "/odometer",
+      "phase_of_business_binding": 6,
+      "local_draft_component": null,
+      "contract_only": true,
+      "approved_layout": [
+        "Текущ общ километраж",
+        "Нова стойност",
+        "Отделен път за корекция"
+      ],
+      "actions": [
+        "save",
+        "correction"
+      ],
+      "states": [
+        "lower value",
+        "invalid",
+        "success"
+      ]
+    },
+    {
+      "id": "correction",
+      "title": "Корекция",
+      "route_or_modal_proposed": "/odometer/correction",
+      "phase_of_business_binding": 6,
+      "local_draft_component": null,
+      "contract_only": true,
+      "approved_layout": [
+        "Коригиран километраж",
+        "Причина",
+        "Изрично потвърждение за корекция, не за зареждане"
+      ],
+      "actions": [
+        "confirm"
+      ],
+      "states": [
+        "conflict with history",
+        "success"
+      ]
+    },
+    {
+      "id": "service",
+      "title": "Сервиз",
+      "route_or_modal_proposed": "/service",
+      "phase_of_business_binding": 8,
+      "local_draft_component": "_FutureScreen",
+      "contract_only": false,
+      "approved_layout": [
+        "Общ километраж",
+        "Независими карти за масло и филтри с ресурс",
+        "Сервизна история"
+      ],
+      "actions": [
+        "interval",
+        "service_form",
+        "odometer"
+      ],
+      "states": [
+        "unknown interval",
+        "due",
+        "overdue",
+        "no history"
+      ]
+    },
+    {
+      "id": "interval",
+      "title": "Сервизен интервал",
+      "route_or_modal_proposed": "/service/interval/:id",
+      "phase_of_business_binding": 8,
+      "local_draft_component": null,
+      "contract_only": true,
+      "approved_layout": [
+        "Последно обслужване",
+        "Интервал км",
+        "Следващ километраж",
+        "Оставащ ресурс"
+      ],
+      "actions": [
+        "save interval",
+        "record service"
+      ],
+      "states": [
+        "no data",
+        "invalid",
+        "due"
+      ]
+    },
+    {
+      "id": "service_form",
+      "title": "Ново обслужване",
+      "route_or_modal_proposed": "/service/new",
+      "phase_of_business_binding": 8,
+      "local_draft_component": null,
+      "contract_only": true,
+      "approved_layout": [
+        "Наименование, километраж, дата, цена по желание, бележка",
+        "Избор действително сменени компоненти и нови интервали"
+      ],
+      "actions": [
+        "save"
+      ],
+      "states": [
+        "repair without interval reset",
+        "multiple parts",
+        "historical",
+        "conflict"
+      ]
+    },
+    {
+      "id": "documents",
+      "title": "Документи",
+      "route_or_modal_proposed": "/documents",
+      "phase_of_business_binding": 7,
+      "local_draft_component": "_FutureScreen",
+      "contract_only": false,
+      "approved_layout": [
+        "Карти ГО, Каско, ГТП, винетка, данък",
+        "Статус, дата, оставащи дни"
+      ],
+      "actions": [
+        "document_detail",
+        "deadlines"
+      ],
+      "states": [
+        "missing",
+        "expired",
+        "known",
+        "stale"
+      ]
+    },
+    {
+      "id": "document_go",
+      "title": "Гражданска отговорност",
+      "route_or_modal_proposed": "/documents/go",
+      "phase_of_business_binding": 7,
+      "local_draft_component": null,
+      "contract_only": true,
+      "approved_layout": [
+        "Данни от ръчен запис, статус и дата",
+        "Начало/край когато приложимо",
+        "Цена по желание",
+        "Последна ръчна проверка",
+        "Застраховател, полица и отделни вноски"
+      ],
+      "actions": [
+        "edit",
+        "official_browser_handoff",
+        "installments"
+      ],
+      "states": [
+        "missing",
+        "expired",
+        "future start",
+        "unknown beginning",
+        "stale"
+      ]
+    },
+    {
+      "id": "document_kasko",
+      "title": "Каско",
+      "route_or_modal_proposed": "/documents/kasko",
+      "phase_of_business_binding": 7,
+      "local_draft_component": null,
+      "contract_only": true,
+      "approved_layout": [
+        "Данни от ръчен запис, статус и дата",
+        "Начало/край когато приложимо",
+        "Цена по желание",
+        "Последна ръчна проверка",
+        "Застраховател, полица и отделни вноски"
+      ],
+      "actions": [
+        "edit",
+        "official_browser_handoff",
+        "installments"
+      ],
+      "states": [
+        "missing",
+        "expired",
+        "future start",
+        "unknown beginning",
+        "stale"
+      ]
+    },
+    {
+      "id": "document_gtp",
+      "title": "Технически преглед",
+      "route_or_modal_proposed": "/documents/gtp",
+      "phase_of_business_binding": 7,
+      "local_draft_component": null,
+      "contract_only": true,
+      "approved_layout": [
+        "Данни от ръчен запис, статус и дата",
+        "Начало/край когато приложимо",
+        "Цена по желание",
+        "Последна ръчна проверка"
+      ],
+      "actions": [
+        "edit",
+        "official_browser_handoff"
+      ],
+      "states": [
+        "missing",
+        "expired",
+        "future start",
+        "unknown beginning",
+        "stale"
+      ]
+    },
+    {
+      "id": "document_vignette",
+      "title": "Винетка",
+      "route_or_modal_proposed": "/documents/vignette",
+      "phase_of_business_binding": 7,
+      "local_draft_component": null,
+      "contract_only": true,
+      "approved_layout": [
+        "Данни от ръчен запис, статус и дата",
+        "Начало/край когато приложимо",
+        "Цена по желание",
+        "Последна ръчна проверка"
+      ],
+      "actions": [
+        "edit",
+        "official_browser_handoff"
+      ],
+      "states": [
+        "missing",
+        "expired",
+        "future start",
+        "unknown beginning",
+        "stale"
+      ]
+    },
+    {
+      "id": "document_tax",
+      "title": "Данък МПС",
+      "route_or_modal_proposed": "/documents/tax",
+      "phase_of_business_binding": 7,
+      "local_draft_component": null,
+      "contract_only": true,
+      "approved_layout": [
+        "Данни от ръчен запис, статус и дата",
+        "Начало/край когато приложимо",
+        "Цена по желание",
+        "Последна ръчна проверка",
+        "Ръчен статус платен"
+      ],
+      "actions": [
+        "edit",
+        "official_browser_handoff"
+      ],
+      "states": [
+        "missing",
+        "expired",
+        "future start",
+        "unknown beginning",
+        "stale"
+      ]
+    },
+    {
+      "id": "document_edit",
+      "title": "Въвеждане на данни",
+      "route_or_modal_proposed": "/documents/edit",
+      "phase_of_business_binding": 7,
+      "local_draft_component": null,
+      "contract_only": true,
+      "approved_layout": [
+        "Ръчни дати и полета според типа документ",
+        "Дата на последна ръчна проверка"
+      ],
+      "actions": [
+        "save"
+      ],
+      "states": [
+        "invalid dates",
+        "missing start"
+      ]
+    },
+    {
+      "id": "installments",
+      "title": "Вноски",
+      "route_or_modal_proposed": "/documents/installments",
+      "phase_of_business_binding": 7,
+      "local_draft_component": null,
+      "contract_only": true,
+      "approved_layout": [
+        "Падеж, сума по желание, ръчен платен статус"
+      ],
+      "actions": [
+        "add",
+        "mark paid",
+        "undo"
+      ],
+      "states": [
+        "unpaid",
+        "paid",
+        "overdue"
+      ]
+    },
+    {
+      "id": "official_browser_handoff",
+      "title": "Официална справка",
+      "route_or_modal_proposed": "/documents/official-check",
+      "phase_of_business_binding": 9,
+      "local_draft_component": null,
+      "contract_only": true,
+      "approved_layout": [
+        "Име на източник",
+        "Отвори браузър",
+        "Върни се и въведи резултата"
+      ],
+      "actions": [
+        "external link",
+        "manual edit"
+      ],
+      "states": [
+        "offline",
+        "unavailable",
+        "manual unconfirmed"
+      ]
+    },
+    {
+      "id": "deadlines",
+      "title": "Срокове",
+      "route_or_modal_proposed": "/deadlines",
+      "phase_of_business_binding": 7,
+      "local_draft_component": "_FutureScreen",
+      "contract_only": false,
+      "approved_layout": [
+        "Хронологично всички автомобили, документи, вноски и сервизни срокове",
+        "Календарни и километрови статуси отделно"
+      ],
+      "actions": [
+        "detail",
+        "reminder_settings"
+      ],
+      "states": [
+        "none entered",
+        "none upcoming",
+        "overdue",
+        "unknown"
+      ]
+    },
+    {
+      "id": "stats",
+      "title": "Статистика",
+      "route_or_modal_proposed": "/stats",
+      "phase_of_business_binding": 10,
+      "local_draft_component": "_FutureScreen",
+      "contract_only": false,
+      "approved_layout": [
+        "Селектор автомобил и период месец/година",
+        "Общо известни разходи, графика",
+        "Категории гориво/сервиз/документи/други",
+        "Среден разход при утвърден метод"
+      ],
+      "actions": [
+        "switch vehicle",
+        "period"
+      ],
+      "states": [
+        "partial price",
+        "no data"
+      ]
+    },
+    {
+      "id": "settings",
+      "title": "Настройки",
+      "route_or_modal_proposed": "/settings",
+      "phase_of_business_binding": 4,
+      "local_draft_component": "_Settings",
+      "contract_only": false,
+      "approved_layout": [
+        "Cockpit, Български, EUR/км/л",
+        "По-голям текст и намалено движение",
+        "Напомняния, локален архив, актуализации"
+      ],
+      "actions": [
+        "reminder_settings",
+        "archive",
+        "updates"
+      ],
+      "states": [
+        "permission denied",
+        "offline"
+      ]
+    },
+    {
+      "id": "reminder_settings",
+      "title": "Напомняния",
+      "route_or_modal_proposed": "/settings/reminders",
+      "phase_of_business_binding": 7,
+      "local_draft_component": null,
+      "contract_only": true,
+      "approved_layout": [
+        "Включени/изключени",
+        "Системно разрешение",
+        "График"
+      ],
+      "actions": [
+        "toggle",
+        "system settings"
+      ],
+      "states": [
+        "denied",
+        "enabled",
+        "disabled"
+      ]
+    },
+    {
+      "id": "archive",
+      "title": "Локален архив",
+      "route_or_modal_proposed": "/settings/archive",
+      "phase_of_business_binding": 11,
+      "local_draft_component": null,
+      "contract_only": true,
+      "approved_layout": [
+        "Създай архив",
+        "Последен архив",
+        "Възстанови с преглед и предупреждение"
+      ],
+      "actions": [
+        "export",
+        "restore",
+        "cancel"
+      ],
+      "states": [
+        "no backup",
+        "incompatible",
+        "corrupt",
+        "success"
+      ]
+    },
+    {
+      "id": "updates",
+      "title": "Актуализации",
+      "route_or_modal_proposed": "/settings#updates",
+      "phase_of_business_binding": 4,
+      "local_draft_component": "UpdatePanel",
+      "contract_only": false,
+      "approved_layout": [
+        "Версия",
+        "Локално съхранение",
+        "Платформен статус"
+      ],
+      "actions": [
+        "check where supported"
+      ],
+      "states": [
+        "offline",
+        "no update",
+        "available"
+      ]
+    }
+  ]
+}

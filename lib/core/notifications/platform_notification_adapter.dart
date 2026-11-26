@@ -85,7 +85,7 @@ class PlatformNotificationAdapter implements NotificationAdapter {
         android: AndroidNotificationDetails(
           'bubka_reminders',
           'Автомобилни напомняния',
-          channelDescription: 'Локални напомняния на BUBKA',
+          channelDescription: 'Локални напомняния на BUBA',
         ),
         iOS: DarwinNotificationDetails(),
       ),

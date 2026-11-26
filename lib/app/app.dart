@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 
 import '../core/database/database.dart';
 import '../core/notifications/notification_service.dart';
+import '../core/updates/update_service.dart';
 import '../design_system/theme.dart';
 import '../features/diagnostics/diagnostics.dart';
 import 'modules/module_availability.dart';
@@ -39,7 +40,11 @@ class _BubkaAppState extends State<BubkaApp> {
     super.initState();
     _registry = createRegistry();
     _availability = ModuleAvailability(widget.database);
-    _router = createRouter(_registry, _availability);
+    _router = createRouter(
+      _registry,
+      _availability,
+      testingPreview: widget.updates?.service.channel == UpdateChannel.testing,
+    );
     unawaited(_availability.load());
     final updates = widget.updates;
     if (updates != null) {
@@ -80,7 +85,7 @@ class _BubkaAppState extends State<BubkaApp> {
       ChangeNotifierProvider<ModuleAvailability>.value(value: _availability),
     ],
     child: MaterialApp.router(
-      title: 'BUBKA',
+      title: 'BUBA',
       debugShowCheckedModeBanner: false,
       theme: BubkaDesign.dark,
       routerConfig: _router,

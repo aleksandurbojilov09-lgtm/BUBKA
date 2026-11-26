@@ -1,0 +1,165 @@
+{
+  "icons": {
+    "original_sha256": "0e609fc915247f34db9a4bab3ea96fb3e97a4aa1c2bc2e4fc866f2c24407531b",
+    "B_foreground_sha256": "f468548572d2167b7acd8fbba597ea200534df62d26b4ee282ce979d3e1775d0",
+    "background_sha256": "8d5746924af30d57110dc70713a787506ec21124f3491c00dfddb0ab7a89e44e",
+    "foreground_bbox_432": [
+      92,
+      92,
+      340,
+      340
+    ],
+    "safe_zone_432": [
+      84,
+      84,
+      348,
+      348
+    ],
+    "android": "adaptive layers 108dp; legacy central 72dp crop; 5 densities; no change to identity; Android 12+ launch uses existing @mipmap/ic_launcher",
+    "ios": "opaque original square resized with no additional corner mask; decorative rounded gold outline preserved; physical system mask pending",
+    "license": "Owner-approved AI-generated source and derivatives, no third-party asset declared; rights clearance remains pending before release. No fonts bundled.",
+    "assets": {
+      "android/app/src/main/res/drawable-xxhdpi/bubka_icon_background.png": {
+        "sha256": "58e82c1b17aea716a2839d4fe2b70b7e0c373cbf8cb696e2f2ae7df2370b9c17",
+        "bytes": 3803
+      },
+      "android/app/src/main/res/drawable-xxhdpi/bubka_icon_foreground.png": {
+        "sha256": "0780a9c99ea667b9bcb4c6db8ea4d3f116904172f43e2e12318984654361672b",
+        "bytes": 38295
+      },
+      "android/app/src/main/res/drawable-xxxhdpi/bubka_icon_background.png": {
+        "sha256": "87747ca0c1289e70ae06380a7cc7dd1149053a2ce2935329df8ff8106fcc70ee",
+        "bytes": 5041
+      },
+      "android/app/src/main/res/drawable-xxxhdpi/bubka_icon_foreground.png": {
+        "sha256": "85ade06258cb1ce75a320e6f27c7eda0eb599380d1b5576f256b2550ea9d3c43",
+        "bytes": 52207
+      },
+      "android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png": {
+        "sha256": "bcdd41b1b2a1ab9271ae09466a1d58a632e14f62cab069612c90676ad7ade89d",
+        "bytes": 26207
+      },
+      "android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png": {
+        "sha256": "6cf582fcac04f32776b2484cca37a1822b9f37a19eb2386bf39de623f232e432",
+        "bytes": 17396
+      },
+      "android/app/src/main/res/mipmap-xhdpi/ic_launcher.png": {
+        "sha256": "0ed6a601e4101f82c97841308b00de7cad138fcca1e15463eb63a3c137f8f70e",
+        "bytes": 9827
+      },
+      "android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml": {
+        "sha256": "bc482755bf5d13ba9d2c244779f7f723ddd222e8def8f24912cbef9d1d8dfde9",
+        "bytes": 271
+      },
+      "android/app/src/main/res/mipmap-mdpi/ic_launcher.png": {
+        "sha256": "573d387fb79b779eea03cb7d581e817a2ab3c329140eedfb34ccf146b09029e1",
+        "bytes": 3774
+      },
+      "android/app/src/main/res/mipmap-hdpi/ic_launcher.png": {
+        "sha256": "9258479089b5fa2529f8b9a11efa0a5d88d9a2e11df585861ad7506dc1f60460",
+        "bytes": 6702
+      },
+      "android/app/src/main/res/drawable-hdpi/bubka_icon_background.png": {
+        "sha256": "807dc972e4cc3085c379e3a22e8768532d8dc812e11ec0ba011f3827f889f654",
+        "bytes": 1772
+      },
+      "android/app/src/main/res/drawable-hdpi/bubka_icon_foreground.png": {
+        "sha256": "f8c9ad03996ec7818dbda99bd166ed455feb2af7f1424f2518c13bacb6ff20ea",
+        "bytes": 13422
+      },
+      "android/app/src/main/res/drawable-xhdpi/bubka_icon_background.png": {
+        "sha256": "4c97bd57d89d5b35efd3ba9f8038bba32604b2c5928cc368ca248efa050dbd69",
+        "bytes": 2417
+      },
+      "android/app/src/main/res/drawable-xhdpi/bubka_icon_foreground.png": {
+        "sha256": "9c36e2943187ac9ecebe979fc026b29db2cf1141d87a6eae5db81ec9fc948f77",
+        "bytes": 20450
+      },
+      "android/app/src/main/res/drawable-mdpi/bubka_icon_background.png": {
+        "sha256": "9a3ce58cf2b1700239a5354d0d28cef8937e340432277f02d2e1ae9a32774d1a",
+        "bytes": 1087
+      },
+      "android/app/src/main/res/drawable-mdpi/bubka_icon_foreground.png": {
+        "sha256": "ead5857c38d8cf34f05c48cdce9e7910fcc371543f44e6e6e5dcbb49861a3c1b",
+        "bytes": 7421
+      },
+      "ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@2x.png": {
+        "sha256": "0ebca298a5b83564072f2eb497d50994e508fa44d8ff13d735b05fa982e21632",
+        "bytes": 2986
+      },
+      "ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@2x.png": {
+        "sha256": "2dade6b98a915e3175964913d34de08afaadbdd54f24d9706ad830fe4b85be4e",
+        "bytes": 5293
+      },
+      "ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@1x.png": {
+        "sha256": "26d66768f32ddeee37dbababb5b625212aceef322f9334e698fc03c2f6997967",
+        "bytes": 1830
+      },
+      "ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@1x.png": {
+        "sha256": "168801e7c9cc3191b1f263aba59a8bfb90948eb46b7259661f22c5ec537430bf",
+        "bytes": 1020
+      },
+      "ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@3x.png": {
+        "sha256": "2294f3b2dd8d00e09279d1b656a27c4d29e2d012ae51b22b685d2a0b511927f0",
+        "bytes": 10043
+      },
+      "ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-1024x1024@1x.png": {
+        "sha256": "b4b6fe9a922a0a8cbf2b688879b6cd046897e0d63bd049e977de9acf469e368c",
+        "bytes": 1178350
+      },
+      "ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@2x.png": {
+        "sha256": "720a440e58cb44c7d2ac7819f0b61bfda0011183b5fa576aca14073c8a5bc861",
+        "bytes": 8816
+      },
+      "ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@3x.png": {
+        "sha256": "fdc1061395ae01c3d8305f20af63d1129944cdcf1ef74ede928c6bf92858529b",
+        "bytes": 33609
+      },
+      "ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@1x.png": {
+        "sha256": "0c04cd9430a9a3a0d08ad256ca02e5331bd1bf6ee7ce9fc57b21b3ab3ec0d2fb",
+        "bytes": 8070
+      },
+      "ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@2x.png": {
+        "sha256": "9155236995d6ffb88727a1d7534ea2917ea2c24972b06db8f8cc49f8293beaa3",
+        "bytes": 16915
+      },
+      "ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@3x.png": {
+        "sha256": "9155236995d6ffb88727a1d7534ea2917ea2c24972b06db8f8cc49f8293beaa3",
+        "bytes": 16915
+      },
+      "ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-83.5x83.5@2x.png": {
+        "sha256": "cebefe8fe004ed93f1a3b23d39be97c5172e05ae235ecc85e5d69103e45fa6fe",
+        "bytes": 29566
+      },
+      "ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@2x.png": {
+        "sha256": "634958dfe50879d5bfeba7f30e6dce830a4e9aec57f48f5540cec76b99f18d5f",
+        "bytes": 25143
+      },
+      "ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@3x.png": {
+        "sha256": "469543cc67b1877218368e7272a04fbb1bd81f1dd99db97728428939e58fc0c8",
+        "bytes": 5571
+      },
+      "ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@1x.png": {
+        "sha256": "0ebca298a5b83564072f2eb497d50994e508fa44d8ff13d735b05fa982e21632",
+        "bytes": 2986
+      }
+    }
+  },
+  "svg_sources": {
+    "scene_flare.svg": "898ab79a1223898c99e6c79658a7d525bcfea33163346e3ee345d23778b92eed",
+    "scene_ground.svg": "364918c21bc43a8a29c9b9105990a3dad78593713f4e115b256a67c37cb749a8",
+    "signature_car_body.svg": "c16e2224d9789ba177a71928617c06cf6d939a2d577026ed7ff3b37c6720e111",
+    "scene_reflection.svg": "aa131c37f96fb72282ebf176b2ae219ac16a7812818e3706c29e53e79dca2db7",
+    "scene_beams.svg": "682d6bf1c6831ba862211c6b6328a9515f7762e40ab3064e4e2d1f27534cf83e",
+    "scene_right_headlight.svg": "dac17379e1052e91301d5726d1e01ff901bb5671a3b791c7495d456456987982",
+    "scene_wordmark.svg": "6157490f696969969c8f577e61eb80e12cee3e279d6a916add9386e882795383",
+    "signature_car_left_headlight.svg": "ce95b2652c8ec5c5704b9e3de97b80af18b244ce25133b00963e7a18a1467883",
+    "scene_combined.svg": "43cd69c023d6437cafb85e45ac05292b29b587abd7b68b1589564b1b77b47d2c",
+    "scene_body.svg": "844e5c449417a16aac034d312d9f49cff66b3c083382d40415aa7e9488d04478",
+    "signature_car_right_headlight.svg": "bbecca54978283d81b1b82577037fefb5279deec52a8cfd2fd8f708fe2a2806c",
+    "signature_car_combined.svg": "f52af551f09c53df9de9e2c90f9ddfc0753ee8293f8be81fa04d4aa9c88859b5",
+    "scene_left_headlight.svg": "e0c3240830ca7a68621dfce19ba55eb5018077b60b6b4fd6ea27d84bc23078e9"
+  },
+  "runtime_dependencies_added": 0,
+  "rights_clearance": "pending before release"
+}

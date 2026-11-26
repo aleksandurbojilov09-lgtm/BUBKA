@@ -33,3 +33,18 @@ Architect review RC-02: Codespace Gradle daemon disappeared with 8 GiB heap, 4 G
 
 ## BUBKA-003A follow-ups
 Owner reports Android install/update/data retention passed; iOS SideStore setup and physical checks remain blocked until computer available. Phase 03 remains partial. Inexact notification scheduling is retained; opening the app after a due time may reconcile away a still-pending delayed notification (code-level risk, not proven cause of observed delay). Before real vehicle reminders: durable due/pending/delivered states, compensating notification without duplication, tests for delayed delivery, resume, reboot, denial, timezone and iOS cap; no cloud/polling or exact alarm permission by default. Diagnostic test cannot promise exactly two minutes. Independent signing-key backup, local snapshot backup and billing remain unverified. No Phase 04 authorization. Live lite timing and release provenance on real next release remain unverified.
+
+## BUBKA-004 open issues
+Local draft has not been compiled in authoring environment (no SDK). Required format/analyze/test, actual Flutter visual comparison, golden baselines, full PR CI and physical/profile tests pending. Monogram B adaptive production layers are blocked on the embedded rounded frame decision; no unauthorized icon change. Detailed animation and form visual acceptance still pending. Phase 03 physical follow-ups and notification reconciliation issue remain unchanged.
+
+
+## V5 local candidate
+V5 requires real visual owner review and native profiling/physical masks/update tests; reconstruction not pixel-perfect. Test font differs from platform fonts.
+
+
+## Актуално: BUBA rebrand / phase 04
+V5 Polish е визуално приет; новият тесен rebrand подлежи на локална проверка и преглед. Реконструкцията не е pixel-perfect. Native FPS, cold start, маски, SideStore effective identity, update retention, физически тестове и окончателни права не са потвърдени. Съществуват други BUBA марки/приложения; ограниченото търсене на архитекта не е правно разрешение. Без public push до изрично приемане на остатъчния риск и diff; при конкретен конфликт STOP. Фаза 03 е приета по owner-reported install/start/update/data retention/notification receipt, но timing/reconciliation, iOS refresh, локални backups и независим signing backup остават. Познатото Drift предупреждение се следи. GitHub release title все още съдържа BUBKA по заключения workflow; промяната му е за отделно разрешение.
+
+
+## BUBA-004 — актуално състояние към PR preflight
+Одобрението на render и остатъчния риск от собственика и архитектурното приемане са получени на 26.11.2026. Старият STOP за изчакване на тези одобрения е отменен; при конкретен нов конфликт STOP. Проверката на права остава preliminary_not_legal_clearance. Фаза 04 не е завършена; live preflight, PR CI и физически Android/iOS тестове предстоят. Фаза 03 accepted_with_followups: notification timing/reconciliation, iOS refresh, local backups, independent signing-key backup. Native masks, FPS/memory, cold start, retention, effective SideStore identity и окончателни права не са потвърдени. Не се разрешава merge/release/05.

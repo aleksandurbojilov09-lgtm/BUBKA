@@ -1,0 +1,989 @@
+{
+  "project": "BUBKA",
+  "task_id": "BUBKA-004-V5-ASSET-INTEGRATION",
+  "design_zip_sha256": "98a841e097541e12bb398dbe4fa455401b2a606b5cc28da68b5e481ce43a5a05",
+  "assets": {
+    "assets/design/cockpit/car/body.png": {
+      "path": "assets/car/body.png",
+      "bytes": 3810,
+      "sha256": "a14232b3900fbb6eaf6f7166def0ab1cd70e97638fb81838a138f6808f1bb7f4",
+      "offline": true,
+      "license": "BUBKA project-specific assistant-created reconstruction; no external asset or font license relied on; final rights and trademark clearance pending before distribution",
+      "source": "approved generated Cockpit PNG + author reconstruction",
+      "approval": "owner approved DESIGN-003 reconstruction per V5 mandate; distribution rights pending",
+      "runtime_candidate": true,
+      "size_px": [
+        411,
+        216
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        91
+      ],
+      "alpha_bbox_px": [
+        30,
+        18,
+        378,
+        185
+      ],
+      "source_sha256": "a14232b3900fbb6eaf6f7166def0ab1cd70e97638fb81838a138f6808f1bb7f4",
+      "target_sha256": "a14232b3900fbb6eaf6f7166def0ab1cd70e97638fb81838a138f6808f1bb7f4",
+      "transformation": "none; exact approved PNG bytes"
+    },
+    "assets/design/cockpit/car/contours.png": {
+      "path": "assets/car/contours.png",
+      "bytes": 7894,
+      "sha256": "b5e2e0a346c98b50dd07adb8313df72d7a4d1d711c77d6dc98ca7f61ad077887",
+      "offline": true,
+      "license": "BUBKA project-specific assistant-created reconstruction; no external asset or font license relied on; final rights and trademark clearance pending before distribution",
+      "source": "approved generated Cockpit PNG + author reconstruction",
+      "approval": "owner approved DESIGN-003 reconstruction per V5 mandate; distribution rights pending",
+      "runtime_candidate": true,
+      "size_px": [
+        411,
+        216
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "alpha_bbox_px": [
+        26,
+        15,
+        382,
+        190
+      ],
+      "source_sha256": "b5e2e0a346c98b50dd07adb8313df72d7a4d1d711c77d6dc98ca7f61ad077887",
+      "target_sha256": "b5e2e0a346c98b50dd07adb8313df72d7a4d1d711c77d6dc98ca7f61ad077887",
+      "transformation": "none; exact approved PNG bytes"
+    },
+    "assets/design/cockpit/car/glow_left.png": {
+      "path": "assets/car/glow_left.png",
+      "bytes": 3793,
+      "sha256": "50ccd38c0aa266458b0b83f9d6a9429941986e5afda8e13abf8c573cb500fd37",
+      "offline": true,
+      "license": "BUBKA project-specific assistant-created reconstruction; no external asset or font license relied on; final rights and trademark clearance pending before distribution",
+      "source": "approved generated Cockpit PNG + author reconstruction",
+      "approval": "owner approved DESIGN-003 reconstruction per V5 mandate; distribution rights pending",
+      "runtime_candidate": true,
+      "size_px": [
+        411,
+        216
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        105
+      ],
+      "alpha_bbox_px": [
+        0,
+        83,
+        236,
+        176
+      ],
+      "source_sha256": "50ccd38c0aa266458b0b83f9d6a9429941986e5afda8e13abf8c573cb500fd37",
+      "target_sha256": "50ccd38c0aa266458b0b83f9d6a9429941986e5afda8e13abf8c573cb500fd37",
+      "transformation": "none; exact approved PNG bytes"
+    },
+    "assets/design/cockpit/car/glow_right.png": {
+      "path": "assets/car/glow_right.png",
+      "bytes": 3737,
+      "sha256": "4daa5c13f45fe52e4142f0d14b609abe87651213e8375ad8150eba480321d5e5",
+      "offline": true,
+      "license": "BUBKA project-specific assistant-created reconstruction; no external asset or font license relied on; final rights and trademark clearance pending before distribution",
+      "source": "approved generated Cockpit PNG + author reconstruction",
+      "approval": "owner approved DESIGN-003 reconstruction per V5 mandate; distribution rights pending",
+      "runtime_candidate": true,
+      "size_px": [
+        411,
+        216
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        105
+      ],
+      "alpha_bbox_px": [
+        176,
+        83,
+        411,
+        176
+      ],
+      "source_sha256": "4daa5c13f45fe52e4142f0d14b609abe87651213e8375ad8150eba480321d5e5",
+      "target_sha256": "4daa5c13f45fe52e4142f0d14b609abe87651213e8375ad8150eba480321d5e5",
+      "transformation": "none; exact approved PNG bytes"
+    },
+    "assets/design/cockpit/car/highlights.png": {
+      "path": "assets/car/highlights.png",
+      "bytes": 1390,
+      "sha256": "a4cb1efb509267a51943ce7f1be5fe75be59273e88bc6ac47d5168242992b3e1",
+      "offline": true,
+      "license": "BUBKA project-specific assistant-created reconstruction; no external asset or font license relied on; final rights and trademark clearance pending before distribution",
+      "source": "approved generated Cockpit PNG + author reconstruction",
+      "approval": "owner approved DESIGN-003 reconstruction per V5 mandate; distribution rights pending",
+      "runtime_candidate": true,
+      "size_px": [
+        411,
+        216
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        56
+      ],
+      "alpha_bbox_px": [
+        34,
+        181,
+        372,
+        189
+      ],
+      "source_sha256": "a4cb1efb509267a51943ce7f1be5fe75be59273e88bc6ac47d5168242992b3e1",
+      "target_sha256": "a4cb1efb509267a51943ce7f1be5fe75be59273e88bc6ac47d5168242992b3e1",
+      "transformation": "none; exact approved PNG bytes"
+    },
+    "assets/design/cockpit/car/lamp_left.png": {
+      "path": "assets/car/lamp_left.png",
+      "bytes": 1163,
+      "sha256": "368c3fb685c2802261557ff90deda15318454cfe97238f315d7ac76c5856cd1a",
+      "offline": true,
+      "license": "BUBKA project-specific assistant-created reconstruction; no external asset or font license relied on; final rights and trademark clearance pending before distribution",
+      "source": "approved generated Cockpit PNG + author reconstruction",
+      "approval": "owner approved DESIGN-003 reconstruction per V5 mandate; distribution rights pending",
+      "runtime_candidate": true,
+      "size_px": [
+        411,
+        216
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "alpha_bbox_px": [
+        52,
+        118,
+        123,
+        142
+      ],
+      "source_sha256": "368c3fb685c2802261557ff90deda15318454cfe97238f315d7ac76c5856cd1a",
+      "target_sha256": "368c3fb685c2802261557ff90deda15318454cfe97238f315d7ac76c5856cd1a",
+      "transformation": "none; exact approved PNG bytes"
+    },
+    "assets/design/cockpit/car/lamp_right.png": {
+      "path": "assets/car/lamp_right.png",
+      "bytes": 1107,
+      "sha256": "90034d29bc9be54431a3909d723b9a39afd5ae21ad1fb7a6451d1be51b45eb98",
+      "offline": true,
+      "license": "BUBKA project-specific assistant-created reconstruction; no external asset or font license relied on; final rights and trademark clearance pending before distribution",
+      "source": "approved generated Cockpit PNG + author reconstruction",
+      "approval": "owner approved DESIGN-003 reconstruction per V5 mandate; distribution rights pending",
+      "runtime_candidate": true,
+      "size_px": [
+        411,
+        216
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "alpha_bbox_px": [
+        288,
+        118,
+        359,
+        142
+      ],
+      "source_sha256": "90034d29bc9be54431a3909d723b9a39afd5ae21ad1fb7a6451d1be51b45eb98",
+      "target_sha256": "90034d29bc9be54431a3909d723b9a39afd5ae21ad1fb7a6451d1be51b45eb98",
+      "transformation": "none; exact approved PNG bytes"
+    },
+    "assets/design/cockpit/car/shadow.png": {
+      "path": "assets/car/shadow.png",
+      "bytes": 3165,
+      "sha256": "264c2cb373f86ecb0007159e1696a2ab53dea3c6c2c9494ed9efb3e7bba4163b",
+      "offline": true,
+      "license": "BUBKA project-specific assistant-created reconstruction; no external asset or font license relied on; final rights and trademark clearance pending before distribution",
+      "source": "approved generated Cockpit PNG + author reconstruction",
+      "approval": "owner approved DESIGN-003 reconstruction per V5 mandate; distribution rights pending",
+      "runtime_candidate": true,
+      "size_px": [
+        411,
+        216
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        120
+      ],
+      "alpha_bbox_px": [
+        15,
+        153,
+        396,
+        213
+      ],
+      "source_sha256": "264c2cb373f86ecb0007159e1696a2ab53dea3c6c2c9494ed9efb3e7bba4163b",
+      "target_sha256": "264c2cb373f86ecb0007159e1696a2ab53dea3c6c2c9494ed9efb3e7bba4163b",
+      "transformation": "none; exact approved PNG bytes"
+    },
+    "assets/design/cockpit/icons/bell.png": {
+      "path": "assets/icons/bell.png",
+      "bytes": 1423,
+      "sha256": "45832251bd26a001195a2d688eed595eda6e55198fb94f67eda54963833aee4b",
+      "offline": true,
+      "license": "BUBKA project-specific assistant-created reconstruction; no external asset or font license relied on; final rights and trademark clearance pending before distribution",
+      "source": "author-created geometric or procedural artwork",
+      "approval": "owner approved DESIGN-003 reconstruction per V5 mandate; distribution rights pending",
+      "runtime_candidate": true,
+      "size_px": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "alpha_bbox_px": [
+        12,
+        9,
+        84,
+        90
+      ],
+      "source_sha256": "45832251bd26a001195a2d688eed595eda6e55198fb94f67eda54963833aee4b",
+      "target_sha256": "45832251bd26a001195a2d688eed595eda6e55198fb94f67eda54963833aee4b",
+      "transformation": "none; exact approved PNG bytes"
+    },
+    "assets/design/cockpit/icons/coins.png": {
+      "path": "assets/icons/coins.png",
+      "bytes": 2145,
+      "sha256": "02fc4501af6b97888645bafc1e23b7fddd5049e0a46c510c5f1bb082a17a97f9",
+      "offline": true,
+      "license": "BUBKA project-specific assistant-created reconstruction; no external asset or font license relied on; final rights and trademark clearance pending before distribution",
+      "source": "author-created geometric or procedural artwork",
+      "approval": "owner approved DESIGN-003 reconstruction per V5 mandate; distribution rights pending",
+      "runtime_candidate": true,
+      "size_px": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "alpha_bbox_px": [
+        6,
+        7,
+        90,
+        95
+      ],
+      "source_sha256": "02fc4501af6b97888645bafc1e23b7fddd5049e0a46c510c5f1bb082a17a97f9",
+      "target_sha256": "02fc4501af6b97888645bafc1e23b7fddd5049e0a46c510c5f1bb082a17a97f9",
+      "transformation": "none; exact approved PNG bytes"
+    },
+    "assets/design/cockpit/icons/deadlines.png": {
+      "path": "assets/icons/deadlines.png",
+      "bytes": 1391,
+      "sha256": "6ba4208ea39794f4b0498bc32144a3c0219f35d8142e41de8dd23232ea66c2c5",
+      "offline": true,
+      "license": "BUBKA project-specific assistant-created reconstruction; no external asset or font license relied on; final rights and trademark clearance pending before distribution",
+      "source": "author-created geometric or procedural artwork",
+      "approval": "owner approved DESIGN-003 reconstruction per V5 mandate; distribution rights pending",
+      "runtime_candidate": true,
+      "size_px": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "alpha_bbox_px": [
+        6,
+        6,
+        90,
+        90
+      ],
+      "source_sha256": "6ba4208ea39794f4b0498bc32144a3c0219f35d8142e41de8dd23232ea66c2c5",
+      "target_sha256": "6ba4208ea39794f4b0498bc32144a3c0219f35d8142e41de8dd23232ea66c2c5",
+      "transformation": "none; exact approved PNG bytes"
+    },
+    "assets/design/cockpit/icons/documents.png": {
+      "path": "assets/icons/documents.png",
+      "bytes": 955,
+      "sha256": "76378b6adae974eb55bdb9a7b92d777d5b8fc44a8ecfe8beca67c4e693c7aa11",
+      "offline": true,
+      "license": "BUBKA project-specific assistant-created reconstruction; no external asset or font license relied on; final rights and trademark clearance pending before distribution",
+      "source": "author-created geometric or procedural artwork",
+      "approval": "owner approved DESIGN-003 reconstruction per V5 mandate; distribution rights pending",
+      "runtime_candidate": true,
+      "size_px": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "alpha_bbox_px": [
+        12,
+        6,
+        84,
+        93
+      ],
+      "source_sha256": "76378b6adae974eb55bdb9a7b92d777d5b8fc44a8ecfe8beca67c4e693c7aa11",
+      "target_sha256": "76378b6adae974eb55bdb9a7b92d777d5b8fc44a8ecfe8beca67c4e693c7aa11",
+      "transformation": "none; exact approved PNG bytes"
+    },
+    "assets/design/cockpit/icons/fuel.png": {
+      "path": "assets/icons/fuel.png",
+      "bytes": 1244,
+      "sha256": "0cde8a9640aa1a97529efe1dc8b761da896d033ee16ddf2bb3a96ec1f6447124",
+      "offline": true,
+      "license": "BUBKA project-specific assistant-created reconstruction; no external asset or font license relied on; final rights and trademark clearance pending before distribution",
+      "source": "author-created geometric or procedural artwork",
+      "approval": "owner approved DESIGN-003 reconstruction per V5 mandate; distribution rights pending",
+      "runtime_candidate": true,
+      "size_px": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "alpha_bbox_px": [
+        12,
+        6,
+        93,
+        90
+      ],
+      "source_sha256": "0cde8a9640aa1a97529efe1dc8b761da896d033ee16ddf2bb3a96ec1f6447124",
+      "target_sha256": "0cde8a9640aa1a97529efe1dc8b761da896d033ee16ddf2bb3a96ec1f6447124",
+      "transformation": "none; exact approved PNG bytes"
+    },
+    "assets/design/cockpit/icons/garage.png": {
+      "path": "assets/icons/garage.png",
+      "bytes": 849,
+      "sha256": "4bfd4f0dfb9214b44d3e8b6afac635901765cd225445343fd5b29ffa94d9aea2",
+      "offline": true,
+      "license": "BUBKA project-specific assistant-created reconstruction; no external asset or font license relied on; final rights and trademark clearance pending before distribution",
+      "source": "author-created geometric or procedural artwork",
+      "approval": "owner approved DESIGN-003 reconstruction per V5 mandate; distribution rights pending",
+      "runtime_candidate": true,
+      "size_px": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "alpha_bbox_px": [
+        3,
+        12,
+        93,
+        87
+      ],
+      "source_sha256": "4bfd4f0dfb9214b44d3e8b6afac635901765cd225445343fd5b29ffa94d9aea2",
+      "target_sha256": "4bfd4f0dfb9214b44d3e8b6afac635901765cd225445343fd5b29ffa94d9aea2",
+      "transformation": "none; exact approved PNG bytes"
+    },
+    "assets/design/cockpit/icons/home.png": {
+      "path": "assets/icons/home.png",
+      "bytes": 827,
+      "sha256": "fa1d2212e6a4ce9a7bc15b6b18f91c189d83df170c9d5a3e14292c1963c2321d",
+      "offline": true,
+      "license": "BUBKA project-specific assistant-created reconstruction; no external asset or font license relied on; final rights and trademark clearance pending before distribution",
+      "source": "author-created geometric or procedural artwork",
+      "approval": "owner approved DESIGN-003 reconstruction per V5 mandate; distribution rights pending",
+      "runtime_candidate": true,
+      "size_px": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "alpha_bbox_px": [
+        9,
+        6,
+        87,
+        87
+      ],
+      "source_sha256": "fa1d2212e6a4ce9a7bc15b6b18f91c189d83df170c9d5a3e14292c1963c2321d",
+      "target_sha256": "fa1d2212e6a4ce9a7bc15b6b18f91c189d83df170c9d5a3e14292c1963c2321d",
+      "transformation": "none; exact approved PNG bytes"
+    },
+    "assets/design/cockpit/icons/plus.png": {
+      "path": "assets/icons/plus.png",
+      "bytes": 425,
+      "sha256": "dfbe0a18151484815591ddb7d8ac6ff90c0e9393e59e5bac2b7880c401dedd98",
+      "offline": true,
+      "license": "BUBKA project-specific assistant-created reconstruction; no external asset or font license relied on; final rights and trademark clearance pending before distribution",
+      "source": "author-created geometric or procedural artwork",
+      "approval": "owner approved DESIGN-003 reconstruction per V5 mandate; distribution rights pending",
+      "runtime_candidate": true,
+      "size_px": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "alpha_bbox_px": [
+        12,
+        12,
+        84,
+        84
+      ],
+      "source_sha256": "dfbe0a18151484815591ddb7d8ac6ff90c0e9393e59e5bac2b7880c401dedd98",
+      "target_sha256": "dfbe0a18151484815591ddb7d8ac6ff90c0e9393e59e5bac2b7880c401dedd98",
+      "transformation": "none; exact approved PNG bytes"
+    },
+    "assets/design/cockpit/icons/service.png": {
+      "path": "assets/icons/service.png",
+      "bytes": 2201,
+      "sha256": "53d17f0e9a5d98106e35dec75aa1a714e6af08955a596a7d72c7e503b06d831e",
+      "offline": true,
+      "license": "BUBKA project-specific assistant-created reconstruction; no external asset or font license relied on; final rights and trademark clearance pending before distribution",
+      "source": "author-created geometric or procedural artwork",
+      "approval": "owner approved DESIGN-003 reconstruction per V5 mandate; distribution rights pending",
+      "runtime_candidate": true,
+      "size_px": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "alpha_bbox_px": [
+        3,
+        3,
+        87,
+        90
+      ],
+      "source_sha256": "53d17f0e9a5d98106e35dec75aa1a714e6af08955a596a7d72c7e503b06d831e",
+      "target_sha256": "53d17f0e9a5d98106e35dec75aa1a714e6af08955a596a7d72c7e503b06d831e",
+      "transformation": "none; exact approved PNG bytes"
+    },
+    "assets/design/cockpit/icons/settings.png": {
+      "path": "assets/icons/settings.png",
+      "bytes": 2273,
+      "sha256": "3568130d465a02ad472200612d29ab6f3ac7eac6bcc8c275b5644d9a854ad758",
+      "offline": true,
+      "license": "BUBKA project-specific assistant-created reconstruction; no external asset or font license relied on; final rights and trademark clearance pending before distribution",
+      "source": "author-created geometric or procedural artwork",
+      "approval": "owner approved DESIGN-003 reconstruction per V5 mandate; distribution rights pending",
+      "runtime_candidate": true,
+      "size_px": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "alpha_bbox_px": [
+        0,
+        6,
+        93,
+        96
+      ],
+      "source_sha256": "3568130d465a02ad472200612d29ab6f3ac7eac6bcc8c275b5644d9a854ad758",
+      "target_sha256": "3568130d465a02ad472200612d29ab6f3ac7eac6bcc8c275b5644d9a854ad758",
+      "transformation": "none; exact approved PNG bytes"
+    },
+    "assets/design/cockpit/icons/stats.png": {
+      "path": "assets/icons/stats.png",
+      "bytes": 510,
+      "sha256": "209f366cc5241a8229434d5443eef1b7d16b73ea8b4edf99848445fd0b7e1e63",
+      "offline": true,
+      "license": "BUBKA project-specific assistant-created reconstruction; no external asset or font license relied on; final rights and trademark clearance pending before distribution",
+      "source": "author-created geometric or procedural artwork",
+      "approval": "owner approved DESIGN-003 reconstruction per V5 mandate; distribution rights pending",
+      "runtime_candidate": true,
+      "size_px": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "alpha_bbox_px": [
+        12,
+        9,
+        84,
+        84
+      ],
+      "source_sha256": "209f366cc5241a8229434d5443eef1b7d16b73ea8b4edf99848445fd0b7e1e63",
+      "target_sha256": "209f366cc5241a8229434d5443eef1b7d16b73ea8b4edf99848445fd0b7e1e63",
+      "transformation": "none; exact approved PNG bytes"
+    },
+    "assets/design/cockpit/ignition/asphalt.png": {
+      "path": "assets/ignition/asphalt.png",
+      "bytes": 171860,
+      "sha256": "6306e53d6a3bc4fa7a9c3c7d424f879c77041825fc7fb78e36a22718358a8708",
+      "offline": true,
+      "license": "BUBKA project-specific assistant-created reconstruction; no external asset or font license relied on; final rights and trademark clearance pending before distribution",
+      "source": "author-created geometric or procedural artwork",
+      "approval": "owner approved DESIGN-003 reconstruction per V5 mandate; distribution rights pending",
+      "runtime_candidate": true,
+      "size_px": [
+        1170,
+        1170
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        36
+      ],
+      "alpha_bbox_px": [
+        0,
+        41,
+        1170,
+        830
+      ],
+      "source_sha256": "6306e53d6a3bc4fa7a9c3c7d424f879c77041825fc7fb78e36a22718358a8708",
+      "target_sha256": "6306e53d6a3bc4fa7a9c3c7d424f879c77041825fc7fb78e36a22718358a8708",
+      "transformation": "none; exact approved PNG bytes"
+    },
+    "assets/design/cockpit/ignition/beam_left.png": {
+      "path": "assets/ignition/beam_left.png",
+      "bytes": 33227,
+      "sha256": "90f111e09e02af98ecd1085d396b9e97f27c243f9658f1d04ef3122cbf93966f",
+      "offline": true,
+      "license": "BUBKA project-specific assistant-created reconstruction; no external asset or font license relied on; final rights and trademark clearance pending before distribution",
+      "source": "author-created geometric or procedural artwork",
+      "approval": "owner approved DESIGN-003 reconstruction per V5 mandate; distribution rights pending",
+      "runtime_candidate": true,
+      "size_px": [
+        1170,
+        1170
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        131
+      ],
+      "alpha_bbox_px": [
+        47,
+        52,
+        602,
+        649
+      ],
+      "source_sha256": "90f111e09e02af98ecd1085d396b9e97f27c243f9658f1d04ef3122cbf93966f",
+      "target_sha256": "90f111e09e02af98ecd1085d396b9e97f27c243f9658f1d04ef3122cbf93966f",
+      "transformation": "none; exact approved PNG bytes"
+    },
+    "assets/design/cockpit/ignition/beam_right.png": {
+      "path": "assets/ignition/beam_right.png",
+      "bytes": 34817,
+      "sha256": "360e7ad5e5289d8d9b1169c071231e1c909f80d4893b9882b2e43dc948c3723f",
+      "offline": true,
+      "license": "BUBKA project-specific assistant-created reconstruction; no external asset or font license relied on; final rights and trademark clearance pending before distribution",
+      "source": "author-created geometric or procedural artwork",
+      "approval": "owner approved DESIGN-003 reconstruction per V5 mandate; distribution rights pending",
+      "runtime_candidate": true,
+      "size_px": [
+        1170,
+        1170
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        131
+      ],
+      "alpha_bbox_px": [
+        569,
+        52,
+        1124,
+        649
+      ],
+      "source_sha256": "360e7ad5e5289d8d9b1169c071231e1c909f80d4893b9882b2e43dc948c3723f",
+      "target_sha256": "360e7ad5e5289d8d9b1169c071231e1c909f80d4893b9882b2e43dc948c3723f",
+      "transformation": "none; exact approved PNG bytes"
+    },
+    "assets/design/cockpit/ignition/halo_left.png": {
+      "path": "assets/ignition/halo_left.png",
+      "bytes": 19726,
+      "sha256": "f13620f8d2e7520682ca3b675e59fa54a82b48b982ca3f50ebd9e68a81969daa",
+      "offline": true,
+      "license": "BUBKA project-specific assistant-created reconstruction; no external asset or font license relied on; final rights and trademark clearance pending before distribution",
+      "source": "author-created geometric or procedural artwork",
+      "approval": "owner approved DESIGN-003 reconstruction per V5 mandate; distribution rights pending",
+      "runtime_candidate": true,
+      "size_px": [
+        1170,
+        1170
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        201
+      ],
+      "alpha_bbox_px": [
+        214,
+        0,
+        759,
+        217
+      ],
+      "source_sha256": "f13620f8d2e7520682ca3b675e59fa54a82b48b982ca3f50ebd9e68a81969daa",
+      "target_sha256": "f13620f8d2e7520682ca3b675e59fa54a82b48b982ca3f50ebd9e68a81969daa",
+      "transformation": "none; exact approved PNG bytes"
+    },
+    "assets/design/cockpit/ignition/halo_right.png": {
+      "path": "assets/ignition/halo_right.png",
+      "bytes": 19766,
+      "sha256": "becb63982c4b6721bf2de06cfaa68cbeceb1302ce4395f0254975bf255bc1df5",
+      "offline": true,
+      "license": "BUBKA project-specific assistant-created reconstruction; no external asset or font license relied on; final rights and trademark clearance pending before distribution",
+      "source": "author-created geometric or procedural artwork",
+      "approval": "owner approved DESIGN-003 reconstruction per V5 mandate; distribution rights pending",
+      "runtime_candidate": true,
+      "size_px": [
+        1170,
+        1170
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        201
+      ],
+      "alpha_bbox_px": [
+        412,
+        0,
+        957,
+        217
+      ],
+      "source_sha256": "becb63982c4b6721bf2de06cfaa68cbeceb1302ce4395f0254975bf255bc1df5",
+      "target_sha256": "becb63982c4b6721bf2de06cfaa68cbeceb1302ce4395f0254975bf255bc1df5",
+      "transformation": "none; exact approved PNG bytes"
+    },
+    "assets/design/cockpit/ignition/road_pool.png": {
+      "path": "assets/ignition/road_pool.png",
+      "bytes": 43535,
+      "sha256": "64e6ae4e8738d75459ba9ec9e0ac690dd858e0c558abd1f285b3fa555e6e5abf",
+      "offline": true,
+      "license": "BUBKA project-specific assistant-created reconstruction; no external asset or font license relied on; final rights and trademark clearance pending before distribution",
+      "source": "author-created geometric or procedural artwork",
+      "approval": "owner approved DESIGN-003 reconstruction per V5 mandate; distribution rights pending",
+      "runtime_candidate": true,
+      "size_px": [
+        1170,
+        1170
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        101
+      ],
+      "alpha_bbox_px": [
+        0,
+        41,
+        1170,
+        829
+      ],
+      "source_sha256": "64e6ae4e8738d75459ba9ec9e0ac690dd858e0c558abd1f285b3fa555e6e5abf",
+      "target_sha256": "64e6ae4e8738d75459ba9ec9e0ac690dd858e0c558abd1f285b3fa555e6e5abf",
+      "transformation": "none; exact approved PNG bytes"
+    },
+    "assets/design/cockpit/ignition/wordmark_reflection.png": {
+      "path": "assets/ignition/wordmark_reflection.png",
+      "bytes": 13127,
+      "sha256": "50877e47a2db0ff7b8d556c93ffd49fa6c266196ca791047d3024ea47cb69a61",
+      "offline": true,
+      "license": "BUBKA project-specific assistant-created reconstruction; no external asset or font license relied on; final rights and trademark clearance pending before distribution",
+      "source": "approved generated Cockpit PNG + author reconstruction",
+      "approval": "Owner authorized name change; rendered BUBA review pending; rights not cleared",
+      "runtime_candidate": true,
+      "size_px": [
+        540,
+        102
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        140
+      ],
+      "alpha_bbox_px": [
+        36,
+        0,
+        500,
+        102
+      ],
+      "source_sha256": "250067e78523c4cfc33da98efa07a10f4893a264c100dc6726ec678197bcfb28",
+      "target_sha256": "50877e47a2db0ff7b8d556c93ffd49fa6c266196ca791047d3024ea47cb69a61",
+      "transformation": "Vertical flip of new BUBA alpha, GaussianBlur(12 px), constant RGB (242,224,182); old reflection recipe reproduced exactly",
+      "original_design_003_record": {
+        "path": "assets/ignition/wordmark_reflection.png",
+        "bytes": 18260,
+        "sha256": "250067e78523c4cfc33da98efa07a10f4893a264c100dc6726ec678197bcfb28",
+        "offline": true,
+        "license": "BUBKA project-specific assistant-created reconstruction; no external asset or font license relied on; final rights and trademark clearance pending before distribution",
+        "source": "approved generated Cockpit PNG + author reconstruction",
+        "approval": "owner approved DESIGN-003 reconstruction per V5 mandate; distribution rights pending",
+        "runtime_candidate": true,
+        "size_px": [
+          540,
+          102
+        ],
+        "mode": "RGBA",
+        "alpha_range": [
+          0,
+          140
+        ],
+        "alpha_bbox_px": [
+          0,
+          0,
+          540,
+          102
+        ],
+        "source_sha256": "250067e78523c4cfc33da98efa07a10f4893a264c100dc6726ec678197bcfb28",
+        "target_sha256": "250067e78523c4cfc33da98efa07a10f4893a264c100dc6726ec678197bcfb28",
+        "transformation": "none; exact approved PNG bytes"
+      }
+    },
+    "assets/design/cockpit/surfaces/grain_tile.png": {
+      "path": "assets/surfaces/grain_tile.png",
+      "bytes": 23425,
+      "sha256": "2a148debd5c655d6b7bac32ffdb19ecba14dd1bf3a74aa722b48a68bbc406f0e",
+      "offline": true,
+      "license": "BUBKA project-specific assistant-created reconstruction; no external asset or font license relied on; final rights and trademark clearance pending before distribution",
+      "source": "author-created geometric or procedural artwork",
+      "approval": "owner approved DESIGN-003 reconstruction per V5 mandate; distribution rights pending",
+      "runtime_candidate": true,
+      "size_px": [
+        192,
+        192
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        4
+      ],
+      "alpha_bbox_px": [
+        0,
+        0,
+        192,
+        192
+      ],
+      "source_sha256": "2a148debd5c655d6b7bac32ffdb19ecba14dd1bf3a74aa722b48a68bbc406f0e",
+      "target_sha256": "2a148debd5c655d6b7bac32ffdb19ecba14dd1bf3a74aa722b48a68bbc406f0e",
+      "transformation": "none; exact approved PNG bytes"
+    },
+    "assets/design/cockpit/surfaces/selected_inner_glow.png": {
+      "path": "assets/surfaces/selected_inner_glow.png",
+      "bytes": 3912,
+      "sha256": "7a58415591e0f49c03ffac53c2ab111f88fda0d654dcdb90eb27e524c0e18128",
+      "offline": true,
+      "license": "BUBKA project-specific assistant-created reconstruction; no external asset or font license relied on; final rights and trademark clearance pending before distribution",
+      "source": "author-created geometric or procedural artwork",
+      "approval": "owner approved DESIGN-003 reconstruction per V5 mandate; distribution rights pending",
+      "runtime_candidate": true,
+      "size_px": [
+        736,
+        240
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        38
+      ],
+      "alpha_bbox_px": [
+        0,
+        0,
+        736,
+        240
+      ],
+      "source_sha256": "7a58415591e0f49c03ffac53c2ab111f88fda0d654dcdb90eb27e524c0e18128",
+      "target_sha256": "7a58415591e0f49c03ffac53c2ab111f88fda0d654dcdb90eb27e524c0e18128",
+      "transformation": "none; exact approved PNG bytes"
+    },
+    "assets/design/cockpit/surfaces/soft_light.png": {
+      "path": "assets/surfaces/soft_light.png",
+      "bytes": 4695,
+      "sha256": "38d0575d92fb00692c6eaa379b059993bb663751ea20775d48d4bec636ce55ac",
+      "offline": true,
+      "license": "BUBKA project-specific assistant-created reconstruction; no external asset or font license relied on; final rights and trademark clearance pending before distribution",
+      "source": "author-created geometric or procedural artwork",
+      "approval": "owner approved DESIGN-003 reconstruction per V5 mandate; distribution rights pending",
+      "runtime_candidate": true,
+      "size_px": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        9
+      ],
+      "alpha_bbox_px": [
+        0,
+        0,
+        464,
+        406
+      ],
+      "source_sha256": "38d0575d92fb00692c6eaa379b059993bb663751ea20775d48d4bec636ce55ac",
+      "target_sha256": "38d0575d92fb00692c6eaa379b059993bb663751ea20775d48d4bec636ce55ac",
+      "transformation": "none; exact approved PNG bytes"
+    },
+    "assets/design/cockpit/wordmark/bubka.png": {
+      "path": "assets/wordmark/bubka.png",
+      "bytes": 6567,
+      "sha256": "35a71dfa15bd3925dd05bc4e672be52a0058f0e533b8adc4d565c53f28c49c74",
+      "offline": true,
+      "license": "BUBKA project-specific assistant-created reconstruction; no external asset or font license relied on; final rights and trademark clearance pending before distribution",
+      "source": "approved generated Cockpit PNG + author reconstruction",
+      "approval": "Owner authorized name change; rendered BUBA review pending; rights not cleared",
+      "runtime_candidate": true,
+      "size_px": [
+        540,
+        102
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "alpha_bbox_px": [
+        66,
+        24,
+        473,
+        87
+      ],
+      "source_sha256": "95fd7bcaf167fa8ef016bfeb91ff6f4817a2af93e2cdf2dd11eb4d7c7e7d4ccf",
+      "target_sha256": "35a71dfa15bd3925dd05bc4e672be52a0058f0e533b8adc4d565c53f28c49c74",
+      "transformation": "Retained glyph pixels, integer horizontal translation, original canvas; no stretching or external font",
+      "original_design_003_record": {
+        "path": "assets/wordmark/bubka.png",
+        "bytes": 8875,
+        "sha256": "95fd7bcaf167fa8ef016bfeb91ff6f4817a2af93e2cdf2dd11eb4d7c7e7d4ccf",
+        "offline": true,
+        "license": "BUBKA project-specific assistant-created reconstruction; no external asset or font license relied on; final rights and trademark clearance pending before distribution",
+        "source": "approved generated Cockpit PNG + author reconstruction",
+        "approval": "owner approved DESIGN-003 reconstruction per V5 mandate; distribution rights pending",
+        "runtime_candidate": true,
+        "size_px": [
+          540,
+          102
+        ],
+        "mode": "RGBA",
+        "alpha_range": [
+          0,
+          255
+        ],
+        "alpha_bbox_px": [
+          19,
+          24,
+          522,
+          87
+        ],
+        "source_sha256": "95fd7bcaf167fa8ef016bfeb91ff6f4817a2af93e2cdf2dd11eb4d7c7e7d4ccf",
+        "target_sha256": "95fd7bcaf167fa8ef016bfeb91ff6f4817a2af93e2cdf2dd11eb4d7c7e7d4ccf",
+        "transformation": "none; exact approved PNG bytes"
+      }
+    }
+  },
+  "rights": "final distribution and trademark clearance pending; no fonts or external graphics added",
+  "rebrand": {
+    "display_name": "BUBA",
+    "previous_display_name": "BUBKA",
+    "approved_archive_sha256": "32e7e7f4e3d45743a226eb0f9418e242fd2bf64f50a98d9aea311015581c55ed",
+    "derivatives": {
+      "assets/design/cockpit/wordmark/bubka.png": {
+        "old_sha256": "95fd7bcaf167fa8ef016bfeb91ff6f4817a2af93e2cdf2dd11eb4d7c7e7d4ccf",
+        "new_sha256": "35a71dfa15bd3925dd05bc4e672be52a0058f0e533b8adc4d565c53f28c49c74",
+        "bytes": 6567,
+        "size_px": [
+          540,
+          102
+        ],
+        "alpha_bbox_px": [
+          66,
+          24,
+          473,
+          87
+        ],
+        "transformation": "Retained glyph pixels, integer horizontal translation, original canvas; no stretching or external font",
+        "rights": "BUBKA project-specific assistant-created reconstruction; no external asset or font license relied on; final rights and trademark clearance pending before distribution"
+      },
+      "assets/design/cockpit/ignition/wordmark_reflection.png": {
+        "old_sha256": "250067e78523c4cfc33da98efa07a10f4893a264c100dc6726ec678197bcfb28",
+        "new_sha256": "50877e47a2db0ff7b8d556c93ffd49fa6c266196ca791047d3024ea47cb69a61",
+        "bytes": 13127,
+        "size_px": [
+          540,
+          102
+        ],
+        "alpha_bbox_px": [
+          36,
+          0,
+          500,
+          102
+        ],
+        "transformation": "Vertical flip of new BUBA alpha, GaussianBlur(12 px), constant RGB (242,224,182); old reflection recipe reproduced exactly",
+        "rights": "BUBKA project-specific assistant-created reconstruction; no external asset or font license relied on; final rights and trademark clearance pending before distribution"
+      }
+    },
+    "historical_design_manifest_unchanged": true,
+    "rights_review": {
+      "status": "preliminary_not_legal_clearance",
+      "findings": [
+        "Съществуват Buba – Self-Care Buddy, Buba: Meditation & Breathwork и Buba: Kids Bedtime Stories. Не е установено идентично автомобилно приложение при ограниченото търсене, но това не доказва свободна марка.",
+        "Вторични източници показват EUTM 015062235 за хранителни продукти и US заявка 50214428 за софтуер за работна сила; официалният статус, сходството и обхватът не са напълно проверени.",
+        "Не прави правно заключение, не купувай услуги, не сменяй отново името по своя инициатива."
+      ],
+      "sources": [
+        "https://meetbuba.com/",
+        "https://apps.apple.com/us/app/buba-self-care-buddy/id6759255909",
+        "https://apps.apple.com/gr/app/buba-meditation-breathwork/id6761009999",
+        "https://apps.apple.com/us/app/buba-kids-bedtime-stories/id6738710726",
+        "https://www.trademarkelite.com/europe/trademark/trademark-detail/015062235/BUBA",
+        "https://www.trademarkelite.com/trademark/trademark-detail/50214428/BUBA",
+        "https://www.euipo.europa.eu/en/trade-marks/before-applying/availability",
+        "https://www.tmdn.org/tmview/",
+        "https://portal.bpo.bg/bpo-registers/marks"
+      ]
+    },
+    "old_reflection_rgba_exactly_reproduced": true,
+    "glyph_translations_px": [
+      [
+        19,
+        95,
+        47
+      ],
+      [
+        123,
+        199,
+        47
+      ],
+      [
+        231,
+        306,
+        47
+      ],
+      [
+        432,
+        522,
+        -49
+      ]
+    ],
+    "public_push_authorized": false
+  }
+}

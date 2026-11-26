@@ -1,0 +1,294 @@
+{
+  "assets/car/body.svg": [
+    {
+      "d": "M10 62V43Q10 30 21 24L33 11Q37 7 44 6.7Q69 5.2 94 7.3Q101 7.8 105 13L117 25Q126 30 126 41V62Z",
+      "attrs": {
+        "fill": "url(#b)"
+      }
+    }
+  ],
+  "assets/car/combined_vector.svg": [
+    {
+      "d": "M10 62V43Q10 30 21 24L33 11Q37 7 44 6.7Q69 5.2 94 7.3Q101 7.8 105 13L117 25Q126 30 126 41V62Z",
+      "attrs": {
+        "fill": "url(#b)"
+      }
+    },
+    {
+      "d": "M 13 62 Q 10 62 10 58 L 10 43 Q 10 34 15 29 Q 19 25 21 24 L 33 11 Q 37 7 44 6.7 Q 69 5.2 94 7.3 Q 101 7.8 105 13 L 117 25 Q 125 29 126 41 L 126 57 Q 126 62 122 62",
+      "attrs": {
+        "stroke": "url(#edge)",
+        "stroke-width": "2.05",
+        "fill": "none",
+        "stroke-linecap": "round",
+        "stroke-linejoin": "round"
+      }
+    },
+    {
+      "d": "M 21 25 Q 68.5 31 117 25",
+      "attrs": {
+        "stroke": "#f5f5f6",
+        "stroke-width": "1.7",
+        "fill": "none",
+        "stroke-linecap": "round"
+      }
+    },
+    {
+      "d": "M 11 25 Q 10 23 13 23 L 19 23 Q 22 23 22 25 Q 20 27 16 26 Z M 115 25 Q 115 23 118 23 L 124 23 Q 127 23 127 25 Q 126 27 121 26 Z",
+      "attrs": {
+        "fill": "#d5d6d7"
+      }
+    },
+    {
+      "d": "M12 61Q18 63 29 62M125 61Q119 63 108 62",
+      "attrs": {
+        "stroke": "url(#s)",
+        "stroke-width": "1.1",
+        "fill": "none",
+        "stroke-linecap": "round"
+      }
+    },
+    {
+      "d": "M 17.5 39.6 Q 26 40.1 35.2 43.1 Q 39.5 44.6 41.0 47.1 Q 29 47.2 23 46.7 Q 18 46.2 17.5 39.6 Z",
+      "attrs": {
+        "fill": "#ffffff"
+      }
+    },
+    {
+      "d": "M 119.5 39.6 Q 111 40.1 101.8 43.1 Q 97.5 44.6 96 47.1 Q 108 47.2 114 46.7 Q 119 46.2 119.5 39.6 Z",
+      "attrs": {
+        "fill": "#ffffff"
+      }
+    }
+  ],
+  "assets/car/contours.svg": [
+    {
+      "d": "M 13 62 Q 10 62 10 58 L 10 43 Q 10 34 15 29 Q 19 25 21 24 L 33 11 Q 37 7 44 6.7 Q 69 5.2 94 7.3 Q 101 7.8 105 13 L 117 25 Q 125 29 126 41 L 126 57 Q 126 62 122 62",
+      "attrs": {
+        "stroke": "url(#edge)",
+        "stroke-width": "2.05",
+        "fill": "none",
+        "stroke-linecap": "round",
+        "stroke-linejoin": "round"
+      }
+    },
+    {
+      "d": "M 21 25 Q 68.5 31 117 25",
+      "attrs": {
+        "stroke": "#f5f5f6",
+        "stroke-width": "1.7",
+        "fill": "none",
+        "stroke-linecap": "round"
+      }
+    },
+    {
+      "d": "M 11 25 Q 10 23 13 23 L 19 23 Q 22 23 22 25 Q 20 27 16 26 Z M 115 25 Q 115 23 118 23 L 124 23 Q 127 23 127 25 Q 126 27 121 26 Z",
+      "attrs": {
+        "fill": "#d5d6d7"
+      }
+    }
+  ],
+  "assets/car/highlights.svg": [
+    {
+      "d": "M12 61Q18 63 29 62M125 61Q119 63 108 62",
+      "attrs": {
+        "stroke": "url(#s)",
+        "stroke-width": "1.1",
+        "fill": "none",
+        "stroke-linecap": "round"
+      }
+    }
+  ],
+  "assets/car/lamp_left.svg": [
+    {
+      "d": "M 17.5 39.6 Q 26 40.1 35.2 43.1 Q 39.5 44.6 41.0 47.1 Q 29 47.2 23 46.7 Q 18 46.2 17.5 39.6 Z",
+      "attrs": {
+        "fill": "#ffffff"
+      }
+    }
+  ],
+  "assets/car/lamp_right.svg": [
+    {
+      "d": "M 119.5 39.6 Q 111 40.1 101.8 43.1 Q 97.5 44.6 96 47.1 Q 108 47.2 114 46.7 Q 119 46.2 119.5 39.6 Z",
+      "attrs": {
+        "fill": "#ffffff"
+      }
+    }
+  ],
+  "assets/car/shadow.svg": [],
+  "assets/icons/bell.svg": [
+    {
+      "d": "M9 10Q9 4 16 4Q23 4 23 10V17Q23 20 27 23H5Q9 20 9 17Z M12 27Q16 31 20 27",
+      "attrs": {
+        "fill": "none",
+        "stroke": "currentColor",
+        "stroke-width": "1.75",
+        "stroke-linecap": "round",
+        "stroke-linejoin": "round"
+      }
+    }
+  ],
+  "assets/icons/coins.svg": [
+    {
+      "d": "M3 19C3 14 17 14 17 19S3 24 3 19Z M3 19V24C3 29 17 29 17 24V19 M3 24V27C3 32 17 32 17 27V24 M15 7C15 2 29 2 29 7S15 12 15 7Z M15 7V12C15 17 29 17 29 12V7 M18 17C21 20 29 18 29 15V12 M18 22C21 25 29 23 29 20V15",
+      "attrs": {
+        "fill": "none",
+        "stroke": "currentColor",
+        "stroke-width": "1.75",
+        "stroke-linecap": "round",
+        "stroke-linejoin": "round"
+      }
+    }
+  ],
+  "assets/icons/deadlines.svg": [
+    {
+      "d": "M5 7H27Q29 7 29 9V27Q29 29 27 29H5Q3 29 3 27V9Q3 7 5 7Z M10 3V10 M22 3V10 M3 14H29 M10 22L14 25L22 18",
+      "attrs": {
+        "fill": "none",
+        "stroke": "currentColor",
+        "stroke-width": "1.75",
+        "stroke-linecap": "round",
+        "stroke-linejoin": "round"
+      }
+    }
+  ],
+  "assets/icons/documents.svg": [
+    {
+      "d": "M7 3H20L27 10V28Q27 30 25 30H7Q5 30 5 28V5Q5 3 7 3Z M20 3V10H27 M10 15H22 M10 20H22 M10 25H18",
+      "attrs": {
+        "fill": "none",
+        "stroke": "currentColor",
+        "stroke-width": "1.75",
+        "stroke-linecap": "round",
+        "stroke-linejoin": "round"
+      }
+    }
+  ],
+  "assets/icons/filter.svg": [
+    {
+      "d": "M4 7H28 M4 16H28 M4 25H28 M12 4V10 M22 13V19 M10 22V28",
+      "attrs": {
+        "fill": "none",
+        "stroke": "currentColor",
+        "stroke-width": "1.75",
+        "stroke-linecap": "round",
+        "stroke-linejoin": "round"
+      }
+    }
+  ],
+  "assets/icons/fuel.svg": [
+    {
+      "d": "M5 29H20 M7 29V5Q7 3 9 3H18Q20 3 20 5V29 M7 13H20 M20 9H23L26 12V24Q26 27 28 27Q30 27 30 24V10L26 6 M26 10L28 12",
+      "attrs": {
+        "fill": "none",
+        "stroke": "currentColor",
+        "stroke-width": "1.75",
+        "stroke-linecap": "round",
+        "stroke-linejoin": "round"
+      }
+    }
+  ],
+  "assets/icons/garage.svg": [
+    {
+      "d": "M3 23V13L7 5H25L29 13V23 M3 13H29 M3 23H29 M6 23V28 M26 23V28 M6 17H12 M20 17H26 M2 12H5 M27 12H30",
+      "attrs": {
+        "fill": "none",
+        "stroke": "currentColor",
+        "stroke-width": "1.75",
+        "stroke-linecap": "round",
+        "stroke-linejoin": "round"
+      }
+    }
+  ],
+  "assets/icons/home.svg": [
+    {
+      "d": "M4 13L16 3L28 13V28H20V19H12V28H4Z",
+      "attrs": {
+        "fill": "none",
+        "stroke": "currentColor",
+        "stroke-width": "1.75",
+        "stroke-linecap": "round",
+        "stroke-linejoin": "round"
+      }
+    }
+  ],
+  "assets/icons/plus.svg": [
+    {
+      "d": "M16 5V27 M5 16H27",
+      "attrs": {
+        "fill": "none",
+        "stroke": "currentColor",
+        "stroke-width": "1.75",
+        "stroke-linecap": "round",
+        "stroke-linejoin": "round"
+      }
+    }
+  ],
+  "assets/icons/service.svg": [
+    {
+      "d": "M5 5L8 4L15 12L12 15L4 7Z M18 14L27 23Q29 25 27 27Q25 29 23 27L14 18 M17 8Q16 3 21 2L19 7L22 10L27 5Q29 11 25 14Q23 16 19 15L7 28Q5 30 3 28Q1 26 3 24L15 12",
+      "attrs": {
+        "fill": "none",
+        "stroke": "currentColor",
+        "stroke-width": "1.75",
+        "stroke-linecap": "round",
+        "stroke-linejoin": "round"
+      }
+    }
+  ],
+  "assets/icons/settings.svg": [
+    {
+      "d": "M13 3H19L20 7L24 9L28 8L30 13L27 16L27 19L30 22L27 27L23 26L20 28L19 31H13L12 27L8 25L4 26L1 21L4 18V15L1 12L4 7L8 8L12 6Z M21 17A5 5 0 1 1 11 17A5 5 0 1 1 21 17",
+      "attrs": {
+        "fill": "none",
+        "stroke": "currentColor",
+        "stroke-width": "1.75",
+        "stroke-linecap": "round",
+        "stroke-linejoin": "round"
+      }
+    }
+  ],
+  "assets/icons/stats.svg": [
+    {
+      "d": "M5 27V18H9V27Z M14 27V11H18V27Z M23 27V4H27V27Z",
+      "attrs": {
+        "fill": "none",
+        "stroke": "currentColor",
+        "stroke-width": "1.75",
+        "stroke-linecap": "round",
+        "stroke-linejoin": "round"
+      }
+    }
+  ],
+  "assets/surfaces/background_base.svg": [],
+  "assets/surfaces/card_matte.svg": [],
+  "assets/surfaces/card_selected.svg": [],
+  "assets/surfaces/cockpit_arc.svg": [
+    {
+      "d": "M0 104Q195 -92 390 104V310H0Z",
+      "attrs": {
+        "fill": "url(#a)"
+      }
+    },
+    {
+      "d": "M0 104Q195 -92 390 104",
+      "attrs": {
+        "fill": "none",
+        "stroke": "url(#s)",
+        "stroke-width": ".8"
+      }
+    }
+  ],
+  "assets/surfaces/nav_surface.svg": [],
+  "assets/surfaces/ring_track.svg": [],
+  "assets/surfaces/selected_border.svg": [],
+  "assets/wordmark/bubka.svg": [
+    {
+      "d": "M144.250 28.375 L144.875 28.875 L148.500 28.750 L149.750 27.375 L150.875 25.375 L151.500 24.750 L152.500 24.500 L166.375 24.500 L167.625 25.750 L168.250 27.000 L169.625 28.750 L173.500 28.875 L173.875 28.625 L173.875 28.000 L161.625 8.750 L160.250 8.125 L157.750 8.125 L157.000 8.500 L156.125 9.500 L153.750 13.375 L152.250 15.375 L151.875 16.375Z M154.250 20.125 L155.625 18.250 L158.125 13.625 L159.375 12.625 L159.875 13.000 L160.250 14.125 L160.875 14.750 L163.000 18.500 L164.000 19.750 L164.125 20.625 L163.375 21.125 L154.750 21.000 L154.250 20.625Z M77.125 8.500 L77.000 28.250 L77.375 28.750 L96.375 28.750 L99.250 27.750 L100.875 26.250 L101.875 24.125 L101.750 20.875 L100.750 19.250 L99.875 18.625 L99.750 17.750 L101.000 16.250 L101.375 15.250 L101.500 13.625 L100.750 11.125 L99.125 9.375 L97.250 8.500 L95.375 8.125 L77.500 8.125Z M81.000 24.500 L81.125 20.750 L81.500 20.250 L82.125 20.000 L95.500 20.000 L96.750 20.750 L97.750 22.250 L97.750 23.125 L97.125 24.125 L96.375 24.875 L95.625 25.125 L82.375 25.375 L81.500 25.125Z M81.000 12.750 L81.500 11.875 L82.500 11.625 L95.500 11.875 L96.875 13.125 L97.125 13.625 L97.125 14.750 L96.750 15.500 L95.375 16.500 L82.125 16.625 L81.750 16.500 L81.125 15.750Z M41.125 8.375 L41.000 21.875 L41.250 23.125 L42.250 25.250 L43.500 26.625 L45.500 27.875 L47.875 28.750 L57.500 29.000 L60.250 28.500 L61.875 27.875 L63.500 26.875 L64.750 25.625 L65.625 24.125 L66.250 21.375 L66.250 8.750 L65.875 8.250 L62.750 8.125 L62.125 8.750 L62.250 20.375 L61.875 22.375 L60.500 24.000 L59.250 24.750 L56.250 25.250 L49.375 25.125 L48.125 24.750 L46.500 23.625 L45.750 22.625 L45.250 21.250 L45.125 8.625 L44.500 8.125 L41.500 8.125Z M6.625 8.500 L6.375 23.250 L6.500 28.375 L7.375 28.875 L26.250 28.750 L29.125 27.625 L30.625 26.125 L31.500 23.875 L31.375 21.625 L30.750 20.000 L29.250 18.500 L29.125 17.750 L30.250 16.375 L30.750 15.375 L30.875 12.625 L30.625 11.625 L29.750 10.250 L28.500 9.125 L27.125 8.500 L25.500 8.125 L7.250 8.125Z M10.750 20.625 L11.625 19.875 L25.125 20.000 L26.875 21.250 L27.125 21.750 L27.125 23.250 L26.125 24.500 L25.000 25.125 L11.375 25.250 L10.750 24.625Z M10.625 12.500 L11.500 11.625 L24.625 11.750 L25.375 12.000 L26.125 12.750 L26.625 13.750 L26.625 14.750 L26.375 15.375 L25.750 16.000 L24.500 16.500 L13.500 16.500 L11.625 16.750 L10.875 16.250 L10.625 15.500Z M136.250 8.250 L135.625 8.000 L134.375 8.250 L131.625 8.125 L130.625 8.625 L124.125 14.000 L122.125 15.375 L116.750 20.000 L116.375 20.000 L115.875 19.375 L116.000 8.625 L115.375 8.125 L112.375 8.250 L112.000 8.875 L112.125 28.500 L112.625 28.875 L115.750 28.750 L116.000 28.375 L116.000 25.625 L116.500 24.625 L120.375 21.750 L121.625 20.500 L122.500 20.125 L123.625 20.875 L131.750 28.625 L132.500 28.875 L137.000 28.750 L137.125 28.250 L131.125 22.875 L126.000 17.625 L126.000 17.125 L127.000 16.125 L136.250 8.625Z",
+      "attrs": {
+        "fill": "#F5F4F3",
+        "fill-rule": "evenodd"
+      }
+    }
+  ]
+}

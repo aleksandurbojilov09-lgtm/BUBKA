@@ -1,0 +1,380 @@
+{
+  "units": "dp; origin top-left of app content after system safe areas; reference crops exclude phone frame/system status; actual 390x844 V4 screenshots inspected; y coordinates for preview at safe-area=0",
+  "reference": {
+    "source_px": [
+      1536,
+      1024
+    ],
+    "comparison_crops": [
+      390,
+      724
+    ],
+    "wordmark_ink_original_px": [
+      518.375,
+      106.0,
+      167.5,
+      21.0
+    ],
+    "wordmark_source_crop_px": [
+      512,
+      98,
+      180,
+      34
+    ],
+    "wordmark_layout_box_390": [
+      119,
+      11,
+      152,
+      28.71
+    ],
+    "wordmark_ink_box_formula": "layout origin + local ink box * layout width/180",
+    "car_source_crop_px": [
+      528,
+      330,
+      137,
+      72
+    ],
+    "car_viewBox": [
+      0,
+      0,
+      137,
+      72
+    ],
+    "car_visible_approx_px": [
+      10,
+      6,
+      117,
+      57
+    ],
+    "car_lamp_centers_local": [
+      [
+        29,
+        43
+      ],
+      [
+        108,
+        43
+      ]
+    ],
+    "ink_bbox_390_wordmark_reported_v4": [
+      143,
+      19
+    ],
+    "new_ink_size_calculated_390": [
+      141.44,
+      17.73
+    ]
+  },
+  "home_390_1x": {
+    "header": [
+      0,
+      0,
+      390,
+      60
+    ],
+    "wordmark": [
+      119,
+      11,
+      152,
+      28.71
+    ],
+    "vehicle_title": [
+      110,
+      69,
+      170,
+      34
+    ],
+    "plate": [
+      125,
+      110,
+      145,
+      27
+    ],
+    "selector_dots_y": 156,
+    "ring": [
+      60,
+      172,
+      270,
+      270
+    ],
+    "ring_center": [
+      195,
+      307
+    ],
+    "car": [
+      137,
+      207,
+      116,
+      60.96
+    ],
+    "quick_cards": [
+      [
+        10.0,
+        447,
+        87.25,
+        88
+      ],
+      [
+        104.25,
+        447,
+        87.25,
+        88
+      ],
+      [
+        198.5,
+        447,
+        87.25,
+        88
+      ],
+      [
+        292.75,
+        447,
+        87.25,
+        88
+      ]
+    ],
+    "quick_grid": {
+      "horizontal_padding": 10,
+      "gap": 7,
+      "width_formula": "(availableWidth-20-3*7)/4",
+      "label_font_size": 13,
+      "label_line_height": 17,
+      "label_horizontal_padding": 2,
+      "icon_box": 28,
+      "icon_top": 15,
+      "label_top": 55,
+      "normal_scale_rule": "At 390dp/1.0 force four columns if measured full labels fit at intended text style; use explicit regression test. Do not reduce system scale."
+    },
+    "summary": [
+      10,
+      550,
+      370,
+      85
+    ],
+    "nav_390x844": [
+      0,
+      778,
+      390,
+      66
+    ],
+    "plus_center": [
+      195,
+      799
+    ],
+    "content_bottom_padding": 24,
+    "height_rule": "anchor nav to safe bottom; preserve reference content sizes and scroll, surplus height remains flexible gap below metrics; no vertical stretch",
+    "vehicle_title_layout_measured": [
+      48,
+      69,
+      294,
+      31.1875
+    ],
+    "plate_measured": [
+      124.640625,
+      108.1875,
+      140.71875,
+      28
+    ]
+  },
+  "garage_390_1x": {
+    "header": [
+      0,
+      0,
+      390,
+      60
+    ],
+    "cards": [
+      [
+        12,
+        95,
+        366,
+        120
+      ],
+      [
+        12,
+        234,
+        366,
+        120
+      ]
+    ],
+    "car_boxes": [
+      [
+        33.5,
+        137.125,
+        68,
+        35.734375
+      ],
+      [
+        33.5,
+        276.125,
+        68,
+        35.734375
+      ]
+    ],
+    "separator_x": 122,
+    "text_column_x": 142,
+    "selection_center_x": 348,
+    "add": [
+      12,
+      373,
+      366,
+      81
+    ],
+    "card_radius": 22
+  },
+  "adaptive": {
+    "320_2x": "At 200% ring label and value below circle if needed; two full-word quick card columns; 2-column accessible navigation with plus in own row; scroll vertically; no system text-scale clamp. This adaptation is proposed for review.",
+    "tablet_landscape": "two panes if enough room, max content widths, scroll both axes only if content requires; preserve min 48dp target; no fixed screen-scale transforms",
+    "font": "system sans (Roboto/SF), no font distributed; weights 400/500/600/650 approximation; native font differences remain; wordmark paths independent",
+    "typography": {
+      "vehicle": {
+        "size": 26,
+        "weight": 650,
+        "line_height": 1.2,
+        "tracking": -0.3
+      },
+      "header": {
+        "size": 26,
+        "weight": 650,
+        "line_height": 1.2
+      },
+      "quick_label": {
+        "size": 13,
+        "weight": 500,
+        "line_height": 1.3,
+        "tracking": 0
+      },
+      "metric_label": {
+        "size": 11,
+        "weight": 400,
+        "line_height": 1.3
+      },
+      "metric_value": {
+        "size": 24,
+        "weight": 650,
+        "line_height": 1.15
+      },
+      "ring_value": {
+        "size": 36,
+        "weight": 700,
+        "line_height": 1.1
+      },
+      "garage_title": {
+        "size": 22,
+        "weight": 600,
+        "line_height": 1.2
+      },
+      "garage_sub": {
+        "size": 16,
+        "weight": 400,
+        "line_height": 1.3
+      },
+      "nav_label": {
+        "size": 11,
+        "weight": 500,
+        "line_height": 1.2
+      }
+    }
+  },
+  "browser_layout_measured": {
+    ".word": [
+      119,
+      10.9921875,
+      152,
+      28.703125
+    ],
+    ".model": [
+      48,
+      69,
+      294,
+      31.1875
+    ],
+    ".plate": [
+      124.640625,
+      108.1875,
+      140.71875,
+      28
+    ],
+    ".dial": [
+      60,
+      172,
+      270,
+      270
+    ],
+    ".dial .car": [
+      137,
+      207,
+      116,
+      60.953125
+    ],
+    ".quicks": [
+      0,
+      447,
+      390,
+      88
+    ],
+    ".summary": [
+      10,
+      550,
+      370,
+      85
+    ],
+    ".nav": [
+      0,
+      778,
+      390,
+      66
+    ]
+  },
+  "browser_garage_measured": [
+    [
+      "gcard selected",
+      12,
+      95,
+      366,
+      120
+    ],
+    [
+      "car ",
+      33.5,
+      137.125,
+      68,
+      35.734375
+    ],
+    [
+      "ginfo",
+      141,
+      113.609375,
+      173,
+      82.78125
+    ],
+    [
+      "gcard ",
+      12,
+      234,
+      366,
+      120
+    ],
+    [
+      "car ",
+      33.5,
+      276.125,
+      68,
+      35.734375
+    ],
+    [
+      "ginfo",
+      141,
+      252.609375,
+      173,
+      82.78125
+    ],
+    [
+      "add",
+      12,
+      373,
+      366,
+      81
+    ]
+  ]
+}

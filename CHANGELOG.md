@@ -16,3 +16,14 @@ Permanent Android signing preparation, local notification scheduling, snapshot a
 
 ## 0.2.1+4 — testing update candidate
 Version-only increment for physical update and local data retention verification. No application identity, schema, dependency or business logic changes. Release and physical verification pending.
+
+## 0.3.0+5 — phase 04 local candidate (unverified)
+Draft native cockpit design system, presentation routes, local fixtures and ignition; black launch screens. Monogram production adaptation, actual visual and Flutter validation, golden review, PR CI and release remain pending.
+
+
+## V5 local candidate
+Phase 04 V5 local candidate: DESIGN-003 asset integration. Not published or accepted.
+
+
+## 0.3.0+5 — BUBA (локален кандидат, непубликуван)
+V5 Final Polish е приет визуално под старото име; новият видим бранд BUBA (Буба), системни етикети, диагностика, известия, About и два wordmark слоя са в локална проверка. Няма промяна на application/bundle ID, съществуващите данни, подпис, версия, release файлове или update договор. Публикувана тестова версия остава 0.2.1+4 под старото име. Фаза 03 accepted_with_followups, фаза 04 не е приключена. Това са кандидат release notes; GitHub workflow title остава технически BUBKA до отделно разрешение.
