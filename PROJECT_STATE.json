@@ -3,7 +3,7 @@
   "version": "0.2.1",
   "build_number": 4,
   "phase": 3,
-  "phase_status": "physical_validation_in_progress",
+  "phase_status": "partial_physical_validation",
   "branch": "phase/03-installation-updates",
   "verified_source_commit": "eaeb72fee5a1228f5fbb9b01d40747e2e3c20ed8",
   "verified_ci_url": "https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45811621345",
@@ -17,7 +17,7 @@
   "billing_verified": false,
   "codespaces_rebuild_verified": true,
   "codespaces_default_idle_timeout_minutes": 30,
-  "ci_optimization": "full_and_docs_only_verified_partial_cache_measurement",
+  "ci_optimization": "003A_candidate_pending_ci",
   "verified_docs_ci_url": "https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45786033755",
   "phase_02_status": "accepted_with_followups",
   "phase_03_authorized": true,
@@ -40,8 +40,9 @@
     "independent_backup_verified": false
   },
   "update_channel": "testing",
-  "last_published_testing_release": "v0.2.0",
-  "last_published_release_run": "https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45814335354",
+  "last_published_testing_release": "v0.2.1",
+  "last_published_release_run": "https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45821848648",
   "android_initial_install": "verified_owner_screenshot",
-  "ios_initial_install": "pending_computer_setup"
+  "ios_initial_install": "pending_computer_setup",
+  "android_update_and_data_retention": "passed_owner_report"
 }

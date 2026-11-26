@@ -27,3 +27,6 @@ Do not push small implementation commits to an open PR one at a time. Prepare a 
 
 ## Задължителна пакетна поправка (архитектурен преглед BUBKA-003)
 Един общ пакет, един TXT и една команда; без експериментални push операции към PR. При Android release дефект първо диагностика на RAM/cgroup и предварителна release plugin регистрация, после една локална release компилация и верификация. Push към PR само след успех. При грешка запази конкретния failed task, безопасна диагностика и SHA, без секрети. Не премахвай интеграционните тестове и не изменяй Flutter SDK.
+
+## BUBKA-003A — CI policy supersedes earlier selective CI rules
+PR validates synthetic merge result. Docs-only checks docs/scripts/diff; known ordinary Dart changes and proven version-only changes run common checks without platform builds; native-only changes run the relevant platform, shared/unknown/dependency/schema/CI changes require both. Every non-doc main push and explicit main dispatch require full Android+iOS. Preserve strict BUBKA CI gate and no secrets in PR. Release uses exact-main, same-attempt successful CI artifacts and archive/payload SHA-256; no build in release. One task branch, one grouped push, one PR; no version bump for infrastructure. Phase 04 is not authorized.

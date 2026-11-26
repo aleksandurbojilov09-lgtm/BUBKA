@@ -25,7 +25,7 @@ jobs:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with:
           persist-credentials: false
-          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          ref: ${{ github.sha }}
           fetch-depth: 0
       - id: plan
         run: python3 scripts/ci_classify.py
@@ -36,12 +36,13 @@ jobs:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with:
           persist-credentials: false
-          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          ref: ${{ github.sha }}
           fetch-depth: 0
       - run: python3 scripts/check_docs.py
       - run: python3 scripts/test_ci_classify.py
       - run: python3 scripts/test_ci_gate.py
       - run: python3 scripts/test_release_manifest.py
+      - run: python3 scripts/test_release_provenance.py
       - run: python3 scripts/check_git_diff.py
   checks:
     name: Common checks
@@ -53,7 +54,7 @@ jobs:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with:
           persist-credentials: false
-          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          ref: ${{ github.sha }}
       - name: Cache verified Flutter SDK archive
         uses: actions/cache@0400d5f644dc74513175e3cd8d07132dd4860809
         with:
@@ -87,7 +88,7 @@ jobs:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with:
           persist-credentials: false
-          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          ref: ${{ github.sha }}
       - name: Cache verified Flutter SDK archive
         uses: actions/cache@0400d5f644dc74513175e3cd8d07132dd4860809
         with:
@@ -130,7 +131,8 @@ jobs:
           mkdir -p build/bubka-artifacts
           cp build/app/outputs/flutter-apk/app-release.apk "build/bubka-artifacts/$name"
           (cd build/bubka-artifacts && sha256sum "$name" > SHA256SUMS.txt)
-          echo "name=BUBKA-${version}-${build}-android-unsigned" >> "$GITHUB_OUTPUT"
+          python3 scripts/release_provenance.py stamp --platform android --directory build/bubka-artifacts
+          echo "name=BUBKA-${version}-${build}-android-unsigned-attempt-$GITHUB_RUN_ATTEMPT" >> "$GITHUB_OUTPUT"
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
           name: ${{ steps.artifact.outputs.name }}
@@ -148,7 +150,7 @@ jobs:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with:
           persist-credentials: false
-          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          ref: ${{ github.sha }}
       - name: Select Xcode
         run: |
           test "$(uname -m)" = arm64
@@ -176,7 +178,8 @@ jobs:
           bash scripts/package-ios-ipa.sh
           version=$(python3 scripts/version.py version)
           build=$(python3 scripts/version.py build)
-          echo "name=BUBKA-${version}-${build}-ios-unsigned" >> "$GITHUB_OUTPUT"
+          python3 scripts/release_provenance.py stamp --platform ios --directory build/bubka-ios-artifacts
+          echo "name=BUBKA-${version}-${build}-ios-unsigned-attempt-$GITHUB_RUN_ATTEMPT" >> "$GITHUB_OUTPUT"
           { sw_vers; uname -m; xcodebuild -version; flutter --version; } > build/bubka-ios-artifacts/ENVIRONMENT.txt
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
@@ -194,7 +197,7 @@ jobs:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with:
           persist-credentials: false
-          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          ref: ${{ github.sha }}
       - run: python3 scripts/ci_gate.py
         env:
           CLASSIFY: ${{ needs.classify.result }}
