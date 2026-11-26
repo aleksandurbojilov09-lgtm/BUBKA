@@ -32,11 +32,16 @@ class SnapshotService {
       }
       final copy = AppDatabase(NativeDatabase(temporary));
       try {
-        final integrity = await copy.customSelect('PRAGMA integrity_check').get();
-        if (integrity.length != 1 || integrity.single.data.values.single != 'ok') {
+        final integrity = await copy
+            .customSelect('PRAGMA integrity_check')
+            .get();
+        if (integrity.length != 1 ||
+            integrity.single.data.values.single != 'ok') {
           throw StateError('Snapshot integrity check failed');
         }
-        final foreignKeys = await copy.customSelect('PRAGMA foreign_key_check').get();
+        final foreignKeys = await copy
+            .customSelect('PRAGMA foreign_key_check')
+            .get();
         if (foreignKeys.isNotEmpty) {
           throw StateError('Snapshot foreign key check failed');
         }
