@@ -41,7 +41,7 @@ with zipfile.ZipFile(sys.argv[1]) as z:
     assert not any(n.endswith('/embedded.mobileprovision') for n in names)
     print('IPA identity, version and Payload structure OK')
 PY_IPA
-lipo -verify_arch arm64 "$stage/Payload/Runner.app/Runner"
+lipo "$stage/Payload/Runner.app/Runner" -verify_arch arm64
 cp "$ipa" "$out/BUBKA-0.0.1-unsigned.ipa"
 (cd "$out" && shasum -a 256 BUBKA-0.0.1-unsigned.ipa > SHA256SUMS.txt && cat SHA256SUMS.txt)
 stat -f 'IPA bytes: %z' "$out/BUBKA-0.0.1-unsigned.ipa"
