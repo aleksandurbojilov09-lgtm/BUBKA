@@ -13,3 +13,6 @@ Flutter + Dart; modular monolith; feature-first; MVVM; Provider + ChangeNotifier
 `lib/app/` — композиция и навигация; `lib/core/` — общи договори и инфраструктура; `lib/features/<module>/` — самостоятелни функционални модули; `lib/design_system/` — общи UI компоненти. В рамките на модулите разделяй data/domain/presentation само според необходимостта, без циклични зависимости. Това е план, не създадени директории.
 
 Идентичност Android/iOS: io.github.aleksandurbojilov09.garage. Не се променя при смяна на търговското име.
+
+## Фаза 02 — архитектурно ядро (кандидат за проверка)
+`lib/app/` композира Provider, GoRouter и статичния регистър. `lib/core/database/` управлява една локална база с инжектиран executor. `lib/features/diagnostics/` демонстрира repository, ViewModel и View. `lib/design_system/` съдържа базова тъмна тема. Виж docs/database-policy.md.

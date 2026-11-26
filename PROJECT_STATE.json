@@ -1,12 +1,12 @@
 {
   "project": "BUBKA",
-  "version": "0.0.1",
-  "build_number": 1,
-  "phase": 1,
-  "phase_status": "completed_pending_architect_approval",
-  "branch": "main",
-  "verified_source_commit": "148b68ac6b67e5d67821bbdc3e1f124e0184e68f",
-  "verified_ci_url": "https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45774920131",
+  "version": "0.1.0",
+  "build_number": 2,
+  "phase": 2,
+  "phase_status": "in_progress_pending_ci",
+  "branch": "phase/02-architecture-core",
+  "verified_source_commit": null,
+  "verified_ci_url": null,
   "application_identity": {
     "android_application_id": "io.github.aleksandurbojilov09.garage",
     "ios_bundle_id": "io.github.aleksandurbojilov09.garage"
@@ -14,10 +14,10 @@
   "architecture_implemented": false,
   "business_modules": [],
   "next_phase_requires_approval": true,
-  "final_tag": "v0.0.1",
+  "final_tag": null,
   "billing_verified": true,
   "codespaces_rebuild_verified": true,
   "codespaces_default_idle_timeout_minutes": 30,
-  "ci_optimization": "mandatory_pending_architect_assignment",
-  "final_commit_note": "Тагът и main сочат финалния документационен commit, който запазва всички build входове от проверения source SHA."
+  "ci_optimization": "implemented_pending_ci_verification",
+  "final_commit_note": "Phase 02 candidate; no successful CI or tag yet."
 }

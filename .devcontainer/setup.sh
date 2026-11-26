@@ -4,7 +4,7 @@ trap 'echo "BUBKA_TOOLCHAIN_FAILED: line $LINENO (exit $?)" >&2' ERR
 [[ $(uname -m) == x86_64 ]] || { echo 'Expected Linux x86_64'; exit 1; }
 export DEBIAN_FRONTEND=noninteractive
 sudo apt-get update
-sudo apt-get install -y --no-install-recommends ca-certificates curl git unzip zip xz-utils libglu1-mesa openjdk-17-jdk-headless
+sudo apt-get install -y --no-install-recommends ca-certificates curl git git-lfs python3 unzip zip xz-utils libglu1-mesa openjdk-17-jdk-headless
 export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
 export FLUTTER_SUPPRESS_ANALYTICS=true DART_SUPPRESS_ANALYTICS=true
 base="$HOME/.local/share/bubka"
@@ -54,6 +54,13 @@ ENV
 line='[ -f "$HOME/.config/bubka/env.sh" ] && . "$HOME/.config/bubka/env.sh"'
 touch "$HOME/.bashrc"
 if ! grep -Fxq "$line" "$HOME/.bashrc"; then printf '\n%s\n' "$line" >> "$HOME/.bashrc"; fi
+# Bash login shells read the first existing login profile.
+profile="$HOME/.profile"
+for candidate in "$HOME/.bash_profile" "$HOME/.bash_login"; do
+  if [[ -f "$candidate" ]]; then profile="$candidate"; break; fi
+done
+touch "$profile"
+if ! grep -Fxq "$line" "$profile"; then printf '\n%s\n' "$line" >> "$profile"; fi
 printf '\n=== BUBKA: TOOL VERSIONS ===\n'
 flutter --version
 dart --version

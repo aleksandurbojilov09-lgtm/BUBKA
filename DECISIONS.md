@@ -25,3 +25,6 @@ https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45773199863
 - Full Rebuild изпълнен; Flutter и Android toolchain проверени в новия контейнер. Съществуващ терминал може да изисква source на env.sh. Не повтаряй rebuild без основание.
 - Оптимизацията на CI е задължителна задача за следващия одобрен етап; виж AGENTS.md.
 - Финалният документационен commit е различен от source SHA; build входовете са идентични. Тагът v0.0.1 обозначава финалния документационен commit след проверка на diff, без нова компилация само за текста.
+
+## Фаза 02 — решения за проверка
+Използваме standalone material_ui, GoRouter, Provider и Drift native. Flutter архивът в CI се проверява със SHA-256 при всяко разархивиране, включително cache hit. PR се проверява на точния head SHA; push на main и ръчен full CI са налични. Фазовият PR включва общи архитектурни промени и изисква двете компилации. Версията се извлича от pubspec.yaml.

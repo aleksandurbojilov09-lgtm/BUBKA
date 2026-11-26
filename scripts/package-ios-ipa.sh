@@ -21,10 +21,13 @@ else
   printf '%s\n' "$signature"
   grep -qi 'not signed at all' <<< "$signature" || exit 1
 fi
-ipa="$stage/BUBKA-0.0.1-unsigned.ipa"
+version=$(python3 scripts/version.py version)
+build=$(python3 scripts/version.py build)
+name="BUBKA-${version}+${build}-unsigned.ipa"
+ipa="$stage/$name"
 (cd "$stage" && zip -qry -y "$ipa" Payload)
 unzip -tq "$ipa"
-python3 - "$ipa" <<'PY_IPA'
+python3 - "$ipa" "$version" "$build" <<'PY_IPA'
 import plistlib, sys, zipfile
 with zipfile.ZipFile(sys.argv[1]) as z:
     names = set(z.namelist())
@@ -32,8 +35,8 @@ with zipfile.ZipFile(sys.argv[1]) as z:
     base = 'Payload/Runner.app/'
     data = plistlib.loads(z.read(base+'Info.plist'))
     assert data['CFBundleIdentifier'] == 'io.github.aleksandurbojilov09.garage', data
-    assert data['CFBundleShortVersionString'] == '0.0.1', data
-    assert data['CFBundleVersion'] == '1', data
+    assert data['CFBundleShortVersionString'] == sys.argv[2], data
+    assert data['CFBundleVersion'] == sys.argv[3], data
     assert data['CFBundlePackageType'] == 'APPL', data
     assert base+data['CFBundleExecutable'] in names
     assert base+'Frameworks/App.framework/App' in names
@@ -42,7 +45,7 @@ with zipfile.ZipFile(sys.argv[1]) as z:
     print('IPA identity, version and Payload structure OK')
 PY_IPA
 lipo "$stage/Payload/Runner.app/Runner" -verify_arch arm64
-cp "$ipa" "$out/BUBKA-0.0.1-unsigned.ipa"
-(cd "$out" && shasum -a 256 BUBKA-0.0.1-unsigned.ipa > SHA256SUMS.txt && cat SHA256SUMS.txt)
-stat -f 'IPA bytes: %z' "$out/BUBKA-0.0.1-unsigned.ipa"
+cp "$ipa" "$out/$name"
+(cd "$out" && shasum -a 256 "$name" > SHA256SUMS.txt && cat SHA256SUMS.txt)
+stat -f 'IPA bytes: %z' "$out/$name"
 echo 'BUBKA_IOS_UNSIGNED_IPA_OK'

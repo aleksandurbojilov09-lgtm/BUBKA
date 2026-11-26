@@ -1,6 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
         android:label="BUBKA"
+        android:allowBackup="false"
+        android:fullBackupContent="@xml/bubka_backup_rules"
+        android:dataExtractionRules="@xml/bubka_data_extraction_rules"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

@@ -1,62 +1,113 @@
 name: BUBKA CI
-
 on:
   push:
-    branches:
-      - main
-      - 'phase/**'
+    branches: [main]
   pull_request:
     branches: [main]
-
+  workflow_dispatch:
 permissions:
   contents: read
-
 concurrency:
   group: bubka-ci-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
-
 env:
   FLUTTER_SUPPRESS_ANALYTICS: 'true'
   DART_SUPPRESS_ANALYTICS: 'true'
-
+  PYTHONDONTWRITEBYTECODE: '1'
 jobs:
+  classify:
+    runs-on: ubuntu-24.04
+    outputs:
+      common: ${{ steps.plan.outputs.common }}
+      android: ${{ steps.plan.outputs.android }}
+      ios: ${{ steps.plan.outputs.ios }}
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          persist-credentials: false
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - id: plan
+        run: python3 scripts/ci_classify.py
+  docs:
+    runs-on: ubuntu-24.04
+    needs: classify
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          persist-credentials: false
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - run: python3 scripts/check_docs.py
+      - run: python3 scripts/test_ci_classify.py
+      - run: python3 scripts/test_ci_gate.py
+      - run: python3 scripts/check_git_diff.py
   checks:
-    name: Format, analyze, test and Android APK
+    name: Common checks
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    needs: [classify, docs]
+    if: needs.classify.outputs.common == 'true'
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          persist-credentials: false
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Cache verified Flutter SDK archive
+        uses: actions/cache@0400d5f644dc74513175e3cd8d07132dd4860809
+        with:
+          path: ${{ runner.temp }}/bubka-sdk-archive
+          key: bubka-sdk-${{ runner.os }}-${{ runner.arch }}-3.50.1-ae9b586-v1
+      - run: bash scripts/ci_flutter.sh
+      - name: Cache pub hosted dependencies
+        uses: actions/cache@0400d5f644dc74513175e3cd8d07132dd4860809
+        with:
+          path: |
+            ~/.pub-cache/hosted
+            ~/.pub-cache/hosted-hashes
+          key: bubka-pub-${{ runner.os }}-${{ runner.arch }}-3.50.1-${{ hashFiles('pubspec.lock') }}-v1
+      - run: flutter pub get --enforce-lockfile
+      - run: python3 scripts/version.py check
+      - run: python3 scripts/check_architecture.py
+      - run: dart format --output=none --set-exit-if-changed lib test integration_test
+      - run: dart run build_runner build
+      - run: dart run drift_dev make-migrations
+      - run: dart format lib test integration_test
+      - run: git diff --exit-code && test -z "$(git ls-files --others --exclude-standard)"
+      - run: flutter analyze --no-pub --fatal-infos --fatal-warnings
+      - run: flutter test --no-pub
+  android:
+    name: Android debug APK
+    needs: [classify, docs, checks]
+    if: needs.classify.outputs.android == 'true' && needs.checks.result == 'success'
     runs-on: ubuntu-24.04
     timeout-minutes: 45
     steps:
-      - name: Checkout
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with:
           persist-credentials: false
-
-      - name: Install pinned Flutter SDK
-        shell: bash
-        run: |
-          set -euo pipefail
-          cd "$RUNNER_TEMP"
-          curl --fail --location --retry 3 --output flutter.tar.xz https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.50.1-stable.tar.xz
-          echo '4ad17fc8462fbcef2ba19ff4a78c0a16b7147fde1add8578e267ea62cdb92678  flutter.tar.xz' | sha256sum --check -
-          tar -xJf flutter.tar.xz
-          rm flutter.tar.xz
-          echo "$RUNNER_TEMP/flutter/bin" >> "$GITHUB_PATH"
-
-      - name: Tool versions and dependency resolution
-        run: |
-          flutter --disable-analytics
-          flutter --version
-          dart --version
-          flutter pub get --enforce-lockfile
-
-      - name: Dart formatting
-        run: dart format --output=none --set-exit-if-changed lib test
-
-      - name: Flutter analyze
-        run: flutter analyze --no-pub --fatal-infos --fatal-warnings
-
-      - name: Flutter tests
-        run: flutter test --no-pub
-
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Cache verified Flutter SDK archive
+        uses: actions/cache@0400d5f644dc74513175e3cd8d07132dd4860809
+        with:
+          path: ${{ runner.temp }}/bubka-sdk-archive
+          key: bubka-sdk-${{ runner.os }}-${{ runner.arch }}-3.50.1-ae9b586-v1
+      - run: bash scripts/ci_flutter.sh
+      - name: Cache pub hosted dependencies
+        uses: actions/cache@0400d5f644dc74513175e3cd8d07132dd4860809
+        with:
+          path: |
+            ~/.pub-cache/hosted
+            ~/.pub-cache/hosted-hashes
+          key: bubka-pub-${{ runner.os }}-${{ runner.arch }}-3.50.1-${{ hashFiles('pubspec.lock') }}-v1
+      - run: flutter pub get --enforce-lockfile
+      - name: Cache Gradle dependencies
+        uses: actions/cache@0400d5f644dc74513175e3cd8d07132dd4860809
+        with:
+          path: |
+            ~/.gradle/caches/modules-2
+            ~/.gradle/wrapper/dists
+          key: bubka-gradle-${{ runner.os }}-${{ runner.arch }}-3.50.1-jdk17-${{ hashFiles('android/**/*.gradle*','android/gradle/wrapper/gradle-wrapper.properties','android/gradle.properties','pubspec.lock') }}-v1
       - name: Prepare Android SDK and JDK
         shell: bash
         run: |
@@ -68,105 +119,89 @@ jobs:
           java -version
           flutter config --jdk-dir "$JAVA_HOME" --android-sdk "$ANDROID_HOME"
           "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --sdk_root="$ANDROID_HOME" 'platforms;android-36' 'build-tools;36.0.0' 'ndk;28.2.13676358'
-
-      - name: Build debug APK
-        run: flutter build apk --debug --no-pub
-
-      - name: Verify APK and record build environment
-        shell: bash
+      - run: flutter build apk --debug --no-pub
+      - id: artifact
         run: |
           set -euo pipefail
           bash scripts/verify-android-apk.sh build/app/outputs/flutter-apk/app-debug.apk
-          (cd android && ./gradlew --version)
+          version=$(python3 scripts/version.py version)
+          build=$(python3 scripts/version.py build)
+          name="BUBKA-${version}+${build}-debug.apk"
           mkdir -p build/bubka-artifacts
-          cp build/app/outputs/flutter-apk/app-debug.apk build/bubka-artifacts/BUBKA-0.0.1-debug.apk
-          (cd build/bubka-artifacts && sha256sum BUBKA-0.0.1-debug.apk > SHA256SUMS.txt)
-
-      - name: Upload verified test APK
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+          cp build/app/outputs/flutter-apk/app-debug.apk "build/bubka-artifacts/$name"
+          (cd build/bubka-artifacts && sha256sum "$name" > SHA256SUMS.txt)
+          echo "name=BUBKA-${version}-${build}-android-debug" >> "$GITHUB_OUTPUT"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
-          name: BUBKA-0.0.1-android-debug
+          name: ${{ steps.artifact.outputs.name }}
           path: build/bubka-artifacts/
           if-no-files-found: error
           retention-days: 7
           compression-level: 0
-
   ios:
     name: iOS unsigned IPA
-    needs: checks
+    needs: [classify, docs, checks]
+    if: needs.classify.outputs.ios == 'true' && needs.checks.result == 'success'
     runs-on: macos-26
     timeout-minutes: 45
     steps:
-      - name: Checkout
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with:
           persist-credentials: false
-
-      - name: Select Xcode and record environment
-        shell: bash
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Select Xcode
         run: |
-          set -euo pipefail
           test "$(uname -m)" = arm64
           sudo xcode-select --switch /Applications/Xcode_26.6.app/Contents/Developer
           xcodebuild -version
           xcodebuild -version -sdk iphoneos
-          sw_vers
-
-      - name: Install pinned Flutter SDK
-        shell: bash
-        run: |
-          set -euo pipefail
-          cd "$RUNNER_TEMP"
-          curl --fail --location --retry 3 --output releases_macos.json https://storage.googleapis.com/flutter_infra_release/releases/releases_macos.json
-          python3 - <<'PY_SDK'
-          import json, re
-          from pathlib import Path
-          archive = 'stable/macos/flutter_macos_arm64_3.50.1-stable.zip'
-          data = json.loads(Path('releases_macos.json').read_text())
-          matches = [r for r in data['releases'] if r.get('channel') == 'stable' and r.get('version') == '3.50.1' and r.get('archive') == archive and r.get('hash') == 'ae9b586f34a8443573f82ef57c3bf914a908cbf7']
-          assert len(matches) == 1, 'Pinned release not found in official manifest'
-          digest = matches[0]['sha256']
-          assert re.fullmatch(r'[0-9a-f]{64}', digest)
-          Path('flutter.sha256').write_text(digest + '  flutter.zip\n')
-          PY_SDK
-          curl --fail --location --retry 3 --output flutter.zip https://storage.googleapis.com/flutter_infra_release/releases/stable/macos/flutter_macos_arm64_3.50.1-stable.zip
-          shasum -a 256 -c flutter.sha256
-          unzip -q flutter.zip
-          rm flutter.zip
-          echo "$RUNNER_TEMP/flutter/bin" >> "$GITHUB_PATH"
-
-      - name: Resolve locked dependencies
-        shell: bash
-        run: |
-          set -euo pipefail
-          flutter --disable-analytics
-          flutter --version
-          dart --version
-          flutter pub get --enforce-lockfile
-
-      - name: Build release app without signing
-        run: flutter build ios --release --no-codesign --no-pub
-
-      - name: Package and verify unsigned IPA
-        shell: bash
+      - name: Cache verified Flutter SDK archive
+        uses: actions/cache@0400d5f644dc74513175e3cd8d07132dd4860809
+        with:
+          path: ${{ runner.temp }}/bubka-sdk-archive
+          key: bubka-sdk-${{ runner.os }}-${{ runner.arch }}-3.50.1-ae9b586-v1
+      - run: bash scripts/ci_flutter.sh
+      - name: Cache pub hosted dependencies
+        uses: actions/cache@0400d5f644dc74513175e3cd8d07132dd4860809
+        with:
+          path: |
+            ~/.pub-cache/hosted
+            ~/.pub-cache/hosted-hashes
+          key: bubka-pub-${{ runner.os }}-${{ runner.arch }}-3.50.1-${{ hashFiles('pubspec.lock') }}-v1
+      - run: flutter pub get --enforce-lockfile
+      - run: flutter build ios --release --no-codesign --no-pub
+      - id: artifact
         run: |
           set -euo pipefail
           bash scripts/package-ios-ipa.sh
-          {
-            sw_vers
-            uname -m
-            xcodebuild -version
-            xcodebuild -version -sdk iphoneos
-            flutter --version
-            dart --version
-          } > build/bubka-ios-artifacts/ENVIRONMENT.txt 2>&1
-          cat build/bubka-ios-artifacts/ENVIRONMENT.txt
-
-      - name: Upload unsigned IPA
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+          version=$(python3 scripts/version.py version)
+          build=$(python3 scripts/version.py build)
+          echo "name=BUBKA-${version}-${build}-ios-unsigned" >> "$GITHUB_OUTPUT"
+          { sw_vers; uname -m; xcodebuild -version; flutter --version; } > build/bubka-ios-artifacts/ENVIRONMENT.txt
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
-          name: BUBKA-0.0.1-ios-unsigned
+          name: ${{ steps.artifact.outputs.name }}
           path: build/bubka-ios-artifacts/
           if-no-files-found: error
           retention-days: 7
           compression-level: 0
+  gate:
+    name: BUBKA CI gate
+    if: always()
+    needs: [classify, docs, checks, android, ios]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          persist-credentials: false
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - run: python3 scripts/ci_gate.py
+        env:
+          CLASSIFY: ${{ needs.classify.result }}
+          DOCS: ${{ needs.docs.result }}
+          COMMON_REQUIRED: ${{ needs.classify.outputs.common }}
+          COMMON_RESULT: ${{ needs.checks.result }}
+          ANDROID_REQUIRED: ${{ needs.classify.outputs.android }}
+          ANDROID_RESULT: ${{ needs.android.result }}
+          IOS_REQUIRED: ${{ needs.classify.outputs.ios }}
+          IOS_RESULT: ${{ needs.ios.result }}

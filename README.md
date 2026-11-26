@@ -25,3 +25,6 @@ Android локално: `flutter build apk --debug --no-pub`, след това 
 Работи само по BUBKA, не по KMX. Не качвай лични данни, пароли, ключове или build артефакти в Git. Спирай Codespace при неактивност и проверявай остатъчните квоти. Виж AGENTS.md, ARCHITECTURE.md, PROJECT_STATE.json, ROADMAP.md, CHANGELOG.md, MODULES.md, DECISIONS.md, KNOWN_ISSUES.md и docs/handoffs/PHASE-01.json.
 
 Последен пълен CI: https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45774920131; за бъдеща оптимизация на CI виж AGENTS.md. Артефактите са временни, няма публикуван Release.
+
+## Фаза 02 — в проверка
+Архитектурно ядро 0.1.0+2: локална SQLite/Drift, диагностичен модул, регистър, Provider/MVVM и GoRouter. Пълното приемане е след зелен CI; фаза 03 не е започната.

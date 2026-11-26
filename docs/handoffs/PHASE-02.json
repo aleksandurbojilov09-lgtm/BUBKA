@@ -1,0 +1,209 @@
+{
+  "project": "BUBKA",
+  "task_id": "BUBKA-002",
+  "phase": 2,
+  "status": "partial",
+  "version": "0.1.0",
+  "build_number": 2,
+  "repository_url": "https://github.com/aleksandurbojilov09-lgtm/BUBKA",
+  "branch": "phase/02-architecture-core",
+  "final_commit_sha": null,
+  "verified_source_commit_sha": null,
+  "tag": null,
+  "merged_to_main": false,
+  "completed_tasks": [
+    "Prepared phase 02 source, generated Drift schema, local analysis and Flutter tests passed"
+  ],
+  "created_files": [
+    "android/app/src/main/res/xml/bubka_backup_rules.xml",
+    "android/app/src/main/res/xml/bubka_data_extraction_rules.xml",
+    "build.yaml",
+    "docs/database-policy.md",
+    "drift_schemas/app_database/drift_schema_v1.json",
+    "integration_test/app_test.dart",
+    "lib/app/app.dart",
+    "lib/app/bootstrap.dart",
+    "lib/app/modules/module_availability.dart",
+    "lib/app/modules/module_registry.dart",
+    "lib/app/providers/composition.dart",
+    "lib/app/router/router.dart",
+    "lib/app/version.dart",
+    "lib/core/database/connection.dart",
+    "lib/core/database/database.dart",
+    "lib/core/database/database.g.dart",
+    "lib/core/errors/local_failure.dart",
+    "lib/design_system/theme.dart",
+    "lib/features/diagnostics/data/local_repository.dart",
+    "lib/features/diagnostics/diagnostics.dart",
+    "lib/features/diagnostics/domain/repository.dart",
+    "lib/features/diagnostics/presentation/screens/diagnostics_screen.dart",
+    "lib/features/diagnostics/presentation/view_models/diagnostics_view_model.dart",
+    "scripts/check_architecture.py",
+    "scripts/check_docs.py",
+    "scripts/check_git_diff.py",
+    "scripts/ci_classify.py",
+    "scripts/ci_flutter.sh",
+    "scripts/ci_gate.py",
+    "scripts/test_ci_classify.py",
+    "scripts/test_ci_gate.py",
+    "scripts/version.py",
+    "test/architecture_test.dart",
+    "test/database_test.dart",
+    "docs/handoffs/PHASE-02.json"
+  ],
+  "modified_files": [
+    ".devcontainer/setup.sh",
+    ".github/workflows/ci.yml",
+    ".gitignore",
+    "AGENTS.md",
+    "ARCHITECTURE.md",
+    "CHANGELOG.md",
+    "DECISIONS.md",
+    "KNOWN_ISSUES.md",
+    "MODULES.md",
+    "PROJECT_STATE.json",
+    "README.md",
+    "ROADMAP.md",
+    "android/app/src/main/AndroidManifest.xml",
+    "docs/dependency-licenses.txt",
+    "ios/Runner/AppDelegate.swift",
+    "lib/app.dart",
+    "lib/main.dart",
+    "pubspec.lock",
+    "pubspec.yaml",
+    "scripts/package-ios-ipa.sh",
+    "scripts/verify-android-apk.sh",
+    "test/app_smoke_test.dart"
+  ],
+  "dependencies": [
+    {
+      "name": "build_runner",
+      "version": "2.17.1"
+    },
+    {
+      "name": "drift",
+      "version": "2.35.4"
+    },
+    {
+      "name": "drift_dev",
+      "version": "2.35.3"
+    },
+    {
+      "name": "flutter",
+      "version": "0.0.0"
+    },
+    {
+      "name": "flutter_lints",
+      "version": "6.0.0"
+    },
+    {
+      "name": "flutter_test",
+      "version": "0.0.0"
+    },
+    {
+      "name": "go_router",
+      "version": "18.1.4"
+    },
+    {
+      "name": "integration_test",
+      "version": "0.0.0"
+    },
+    {
+      "name": "material_ui",
+      "version": "1.11.1"
+    },
+    {
+      "name": "path_provider",
+      "version": "2.1.6"
+    },
+    {
+      "name": "provider",
+      "version": "6.1.5+1"
+    }
+  ],
+  "architecture_decisions": [
+    "Feature-first MVVM, static registry, Provider, GoRouter, native Drift, local module availability, standalone material_ui"
+  ],
+  "architecture_deviations": [],
+  "infrastructure": {
+    "python3_permanent_setup": "configured_not_rebuilt",
+    "git_lfs_permanent_setup": "configured_not_rebuilt",
+    "flutter_path": "current_shell_verified",
+    "full_rebuild_performed": false,
+    "existing_codespace_reused": true
+  },
+  "ci_optimization": {
+    "baseline_duration_seconds": 447,
+    "new_full_ci_duration_seconds": null,
+    "documentation_only_ci_duration_seconds": null,
+    "ordinary_dart_ci_duration_seconds": null,
+    "cold_cache_duration_seconds": null,
+    "warm_cache_duration_seconds": null,
+    "speed_improvement_percent": null,
+    "selective_ci": "classifier_local_tests_passed",
+    "parallel_builds": "configured_not_tested",
+    "flutter_cache": "configured_not_tested",
+    "pub_cache": "configured_not_tested",
+    "gradle_cache": "configured_not_tested",
+    "final_ci_gate": "configured_not_tested",
+    "manual_full_ci": "configured_not_tested",
+    "dynamic_artifact_versioning": "configured_not_tested"
+  },
+  "architecture": {
+    "main_dart_minimal": true,
+    "module_registry": "local_tests_passed",
+    "navigation": "local_tests_passed",
+    "dependency_injection": "local_tests_passed",
+    "mvvm": "local_tests_passed",
+    "design_system": "implemented",
+    "module_boundaries": "static_check_passed"
+  },
+  "database": {
+    "engine": "SQLite + Drift",
+    "schema_version": 1,
+    "crud_tests": "passed",
+    "persistence_test": "passed",
+    "migration_tests": "test_schema_additive_migration_passed",
+    "foreign_keys": "passed",
+    "transaction_tests": "passed",
+    "cloud_backup_exclusions": "configured_runtime_not_tested"
+  },
+  "tests": {
+    "dart_format": "passed",
+    "flutter_analyze": "passed",
+    "flutter_test": "passed",
+    "test_count": null,
+    "github_actions": "not_tested"
+  },
+  "builds": {
+    "android": {
+      "status": "not_tested",
+      "artifact_url": null,
+      "file_size_mb": null
+    },
+    "ios": {
+      "status": "not_tested",
+      "artifact_url": null,
+      "file_size_mb": null,
+      "signed": false
+    }
+  },
+  "github_actions_run_url": null,
+  "verified_results": [
+    "Local checks in Codespace passed before commit"
+  ],
+  "unverified_results": [
+    "Full Android and iOS CI; cache performance; physical installation; backup exclusion on devices; license legal review"
+  ],
+  "problems": [],
+  "known_limitations": [
+    "Final signing and physical device installation deferred. No actual production migration exists yet."
+  ],
+  "unfinished_tasks": [
+    "Verify exact source commit CI, artifact logs, gate, review, merge and tag; finalize handoff"
+  ],
+  "recommendations_for_phase_03": [],
+  "additional_cost_eur": null,
+  "ready_for_architect_review": false,
+  "next_phase_started": false
+}

@@ -16,7 +16,11 @@ print('APK structure OK')
 PY_APK
 badging=$("$tools/aapt" dump badging "$apk")
 printf '%s\n' "$badging"
-grep -Eq "^package: name='io\.github\.aleksandurbojilov09\.garage' versionCode='1' versionName='0\.0\.1'" <<< "$badging"
+version=$(python3 scripts/version.py version)
+build=$(python3 scripts/version.py build)
+expected="package: name='io.github.aleksandurbojilov09.garage' versionCode='$build' versionName='$version'"
+package_line=$(grep '^package: ' <<< "$badging")
+[[ "$package_line" == "$expected" || "$package_line" == "$expected "* ]]
 grep -q '^application-debuggable' <<< "$badging"
 cert=$("$tools/apksigner" verify --verbose --print-certs "$apk")
 printf '%s\n' "$cert"

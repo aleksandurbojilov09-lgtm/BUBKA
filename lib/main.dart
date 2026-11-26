@@ -1,5 +1,3 @@
-import 'package:flutter/widgets.dart';
+import 'app/bootstrap.dart';
 
-import 'app.dart';
-
-void main() => runApp(const BubkaApp());
+void main() => bootstrap();

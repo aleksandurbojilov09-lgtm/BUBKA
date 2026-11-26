@@ -1,18 +1,27 @@
 name: garage
 description: Personal digital garage for Android and iOS.
 publish_to: 'none'
-version: 0.0.1+1
+version: 0.1.0+2
 
 environment:
   sdk: ^3.14.0
 
 dependencies:
+  drift: ^2.35.4
   flutter:
     sdk: flutter
+  go_router: ^18.1.4
+  material_ui: ^1.11.1
+  path_provider: ^2.1.6
+  provider: ^6.1.5+1
 dev_dependencies:
+  integration_test:
+    sdk: flutter
   flutter_test:
     sdk: flutter
   flutter_lints: ^6.0.0
+  drift_dev: ^2.35.3
+  build_runner: ^2.17.1
 
 flutter:
   uses-material-design: true
