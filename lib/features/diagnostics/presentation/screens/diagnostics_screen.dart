@@ -19,7 +19,7 @@ class DiagnosticsScreen extends StatelessWidget {
         await service.upsert(
           LocalReminder(
             id: 2147483647,
-            title: 'BUBKA',
+            title: 'BUBA',
             body: 'Тестово локално известие',
             localDateTime: DateTime.now().add(const Duration(minutes: 2)),
           ),

@@ -56,7 +56,7 @@ class UpdateController extends ChangeNotifier {
         notifyListeners();
       });
       message = result == 'permission'
-          ? 'Разреши инсталиране от BUBKA и натисни отново.'
+          ? 'Разреши инсталиране от BUBA и натисни отново.'
           : 'Завърши инсталацията в системния прозорец или SideStore.';
     } catch (_) {
       message = 'Актуализацията не премина проверката или изтеглянето.';

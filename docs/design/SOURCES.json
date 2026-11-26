@@ -1,0 +1,75 @@
+{
+  "checked_date": "2026-11-26",
+  "verified_public_references": [
+    {
+      "name": "Flutter adaptive responsive",
+      "url": "https://docs.flutter.dev/ui/adaptive-responsive",
+      "purpose": "Адаптивно разпределение."
+    },
+    {
+      "name": "Flutter accessibility",
+      "url": "https://docs.flutter.dev/ui/accessibility",
+      "purpose": "Достъпност."
+    },
+    {
+      "name": "Flutter reduceMotion",
+      "url": "https://api.flutter.dev/flutter/widgets/MediaQueryData/reduceMotion.html",
+      "purpose": "Намалено движение; проверка срещу фиксирана версия."
+    },
+    {
+      "name": "Flutter disableAnimations",
+      "url": "https://api.flutter.dev/flutter/widgets/MediaQueryData/disableAnimations.html",
+      "purpose": "Системни настройки за анимации."
+    },
+    {
+      "name": "Android adaptive icons",
+      "url": "https://developer.android.com/develop/ui/compose/system/icon_design_adaptive",
+      "purpose": "Слоеве и системна маска."
+    },
+    {
+      "name": "Apple App icons",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/app-icons/",
+      "purpose": "Системни маски; икона."
+    },
+    {
+      "name": "Apple Icon Composer",
+      "url": "https://developer.apple.com/icon-composer/",
+      "purpose": "Технически вариант за оценка."
+    },
+    {
+      "name": "Гаранционен фонд",
+      "url": "https://portal.guaranteefund.org/bg/информационен-център-и-справки/за-информационния-център",
+      "purpose": "Официална справка; само браузър."
+    },
+    {
+      "name": "ИААА",
+      "url": "https://www.rta.government.bg/services/reports-frontend-web/index.html",
+      "purpose": "Проверка ГТП."
+    },
+    {
+      "name": "БГТОЛ",
+      "url": "https://web.bgtoll.bg/",
+      "purpose": "Проверка на винетка."
+    },
+    {
+      "name": "е-Управление",
+      "url": "https://www.identity.egov.bg/wps/portal/egov/dostavchitsi%20na%20uslugi/obshtinski%20administratsii/unificirani%20uslugi/9416?cP=1&callerId=72c8b8df-23d4-447b-b801-c703f7ecac07",
+      "purpose": "Проверка местни данъци и такси; възможна идентификация."
+    }
+  ],
+  "assignment_references": [
+    "https://developer.android.com/develop/ui/views/launch/splash-screen",
+    "https://docs.flutter.dev/platform-integration/ios/launch-screen",
+    "https://api.flutter.dev/flutter/rendering/CustomPainter-class.html",
+    "https://api.flutter.dev/flutter/animation/AnimationController-class.html",
+    "https://api.flutter.dev/flutter/widgets/MediaQueryData/reduceMotion.html",
+    "https://api.flutter.dev/flutter/widgets/MediaQueryData/disableAnimations.html",
+    "https://docs.flutter.dev/tools/devtools/performance"
+  ],
+  "earlier_design_research_references": [
+    "https://www.fuel.io/",
+    "https://www.drivvo.com/bg/",
+    "https://www.carfax.com/Service"
+  ],
+  "limits": "Няма доказан разрешен автоматичен API според RESEARCH-002 в заданието. Публичните справки не доказват право за API или scraping. Не са подавани лични данни."
+}

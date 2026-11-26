@@ -16,3 +16,10 @@
 
 ## Статус
 Фаза 01 е приета. Фаза 02 е приета с последващи задачи по архитектурно решение. Фаза 03 е одобрена и в процес; цел 0.2.0+3, тестово обновяване 0.2.1+4. Фаза 04 остава блокирана.
+
+## Current authorization — 04 in progress
+03 partial physical validation; 003A accepted. 04 authorized for one candidate only, not merged or released. 05–12 remain deferred.
+
+
+## Актуален статус (26.11.2026)
+03 accepted_with_followups, 003A accepted; 04 V5 Final Polish visually accepted, локално BUBA преименуване в проверка. Публикувана 0.2.1+4, кандидат 0.3.0+5. Не е разрешен публичен push/PR/CI/merge/release или фаза 05.

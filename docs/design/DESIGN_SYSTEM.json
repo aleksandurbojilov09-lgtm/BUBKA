@@ -1,0 +1,182 @@
+{
+  "project": "BUBKA",
+  "task_id": "BUBKA-DESIGN-002",
+  "identity": "Cockpit Premium / Monogram B Gold Edition",
+  "status": "owner_approved_visual_direction",
+  "colors": {
+    "background_black": "#101114",
+    "background_graphite": "#151619",
+    "surface": "#25262B",
+    "surface_dark": "#202125",
+    "surface_light": "#2C2D31",
+    "gold": "#E6BD7E",
+    "gold_highlight": "#F6D29A",
+    "gold_dark": "#C19A67",
+    "gold_shadow": "#685740",
+    "text_primary": "#F5F4F3",
+    "text_secondary": "#B5B6BE",
+    "border": "#42434A",
+    "headlight": "#FFFFFF",
+    "resource_full": "#4BC58F",
+    "resource_half": "#E5C957",
+    "resource_quarter": "#E59F50",
+    "resource_low": "#E76269",
+    "resource_unknown": "#94969C",
+    "error_text": "#FF9B9D"
+  },
+  "resource_ring": {
+    "count": 1,
+    "per_vehicle": true,
+    "interpolation": "single hue across remaining metallic segment; no permanent multicolor arc",
+    "reference_stops_percent": [
+      [
+        100,
+        "#4BC58F"
+      ],
+      [
+        50,
+        "#E5C957"
+      ],
+      [
+        25,
+        "#E59F50"
+      ],
+      [
+        5,
+        "#E76269"
+      ],
+      [
+        0,
+        "#E76269"
+      ]
+    ],
+    "threshold_status": "100/50/near-zero direction locked; 25/5 were approved as demo visuals, production thresholds not separately established",
+    "unknown": "neutral track; known days/km may be shown without a percentage",
+    "zero": "red text and visible marker even with no arc",
+    "status_text_required": true
+  },
+  "type": {
+    "family": "platform system sans-serif; Bulgarian Cyrillic; no bundled font",
+    "title_sp": [
+      24,
+      28
+    ],
+    "metric_sp": [
+      34,
+      40
+    ],
+    "body_sp": [
+      14,
+      16
+    ],
+    "secondary_sp": [
+      12,
+      14
+    ],
+    "wordmark_tracking_reference_px": 5,
+    "numeric": "tabular where available"
+  },
+  "spacing_dp": [
+    4,
+    8,
+    12,
+    16,
+    24,
+    32
+  ],
+  "radius_dp": {
+    "card": [
+      16,
+      20
+    ],
+    "input": 12,
+    "button": 14,
+    "sheet": 26,
+    "plate": 6
+  },
+  "touch_target_dp": 48,
+  "surfaces": {
+    "card_gradient": [
+      "#2C2D31",
+      "#202125"
+    ],
+    "gold_gradient": [
+      "#F5D3A0",
+      "#C59B63"
+    ],
+    "stroke": "subtle 1 dp; selected champagne gold",
+    "shadow": "subtle inset highlight; no persistent glare",
+    "sheet": "matte with optional restrained blur"
+  },
+  "components": {
+    "plate": "BG + registration; neutral fallback without number",
+    "fields": "label above, dark fill, clear inline error; no unnecessary confirmation controls",
+    "navigation": [
+      "Начало",
+      "Гараж",
+      "+",
+      "Статистика",
+      "Настройки"
+    ],
+    "quick_cards": [
+      "Гориво",
+      "Сервиз",
+      "Документи",
+      "Срокове"
+    ],
+    "charts": "gold bars, axes and labels, known sums with incomplete status, no decorative invented values",
+    "states": [
+      "loading",
+      "empty",
+      "missing",
+      "partial",
+      "error",
+      "success",
+      "selected",
+      "disabled",
+      "expired",
+      "due_today"
+    ]
+  },
+  "responsive": {
+    "compact_reference_width_dp": 320,
+    "standard_reference_width_dp": 390,
+    "tablet_reference_width_dp": 700,
+    "breakpoints": "reference only; actual available space and text scaling govern layout",
+    "compact": "2x2 quick cards if 4 do not fit; vertically scroll content above fixed safe-area navigation",
+    "tablet": "two columns cockpit and actions/metrics when room; single column otherwise",
+    "large_text": "wrap and grow vertically; never clip or overlay; no fixed text-height assumptions",
+    "known_previous_mockup_issue": "320×740 SVG preview had overlap of metric card and nav; corrected requirement is scrollable content with bottom inset; not approved as pixel-exact screenshot"
+  },
+  "accessibility": {
+    "contrast_on_surface_calculated": {
+      "gold": 8.59,
+      "text_primary": 13.75,
+      "text_secondary": 7.48,
+      "resource_full": 6.96,
+      "resource_half": 9.22,
+      "resource_quarter": 6.76,
+      "resource_low": 4.56,
+      "resource_unknown": 5.11,
+      "error_text": 7.5
+    },
+    "min_normal_text_ratio": 4.5,
+    "status_not_color_only": true,
+    "small_error_text": "#FF9B9D",
+    "screen_reader_labels": true,
+    "system_reduced_motion": true,
+    "physical_validation": false
+  },
+  "icon": {
+    "master": "assets/MONOGRAM_B_APPROVED.png",
+    "approved": "metallic stylized B, gold graphite, no added text",
+    "preview_sizes": [
+      1024,
+      512,
+      192,
+      64,
+      48
+    ],
+    "production_status": "system mask and adaptive foreground/background not finalized; approved bitmap is reference, not store-ready icon"
+  }
+}

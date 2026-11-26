@@ -47,3 +47,23 @@ https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45773199863
 
 ## BUBKA-003A — candidate pending CI
 Adopt PR-Lite → trusted full main CI → artifact-only explicit release. Retain sequential Common checks before parallel platforms, pinned SDK/actions and build scripts to avoid risk and additional runner work. Exact synthetic merge checkout, conservative classification of all commits, same-attempt artifact provenance, SHA-256 verification. No app version change or new publication for infrastructure. Historical baseline PR 537s, main 588s, release 71s; ordinary PR-Lite projected 160–180s, total 819–839s, not measured. A CI policy change itself requires full PR and full main checks if merged.
+
+## BUBKA-004 local design decisions (not yet accepted)
+Use current material_ui, Flutter Canvas/CustomPainter, no new dependencies. Preview gated by current testing channel, no DB writes. Separate real resource from demonstration values; no full-to-full calculation or historical checkbox. Android/iOS black launch; retain current launcher assets pending approval of removal/adaptation of the pre-rounded icon border. Exact visual/performance results pending. See docs/design/PHASE-04-NOTES.md.
+
+## BUBKA-004 V4 — owner/architect decisions
+- Android launcher: approved variant B, inner metallic ring, 108dp adaptive layers; original opaque square identity for iOS, no pre-mask. Physical mask verification pending.
+- Settings → За приложението: exact credit `Developed by A.Bozhilov`. Not part of Cinematic Ignition.
+- V3 visual acceptance rejected. V4 local correction only, no commit/push/PR/merge/release/phase 05.
+
+
+## V5 local candidate
+DESIGN-003 reconstruction owner-approved; V5 uses exact local PNG layers, shared car 137x72, native ring/surfaces, four tiles at 390dp/1.0; system fonts. Final rights clearance pending.
+
+
+## BUBKA → BUBA (26.11.2026)
+Собственикът избра BUBA (Буба) само като потребителски бранд. V5 Final Polish е одобрен преди преименуването. Техническите идентификатори и договори остават BUBKA; wordmark и отражението запазват 540×102 canvas и оригинални буквени пиксели/blur, без външен шрифт. Иконите и останалите 28 PNG не се променят. Окончателна проверка на търговски марки и права не е доказана. Публичен push изисква изрично решение на собственика и архитекта.
+
+
+## BUBA-004-PR-AUTHORIZATION (26.11.2026) — актуално решение
+Собственикът одобри BUBA render и публичния push с остатъчен риск; архитектът прие тесния rebrand diff. Одобрен архив SHA-256: `33a636586c2d049c3943afdf180552f01b86c0ed80b6474de3c0601e3ae9fc96` (119 source files). Rights review: preliminary_not_legal_clearance; не е правно разрешение. Този мандат отменя само предишния STOP за изчакване на одобрението, включително в историческия AGENTS.md. След live preflight PASS: един commit/push/PR и задължителен CI. Без merge, tag, release, version bump или фаза 05. Публикувана 0.2.1+4; кандидат 0.3.0+5. Техническите BUBKA договори остават.

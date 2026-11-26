@@ -1,0 +1,26 @@
+{
+  "sources": [
+    {
+      "url": "https://api.flutter.dev/flutter/rendering/CustomPainter-class.html",
+      "purpose": "native vector geometry and shader rendering"
+    },
+    {
+      "url": "https://docs.flutter.dev/ui/adaptive-responsive",
+      "purpose": "responsive layout"
+    },
+    {
+      "url": "https://docs.flutter.dev/ui/adaptive-responsive/safearea-mediaquery",
+      "purpose": "safe areas"
+    },
+    {
+      "url": "https://docs.flutter.dev/ui/accessibility/ui-design-and-styling",
+      "purpose": "text scale and accessibility"
+    },
+    {
+      "url": "https://docs.flutter.dev/release/breaking-changes/android-14-nonlinear-text-scaling-migration",
+      "purpose": "TextScaler"
+    }
+  ],
+  "external_asset_downloads": 0,
+  "note": "No new dependencies. SVG source for design/native path conversion; PNG alpha layers for effects, avoid unsupported SVG filter path. Verify fixed Flutter version during implementation."
+}

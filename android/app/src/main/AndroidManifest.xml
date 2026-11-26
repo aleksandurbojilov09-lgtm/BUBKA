@@ -4,7 +4,7 @@
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>
     <application
-        android:label="BUBKA"
+        android:label="BUBA"
         android:allowBackup="false"
         android:fullBackupContent="@xml/bubka_backup_rules"
         android:dataExtractionRules="@xml/bubka_data_extraction_rules"

@@ -21,3 +21,6 @@ Flutter + Dart; modular monolith; feature-first; MVVM; Provider + ChangeNotifier
 
 ## Phase 03 candidate
 Local notification plan and snapshots in the backup-excluded private directory. Separate core updates transport, manifest, service, app controller and native platform adapter; no changes to production SQLite schema or application identity. Release signing separate from untrusted PR builds.
+
+## Phase 04 local UI candidate (unverified)
+Native presentation components and Canvas scene in design_system; feature-first cockpit presentation; existing GoRouter, Provider, module registry and diagnostics/updater preserved by design. Fixture model is in-memory only, gated by existing testing channel; no vehicle DB. See docs/design/PHASE-04-NOTES.md and route contract. Actual regression evidence pending.

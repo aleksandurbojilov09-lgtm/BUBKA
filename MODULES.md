@@ -26,3 +26,6 @@
 `core/notifications`: local calendar reminders, stable integer IDs, local JSON plan, platform adapter, nearest 60 on iOS; diagnostic controls. `core/updates`: version and manifest validation foundation. No business modules.
 
 `core/updates` includes transport, manifest, daily/manual checks, checksum-verified downloads, Android system installer and iOS share flow. Testing channel is temporary for phase 03; stable channel excludes prereleases. All pending physical verification.
+
+## Phase 04 candidate
+`design_system` shared UI; `features/cockpit` presentation-only shell and visual fixtures. No new business modules, SQLite tables or runtime persistence. Existing diagnostics module remains in registry; updater in Settings. All 30 contracts in docs/design/PHASE-04-ROUTE-CONTRACT.json.

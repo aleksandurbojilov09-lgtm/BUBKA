@@ -1,0 +1,119 @@
+{
+  "project": "BUBKA",
+  "name": "Cinematic Ignition",
+  "status": "owner_approved",
+  "duration_ms": 3400,
+  "timeline": [
+    {
+      "start_ms": 0,
+      "end_ms": 300,
+      "stage": "мрак"
+    },
+    {
+      "start_ms": 300,
+      "end_ms": 890,
+      "stage": "първи фарове"
+    },
+    {
+      "start_ms": 890,
+      "end_ms": 1150,
+      "stage": "изгасване"
+    },
+    {
+      "start_ms": 1150,
+      "end_ms": 1430,
+      "stage": "втори фарове и снопове"
+    },
+    {
+      "start_ms": 1430,
+      "end_ms": 1830,
+      "stage": "надпис върху пътя"
+    },
+    {
+      "start_ms": 1830,
+      "end_ms": 2550,
+      "stage": "издигане на логото"
+    },
+    {
+      "start_ms": 2550,
+      "end_ms": 3400,
+      "stage": "разкриване на Cockpit"
+    }
+  ],
+  "scene": {
+    "viewBox": [
+      0,
+      0,
+      360,
+      740
+    ],
+    "car_viewBox": [
+      0,
+      0,
+      150,
+      85
+    ],
+    "car_transform": "translate(119 225) scale(.8133)",
+    "left_headlight_anchor": [
+      143,
+      262
+    ],
+    "right_headlight_anchor": [
+      217,
+      262
+    ],
+    "ring_center": [
+      180,
+      341
+    ],
+    "ring_radius": 134,
+    "ring_stroke": 7.5,
+    "logo_x_percent": 50,
+    "logo_start_top_percent": 48.6,
+    "logo_final_top_percent": 9.75,
+    "logo_start_perspective_px": 230,
+    "logo_start_rotateX_deg": 48,
+    "logo_start_scale": 1.3,
+    "logo_end_scale": 1,
+    "note": "Anchors from visible Cinematic Ignition source. Real responsive layout uses same coordinate mapping for intro and home. Ring fill/color must reflect selected real resource per later approved update."
+  },
+  "layers": [
+    "black",
+    "ui background",
+    "ground",
+    "beams",
+    "reflection",
+    "car body",
+    "left headlight",
+    "right headlight",
+    "flare",
+    "wordmark",
+    "ring",
+    "details",
+    "quick actions",
+    "summary",
+    "nav"
+  ],
+  "reference_keyframes_file": "prototypes/ignition-reference.css",
+  "curves": {
+    "intro_layers": "linear in original CSS keyframes",
+    "ring": "cubic-bezier(.15,.7,.25,1)",
+    "page": "cubic-bezier(.2,.8,.2,1)"
+  },
+  "policy": "Системен launch screen на Android/iOS в черно, след него Flutter анимацията върху същата сцена като home. Не обещавай невидим Android системен splash. Само cold start, не при resume/navigation; при deep link/действие от известие да не се блокира желаната страница. Reduced motion/disable animations — без присветвания и движение на логото, кратко преливане или директен home. Няма безкрайно чакане при грешка в bootstrap.",
+  "additional_motion_reference_ms": {
+    "ring": 950,
+    "vehicle_switch": 380,
+    "screen": 320,
+    "garage_selection": 250,
+    "quick_sheet": 340,
+    "button_feedback": 160,
+    "statistics": 700
+  },
+  "performance": {
+    "target_fps": 60,
+    "measured": false,
+    "future_acceptance": "Flutter golden/widget tests за ключови екрани и състояния; стабилна геометрия на купето; без проблясък/скок при край на intro; Android/iOS реални проверки, profile DevTools frame timing (60 Hz бюджет около 16.7 ms, цел 60 FPS), стартово време отделно от 3.4 s intro, памет преди/по време/след, няма активни декоративни tickers в покой. Това са бъдещи критерии, не задачи за дизайнера."
+  },
+  "original_source_status": "Visible original SVG path and keyframe snippets copied; local demo wrapper is reconstructed, not a byte-identical complete AppBlock export."
+}

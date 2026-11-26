@@ -1,0 +1,239 @@
+{
+  "color_space": "sRGB",
+  "surfaces": {
+    "base": {
+      "stops": [
+        [
+          0,
+          "#2b2c30"
+        ],
+        [
+          0.42,
+          "#1e1f23"
+        ],
+        [
+          1,
+          "#141518"
+        ]
+      ],
+      "radial_center": [
+        0.13,
+        0.04
+      ],
+      "radius": 0.92,
+      "stretch": "native shader across available viewport, not whole UI raster"
+    },
+    "grain": {
+      "tile_px": [
+        192,
+        192
+      ],
+      "seed": 20261126,
+      "blend": "sourceOver",
+      "opacity": "baked alpha 0–4/255; sourceOver"
+    },
+    "arc": {
+      "viewBox": [
+        0,
+        0,
+        390,
+        310
+      ],
+      "anchor": "top of Home at y114; x=0; scale width only, preserve relative curvature; no arc on Garage",
+      "path": "M0 104Q195 -92 390 104V310H0Z",
+      "stops": [
+        [
+          0,
+          "#101114",
+          0.35
+        ],
+        [
+          1,
+          "#101114",
+          0
+        ]
+      ],
+      "stroke": 0.8
+    },
+    "soft_light": {
+      "asset": "soft_light.png",
+      "blend": "sourceOver",
+      "opacity": "baked maximum about .036"
+    },
+    "matte": {
+      "stops": [
+        [
+          0,
+          "#303136"
+        ],
+        [
+          0.52,
+          "#222327"
+        ],
+        [
+          1,
+          "#1c1d20"
+        ]
+      ],
+      "gradient_from": [
+        0,
+        0
+      ],
+      "to": [
+        0.8,
+        1
+      ],
+      "border": "#37383c",
+      "radii": {
+        "quick": 16,
+        "summary": 19,
+        "garage": 22
+      },
+      "render": "native rounded rect, no SVG stretch of corners"
+    },
+    "selected": {
+      "stops": [
+        [
+          0,
+          "#39342e"
+        ],
+        [
+          0.52,
+          "#252527"
+        ],
+        [
+          1,
+          "#1b1c20"
+        ]
+      ],
+      "border_stops": [
+        [
+          0,
+          "#fff0c8"
+        ],
+        [
+          0.35,
+          "#dfb779"
+        ],
+        [
+          0.7,
+          "#a9814d"
+        ],
+        [
+          1,
+          "#f0c88c"
+        ]
+      ],
+      "border_dp": 1.6,
+      "radius_dp": 22,
+      "inner_glow": "selected_inner_glow.png, clip roundrect, sourceOver, use normalized edge shader for different aspect ratios or 9-slice 32dp cap"
+    },
+    "navigation": {
+      "stops": [
+        [
+          0,
+          "#232428"
+        ],
+        [
+          0.52,
+          "#1b1c20"
+        ],
+        [
+          1,
+          "#17181b"
+        ]
+      ],
+      "radius_top": 17,
+      "height_dp": 66
+    }
+  },
+  "ring": {
+    "viewBox": [
+      0,
+      0,
+      270,
+      270
+    ],
+    "center": [
+      135,
+      135
+    ],
+    "radius": 127,
+    "stroke_dp": 8.5,
+    "cap": "round",
+    "start_deg": -90,
+    "direction": "clockwise",
+    "sweep": "360*clamp(resource fraction,0,1)",
+    "inactive_stops": [
+      [
+        0,
+        "#56565a"
+      ],
+      [
+        0.45,
+        "#35363a"
+      ],
+      [
+        1,
+        "#252629"
+      ]
+    ],
+    "active_metal_shader": {
+      "type": "linear across ring bounds",
+      "stops": [
+        [
+          0,
+          0.54
+        ],
+        [
+          0.28,
+          0.8
+        ],
+        [
+          0.47,
+          1.07
+        ],
+        [
+          0.57,
+          1.14
+        ],
+        [
+          0.72,
+          1.0
+        ],
+        [
+          1,
+          0.68
+        ]
+      ],
+      "meaning": "multiply chosen single semantic RGB by factor; clamp channels; do not interpolate multiple semantic colors along the arc"
+    },
+    "glow": "optional 6dp sigma, same hue alpha .10; disabled for unknown; no continuous motion",
+    "zero": "red dot radius 4.3 at [135,8] with text status",
+    "unknown": "track only, neutral text and add action; do not invent percentage",
+    "semantic_anchors_proposal": [
+      [
+        0,
+        "#E76269"
+      ],
+      [
+        5,
+        "#E76269"
+      ],
+      [
+        25,
+        "#E59F50"
+      ],
+      [
+        50,
+        "#E5C957"
+      ],
+      [
+        100,
+        "#4BC58F"
+      ]
+    ],
+    "thresholds": "demonstration; final thresholds architect/owner",
+    "text_red": "#FF9B9D"
+  }
+}

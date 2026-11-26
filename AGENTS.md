@@ -30,3 +30,20 @@ Do not push small implementation commits to an open PR one at a time. Prepare a 
 
 ## BUBKA-003A — CI policy supersedes earlier selective CI rules
 PR validates synthetic merge result. Docs-only checks docs/scripts/diff; known ordinary Dart changes and proven version-only changes run common checks without platform builds; native-only changes run the relevant platform, shared/unknown/dependency/schema/CI changes require both. Every non-doc main push and explicit main dispatch require full Android+iOS. Preserve strict BUBKA CI gate and no secrets in PR. Release uses exact-main, same-attempt successful CI artifacts and archive/payload SHA-256; no build in release. One task branch, one grouped push, one PR; no version bump for infrastructure. Phase 04 is not authorized.
+
+## BUBKA-004 — current authorization (supersedes historical phase 04 blocks)
+Фаза 04 е разрешена само за UI implementation и PR кандидат; без merge/release/05. Йерархия: последно изрично решение на собственика > архитектурен мандат > одобрени оригинални макети > спецификации > реконструирани HTML. Двойна проверка на решенията спрямо код/SDK и официални интернет източници; конфликт или блокер се ескалира с доказателства. Един общ TXT/команда/пакет, една push операция и един PR след локален format/analyze/test и visual review; независимо приемане от архитекта. Никакви платени услуги, облак, фиктивни production данни, промяна на identities/данни/signing/schema/CI/update/notification policy. Не започвай следваща фаза без отделно одобрение. Фаза 03 остава partial; 003A accepted.
+
+## BUBKA-004 visual correction authorization
+Only local visual correction authorized by the architect; no push, PR, merge, release or phase 05 until new evidence is accepted. Phase 03 accepted with follow-ups per architect; iOS install/start/update/data retention/notification receipt owner-reported, not independently measured. Timing, iOS refresh and backups pending.
+
+## BUBKA-004 V4
+Local visual fidelity and native icon B authorized only. Owner rejected V3. No commit/push/PR/merge/release or phase 05. No new runtime dependency. Preserve exact baseline and V3 source hashes.
+
+
+## V5 local candidate
+V5 authorized local DESIGN-003 integration only. Preserve native icons, no commit/push/PR/CI/native build/merge/release/phase05.
+
+
+## BUBA-004 — актуален мандат (има предимство пред старите статуси)
+Потребителско име BUBA (Буба), старо BUBKA. V5 Final Polish визуално приет от собственик и архитект; одобреният архив е неизменен. Разрешено е само локално преименуване; публичният push е блокиран до изрично приемане на остатъчния риск от собственика и архитектурно приемане на точния diff. Няма commit/PR/CI/merge/release/05. Запази техническите BUBKA договори, package garage, identity, signing, DB/paths/keys, update/release filenames, CI gate. Фаза 03 accepted_with_followups (известия timing/reconciliation, iOS refresh, локални backups, независим signing backup). Историческите записи не са текущи разрешения. Един общ пакет и отчет; без нов дизайн.
