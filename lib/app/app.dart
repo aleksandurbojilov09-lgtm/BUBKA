@@ -5,6 +5,7 @@ import 'package:material_ui/material_ui.dart';
 import 'package:provider/provider.dart';
 
 import '../core/database/database.dart';
+import '../core/notifications/notification_service.dart';
 import '../design_system/theme.dart';
 import '../features/diagnostics/diagnostics.dart';
 import 'modules/module_availability.dart';
@@ -13,8 +14,9 @@ import 'providers/composition.dart';
 import 'router/router.dart';
 
 class BubkaApp extends StatefulWidget {
-  const BubkaApp({super.key, required this.database});
+  const BubkaApp({super.key, required this.database, this.notifications});
   final AppDatabase database;
+  final NotificationService? notifications;
 
   @override
   State<BubkaApp> createState() => _BubkaAppState();
@@ -32,6 +34,18 @@ class _BubkaAppState extends State<BubkaApp> {
     _availability = ModuleAvailability(widget.database);
     _router = createRouter(_registry, _availability);
     unawaited(_availability.load());
+    final notifications = widget.notifications;
+    if (notifications != null) {
+      unawaited(_restoreNotifications(notifications));
+    }
+  }
+
+  Future<void> _restoreNotifications(NotificationService service) async {
+    try {
+      await service.synchronize();
+    } catch (_) {
+      // Permission or platform errors must not prevent offline startup.
+    }
   }
 
   @override
@@ -46,6 +60,7 @@ class _BubkaAppState extends State<BubkaApp> {
   Widget build(BuildContext context) => MultiProvider(
     providers: [
       Provider<AppDatabase>.value(value: widget.database),
+      Provider<NotificationService?>.value(value: widget.notifications),
       Provider<ModuleRegistry>.value(value: _registry),
       Provider<DiagnosticsRepository>(
         create: (_) => LocalDiagnosticsRepository(widget.database),
