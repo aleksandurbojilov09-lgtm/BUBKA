@@ -24,3 +24,6 @@
 
 ## Grouped implementation rule
 Do not push small implementation commits to an open PR one at a time. Prepare a coherent batch on a non-PR staging branch, run formatting, analysis and targeted/full local tests, then advance the PR branch once. Do not repeat full builds solely to measure performance. Release workflow consumes a successful full CI run for the exact protected main SHA; signing secrets restricted to main.
+
+## Задължителна пакетна поправка (архитектурен преглед BUBKA-003)
+Един общ пакет, един TXT и една команда; без експериментални push операции към PR. При Android release дефект първо диагностика на RAM/cgroup и предварителна release plugin регистрация, после една локална release компилация и верификация. Push към PR само след успех. При грешка запази конкретния failed task, безопасна диагностика и SHA, без секрети. Не премахвай интеграционните тестове и не изменяй Flutter SDK.

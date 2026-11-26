@@ -1,0 +1,115 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+umask 077
+cd /workspaces/BUBKA
+branch=phase/03-installation-updates
+baseline=e86db5bb1ffae13ec570540073bdf35258fabcd3
+[[ $(git branch --show-current) == "$branch" ]]
+test -z "$(git status --porcelain --untracked-files=no)"
+if ! command -v flutter >/dev/null 2>&1; then source "$HOME/.config/bubka/env.sh"; fi
+command -v flutter
+command -v dart
+command -v python3
+: "${ANDROID_HOME:?Android SDK environment missing}"
+logs=$(mktemp -d "$HOME/bubka-repair.XXXXXXXX")
+echo "Private logs: $logs"
+# The launcher passes the exact staged commit; diagnose before merging it.
+candidate=${1:?Pinned repair commit required}
+git cat-file -e "$candidate^{commit}"
+echo "Local HEAD: $(git rev-parse HEAD)"
+free -h
+swapon --show || true
+nproc
+df -h . "$HOME" /tmp
+df -i . "$HOME" /tmp
+cat /proc/self/cgroup
+findmnt -t cgroup2 || true
+ps -eo pid,comm,rss --sort=-rss | head -15 || true
+# Preserve only private local copies; never print full previous daemon logs.
+old="${GRADLE_USER_HOME:-$HOME/.gradle}/daemon/9.5.0/daemon-80293.out.log"
+if [[ -f "$old" ]]; then
+  tail -n 180 "$old" > "$logs/old-daemon.log"
+  python3 - "$old" <<'PY'
+import re,sys
+data=open(sys.argv[1],errors="replace").read()
+for marker in ("OutOfMemoryError","Java heap space","Metaspace","SIGSEGV","SIGABRT","daemon has exited normally","user interrupt"):
+    print(f"Old daemon marker {marker}: {len(re.findall(re.escape(marker),data,re.I))}")
+PY
+fi
+find "${GRADLE_USER_HOME:-$HOME/.gradle}/daemon" "$PWD/android" /tmp -maxdepth 4 -type f -name 'hs_err_pid*.log' -print 2>/dev/null || true
+(dmesg --ctime 2>/dev/null | grep -Ei 'oom|out of memory|killed process' | tail -20) || true
+java -version
+flutter --version
+(cd android && ./gradlew --version && ./gradlew --status)
+git show "$candidate:scripts/diagnose-release-memory.py" > "$logs/diagnose.py"
+python3 "$logs/diagnose.py" --gate | tee "$logs/memory-initial.json"
+git fetch origin "$branch"
+[[ $(git rev-parse FETCH_HEAD) == "$baseline" ]]
+git merge-base --is-ancestor HEAD "$candidate"
+git merge --ff-only "$candidate"
+[[ $(git rev-parse HEAD) == "$candidate" ]]
+# Only related changes: no full repeat of previously successful Dart suite.
+bash -n scripts/build-android-release.sh scripts/verify-release-apk.sh
+python3 - <<'PY'
+import ast
+from pathlib import Path
+for p in Path("scripts").glob("*.py"):
+    ast.parse(p.read_text(), filename=str(p))
+PY
+python3 scripts/check_docs.py
+python3 scripts/test_release_manifest.py
+python3 scripts/test_ci_classify.py
+python3 scripts/test_ci_gate.py
+git diff --check "$baseline" HEAD
+flutter pub get --enforce-lockfile
+# Parse workflow YAML using the existing Dart YAML dependency.
+cat > "$logs/check_yaml.dart" <<'DART'
+import 'dart:io';
+import 'package:yaml/yaml.dart';
+void main(List<String> args) {
+  for (final path in args) {
+    final doc = loadYaml(File(path).readAsStringSync());
+    if (doc is! YamlMap || doc['jobs'] is! YamlMap) {
+      throw FormatException('Invalid workflow: $path');
+    }
+  }
+}
+DART
+dart --packages="$PWD/.dart_tool/package_config.json" "$logs/check_yaml.dart" .github/workflows/ci.yml .github/workflows/release.yml
+dart format --output=none --set-exit-if-changed test/update_manifest_test.dart
+flutter test --no-pub test/update_manifest_test.dart
+# Stop only idle daemons. The previous status is printed for diagnosis.
+(cd android && ./gradlew --stop)
+python3 "$logs/diagnose.py" --gate | tee "$logs/memory-before.json"
+finish() {
+  rc=$?
+  trap - EXIT
+  python3 "$logs/diagnose.py" > "$logs/memory-after.json" || true
+  python3 - "$logs" <<'PY'
+import json,sys
+from pathlib import Path
+p=Path(sys.argv[1])
+try:
+    before=json.loads((p/"memory-before.json").read_text())
+    after=json.loads((p/"memory-after.json").read_text())
+    old={r["path"]:r for r in before["cgroups"]}
+    for r in after["cgroups"]:
+        prev=old.get(r["path"],{})
+        for k in ("memory.events","memory.events.local"):
+            if k in r and k in prev:
+                print(r["path"],k,"oom_kill delta:",r[k].get("oom_kill",0)-prev[k].get("oom_kill",0))
+except (OSError,ValueError,KeyError) as e:
+    print("Counter comparison unavailable:",type(e).__name__)
+PY
+  echo "Repair exit=$rc; HEAD=$(git rev-parse HEAD); private logs=$logs"
+  exit "$rc"
+}
+trap finish EXIT
+bash scripts/build-android-release.sh 2>&1 | tee "$logs/android-build.log"
+python3 "$logs/diagnose.py" | tee "$logs/memory-after.json"
+git diff --exit-code
+test -z "$(git status --porcelain --untracked-files=no)"
+git fetch origin "$branch"
+[[ $(git rev-parse FETCH_HEAD) == "$baseline" ]]
+git push origin HEAD:refs/heads/"$branch"
+echo BUBKA_PHASE03_REPAIR_VALIDATED_AND_PUSHED

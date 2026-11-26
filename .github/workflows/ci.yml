@@ -41,6 +41,7 @@ jobs:
       - run: python3 scripts/check_docs.py
       - run: python3 scripts/test_ci_classify.py
       - run: python3 scripts/test_ci_gate.py
+      - run: python3 scripts/test_release_manifest.py
       - run: python3 scripts/check_git_diff.py
   checks:
     name: Common checks
@@ -123,7 +124,6 @@ jobs:
       - id: artifact
         run: |
           set -euo pipefail
-          bash scripts/verify-release-apk.sh build/app/outputs/flutter-apk/app-release.apk unsigned
           version=$(python3 scripts/version.py version)
           build=$(python3 scripts/version.py build)
           name="BUBKA-${version}+${build}-unsigned.apk"

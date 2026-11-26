@@ -26,9 +26,9 @@ void main() {
       'platform': 'android',
       'version': '0.2.1',
       'build_number': 4,
-      'filename': 'BUBKA-0.2.1+4.apk',
+      'filename': 'BUBKA-0.2.1-4.apk',
       'download_url':
-          'https://github.com/$releaseRepository/releases/download/v0.2.1/BUBKA-0.2.1+4.apk',
+          'https://github.com/$releaseRepository/releases/download/v0.2.1/BUBKA-0.2.1-4.apk',
       'sha256': List.filled(64, 'a').join(),
       'size_bytes': 100,
     };

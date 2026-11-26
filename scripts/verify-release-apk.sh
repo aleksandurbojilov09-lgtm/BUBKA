@@ -16,6 +16,7 @@ with zipfile.ZipFile(sys.argv[1]) as archive:
     if 'assets/flutter_assets/kernel_blob.bin' in names:
         raise SystemExit('Unexpected debug kernel')
 PY_APK
+python3 scripts/check-apk-native.py "$apk"
 badging=$("$tools/aapt" dump badging "$apk")
 version=$(python3 scripts/version.py version)
 build=$(python3 scripts/version.py build)
@@ -34,8 +35,15 @@ if [[ "$mode" == signed ]]; then
   [[ "$actual_cert" == "$expected_cert" ]]
   [[ $(grep -c '^Signer #[0-9][0-9]* certificate SHA-256 digest:' <<< "$cert") == 1 ]]
 else
-  if "$tools/apksigner" verify "$apk" >/dev/null 2>&1; then
+  python3 scripts/check-unsigned-apk.py "$apk"
+  if result=$("$tools/apksigner" verify "$apk" 2>&1); then
     echo 'Expected unsigned release APK' >&2
+    exit 1
+  fi
+  printf '%s\n' "$result"
+  # Require an explicit missing-signature diagnosis; do not accept arbitrary verifier failures.
+  if ! grep -Eqi 'missing META-INF/MANIFEST\.MF|no (JAR |APK )?signatures?|not signed|no signers' <<< "$result"; then
+    echo 'Unexpected APK verifier failure' >&2
     exit 1
   fi
 fi

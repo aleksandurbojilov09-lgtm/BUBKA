@@ -67,7 +67,7 @@ jobs:
           (cd android-input && sha256sum -c SHA256SUMS.txt)
           (cd ios-input && sha256sum -c SHA256SUMS.txt)
           mkdir dist
-          cp "ios-input/BUBKA-$VERSION+$BUILD-unsigned.ipa" dist/
+          cp "ios-input/BUBKA-$VERSION+$BUILD-unsigned.ipa" "dist/BUBKA-$VERSION-$BUILD-unsigned.ipa"
           "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" 'build-tools;36.0.0'
       - name: Sign approved APK
         env:
@@ -75,7 +75,7 @@ jobs:
           BUBKA_KEYSTORE_PASSWORD: ${{ secrets.BUBKA_KEYSTORE_PASSWORD }}
           VERSION: ${{ needs.validate.outputs.version }}
           BUILD: ${{ needs.validate.outputs.build }}
-        run: bash scripts/sign-release-apk.sh "android-input/BUBKA-$VERSION+$BUILD-unsigned.apk" "dist/BUBKA-$VERSION+$BUILD.apk"
+        run: bash scripts/sign-release-apk.sh "android-input/BUBKA-$VERSION+$BUILD-unsigned.apk" "dist/BUBKA-$VERSION-$BUILD.apk"
       - env:
           CHANNEL: ${{ inputs.channel }}
         run: python3 scripts/create-update-manifest.py dist "$CHANNEL"
@@ -112,3 +112,12 @@ jobs:
           args=()
           if [[ "$CHANNEL" == testing ]]; then args+=(--prerelease --latest=false); fi
           gh release create "$tag" dist/* --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --title "BUBKA $VERSION" --notes "Technical installation and update validation. iOS IPA requires SideStore signing." "${args[@]}"
+          gh api "repos/$GITHUB_REPOSITORY/releases/tags/$tag" > /tmp/published-release.json
+          jq -e --slurpfile manifest dist/update-manifest.json '
+            .draft == false and .prerelease == true and
+            . as $release | all($manifest[0].assets[];
+              . as $expected | any($release.assets[];
+                .name == $expected.filename and .size == $expected.size_bytes and
+                .browser_download_url == $expected.download_url))
+          ' /tmp/published-release.json
+          test "$(gh api "repos/$GITHUB_REPOSITORY/git/ref/tags/$tag" --jq '.object.sha')" = "$GITHUB_SHA"

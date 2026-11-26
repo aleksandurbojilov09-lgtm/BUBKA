@@ -10,3 +10,5 @@
 Phase 03 workflow permits testing releases only; stable publication is intentionally disabled until acceptance and a stable-channel build. The existing CI gate remains required. Release reuses full main CI artifacts without rebuilding.
 
 Android release builds use scripts/build-android-release.sh with normal Flutter plugin regeneration and lockfile verification. Local Android release build and APK validation are required before advancing a correction for this build failure to the PR. Integration tests remain dev dependencies.
+
+Architect review: public release names use hyphens (BUBKA-VERSION-BUILD.apk and BUBKA-VERSION-BUILD-unsigned.ipa), while internal CI artifact names remain unchanged. Manifest test checks names, URLs, sizes and checksums. Verify published assets and tag against the release API. Require 64-bit ELF PT_LOAD alignment of at least 16 KiB and explicit absence of APK signatures before signing. Never pre-create the release tag.

@@ -13,8 +13,8 @@ repo = "aleksandurbojilov09-lgtm/BUBKA"
 tag = f"v{version}"
 assets = []
 for platform, filename in (
-    ("android", f"BUBKA-{version}+{build}.apk"),
-    ("ios", f"BUBKA-{version}+{build}-unsigned.ipa"),
+    ("android", f"BUBKA-{version}-{build}.apk"),
+    ("ios", f"BUBKA-{version}-{build}-unsigned.ipa"),
 ):
     path = directory / filename
     with path.open("rb") as stream:
