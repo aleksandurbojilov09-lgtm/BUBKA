@@ -11,5 +11,8 @@
 ## 0.1.0+2 — 2026-11-26 (фаза 02)
 Архитектурно ядро, диагностичен модул, локална база, селективен CI и динамични версии. Два успешни пълни CI, архитектурното приемане предстои.
 
-## 0.2.0+3 — phase 03 candidate (not released)
-Permanent Android signing preparation, local notification scheduling, snapshot and schema verification, checksum-verified update transport, system installer/share flow and controlled release workflow. Physical and final CI verification pending.
+## 0.2.0+3 — testing prerelease
+Permanent Android signing preparation, local notification scheduling, snapshot and schema verification, checksum-verified update transport, system installer/share flow and controlled release workflow. Full main CI and signed Android prerelease verified; Android initial install confirmed. iOS installation and physical update tests pending.
+
+## 0.2.1+4 — testing update candidate
+Version-only increment for physical update and local data retention verification. No application identity, schema, dependency or business logic changes. Release and physical verification pending.

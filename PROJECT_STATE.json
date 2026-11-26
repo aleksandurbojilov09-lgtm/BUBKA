@@ -1,12 +1,12 @@
 {
   "project": "BUBKA",
-  "version": "0.2.0",
-  "build_number": 3,
+  "version": "0.2.1",
+  "build_number": 4,
   "phase": 3,
-  "phase_status": "implementation_pending_validation",
+  "phase_status": "physical_validation_in_progress",
   "branch": "phase/03-installation-updates",
-  "verified_source_commit": "8b02bcff5b9dd640598a8956e3243af576c22654",
-  "verified_ci_url": "https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45800449286",
+  "verified_source_commit": "eaeb72fee5a1228f5fbb9b01d40747e2e3c20ed8",
+  "verified_ci_url": "https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45811621345",
   "application_identity": {
     "android_application_id": "io.github.aleksandurbojilov09.garage",
     "ios_bundle_id": "io.github.aleksandurbojilov09.garage"
@@ -22,8 +22,8 @@
   "phase_02_status": "accepted_with_followups",
   "phase_03_authorized": true,
   "phase_04_authorized": false,
-  "target_version": "0.2.0",
-  "target_build_number": 3,
+  "target_version": "0.2.1",
+  "target_build_number": 4,
   "baseline_tag": "v0.1.0",
   "branch_protection": {
     "status": "verified_active",
@@ -32,12 +32,16 @@
     "integration_id": 15368
   },
   "android_signing": {
-    "status": "key_created_secrets_configured_owner_evidence",
+    "status": "release_workflow_signed_and_verified",
     "certificate_sha256": "a431369f4e84aebe18c87de7630bd364d248153e537251a8dfd0501de30d85f0",
     "environment": "android-release",
     "allowed_branch": "main",
-    "signed_apk_verified": false,
+    "signed_apk_verified": true,
     "independent_backup_verified": false
   },
-  "update_channel": "testing"
+  "update_channel": "testing",
+  "last_published_testing_release": "v0.2.0",
+  "last_published_release_run": "https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45814335354",
+  "android_initial_install": "verified_owner_screenshot",
+  "ios_initial_install": "pending_computer_setup"
 }
