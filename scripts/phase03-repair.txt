@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
+trap 'rc=$?; echo "STOP: repair step at line $LINENO failed (exit $rc)" >&2' ERR
 umask 077
 cd /workspaces/BUBKA
 branch=phase/03-installation-updates
@@ -49,7 +50,7 @@ git merge-base --is-ancestor HEAD "$candidate"
 git merge --ff-only "$candidate"
 [[ $(git rev-parse HEAD) == "$candidate" ]]
 # Only related changes: no full repeat of previously successful Dart suite.
-bash -n scripts/build-android-release.sh scripts/verify-release-apk.sh
+for script in scripts/build-android-release.sh scripts/verify-release-apk.sh scripts/sign-release-apk.sh scripts/phase03-repair.txt; do bash -n "$script"; done
 python3 - <<'PY'
 import ast
 from pathlib import Path
@@ -78,7 +79,12 @@ DART
 dart --packages="$PWD/.dart_tool/package_config.json" "$logs/check_yaml.dart" .github/workflows/ci.yml .github/workflows/release.yml
 dart format --output=none --set-exit-if-changed test/update_manifest_test.dart
 flutter test --no-pub test/update_manifest_test.dart
-# Stop only idle daemons. The previous status is printed for diagnosis.
+# Do not stop an active build.
+status=$(cd android && ./gradlew --status)
+printf '%s\n' "$status"
+if grep -Eq '[[:space:]]BUSY([[:space:]]|$)' <<< "$status"; then
+  echo 'STOP: another Gradle build is active'; exit 1
+fi
 (cd android && ./gradlew --stop)
 python3 "$logs/diagnose.py" --gate | tee "$logs/memory-before.json"
 finish() {

@@ -114,10 +114,10 @@ jobs:
           gh release create "$tag" dist/* --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --title "BUBKA $VERSION" --notes "Technical installation and update validation. iOS IPA requires SideStore signing." "${args[@]}"
           gh api "repos/$GITHUB_REPOSITORY/releases/tags/$tag" > /tmp/published-release.json
           jq -e --slurpfile manifest dist/update-manifest.json '
-            .draft == false and .prerelease == true and
-            . as $release | all($manifest[0].assets[];
+            . as $release | ($release.draft == false and $release.prerelease == true and
+            all($manifest[0].assets[];
               . as $expected | any($release.assets[];
                 .name == $expected.filename and .size == $expected.size_bytes and
-                .browser_download_url == $expected.download_url))
+                .browser_download_url == $expected.download_url)))
           ' /tmp/published-release.json
           test "$(gh api "repos/$GITHUB_REPOSITORY/git/ref/tags/$tag" --jq '.object.sha')" = "$GITHUB_SHA"
