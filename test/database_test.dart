@@ -89,6 +89,6 @@ void main() {
       columns.map((r) => r.read<String>('name')),
       isNot(contains('fail_probe')),
     );
-    expect(db.schemaVersion, 1);
+    expect(db.schemaVersion, 2);
   });
 }

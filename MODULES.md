@@ -29,3 +29,6 @@
 
 ## Phase 04 candidate
 `design_system` shared UI; `features/cockpit` presentation-only shell and visual fixtures. No new business modules, SQLite tables or runtime persistence. Existing diagnostics module remains in registry; updater in Settings. All 30 contracts in docs/design/PHASE-04-ROUTE-CONTRACT.json.
+
+## BUBKA-005 — current status (supersedes historical status)
+Phase 05 candidate: garage is an always-available business feature on existing /garage route (not a disableable diagnostics module). Stable integer vehicle IDs; local active choice; home observes shared state. No fuel, maintenance or document history tables yet.

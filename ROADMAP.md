@@ -23,3 +23,6 @@
 
 ## Актуален статус (26.11.2026)
 03 accepted_with_followups, 003A accepted; 04 V5 Final Polish visually accepted, локално BUBA преименуване в проверка. Публикувана 0.2.1+4, кандидат 0.3.0+5. Не е разрешен публичен push/PR/CI/merge/release или фаза 05.
+
+## BUBKA-005 — current status (supersedes historical status)
+04 accepted with follow-ups per owner; published 0.3.0+5, Android/iPhone update and old record retention owner-reported. 05 authorized for candidate 0.4.0+6; PR review required. 06–12 remain deferred.

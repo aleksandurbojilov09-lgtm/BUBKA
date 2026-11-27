@@ -9,6 +9,7 @@ import '../core/notifications/notification_service.dart';
 import '../core/updates/update_service.dart';
 import '../design_system/theme.dart';
 import '../features/diagnostics/diagnostics.dart';
+import '../features/garage/garage.dart';
 import 'modules/module_availability.dart';
 import 'modules/module_registry.dart';
 import 'providers/composition.dart';
@@ -34,15 +35,19 @@ class _BubkaAppState extends State<BubkaApp> {
   late final ModuleRegistry _registry;
   late final ModuleAvailability _availability;
   late final GoRouter _router;
+  late final GarageViewModel _garage;
 
   @override
   void initState() {
     super.initState();
+    _garage = createGarage(widget.database);
+    unawaited(_garage.load());
     _registry = createRegistry();
     _availability = ModuleAvailability(widget.database);
     _router = createRouter(
       _registry,
       _availability,
+      garage: _garage,
       testingPreview: widget.updates?.service.channel == UpdateChannel.testing,
     );
     unawaited(_availability.load());
@@ -68,6 +73,7 @@ class _BubkaAppState extends State<BubkaApp> {
   void dispose() {
     _router.dispose();
     _availability.dispose();
+    _garage.dispose();
     unawaited(widget.database.close());
     super.dispose();
   }
@@ -76,6 +82,7 @@ class _BubkaAppState extends State<BubkaApp> {
   Widget build(BuildContext context) => MultiProvider(
     providers: [
       Provider<AppDatabase>.value(value: widget.database),
+      ChangeNotifierProvider<GarageViewModel>.value(value: _garage),
       Provider<NotificationService?>.value(value: widget.notifications),
       ChangeNotifierProvider<UpdateController?>.value(value: widget.updates),
       Provider<ModuleRegistry>.value(value: _registry),

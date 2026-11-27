@@ -27,3 +27,6 @@ Phase 04 V5 local candidate: DESIGN-003 asset integration. Not published or acce
 
 ## 0.3.0+5 — BUBA (локален кандидат, непубликуван)
 V5 Final Polish е приет визуално под старото име; новият видим бранд BUBA (Буба), системни етикети, диагностика, известия, About и два wordmark слоя са в локална проверка. Няма промяна на application/bundle ID, съществуващите данни, подпис, версия, release файлове или update договор. Публикувана тестова версия остава 0.2.1+4 под старото име. Фаза 03 accepted_with_followups, фаза 04 не е приключена. Това са кандидат release notes; GitHub workflow title остава технически BUBKA до отделно разрешение.
+
+## BUBKA-005 — current status (supersedes historical status)
+0.4.0+6 candidate — local garage CRUD, active vehicle, catalog and additive schema migration. No release yet.

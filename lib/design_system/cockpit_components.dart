@@ -88,9 +88,15 @@ class PremiumCard extends StatelessWidget {
 }
 
 class RegistrationPlate extends StatelessWidget {
-  const RegistrationPlate({super.key, this.number, this.compact = false});
+  const RegistrationPlate({
+    super.key,
+    this.number,
+    this.compact = false,
+    this.showCountry = true,
+  });
   final String? number;
   final bool compact;
+  final bool showCountry;
   @override
   Widget build(BuildContext context) {
     final hasNumber = number?.trim().isNotEmpty ?? false;
@@ -124,7 +130,10 @@ class RegistrationPlate extends StatelessWidget {
 
     final padding = compact ? 7.0 : 10.0;
     final needed =
-        width(number!, style) + width('BG', bgStyle) + padding * 2 + 16 + 4;
+        width(number!, style) +
+        (showCountry ? width('BG', bgStyle) + 16 : 0) +
+        padding * 2 +
+        4;
     return Semantics(
       label: 'Регистрационен номер $number',
       child: ExcludeSemantics(
@@ -134,14 +143,15 @@ class RegistrationPlate extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Container(
-                  color: const Color(0xFF33373F),
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 8,
-                    vertical: 3,
+                if (showCountry)
+                  Container(
+                    color: const Color(0xFF33373F),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 8,
+                      vertical: 3,
+                    ),
+                    child: const Text('BG', style: bgStyle),
                   ),
-                  child: const Text('BG', style: bgStyle),
-                ),
                 Padding(
                   padding: EdgeInsets.symmetric(
                     horizontal: padding,
