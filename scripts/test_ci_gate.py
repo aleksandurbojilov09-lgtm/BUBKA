@@ -12,6 +12,8 @@ class GateTests(unittest.TestCase):
     def test_native(self): self.assertEqual(self.gate(IOS_REQUIRED='false',IOS_RESULT='skipped'),0)
     def test_main_lite_rejected(self): self.assertNotEqual(self.gate(GITHUB_EVENT_NAME='push',ANDROID_REQUIRED='false',ANDROID_RESULT='skipped',IOS_REQUIRED='false',IOS_RESULT='skipped'),0)
     def test_manual_lite_rejected(self): self.assertNotEqual(self.gate(GITHUB_EVENT_NAME='workflow_dispatch',ANDROID_REQUIRED='false',ANDROID_RESULT='skipped',IOS_REQUIRED='false',IOS_RESULT='skipped'),0)
+    def test_common_failed_despite_successful_builds(self): self.assertNotEqual(self.gate(COMMON_RESULT='failure'),0)
+    def test_common_cancelled_despite_successful_builds(self): self.assertNotEqual(self.gate(COMMON_RESULT='cancelled'),0)
     def test_failed(self): self.assertNotEqual(self.gate(ANDROID_RESULT='failure'),0)
     def test_cancelled(self): self.assertNotEqual(self.gate(IOS_RESULT='cancelled'),0)
     def test_required_skipped(self): self.assertNotEqual(self.gate(COMMON_RESULT='skipped'),0)
