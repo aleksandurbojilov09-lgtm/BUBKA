@@ -52,6 +52,37 @@ void main() {
     expect(adapter.pending, isEmpty);
   });
 
+  test(
+    'pending overdue reminder survives reopening; explicit removal cancels',
+    () async {
+      final root = await Directory.systemTemp.createTemp('bubka-waiting-');
+      addTearDown(() => root.delete(recursive: true));
+      final adapter = FakeAdapter();
+      var now = DateTime(2026, 11, 27, 8);
+      final service = NotificationService(
+        adapter,
+        directory: () async => root,
+        clock: () => now,
+      );
+      final reminder = LocalReminder(
+        id: 1000000002,
+        title: 'A',
+        body: 'B',
+        localDateTime: DateTime(2026, 11, 27, 9),
+      );
+      await service.replaceRange(1000000000, 1900000001, [reminder]);
+      expect(adapter.pending.keys, contains(reminder.id));
+      now = DateTime(2026, 11, 27, 10);
+      await service.synchronize();
+      await service.replaceRange(1000000000, 1900000001, [reminder]);
+      expect(adapter.pending.keys, contains(reminder.id));
+      await service.replaceRange(1000000000, 1900000001, []);
+      expect(adapter.pending, isEmpty);
+      await service.replaceRange(1000000000, 1900000001, [reminder]);
+      expect(adapter.pending, isEmpty);
+    },
+  );
+
   test('iOS window keeps nearest 60 requests', () async {
     final root = await Directory.systemTemp.createTemp('bubka-notify-');
     addTearDown(() => root.delete(recursive: true));

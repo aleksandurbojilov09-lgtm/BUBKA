@@ -51,6 +51,34 @@ class FuelEntries extends Table {
   ];
 }
 
+@DataClassName('VehicleDocumentRow')
+class VehicleDocuments extends Table {
+  IntColumn get id => integer().autoIncrement()();
+  IntColumn get vehicleId =>
+      integer().references(GarageVehicles, #id, onDelete: KeyAction.cascade)();
+  TextColumn get kind => text()();
+  TextColumn get startDate => text().nullable()();
+  TextColumn get endDate => text().nullable()();
+  BoolColumn get active => boolean().withDefault(const Constant(true))();
+}
+
+@DataClassName('DocumentPaymentRow')
+class DocumentPayments extends Table {
+  IntColumn get id => integer().autoIncrement()();
+  IntColumn get documentId => integer().references(
+    VehicleDocuments,
+    #id,
+    onDelete: KeyAction.cascade,
+  )();
+  TextColumn get dueDate => text()();
+  IntColumn get amountCents => integer()();
+  BoolColumn get paid => boolean().withDefault(const Constant(false))();
+  @override
+  List<String> get customConstraints => [
+    'CHECK (amount_cents >= 0 AND amount_cents <= 99999999999)',
+  ];
+}
+
 @DriftDatabase(
   tables: [
     DiagnosticRecords,
@@ -58,19 +86,21 @@ class FuelEntries extends Table {
     GarageVehicles,
     ActiveGarageVehicles,
     FuelEntries,
+    VehicleDocuments,
+    DocumentPayments,
   ],
 )
 class AppDatabase extends _$AppDatabase {
   AppDatabase(super.executor);
 
   @override
-  int get schemaVersion => 3;
+  int get schemaVersion => 4;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
     onCreate: (m) => m.createAll(),
     onUpgrade: (m, from, to) async {
-      if (from < 1 || to > 3 || from >= to) {
+      if (from < 1 || to > 4 || from >= to) {
         throw StateError('Unsupported schema migration: $from -> $to');
       }
       await transaction(() async {
@@ -78,7 +108,11 @@ class AppDatabase extends _$AppDatabase {
           await m.createTable(garageVehicles);
           await m.createTable(activeGarageVehicles);
         }
-        if (from < 3 && to == 3) await m.createTable(fuelEntries);
+        if (from < 3 && to >= 3) await m.createTable(fuelEntries);
+        if (from < 4 && to >= 4) {
+          await m.createTable(vehicleDocuments);
+          await m.createTable(documentPayments);
+        }
       });
     },
     beforeOpen: (_) async {
