@@ -54,3 +54,6 @@ Phase 04 update and retention on Android and iPhone reported successful by owner
 
 ## BUBKA-005A
 BUBKA-005A: only standard BG, BG personalized and basic foreign formats supported. Other special formats require verified rules. Existing values preserved until edited.
+
+## BUBKA-006 candidate
+Fuel consumption is an estimate without full-tank information. Device upgrade/retention and production accessibility remain pending physical acceptance. Service reminders and oil interval UI are outside scope.

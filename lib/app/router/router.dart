@@ -6,6 +6,7 @@ import '../../design_system/cockpit_components.dart';
 import '../../design_system/theme.dart';
 import '../../features/cockpit/cockpit.dart';
 import '../../features/garage/garage.dart';
+import '../../features/fuel/fuel.dart';
 import '../modules/module_availability.dart';
 import '../modules/module_registry.dart';
 import '../version.dart';
@@ -16,6 +17,7 @@ GoRouter createRouter(
   ModuleAvailability availability, {
   bool testingPreview = false,
   GarageViewModel? garage,
+  FuelRepository? fuel,
 }) {
   var coldStart = true;
   final allowPreview = testingPreview || visualPreviewEnabled;
@@ -44,6 +46,18 @@ GoRouter createRouter(
         pageBuilder: (context, state) => _page(
           state,
           GarageScreen(actions: _actions(context), garage: garage),
+        ),
+      ),
+      GoRoute(
+        path: '/fuel',
+        pageBuilder: (context, state) => _page(
+          state,
+          FuelScreen(
+            actions: _actions(context),
+            garage: garage,
+            repository: fuel,
+            initialEntry: state.uri.queryParameters['entry'],
+          ),
         ),
       ),
       GoRoute(
@@ -95,7 +109,6 @@ GoRouter createRouter(
 }
 
 const _futureRoutes = {
-  '/fuel': 'Гориво',
   '/service': 'Сервиз',
   '/documents': 'Документи',
   '/deadlines': 'Срокове',
@@ -133,8 +146,15 @@ CustomTransitionPage<void> _page(GoRouterState state, Widget child) =>
     );
 CockpitActions _actions(BuildContext context) => CockpitActions(
   navigate: (path) => context.go(path),
-  quick: () =>
-      showQuickSheet(context, (title) => _futureNotice(context, title)),
+  quick: () => showQuickSheet(context, (title) {
+    if (title == 'Зареждане') {
+      context.go('/fuel?entry=fuel');
+    } else if (title == 'Километраж') {
+      context.go('/fuel?entry=odometer');
+    } else {
+      _futureNotice(context, title);
+    }
+  }, fuelAvailable: true),
   future: (title) => _futureNotice(context, title),
 );
 void _futureNotice(BuildContext context, String title) => showDialog<void>(

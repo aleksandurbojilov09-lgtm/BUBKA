@@ -32,3 +32,6 @@
 
 ## BUBKA-005 — current status (supersedes historical status)
 Phase 05 candidate: garage is an always-available business feature on existing /garage route (not a disableable diagnostics module). Stable integer vehicle IDs; local active choice; home observes shared state. No fuel, maintenance or document history tables yet.
+
+## BUBKA-006 candidate
+/fuel: always available, uses active garage vehicle. History, odometer and estimated consumption; core OdometerReader for future service. No service screen or reminders in this phase.

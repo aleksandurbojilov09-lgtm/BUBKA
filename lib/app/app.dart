@@ -5,6 +5,8 @@ import 'package:material_ui/material_ui.dart';
 import 'package:provider/provider.dart';
 
 import '../core/database/database.dart';
+import '../core/odometer/odometer_reader.dart';
+import '../features/fuel/fuel.dart';
 import '../core/notifications/notification_service.dart';
 import '../core/updates/update_service.dart';
 import '../design_system/theme.dart';
@@ -36,11 +38,13 @@ class _BubkaAppState extends State<BubkaApp> {
   late final ModuleAvailability _availability;
   late final GoRouter _router;
   late final GarageViewModel _garage;
+  late final FuelRepository _fuel;
 
   @override
   void initState() {
     super.initState();
     _garage = createGarage(widget.database);
+    _fuel = createFuel(widget.database);
     unawaited(_garage.load());
     _registry = createRegistry();
     _availability = ModuleAvailability(widget.database);
@@ -48,6 +52,7 @@ class _BubkaAppState extends State<BubkaApp> {
       _registry,
       _availability,
       garage: _garage,
+      fuel: _fuel,
       testingPreview: widget.updates?.service.channel == UpdateChannel.testing,
     );
     unawaited(_availability.load());
@@ -82,6 +87,8 @@ class _BubkaAppState extends State<BubkaApp> {
   Widget build(BuildContext context) => MultiProvider(
     providers: [
       Provider<AppDatabase>.value(value: widget.database),
+      Provider<OdometerReader>.value(value: _fuel),
+      Provider<FuelRepository>.value(value: _fuel),
       ChangeNotifierProvider<GarageViewModel>.value(value: _garage),
       Provider<NotificationService?>.value(value: widget.notifications),
       ChangeNotifierProvider<UpdateController?>.value(value: widget.updates),

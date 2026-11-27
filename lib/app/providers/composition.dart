@@ -5,6 +5,8 @@ import '../../core/database/connection.dart';
 import '../../core/database/database.dart';
 import '../../features/diagnostics/diagnostics.dart';
 import '../../features/garage/garage.dart';
+import '../../features/fuel/fuel.dart';
+import '../../features/fuel/fuel_factory.dart';
 import '../../features/garage/garage_factory.dart';
 import '../modules/module_registry.dart';
 import '../version.dart';
@@ -13,6 +15,9 @@ AppDatabase createDatabase() => AppDatabase(localExecutor());
 
 GarageViewModel createGarage(AppDatabase database) =>
     createGarageViewModel(database);
+
+FuelRepository createFuel(AppDatabase database) =>
+    createFuelRepository(database);
 
 ModuleRegistry createRegistry() => ModuleRegistry([
   AppModule(

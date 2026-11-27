@@ -12,3 +12,6 @@ Phase 03 adds a SchemaVerifier test against the exported v1 schema. The producti
 
 ## BUBKA-005 — current status (supersedes historical status)
 Schema v2 adds garage_vehicles and active_garage_vehicles. Migration 1→2 is additive and transactional; legacy tables unchanged. IDs are local auto-increment integers, not registrations. Registration key is case/whitespace normalized; original display retained. Future history tables must reference vehicle IDs and implement scoped cascade deletion. No future tables are pre-created.
+
+## BUBKA-006 schema v3
+Add fuel_entries only; FK garage_vehicles.id ON DELETE CASCADE. ISO calendar date, integer km, nullable integer millilitres and cents. Null fuel is an odometer-only entry and requires null price. Migrations 1→2→3 and 2→3 additive and transactional; history ordered by date, km, ID. No data reset.

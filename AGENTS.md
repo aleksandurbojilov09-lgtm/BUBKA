@@ -53,3 +53,6 @@ V5 authorized local DESIGN-003 integration only. Preserve native icons, no commi
 
 ## BUBKA-005A
 BUBKA-005A authorized end to end testing only: strict garage input, preserve old data, schema v2 unchanged, one PR, verified full CI before merge and release; no phase 06.
+
+## BUBKA-006 — current authorization
+Phase 06 authorized end-to-end testing only: fuel and odometer, schema v3 additive, grouped PR after local tests, full CI before merge and testing release. No stable release or phase 07/08. Preserve existing identities and data.

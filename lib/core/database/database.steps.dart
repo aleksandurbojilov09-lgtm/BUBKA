@@ -211,8 +211,145 @@ i1.GeneratedColumn<int> _column_11(String aliasedName) =>
       $customConstraints:
           'NOT NULL REFERENCES garage_vehicles(id)ON DELETE CASCADE',
     );
+
+final class Schema3 extends i0.VersionedSchema {
+  Schema3({required super.database}) : super(version: 3);
+  @override
+  late final List<i1.DatabaseSchemaEntity> entities = [
+    diagnosticRecords,
+    modulePreferences,
+    garageVehicles,
+    activeGarageVehicles,
+    fuelEntries,
+  ];
+  late final Shape0 diagnosticRecords = Shape0(
+    source: i0.VersionedTable(
+      entityName: 'diagnostic_records',
+      withoutRowId: false,
+      isStrict: false,
+      tableConstraints: [],
+      columns: [_column_0, _column_1],
+      attachedDatabase: database,
+    ),
+    alias: null,
+  );
+  late final Shape1 modulePreferences = Shape1(
+    source: i0.VersionedTable(
+      entityName: 'module_preferences',
+      withoutRowId: false,
+      isStrict: false,
+      tableConstraints: ['PRIMARY KEY(module_id)'],
+      columns: [_column_2, _column_3],
+      attachedDatabase: database,
+    ),
+    alias: null,
+  );
+  late final Shape2 garageVehicles = Shape2(
+    source: i0.VersionedTable(
+      entityName: 'garage_vehicles',
+      withoutRowId: false,
+      isStrict: false,
+      tableConstraints: [],
+      columns: [
+        _column_0,
+        _column_4,
+        _column_5,
+        _column_6,
+        _column_7,
+        _column_8,
+        _column_9,
+      ],
+      attachedDatabase: database,
+    ),
+    alias: null,
+  );
+  late final Shape3 activeGarageVehicles = Shape3(
+    source: i0.VersionedTable(
+      entityName: 'active_garage_vehicles',
+      withoutRowId: false,
+      isStrict: false,
+      tableConstraints: ['PRIMARY KEY(slot)'],
+      columns: [_column_10, _column_11],
+      attachedDatabase: database,
+    ),
+    alias: null,
+  );
+  late final Shape4 fuelEntries = Shape4(
+    source: i0.VersionedTable(
+      entityName: 'fuel_entries',
+      withoutRowId: false,
+      isStrict: false,
+      tableConstraints: [
+        'CHECK(odometer_km >= 0)',
+        'CHECK(fuel_ml IS NULL OR fuel_ml > 0)',
+        'CHECK(price_cents IS NULL OR price_cents >= 0)',
+        'CHECK(fuel_ml IS NOT NULL OR price_cents IS NULL)',
+      ],
+      columns: [
+        _column_0,
+        _column_11,
+        _column_12,
+        _column_13,
+        _column_14,
+        _column_15,
+      ],
+      attachedDatabase: database,
+    ),
+    alias: null,
+  );
+}
+
+class Shape4 extends i0.VersionedTable {
+  Shape4({required super.source, required super.alias}) : super.aliased();
+  i1.GeneratedColumn<int> get id =>
+      columnsByName['id']! as i1.GeneratedColumn<int>;
+  i1.GeneratedColumn<int> get vehicleId =>
+      columnsByName['vehicle_id']! as i1.GeneratedColumn<int>;
+  i1.GeneratedColumn<String> get entryDate =>
+      columnsByName['entry_date']! as i1.GeneratedColumn<String>;
+  i1.GeneratedColumn<int> get odometerKm =>
+      columnsByName['odometer_km']! as i1.GeneratedColumn<int>;
+  i1.GeneratedColumn<int> get fuelMl =>
+      columnsByName['fuel_ml']! as i1.GeneratedColumn<int>;
+  i1.GeneratedColumn<int> get priceCents =>
+      columnsByName['price_cents']! as i1.GeneratedColumn<int>;
+}
+
+i1.GeneratedColumn<String> _column_12(String aliasedName) =>
+    i1.GeneratedColumn<String>(
+      'entry_date',
+      aliasedName,
+      false,
+      type: i1.DriftSqlType.string,
+      $customConstraints: 'NOT NULL',
+    );
+i1.GeneratedColumn<int> _column_13(String aliasedName) =>
+    i1.GeneratedColumn<int>(
+      'odometer_km',
+      aliasedName,
+      false,
+      type: i1.DriftSqlType.int,
+      $customConstraints: 'NOT NULL',
+    );
+i1.GeneratedColumn<int> _column_14(String aliasedName) =>
+    i1.GeneratedColumn<int>(
+      'fuel_ml',
+      aliasedName,
+      true,
+      type: i1.DriftSqlType.int,
+      $customConstraints: 'NULL',
+    );
+i1.GeneratedColumn<int> _column_15(String aliasedName) =>
+    i1.GeneratedColumn<int>(
+      'price_cents',
+      aliasedName,
+      true,
+      type: i1.DriftSqlType.int,
+      $customConstraints: 'NULL',
+    );
 i0.MigrationStepWithVersion migrationSteps({
   required Future<void> Function(i1.Migrator m, Schema2 schema) from1To2,
+  required Future<void> Function(i1.Migrator m, Schema3 schema) from2To3,
 }) {
   return (currentVersion, database) async {
     switch (currentVersion) {
@@ -221,6 +358,11 @@ i0.MigrationStepWithVersion migrationSteps({
         final migrator = i1.Migrator(database, schema);
         await from1To2(migrator, schema);
         return 2;
+      case 2:
+        final schema = Schema3(database: database);
+        final migrator = i1.Migrator(database, schema);
+        await from2To3(migrator, schema);
+        return 3;
       default:
         throw ArgumentError.value('Unknown migration from $currentVersion');
     }
@@ -229,6 +371,7 @@ i0.MigrationStepWithVersion migrationSteps({
 
 i1.OnUpgrade stepByStep({
   required Future<void> Function(i1.Migrator m, Schema2 schema) from1To2,
+  required Future<void> Function(i1.Migrator m, Schema3 schema) from2To3,
 }) => i0.VersionedSchema.stepByStepHelper(
-  step: migrationSteps(from1To2: from1To2),
+  step: migrationSteps(from1To2: from1To2, from2To3: from2To3),
 );
