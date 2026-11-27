@@ -44,12 +44,34 @@ class LocalGarageRepository implements GarageRepository {
   @override
   Future<GarageSnapshot> save(VehicleDraft draft, {int? id}) =>
       db.transaction(() async {
-        final value = draft.validated();
-        final key = VehicleDraft.registrationKey(value.registration);
-        final existing = await (db.select(
-          db.garageVehicles,
-        )..where((t) => t.registrationKey.equals(key))).getSingleOrNull();
-        if (existing != null && existing.id != id) {
+        final rows = await db.select(db.garageVehicles).get();
+        final matching = rows.where((row) => row.id == id).toList();
+        if (id != null && matching.isEmpty) {
+          throw const GarageValidation('Автомобилът вече не съществува.');
+        }
+        final previous = matching.isEmpty ? null : matching.single;
+        final value = draft.validated(
+          previous: previous == null
+              ? null
+              : VehicleDraft(
+                  brand: previous.brand,
+                  model: previous.model,
+                  registration: previous.registration,
+                  year: previous.year,
+                  fuel: previous.fuel,
+                ),
+        );
+        final registrationChanged =
+            previous == null || value.registration != previous.registration;
+        final key = previous == null || registrationChanged
+            ? VehicleDraft.registrationKey(value.registration)
+            : previous.registrationKey;
+        if (registrationChanged &&
+            rows.any(
+              (row) =>
+                  row.id != id &&
+                  VehicleDraft.registrationKey(row.registration) == key,
+            )) {
           throw const GarageValidation(
             'Вече има автомобил с този регистрационен номер.',
           );
@@ -60,7 +82,7 @@ class LocalGarageRepository implements GarageRepository {
           registration: value.registration,
           registrationKey: key,
           year: Value(value.year),
-          fuel: Value(value.fuel == '' ? null : value.fuel),
+          fuel: Value(value.fuel),
         );
         if (id == null) {
           final newId = await db.into(db.garageVehicles).insert(companion);

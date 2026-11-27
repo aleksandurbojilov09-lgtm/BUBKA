@@ -30,3 +30,6 @@ V5 Final Polish е приет визуално под старото име; н�
 
 ## BUBKA-005 — current status (supersedes historical status)
 0.4.0+6 candidate — local garage CRUD, active vehicle, catalog and additive schema migration. No release yet.
+
+## BUBKA-005A
+0.4.1+7 candidate — searchable catalog, explicit model fallback, registration format, year and fuel validation, unchanged legacy values preserved.

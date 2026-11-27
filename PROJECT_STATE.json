@@ -1,12 +1,12 @@
 {
   "project": "BUBKA",
-  "version": "0.4.0",
-  "build_number": 6,
+  "version": "0.4.1",
+  "build_number": 7,
   "phase": 5,
   "phase_status": "in_progress",
-  "branch": "phase/05-garage",
-  "verified_source_commit": "6deb3af3c3a9fce0c25dca10a521cd3bc508d574",
-  "verified_ci_url": "https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45905060610",
+  "branch": "phase/05-garage-validation",
+  "verified_source_commit": "cdc5626832808d006eb7d03c87f8a111edaeb37a",
+  "verified_ci_url": "https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45958906447",
   "application_identity": {
     "android_application_id": "io.github.aleksandurbojilov09.garage",
     "ios_bundle_id": "io.github.aleksandurbojilov09.garage"
@@ -22,8 +22,8 @@
   "phase_02_status": "accepted_with_followups",
   "phase_03_authorized": true,
   "phase_04_authorized": true,
-  "target_version": "0.4.0",
-  "target_build_number": 6,
+  "target_version": "0.4.1",
+  "target_build_number": 7,
   "baseline_tag": "v0.1.0",
   "branch_protection": {
     "status": "verified_active",
@@ -40,8 +40,8 @@
     "independent_backup_verified": false
   },
   "update_channel": "testing",
-  "last_published_testing_release": "v0.3.0",
-  "last_published_release_run": "https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45907834477",
+  "last_published_testing_release": "v0.4.0",
+  "last_published_release_run": "https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45960165819",
   "android_initial_install": "verified_owner_screenshot",
   "ios_initial_install": "passed_owner_report",
   "android_update_and_data_retention": "passed_owner_report",
@@ -132,20 +132,34 @@
     "candidate_version": "0.3.0+5",
     "status": "authorized_for_PR_CI_pending_preflight"
   },
-  "status": "phase_05_candidate_pending_pr_validation",
-  "published_version": "0.3.0+5",
-  "candidate_version": "0.4.0+6",
+  "status": "phase_05_hotfix_candidate_pending_ci",
+  "published_version": "0.4.0+6",
+  "candidate_version": "0.4.1+7",
   "phase_05_authorized": true,
   "current_phase": 5,
   "phase_04_status": "accepted_with_followups",
   "phase_05": {
     "task_id": "BUBKA-005",
-    "status": "candidate_pending_pr_validation",
+    "status": "published_owner_accepted_with_form_corrections",
     "baseline_sha": "6deb3af3c3a9fce0c25dca10a521cd3bc508d574",
     "branch": "phase/05-garage",
     "schema_version": 2,
-    "merge_authorized": false,
-    "release_authorized": false,
+    "merge_authorized": true,
+    "release_authorized": true,
+    "phase06_authorized": false,
+    "pr": 6,
+    "head_sha": "e542dd804dfa35813626710d2c45c7f91599dc71",
+    "merge_sha": "cdc5626832808d006eb7d03c87f8a111edaeb37a",
+    "release": "v0.4.0",
+    "physical_tests": {
+      "android": "7/7 owner reported PASS",
+      "ios": "7/7 owner reported PASS"
+    }
+  },
+  "phase_05a": {
+    "task_id": "BUBKA-005A",
+    "status": "candidate_pending_ci",
+    "schema_version": 2,
     "phase06_authorized": false
   }
 }
