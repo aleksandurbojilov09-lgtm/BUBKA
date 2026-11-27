@@ -207,7 +207,7 @@ Future<void> showQuickSheet(
           const SizedBox(height: 8),
           Text(
             fuelAvailable
-                ? 'Зареждане и километраж са активни. Другите функции предстоят.'
+                ? 'Зареждането е активно. Другите функции предстоят.'
                 : 'Функциите ще се активират в съответните фази.',
             style: const TextStyle(color: BubkaDesign.muted),
           ),
@@ -219,15 +219,16 @@ Future<void> showQuickSheet(
             ('Напомняне', Icons.notifications_none_outlined),
             ('Автомобил', Icons.directions_car_outlined),
           ])
-            ListTile(
-              leading: Icon(item.$2, color: BubkaDesign.accent),
-              title: Text(item.$1),
-              trailing: const Icon(Icons.chevron_right),
-              onTap: () {
-                Navigator.pop(ctx);
-                onAction(item.$1);
-              },
-            ),
+            if (!fuelAvailable || item.$1 != 'Километраж')
+              ListTile(
+                leading: Icon(item.$2, color: BubkaDesign.accent),
+                title: Text(item.$1),
+                trailing: const Icon(Icons.chevron_right),
+                onTap: () {
+                  Navigator.pop(ctx);
+                  onAction(item.$1);
+                },
+              ),
         ],
       ),
     ),

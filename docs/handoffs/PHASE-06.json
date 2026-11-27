@@ -2,18 +2,33 @@
   "project": "BUBKA",
   "phase": 6,
   "task_id": "BUBKA-006",
-  "status": "candidate_pending_ci_and_physical_tests",
+  "status": "published_with_owner_ui_corrections_pending",
   "baseline_sha": "73857439121386f7578452cb3041da4fc137cdcf",
   "candidate_version": "0.5.0+8",
   "migration": "1→2→3 and 2→3 additive",
   "local_preflight": "PASS: generation, format, analyze, full Flutter tests, architecture, docs and CI/release Python tests",
-  "pr": null,
-  "ci": null,
-  "release": null,
+  "pr": 9,
+  "ci": {
+    "pr": 45969684760,
+    "main": 45970941372
+  },
+  "release": {
+    "tag": "v0.5.0",
+    "run": 45972411538,
+    "sha": "ac76d61c97242d16b71c16ff0d1d6f8e83fe1d08"
+  },
   "physical_tests": {
-    "android": "pending",
-    "ios": "pending"
+    "android": "pending full acceptance",
+    "ios": "pending full acceptance",
+    "owner_ui_feedback": "remove standalone odometer add; latest three fills and full archive"
   },
   "next_phase_authorized": false,
-  "stable_release_authorized": false
+  "stable_release_authorized": false,
+  "ui_correction": {
+    "candidate_version": "0.5.1+9",
+    "schema_version": 3,
+    "local_preflight": "pending",
+    "release": "pending",
+    "data_preservation": "no schema or repository changes"
+  }
 }

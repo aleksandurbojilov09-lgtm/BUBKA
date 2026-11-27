@@ -149,8 +149,6 @@ CockpitActions _actions(BuildContext context) => CockpitActions(
   quick: () => showQuickSheet(context, (title) {
     if (title == 'Зареждане') {
       context.go('/fuel?entry=fuel');
-    } else if (title == 'Километраж') {
-      context.go('/fuel?entry=odometer');
     } else {
       _futureNotice(context, title);
     }

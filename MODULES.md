@@ -35,3 +35,6 @@ Phase 05 candidate: garage is an always-available business feature on existing /
 
 ## BUBKA-006 candidate
 /fuel: always available, uses active garage vehicle. History, odometer and estimated consumption; core OdometerReader for future service. No service screen or reminders in this phase.
+
+## Phase 06 UI correction candidate
+Fuel overview limited to three fills; complete vehicle-scoped history remains accessible. Shared OdometerReader and existing standalone records remain intact. No servicing module yet.
