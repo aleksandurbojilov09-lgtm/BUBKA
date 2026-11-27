@@ -80,8 +80,8 @@ jobs:
       - run: flutter test --no-pub
   android:
     name: Android unsigned release APK
-    needs: [classify, docs, checks]
-    if: needs.classify.outputs.android == 'true' && needs.checks.result == 'success'
+    needs: [classify, docs]
+    if: needs.classify.outputs.android == 'true'
     runs-on: ubuntu-24.04
     timeout-minutes: 45
     steps:
@@ -142,8 +142,8 @@ jobs:
           compression-level: 0
   ios:
     name: iOS unsigned IPA
-    needs: [classify, docs, checks]
-    if: needs.classify.outputs.ios == 'true' && needs.checks.result == 'success'
+    needs: [classify, docs]
+    if: needs.classify.outputs.ios == 'true'
     runs-on: macos-26
     timeout-minutes: 45
     steps:
