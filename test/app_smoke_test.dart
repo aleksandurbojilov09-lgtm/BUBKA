@@ -53,5 +53,7 @@ void main() {
     expect(tester.binding.transientCallbackCount, 0);
     expect(tester.takeException(), isNull);
     await tester.pumpWidget(const SizedBox.shrink());
+    // Allow Drift to finish deferred stream cleanup after app disposal.
+    await tester.pump(const Duration(milliseconds: 1));
   });
 }

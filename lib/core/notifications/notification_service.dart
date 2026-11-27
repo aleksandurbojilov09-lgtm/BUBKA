@@ -43,8 +43,13 @@ abstract interface class NotificationAdapter {
 }
 
 class NotificationService {
-  NotificationService(this._adapter, {Future<Directory> Function()? directory})
-    : _directory = directory ?? localDataDirectory;
+  NotificationService(
+    this._adapter, {
+    Future<Directory> Function()? directory,
+    DateTime Function()? clock,
+  }) : _directory = directory ?? localDataDirectory,
+       _clock = clock ?? DateTime.now;
+  final DateTime Function() _clock;
 
   final NotificationAdapter _adapter;
   final Future<Directory> Function() _directory;
@@ -91,7 +96,7 @@ class NotificationService {
     if (reminder.id < 1 ||
         reminder.id > 2147483647 ||
         reminder.localDateTime.isUtc ||
-        !reminder.localDateTime.isAfter(DateTime.now())) {
+        !reminder.localDateTime.isAfter(_clock())) {
       throw ArgumentError('Expected a future local calendar time and valid ID');
     }
     final plan = await _load();
@@ -108,6 +113,37 @@ class NotificationService {
     await _reconcile(plan);
   });
 
+  // Replace only the document namespace; keep diagnostics and other plans.
+  Future<void> replaceRange(
+    int first,
+    int last,
+    List<LocalReminder> reminders,
+  ) => _serialize(() async {
+    final previous = await _load();
+    final old = {for (final entry in previous) entry.id: entry};
+    final ids = <int>{};
+    final next = previous.where((r) => r.id < first || r.id > last).toList();
+    final now = _clock();
+    for (final r in reminders) {
+      if (r.id < first ||
+          r.id > last ||
+          r.localDateTime.isUtc ||
+          !ids.add(r.id)) {
+        throw ArgumentError('Invalid scoped reminder');
+      }
+      final before = old[r.id];
+      if (r.localDateTime.isAfter(now) ||
+          (before != null &&
+              before.localDateTime == r.localDateTime &&
+              before.title == r.title &&
+              before.body == r.body)) {
+        next.add(r);
+      }
+    }
+    await _save(next);
+    await _reconcile(next);
+  });
+
   Future<void> synchronize() => _serialize(() async {
     final plan = await _load();
     await _reconcile(plan);
@@ -115,13 +151,22 @@ class NotificationService {
 
   Future<void> _reconcile(List<LocalReminder> plan) async {
     await _adapter.initialize();
-    final now = DateTime.now();
+    final now = _clock();
     final future =
         plan.where((entry) => entry.localDateTime.isAfter(now)).toList()
           ..sort((a, b) => a.localDateTime.compareTo(b.localDateTime));
-    final selected = _adapter.limitedPending ? future.take(60) : future;
-    final wanted = selected.map((entry) => entry.id).toSet();
     final pending = await _adapter.pendingIds();
+    // A due request may still be waiting for system delivery. Do not cancel it
+    // unless its underlying record was explicitly removed or changed.
+    final waiting = plan
+        .where((r) => !r.localDateTime.isAfter(now) && pending.contains(r.id))
+        .toList();
+    final slots = waiting.length >= 60 ? 0 : 60 - waiting.length;
+    final selected = _adapter.limitedPending ? future.take(slots) : future;
+    final wanted = {
+      ...selected.map((entry) => entry.id),
+      ...waiting.map((entry) => entry.id),
+    };
     for (final id in pending.difference(wanted)) {
       await _adapter.cancel(id);
     }
@@ -129,6 +174,6 @@ class NotificationService {
       // A stable ID replaces its own request and adjusts for time zone changes.
       await _adapter.schedule(reminder);
     }
-    await _save(future);
+    await _save([...future, ...waiting]);
   }
 }

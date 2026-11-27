@@ -24,7 +24,7 @@ void main() {
     await old.close();
     final db = AppDatabase(schema.newConnection());
     addTearDown(db.close);
-    await verifier.migrateAndValidate(db, 3);
+    await verifier.migrateAndValidate(db, 4);
     final cars = await db.select(db.garageVehicles).get();
     expect(cars.map((c) => c.id), unorderedEquals([9, 10]));
     final first = cars.singleWhere((c) => c.id == 9);

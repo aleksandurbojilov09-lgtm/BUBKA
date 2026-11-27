@@ -30,3 +30,7 @@ Phase 04: released v0.3.0+5 on main 6deb3af3c3a9fce0c25dca10a521cd3bc508d574; CI
 
 ## BUBKA-006 candidate
 Single local fuel_entries table with vehicle FK cascade; a row is either fuel + odometer or odometer only. Fuel feature owns the ledger; core OdometerReader returns nullable latest km by stable vehicle ID. Composition exposes the same repository via Provider. Schema 3 additive; validation pending CI and device tests.
+
+
+## BUBKA-007
+Phase 07: additive vehicle documents and payments; documents repository with Drift watch, shared notification service, stable document/payment reminder namespace. Local dates, EUR cents, no cloud.

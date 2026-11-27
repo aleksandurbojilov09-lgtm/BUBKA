@@ -57,3 +57,7 @@ BUBKA-005A: only standard BG, BG personalized and basic foreign formats supporte
 
 ## BUBKA-006 candidate
 Fuel consumption is an estimate without full-tank information. Device upgrade/retention and production accessibility remain pending physical acceptance. Service reminders and oil interval UI are outside scope.
+
+
+## BUBKA-007
+Phase 07 candidate: notification reconciliation preserves pending overdue requests unless explicitly removed. Device timing and iOS pending capacity remain platform-dependent; physical validation pending.

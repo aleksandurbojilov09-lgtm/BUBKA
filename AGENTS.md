@@ -56,3 +56,7 @@ BUBKA-005A authorized end to end testing only: strict garage input, preserve old
 
 ## BUBKA-006 — current authorization
 Phase 06 authorized end-to-end testing only: fuel and odometer, schema v3 additive, grouped PR after local tests, full CI before merge and testing release. No stable release or phase 07/08. Preserve existing identities and data.
+
+
+## BUBKA-007
+BUBKA-007 authorized end-to-end testing only: documents, obligations and reminders; additive schema v4. One grouped PR after local checks, full CI before merge and testing release. No stable release or phase 08.

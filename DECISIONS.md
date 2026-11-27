@@ -76,3 +76,7 @@ BUBKA-005A: no schema or automatic legacy rewrite. Registration validation is fo
 
 ## BUBKA-006
 Store millilitres, integer km and integer euro cents; order by ISO local date, km and ID. Compute estimated consumption over first-to-last real fuel entries with positive distance, excluding starting litres. No tank-full flag, no historical confirmation. Manual km never contributes litres. Current km derived from remaining history.
+
+
+## BUBKA-007
+Phase 07: reminders at 09:00 local calendar time, 7 and 1 day before; paid installments and archived validity dates excluded; unpaid historical installments remain due until explicitly paid or deleted. Policy validity separate from payment status. Renewals archive old record.

@@ -2,7 +2,7 @@
   "project": "BUBKA",
   "phase": 6,
   "task_id": "BUBKA-006",
-  "status": "published_with_owner_ui_corrections_pending",
+  "status": "completed_owner_accepted",
   "baseline_sha": "73857439121386f7578452cb3041da4fc137cdcf",
   "candidate_version": "0.5.0+8",
   "migration": "1→2→3 and 2→3 additive",
@@ -22,13 +22,15 @@
     "ios": "pending full acceptance",
     "owner_ui_feedback": "remove standalone odometer add; latest three fills and full archive"
   },
-  "next_phase_authorized": false,
+  "next_phase_authorized": true,
   "stable_release_authorized": false,
   "ui_correction": {
     "candidate_version": "0.5.1+9",
     "schema_version": 3,
     "local_preflight": "pending",
-    "release": "pending",
-    "data_preservation": "no schema or repository changes"
+    "release": "v0.5.1",
+    "data_preservation": "no schema or repository changes",
+    "source_sha": "82a2d4ef6a844af246dce9a0889e96113a190e47",
+    "physical_tests": "owner accepted; independent device evidence not attached"
   }
 }

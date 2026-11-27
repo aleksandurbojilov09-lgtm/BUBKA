@@ -7,6 +7,8 @@ import 'package:provider/provider.dart';
 import '../core/database/database.dart';
 import '../core/odometer/odometer_reader.dart';
 import '../features/fuel/fuel.dart';
+import '../features/documents/documents.dart';
+import '../features/documents/documents_factory.dart';
 import '../core/notifications/notification_service.dart';
 import '../core/updates/update_service.dart';
 import '../design_system/theme.dart';
@@ -33,18 +35,21 @@ class BubkaApp extends StatefulWidget {
   State<BubkaApp> createState() => _BubkaAppState();
 }
 
-class _BubkaAppState extends State<BubkaApp> {
+class _BubkaAppState extends State<BubkaApp> with WidgetsBindingObserver {
   late final ModuleRegistry _registry;
   late final ModuleAvailability _availability;
   late final GoRouter _router;
   late final GarageViewModel _garage;
   late final FuelRepository _fuel;
+  late final DocumentsViewModel _documents;
 
   @override
   void initState() {
     super.initState();
     _garage = createGarage(widget.database);
     _fuel = createFuel(widget.database);
+    _documents = createDocuments(widget.database, widget.notifications)..load();
+    WidgetsBinding.instance.addObserver(this);
     unawaited(_garage.load());
     _registry = createRegistry();
     _availability = ModuleAvailability(widget.database);
@@ -53,6 +58,7 @@ class _BubkaAppState extends State<BubkaApp> {
       _availability,
       garage: _garage,
       fuel: _fuel,
+      documents: _documents,
       testingPreview: widget.updates?.service.channel == UpdateChannel.testing,
     );
     unawaited(_availability.load());
@@ -75,7 +81,14 @@ class _BubkaAppState extends State<BubkaApp> {
   }
 
   @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) unawaited(_documents.sync());
+  }
+
+  @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    _documents.dispose();
     _router.dispose();
     _availability.dispose();
     _garage.dispose();

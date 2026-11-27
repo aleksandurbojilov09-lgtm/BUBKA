@@ -7,6 +7,7 @@ import '../../design_system/theme.dart';
 import '../../features/cockpit/cockpit.dart';
 import '../../features/garage/garage.dart';
 import '../../features/fuel/fuel.dart';
+import '../../features/documents/documents.dart';
 import '../modules/module_availability.dart';
 import '../modules/module_registry.dart';
 import '../version.dart';
@@ -18,6 +19,7 @@ GoRouter createRouter(
   bool testingPreview = false,
   GarageViewModel? garage,
   FuelRepository? fuel,
+  DocumentsViewModel? documents,
 }) {
   var coldStart = true;
   final allowPreview = testingPreview || visualPreviewEnabled;
@@ -67,18 +69,35 @@ GoRouter createRouter(
           _Settings(actions: _actions(context), showPreview: allowPreview),
         ),
       ),
-      for (final entry in _futureRoutes.entries)
-        GoRoute(
-          path: entry.key,
-          pageBuilder: (context, state) => _page(
-            state,
-            _FutureScreen(
-              title: entry.value,
-              actions: _actions(context),
-              active: entry.key,
+      if (documents != null && garage != null)
+        for (final path in ['/documents', '/deadlines'])
+          GoRoute(
+            path: path,
+            pageBuilder: (context, state) => _page(
+              state,
+              DocumentsScreen(
+                actions: _actions(context),
+                garage: garage,
+                model: documents,
+                deadlines: path == '/deadlines',
+              ),
             ),
           ),
-        ),
+      for (final entry in _futureRoutes.entries)
+        if (documents == null ||
+            garage == null ||
+            !['/documents', '/deadlines'].contains(entry.key))
+          GoRoute(
+            path: entry.key,
+            pageBuilder: (context, state) => _page(
+              state,
+              _FutureScreen(
+                title: entry.value,
+                actions: _actions(context),
+                active: entry.key,
+              ),
+            ),
+          ),
       if (allowPreview)
         GoRoute(
           path: '/visual-review',

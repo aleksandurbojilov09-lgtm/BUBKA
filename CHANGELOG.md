@@ -39,3 +39,7 @@ Local fuel and odometer history per vehicle; estimated consumption; shared odome
 
 ## BUBKA-006 UI correction candidate
 0.5.1+9 — fuel overview displays latest three fills; a separate full history retains all entries and edit/delete; no standalone odometer creation in production UI. Schema 3 unchanged.
+
+
+## BUBKA-007
+0.6.0+10 candidate: documents, installments, tax, inspection and vignette validity; local deadlines and reminders; additive schema 4. CI and devices pending.

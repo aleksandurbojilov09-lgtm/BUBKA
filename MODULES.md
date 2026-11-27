@@ -38,3 +38,7 @@ Phase 05 candidate: garage is an always-available business feature on existing /
 
 ## Phase 06 UI correction candidate
 Fuel overview limited to three fills; complete vehicle-scoped history remains accessible. Shared OdometerReader and existing standalone records remain intact. No servicing module yet.
+
+
+## BUBKA-007
+Phase 07: /documents active car; /deadlines all cars. Local documents, payments and renewal history. Service and external registries remain future phases.
