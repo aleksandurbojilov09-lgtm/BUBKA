@@ -70,3 +70,6 @@ DESIGN-003 reconstruction owner-approved; V5 uses exact local PNG layers, shared
 
 ## BUBKA-005 — current status (supersedes historical status)
 BUBKA-005: additive v1→v2 migration; vehicle ID auto-increment, unique normalized registration, active selection singleton foreign key. Stable garage order by ID. Original manually curated offline catalog; free text always available. New version 0.4.0+6 candidate only. No signing/notification/update changes.
+
+## BUBKA-005A
+BUBKA-005A: no schema or automatic legacy rewrite. Registration validation is format-only; cross-mode duplicate identity uses visual letter equivalents and strips separators.

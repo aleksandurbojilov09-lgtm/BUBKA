@@ -51,3 +51,6 @@ V5 Polish е визуално приет; новият тесен rebrand под
 
 ## BUBKA-005 — current status (supersedes historical status)
 Phase 04 update and retention on Android and iPhone reported successful by owner; startup animation and notification timing remain open. Independent physical profiling, rights clearance, backups and iOS refresh remain open. Phase 05 physical upgrade and actual data retention are pending future release; candidate is not yet accepted.
+
+## BUBKA-005A
+BUBKA-005A: only standard BG, BG personalized and basic foreign formats supported. Other special formats require verified rules. Existing values preserved until edited.

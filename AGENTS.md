@@ -50,3 +50,6 @@ V5 authorized local DESIGN-003 integration only. Preserve native icons, no commi
 
 ## BUBKA-005 — current status (supersedes historical status)
 Фаза 05 BUBKA-005 е разрешена за един PR след локален preflight. Без merge, tag, release или фаза 06 до отделно решение. Запази старите записи и identity; не пипай известията, signing или update договора.
+
+## BUBKA-005A
+BUBKA-005A authorized end to end testing only: strict garage input, preserve old data, schema v2 unchanged, one PR, verified full CI before merge and release; no phase 06.

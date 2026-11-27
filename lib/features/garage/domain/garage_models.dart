@@ -1,5 +1,8 @@
 import 'package:flutter/foundation.dart';
 
+import 'vehicle_catalog.dart';
+import 'vehicle_rules.dart';
+
 @immutable
 class VehicleDraft {
   const VehicleDraft({
@@ -8,33 +11,58 @@ class VehicleDraft {
     required this.registration,
     this.year,
     this.fuel,
+    this.registrationMode = RegistrationMode.bulgarian,
+    this.manualModel = false,
   });
   final String brand, model, registration;
   final int? year;
   final String? fuel;
+  final RegistrationMode registrationMode;
+  final bool manualModel;
 
-  static String registrationKey(String value) =>
-      value.replaceAll(RegExp(r'\s+', unicode: true), '').toUpperCase();
+  static String registrationKey(String value) => registrationIdentity(value);
 
-  VehicleDraft validated() {
-    final normalized = VehicleDraft(
-      brand: brand.trim(),
-      model: model.trim(),
-      registration: registration.trim(),
-      year: year,
-      fuel: fuel?.trim(),
-    );
-    if (normalized.brand.isEmpty ||
-        normalized.model.isEmpty ||
-        registrationKey(normalized.registration).isEmpty) {
+  VehicleDraft validated({VehicleDraft? previous}) {
+    final brandChanged = previous == null || brand != previous.brand;
+    final modelChanged =
+        previous == null || brandChanged || model != previous.model;
+    final registrationChanged =
+        previous == null || registration != previous.registration;
+    final yearChanged = previous == null || year != previous.year;
+    final fuelChanged = previous == null || fuel != previous.fuel;
+    if (brandChanged && !vehicleCatalog.containsKey(brand)) {
+      throw const GarageValidation('Избери марка от каталога.');
+    }
+    if (modelChanged &&
+        (model.trim().isEmpty ||
+            (!manualModel && !modelsForBrand(brand).contains(model)))) {
       throw const GarageValidation(
-        'Попълни марка, модел и регистрационен номер.',
+        'Избери модел или използвай „Моят модел липсва“.',
       );
     }
-    if (year != null && (year! < 1 || year! > 9999)) {
+    final normalized = registrationChanged
+        ? normalizedRegistration(registration, registrationMode)
+        : registration;
+    if (normalized == null) {
+      throw const GarageValidation(
+        'Невалиден или неподдържан формат на регистрационния номер.',
+      );
+    }
+    if (yearChanged && !validYear(year)) {
       throw const GarageValidation('Въведи валидна година.');
     }
-    return normalized;
+    if (fuelChanged && fuel != null && !fuelOptions.contains(fuel)) {
+      throw const GarageValidation('Избери гориво от списъка.');
+    }
+    return VehicleDraft(
+      brand: brand,
+      model: modelChanged ? model.trim() : model,
+      registration: normalized,
+      year: year,
+      fuel: fuel,
+      registrationMode: registrationMode,
+      manualModel: manualModel,
+    );
   }
 }
 

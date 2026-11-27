@@ -1,7 +1,7 @@
 name: garage
 description: Personal digital garage for Android and iOS.
 publish_to: 'none'
-version: 0.4.0+6
+version: 0.4.1+7
 
 environment:
   sdk: ^3.14.0

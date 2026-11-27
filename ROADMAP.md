@@ -26,3 +26,6 @@
 
 ## BUBKA-005 — current status (supersedes historical status)
 04 accepted with follow-ups per owner; published 0.3.0+5, Android/iPhone update and old record retention owner-reported. 05 authorized for candidate 0.4.0+6; PR review required. 06–12 remain deferred.
+
+## BUBKA-005A
+Phase 05 released and owner-tested; form-quality hotfix 005A in progress. Phase 06 not authorized.
