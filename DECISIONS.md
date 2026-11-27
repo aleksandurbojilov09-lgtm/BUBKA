@@ -67,3 +67,6 @@ DESIGN-003 reconstruction owner-approved; V5 uses exact local PNG layers, shared
 
 ## BUBA-004-PR-AUTHORIZATION (26.11.2026) — актуално решение
 Собственикът одобри BUBA render и публичния push с остатъчен риск; архитектът прие тесния rebrand diff. Одобрен архив SHA-256: `33a636586c2d049c3943afdf180552f01b86c0ed80b6474de3c0601e3ae9fc96` (119 source files). Rights review: preliminary_not_legal_clearance; не е правно разрешение. Този мандат отменя само предишния STOP за изчакване на одобрението, включително в историческия AGENTS.md. След live preflight PASS: един commit/push/PR и задължителен CI. Без merge, tag, release, version bump или фаза 05. Публикувана 0.2.1+4; кандидат 0.3.0+5. Техническите BUBKA договори остават.
+
+## BUBKA-005 — current status (supersedes historical status)
+BUBKA-005: additive v1→v2 migration; vehicle ID auto-increment, unique normalized registration, active selection singleton foreign key. Stable garage order by ID. Original manually curated offline catalog; free text always available. New version 0.4.0+6 candidate only. No signing/notification/update changes.

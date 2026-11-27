@@ -48,3 +48,6 @@ V5 Polish е визуално приет; новият тесен rebrand под
 
 ## BUBA-004 — актуално състояние към PR preflight
 Одобрението на render и остатъчния риск от собственика и архитектурното приемане са получени на 26.11.2026. Старият STOP за изчакване на тези одобрения е отменен; при конкретен нов конфликт STOP. Проверката на права остава preliminary_not_legal_clearance. Фаза 04 не е завършена; live preflight, PR CI и физически Android/iOS тестове предстоят. Фаза 03 accepted_with_followups: notification timing/reconciliation, iOS refresh, local backups, independent signing-key backup. Native masks, FPS/memory, cold start, retention, effective SideStore identity и окончателни права не са потвърдени. Не се разрешава merge/release/05.
+
+## BUBKA-005 — current status (supersedes historical status)
+Phase 04 update and retention on Android and iPhone reported successful by owner; startup animation and notification timing remain open. Independent physical profiling, rights clearance, backups and iOS refresh remain open. Phase 05 physical upgrade and actual data retention are pending future release; candidate is not yet accepted.

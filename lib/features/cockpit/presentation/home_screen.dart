@@ -11,6 +11,7 @@ import '../../../design_system/cockpit_assets.dart';
 import '../../../design_system/resource_ring.dart';
 import '../../../design_system/signature_car.dart';
 import '../../../design_system/theme.dart';
+import '../../garage/garage.dart';
 import 'cockpit_models.dart';
 import 'cockpit_shell.dart';
 import 'ignition.dart';
@@ -30,10 +31,12 @@ class CockpitHome extends StatefulWidget {
     required this.actions,
     this.playIntro = false,
     this.fixture,
+    this.garage,
   });
   final CockpitActions actions;
   final bool playIntro;
   final CockpitFixtureModel? fixture;
+  final GarageViewModel? garage;
   @override
   State<CockpitHome> createState() => _CockpitHomeState();
 }
@@ -102,6 +105,7 @@ class _CockpitHomeState extends State<CockpitHome>
     animation: Listenable.merge([
       _controller,
       if (widget.fixture != null) widget.fixture!,
+      if (widget.garage != null) widget.garage!,
     ]),
     builder: (context, _) {
       final frame = IgnitionFrame(ms: _controller.value * 3400);
@@ -126,6 +130,7 @@ class _CockpitHomeState extends State<CockpitHome>
               frame: frame,
               actions: actions,
               fixture: fixture,
+              garage: widget.garage,
             );
             final lower = Column(
               mainAxisSize: MainAxisSize.min,
@@ -133,7 +138,10 @@ class _CockpitHomeState extends State<CockpitHome>
                 _reveal(frame.quick, _QuickCards(actions: actions)),
                 const SizedBox(height: 15),
                 _reveal(frame.summary, const _Summary()),
-                if (fixture == null) ...[
+                if (fixture == null &&
+                    widget.garage?.active == null &&
+                    (widget.garage == null ||
+                        widget.garage!.snapshot != null)) ...[
                   const SizedBox(height: 16),
                   _reveal(
                     frame.details,
@@ -143,8 +151,7 @@ class _CockpitHomeState extends State<CockpitHome>
                       action: GoldButton(
                         label: 'Добави автомобил',
                         icon: Icons.add,
-                        onPressed: () =>
-                            actions.future('Добавяне на автомобил · фаза 05'),
+                        onPressed: () => actions.navigate('/garage'),
                       ),
                     ),
                   ),
@@ -185,17 +192,36 @@ class _CockpitHomeState extends State<CockpitHome>
 }
 
 class _Stage extends StatelessWidget {
-  const _Stage({required this.frame, required this.actions, this.fixture});
+  const _Stage({
+    required this.frame,
+    required this.actions,
+    this.fixture,
+    this.garage,
+  });
   final IgnitionFrame frame;
   final CockpitActions actions;
   final CockpitFixtureModel? fixture;
+  final GarageViewModel? garage;
   @override
   Widget build(BuildContext context) => LayoutBuilder(
     builder: (context, c) {
       final scale = MediaQuery.textScalerOf(context).scale(1);
       final headerHeight = math.max(60.0, scale * 23 + 20);
       final diameter = math.min(scale > 1.15 ? 238.0 : 270.0, c.maxWidth - 22);
-      final selected = fixture?.selected;
+      final real = garage?.active;
+      final selected =
+          fixture?.selected ??
+          (real == null
+              ? null
+              : VehiclePresentation(
+                  id: real.id.toString(),
+                  name: real.name,
+                  registration: real.registration,
+                  fuel: real.details.fuel ?? '',
+                  year: real.details.year ?? 0,
+                ));
+      final loading =
+          fixture == null && garage != null && garage!.snapshot == null;
       final standard = scale <= 1.05 && c.maxWidth >= 340;
       final travel = frame.wordmarkTravel;
       final markStart = diameter * .92 + 86.25 * math.max(1.0, scale);
@@ -244,12 +270,14 @@ class _Stage extends StatelessWidget {
               _reveal(
                 frame.details,
                 selected == null
-                    ? const Padding(
+                    ? Padding(
                         padding: EdgeInsets.symmetric(vertical: 18),
                         child: Text(
-                          'Няма добавен автомобил',
+                          loading
+                              ? (garage!.error ?? 'Зареждане…')
+                              : 'Няма добавен автомобил',
                           textAlign: TextAlign.center,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 22,
                             fontWeight: FontWeight.w600,
                           ),
@@ -258,8 +286,12 @@ class _Stage extends StatelessWidget {
                     : standard
                     ? ConstrainedBox(
                         constraints: const BoxConstraints(minHeight: 103),
-                        child: _VehicleHeader(model: fixture!),
+                        child: fixture == null
+                            ? _RealVehicleHeader(vehicle: selected)
+                            : _VehicleHeader(model: fixture!),
                       )
+                    : fixture == null
+                    ? _RealVehicleHeader(vehicle: selected)
                     : _VehicleHeader(model: fixture!),
               ),
               if (!standard || selected == null) const SizedBox(height: 4),
@@ -269,7 +301,7 @@ class _Stage extends StatelessWidget {
                 resource: fixture?.resource ?? const ResourceView(),
                 choice: fixture?.choice,
                 hasVehicle: selected != null,
-                onTap: selected == null
+                onTap: fixture == null
                     ? null
                     : () => showRingSelector(context, fixture!),
               ),
@@ -310,6 +342,28 @@ class _Stage extends StatelessWidget {
         ],
       );
     },
+  );
+}
+
+class _RealVehicleHeader extends StatelessWidget {
+  const _RealVehicleHeader({required this.vehicle});
+  final VehiclePresentation vehicle;
+  @override
+  Widget build(BuildContext context) => Column(
+    mainAxisSize: MainAxisSize.min,
+    children: [
+      Text(
+        vehicle.name,
+        textAlign: TextAlign.center,
+        style: const TextStyle(
+          fontSize: 26,
+          height: 1.2,
+          fontWeight: FontWeight.w600,
+        ),
+      ),
+      const SizedBox(height: 6),
+      RegistrationPlate(number: vehicle.registration, showCountry: false),
+    ],
   );
 }
 
@@ -531,7 +585,7 @@ class _ResourceLabel extends StatelessWidget {
       ),
       Text(
         hasVehicle
-            ? (choice?.label ?? 'Избери показател')
+            ? (choice?.label ?? 'Няма наличен показател')
             : 'Няма избран автомобил',
         textAlign: TextAlign.center,
         style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),

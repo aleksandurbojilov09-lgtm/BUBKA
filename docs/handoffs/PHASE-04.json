@@ -2,15 +2,15 @@
   "project": "BUBKA",
   "phase": 4,
   "task_id": "BUBKA-004",
-  "status": "authorized_for_PR_CI_pending_preflight",
+  "status": "accepted_with_followups",
   "baseline_sha": "7b52f78a5861bd68411f364431d88240b27a7950",
   "branch": "phase/04-design-ui",
   "candidate_version": "0.3.0+5",
   "owner_visual_approved": true,
-  "commit_created": false,
-  "push_performed": false,
-  "phase_completed": false,
-  "next_action": "Live manifest and local preflight; one commit/push/PR and required FULL CI; independent architect review before merge/release/phase05",
+  "commit_created": true,
+  "push_performed": true,
+  "phase_completed": true,
+  "next_action": "BUBKA-005 authorized; physical follow-ups remain open",
   "polish_task_id": "BUBKA-004-V5-FINAL-POLISH",
   "prior_v5_review": {
     "sha256": "6c95d59495359b5826e8a476a55726e4e3add05f07d85c37f6f1712538307276",
@@ -20,9 +20,9 @@
     "owner_visual_approved": false
   },
   "physical_tests_pending": true,
-  "ci_started": false,
-  "release_authorized": false,
-  "phase_05_authorized": false,
+  "ci_started": true,
+  "release_authorized": true,
+  "phase_05_authorized": true,
   "polish_local_test_counts": {
     "targeted_visual_passed": 20,
     "full_local_passed": 43,
@@ -95,6 +95,21 @@
     "candidate_version": "0.3.0+5",
     "status": "authorized_for_PR_CI_pending_preflight"
   },
-  "merge_authorized": false,
-  "operation_flags_as_of": "Preflight snapshot before commit; actual PR/CI evidence is external handoff, no additional docs push."
+  "merge_authorized": true,
+  "operation_flags_as_of": "Updated with verified GitHub release/CI and owner-reported acceptance; historical authorization objects retained.",
+  "published_version": "0.3.0+5",
+  "main_sha": "6deb3af3c3a9fce0c25dca10a521cd3bc508d574",
+  "main_ci_run": 45905060610,
+  "release_run": 45907834477,
+  "release_tag": "v0.3.0",
+  "owner_reported": {
+    "android_update": true,
+    "ios_update": true,
+    "new_design": true,
+    "old_records_retained": true,
+    "pending": [
+      "startup_animation",
+      "notifications"
+    ]
+  }
 }

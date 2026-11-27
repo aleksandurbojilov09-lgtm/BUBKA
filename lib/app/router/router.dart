@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import '../../design_system/cockpit_components.dart';
 import '../../design_system/theme.dart';
 import '../../features/cockpit/cockpit.dart';
+import '../../features/garage/garage.dart';
 import '../modules/module_availability.dart';
 import '../modules/module_registry.dart';
 import '../version.dart';
@@ -14,6 +15,7 @@ GoRouter createRouter(
   ModuleRegistry registry,
   ModuleAvailability availability, {
   bool testingPreview = false,
+  GarageViewModel? garage,
 }) {
   var coldStart = true;
   final allowPreview = testingPreview || visualPreviewEnabled;
@@ -30,13 +32,19 @@ GoRouter createRouter(
         builder: (context, _) {
           final intro = coldStart;
           coldStart = false;
-          return CockpitHome(actions: _actions(context), playIntro: intro);
+          return CockpitHome(
+            actions: _actions(context),
+            playIntro: intro,
+            garage: garage,
+          );
         },
       ),
       GoRoute(
         path: '/garage',
-        pageBuilder: (context, state) =>
-            _page(state, GarageScreen(actions: _actions(context))),
+        pageBuilder: (context, state) => _page(
+          state,
+          GarageScreen(actions: _actions(context), garage: garage),
+        ),
       ),
       GoRoute(
         path: '/settings',

@@ -24,3 +24,6 @@ Local notification plan and snapshots in the backup-excluded private directory. 
 
 ## Phase 04 local UI candidate (unverified)
 Native presentation components and Canvas scene in design_system; feature-first cockpit presentation; existing GoRouter, Provider, module registry and diagnostics/updater preserved by design. Fixture model is in-memory only, gated by existing testing channel; no vehicle DB. See docs/design/PHASE-04-NOTES.md and route contract. Actual regression evidence pending.
+
+## BUBKA-005 — current status (supersedes historical status)
+Phase 04: released v0.3.0+5 on main 6deb3af3c3a9fce0c25dca10a521cd3bc508d574; CI 45905060610 and release 45907834477 successful. Phase 05 candidate: garage domain, local Drift repository and shared ChangeNotifier; cockpit consumes public garage interface. Schema v2 adds two tables only.

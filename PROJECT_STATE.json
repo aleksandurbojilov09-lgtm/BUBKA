@@ -1,12 +1,12 @@
 {
   "project": "BUBKA",
-  "version": "0.3.0",
-  "build_number": 5,
-  "phase": 4,
+  "version": "0.4.0",
+  "build_number": 6,
+  "phase": 5,
   "phase_status": "in_progress",
-  "branch": "phase/04-design-ui",
-  "verified_source_commit": "7b52f78a5861bd68411f364431d88240b27a7950",
-  "verified_ci_url": "https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45830140460",
+  "branch": "phase/05-garage",
+  "verified_source_commit": "6deb3af3c3a9fce0c25dca10a521cd3bc508d574",
+  "verified_ci_url": "https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45905060610",
   "application_identity": {
     "android_application_id": "io.github.aleksandurbojilov09.garage",
     "ios_bundle_id": "io.github.aleksandurbojilov09.garage"
@@ -22,8 +22,8 @@
   "phase_02_status": "accepted_with_followups",
   "phase_03_authorized": true,
   "phase_04_authorized": true,
-  "target_version": "0.3.0",
-  "target_build_number": 5,
+  "target_version": "0.4.0",
+  "target_build_number": 6,
   "baseline_tag": "v0.1.0",
   "branch_protection": {
     "status": "verified_active",
@@ -40,8 +40,8 @@
     "independent_backup_verified": false
   },
   "update_channel": "testing",
-  "last_published_testing_release": "v0.2.1",
-  "last_published_release_run": "https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45821848648",
+  "last_published_testing_release": "v0.3.0",
+  "last_published_release_run": "https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45907834477",
   "android_initial_install": "verified_owner_screenshot",
   "ios_initial_install": "passed_owner_report",
   "android_update_and_data_retention": "passed_owner_report",
@@ -131,5 +131,21 @@
     "published_version": "0.2.1+4",
     "candidate_version": "0.3.0+5",
     "status": "authorized_for_PR_CI_pending_preflight"
+  },
+  "status": "phase_05_candidate_pending_pr_validation",
+  "published_version": "0.3.0+5",
+  "candidate_version": "0.4.0+6",
+  "phase_05_authorized": true,
+  "current_phase": 5,
+  "phase_04_status": "accepted_with_followups",
+  "phase_05": {
+    "task_id": "BUBKA-005",
+    "status": "candidate_pending_pr_validation",
+    "baseline_sha": "6deb3af3c3a9fce0c25dca10a521cd3bc508d574",
+    "branch": "phase/05-garage",
+    "schema_version": 2,
+    "merge_authorized": false,
+    "release_authorized": false,
+    "phase06_authorized": false
   }
 }

@@ -47,3 +47,6 @@ V5 authorized local DESIGN-003 integration only. Preserve native icons, no commi
 
 ## BUBA-004 — актуален мандат (има предимство пред старите статуси)
 Потребителско име BUBA (Буба), старо BUBKA. V5 Final Polish визуално приет от собственик и архитект; одобреният архив е неизменен. Разрешено е само локално преименуване; публичният push е блокиран до изрично приемане на остатъчния риск от собственика и архитектурно приемане на точния diff. Няма commit/PR/CI/merge/release/05. Запази техническите BUBKA договори, package garage, identity, signing, DB/paths/keys, update/release filenames, CI gate. Фаза 03 accepted_with_followups (известия timing/reconciliation, iOS refresh, локални backups, независим signing backup). Историческите записи не са текущи разрешения. Един общ пакет и отчет; без нов дизайн.
+
+## BUBKA-005 — current status (supersedes historical status)
+Фаза 05 BUBKA-005 е разрешена за един PR след локален preflight. Без merge, tag, release или фаза 06 до отделно решение. Запази старите записи и identity; не пипай известията, signing или update договора.

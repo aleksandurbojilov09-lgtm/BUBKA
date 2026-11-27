@@ -418,6 +418,662 @@ class ModulePreferencesCompanion extends UpdateCompanion<ModulePreference> {
   }
 }
 
+class $GarageVehiclesTable extends GarageVehicles
+    with TableInfo<$GarageVehiclesTable, GarageVehicle> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $GarageVehiclesTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+    'id',
+    aliasedName,
+    false,
+    hasAutoIncrement: true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'PRIMARY KEY AUTOINCREMENT',
+    ),
+  );
+  static const VerificationMeta _brandMeta = const VerificationMeta('brand');
+  @override
+  late final GeneratedColumn<String> brand = GeneratedColumn<String>(
+    'brand',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _modelMeta = const VerificationMeta('model');
+  @override
+  late final GeneratedColumn<String> model = GeneratedColumn<String>(
+    'model',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _registrationMeta = const VerificationMeta(
+    'registration',
+  );
+  @override
+  late final GeneratedColumn<String> registration = GeneratedColumn<String>(
+    'registration',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _registrationKeyMeta = const VerificationMeta(
+    'registrationKey',
+  );
+  @override
+  late final GeneratedColumn<String> registrationKey = GeneratedColumn<String>(
+    'registration_key',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways('UNIQUE'),
+  );
+  static const VerificationMeta _yearMeta = const VerificationMeta('year');
+  @override
+  late final GeneratedColumn<int> year = GeneratedColumn<int>(
+    'year',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _fuelMeta = const VerificationMeta('fuel');
+  @override
+  late final GeneratedColumn<String> fuel = GeneratedColumn<String>(
+    'fuel',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    brand,
+    model,
+    registration,
+    registrationKey,
+    year,
+    fuel,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'garage_vehicles';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<GarageVehicle> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('brand')) {
+      context.handle(
+        _brandMeta,
+        brand.isAcceptableOrUnknown(data['brand']!, _brandMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_brandMeta);
+    }
+    if (data.containsKey('model')) {
+      context.handle(
+        _modelMeta,
+        model.isAcceptableOrUnknown(data['model']!, _modelMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_modelMeta);
+    }
+    if (data.containsKey('registration')) {
+      context.handle(
+        _registrationMeta,
+        registration.isAcceptableOrUnknown(
+          data['registration']!,
+          _registrationMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_registrationMeta);
+    }
+    if (data.containsKey('registration_key')) {
+      context.handle(
+        _registrationKeyMeta,
+        registrationKey.isAcceptableOrUnknown(
+          data['registration_key']!,
+          _registrationKeyMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_registrationKeyMeta);
+    }
+    if (data.containsKey('year')) {
+      context.handle(
+        _yearMeta,
+        year.isAcceptableOrUnknown(data['year']!, _yearMeta),
+      );
+    }
+    if (data.containsKey('fuel')) {
+      context.handle(
+        _fuelMeta,
+        fuel.isAcceptableOrUnknown(data['fuel']!, _fuelMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  GarageVehicle map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return GarageVehicle(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}id'],
+      )!,
+      brand: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}brand'],
+      )!,
+      model: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}model'],
+      )!,
+      registration: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}registration'],
+      )!,
+      registrationKey: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}registration_key'],
+      )!,
+      year: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}year'],
+      ),
+      fuel: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}fuel'],
+      ),
+    );
+  }
+
+  @override
+  $GarageVehiclesTable createAlias(String alias) {
+    return $GarageVehiclesTable(attachedDatabase, alias);
+  }
+}
+
+class GarageVehicle extends DataClass implements Insertable<GarageVehicle> {
+  final int id;
+  final String brand;
+  final String model;
+  final String registration;
+  final String registrationKey;
+  final int? year;
+  final String? fuel;
+  const GarageVehicle({
+    required this.id,
+    required this.brand,
+    required this.model,
+    required this.registration,
+    required this.registrationKey,
+    this.year,
+    this.fuel,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<int>(id);
+    map['brand'] = Variable<String>(brand);
+    map['model'] = Variable<String>(model);
+    map['registration'] = Variable<String>(registration);
+    map['registration_key'] = Variable<String>(registrationKey);
+    if (!nullToAbsent || year != null) {
+      map['year'] = Variable<int>(year);
+    }
+    if (!nullToAbsent || fuel != null) {
+      map['fuel'] = Variable<String>(fuel);
+    }
+    return map;
+  }
+
+  GarageVehiclesCompanion toCompanion(bool nullToAbsent) {
+    return GarageVehiclesCompanion(
+      id: Value(id),
+      brand: Value(brand),
+      model: Value(model),
+      registration: Value(registration),
+      registrationKey: Value(registrationKey),
+      year: year == null && nullToAbsent ? const Value.absent() : Value(year),
+      fuel: fuel == null && nullToAbsent ? const Value.absent() : Value(fuel),
+    );
+  }
+
+  factory GarageVehicle.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return GarageVehicle(
+      id: serializer.fromJson<int>(json['id']),
+      brand: serializer.fromJson<String>(json['brand']),
+      model: serializer.fromJson<String>(json['model']),
+      registration: serializer.fromJson<String>(json['registration']),
+      registrationKey: serializer.fromJson<String>(json['registrationKey']),
+      year: serializer.fromJson<int?>(json['year']),
+      fuel: serializer.fromJson<String?>(json['fuel']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<int>(id),
+      'brand': serializer.toJson<String>(brand),
+      'model': serializer.toJson<String>(model),
+      'registration': serializer.toJson<String>(registration),
+      'registrationKey': serializer.toJson<String>(registrationKey),
+      'year': serializer.toJson<int?>(year),
+      'fuel': serializer.toJson<String?>(fuel),
+    };
+  }
+
+  GarageVehicle copyWith({
+    int? id,
+    String? brand,
+    String? model,
+    String? registration,
+    String? registrationKey,
+    Value<int?> year = const Value.absent(),
+    Value<String?> fuel = const Value.absent(),
+  }) => GarageVehicle(
+    id: id ?? this.id,
+    brand: brand ?? this.brand,
+    model: model ?? this.model,
+    registration: registration ?? this.registration,
+    registrationKey: registrationKey ?? this.registrationKey,
+    year: year.present ? year.value : this.year,
+    fuel: fuel.present ? fuel.value : this.fuel,
+  );
+  GarageVehicle copyWithCompanion(GarageVehiclesCompanion data) {
+    return GarageVehicle(
+      id: data.id.present ? data.id.value : this.id,
+      brand: data.brand.present ? data.brand.value : this.brand,
+      model: data.model.present ? data.model.value : this.model,
+      registration: data.registration.present
+          ? data.registration.value
+          : this.registration,
+      registrationKey: data.registrationKey.present
+          ? data.registrationKey.value
+          : this.registrationKey,
+      year: data.year.present ? data.year.value : this.year,
+      fuel: data.fuel.present ? data.fuel.value : this.fuel,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('GarageVehicle(')
+          ..write('id: $id, ')
+          ..write('brand: $brand, ')
+          ..write('model: $model, ')
+          ..write('registration: $registration, ')
+          ..write('registrationKey: $registrationKey, ')
+          ..write('year: $year, ')
+          ..write('fuel: $fuel')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(id, brand, model, registration, registrationKey, year, fuel);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is GarageVehicle &&
+          other.id == this.id &&
+          other.brand == this.brand &&
+          other.model == this.model &&
+          other.registration == this.registration &&
+          other.registrationKey == this.registrationKey &&
+          other.year == this.year &&
+          other.fuel == this.fuel);
+}
+
+class GarageVehiclesCompanion extends UpdateCompanion<GarageVehicle> {
+  final Value<int> id;
+  final Value<String> brand;
+  final Value<String> model;
+  final Value<String> registration;
+  final Value<String> registrationKey;
+  final Value<int?> year;
+  final Value<String?> fuel;
+  const GarageVehiclesCompanion({
+    this.id = const Value.absent(),
+    this.brand = const Value.absent(),
+    this.model = const Value.absent(),
+    this.registration = const Value.absent(),
+    this.registrationKey = const Value.absent(),
+    this.year = const Value.absent(),
+    this.fuel = const Value.absent(),
+  });
+  GarageVehiclesCompanion.insert({
+    this.id = const Value.absent(),
+    required String brand,
+    required String model,
+    required String registration,
+    required String registrationKey,
+    this.year = const Value.absent(),
+    this.fuel = const Value.absent(),
+  }) : brand = Value(brand),
+       model = Value(model),
+       registration = Value(registration),
+       registrationKey = Value(registrationKey);
+  static Insertable<GarageVehicle> custom({
+    Expression<int>? id,
+    Expression<String>? brand,
+    Expression<String>? model,
+    Expression<String>? registration,
+    Expression<String>? registrationKey,
+    Expression<int>? year,
+    Expression<String>? fuel,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (brand != null) 'brand': brand,
+      if (model != null) 'model': model,
+      if (registration != null) 'registration': registration,
+      if (registrationKey != null) 'registration_key': registrationKey,
+      if (year != null) 'year': year,
+      if (fuel != null) 'fuel': fuel,
+    });
+  }
+
+  GarageVehiclesCompanion copyWith({
+    Value<int>? id,
+    Value<String>? brand,
+    Value<String>? model,
+    Value<String>? registration,
+    Value<String>? registrationKey,
+    Value<int?>? year,
+    Value<String?>? fuel,
+  }) {
+    return GarageVehiclesCompanion(
+      id: id ?? this.id,
+      brand: brand ?? this.brand,
+      model: model ?? this.model,
+      registration: registration ?? this.registration,
+      registrationKey: registrationKey ?? this.registrationKey,
+      year: year ?? this.year,
+      fuel: fuel ?? this.fuel,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<int>(id.value);
+    }
+    if (brand.present) {
+      map['brand'] = Variable<String>(brand.value);
+    }
+    if (model.present) {
+      map['model'] = Variable<String>(model.value);
+    }
+    if (registration.present) {
+      map['registration'] = Variable<String>(registration.value);
+    }
+    if (registrationKey.present) {
+      map['registration_key'] = Variable<String>(registrationKey.value);
+    }
+    if (year.present) {
+      map['year'] = Variable<int>(year.value);
+    }
+    if (fuel.present) {
+      map['fuel'] = Variable<String>(fuel.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('GarageVehiclesCompanion(')
+          ..write('id: $id, ')
+          ..write('brand: $brand, ')
+          ..write('model: $model, ')
+          ..write('registration: $registration, ')
+          ..write('registrationKey: $registrationKey, ')
+          ..write('year: $year, ')
+          ..write('fuel: $fuel')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $ActiveGarageVehiclesTable extends ActiveGarageVehicles
+    with TableInfo<$ActiveGarageVehiclesTable, ActiveGarageVehicle> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $ActiveGarageVehiclesTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _slotMeta = const VerificationMeta('slot');
+  @override
+  late final GeneratedColumn<int> slot = GeneratedColumn<int>(
+    'slot',
+    aliasedName,
+    false,
+    check: () => slot.equals(1),
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _vehicleIdMeta = const VerificationMeta(
+    'vehicleId',
+  );
+  @override
+  late final GeneratedColumn<int> vehicleId = GeneratedColumn<int>(
+    'vehicle_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'REFERENCES garage_vehicles (id) ON DELETE CASCADE',
+    ),
+  );
+  @override
+  List<GeneratedColumn> get $columns => [slot, vehicleId];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'active_garage_vehicles';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<ActiveGarageVehicle> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('slot')) {
+      context.handle(
+        _slotMeta,
+        slot.isAcceptableOrUnknown(data['slot']!, _slotMeta),
+      );
+    }
+    if (data.containsKey('vehicle_id')) {
+      context.handle(
+        _vehicleIdMeta,
+        vehicleId.isAcceptableOrUnknown(data['vehicle_id']!, _vehicleIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_vehicleIdMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {slot};
+  @override
+  ActiveGarageVehicle map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return ActiveGarageVehicle(
+      slot: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}slot'],
+      )!,
+      vehicleId: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}vehicle_id'],
+      )!,
+    );
+  }
+
+  @override
+  $ActiveGarageVehiclesTable createAlias(String alias) {
+    return $ActiveGarageVehiclesTable(attachedDatabase, alias);
+  }
+}
+
+class ActiveGarageVehicle extends DataClass
+    implements Insertable<ActiveGarageVehicle> {
+  final int slot;
+  final int vehicleId;
+  const ActiveGarageVehicle({required this.slot, required this.vehicleId});
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['slot'] = Variable<int>(slot);
+    map['vehicle_id'] = Variable<int>(vehicleId);
+    return map;
+  }
+
+  ActiveGarageVehiclesCompanion toCompanion(bool nullToAbsent) {
+    return ActiveGarageVehiclesCompanion(
+      slot: Value(slot),
+      vehicleId: Value(vehicleId),
+    );
+  }
+
+  factory ActiveGarageVehicle.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return ActiveGarageVehicle(
+      slot: serializer.fromJson<int>(json['slot']),
+      vehicleId: serializer.fromJson<int>(json['vehicleId']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'slot': serializer.toJson<int>(slot),
+      'vehicleId': serializer.toJson<int>(vehicleId),
+    };
+  }
+
+  ActiveGarageVehicle copyWith({int? slot, int? vehicleId}) =>
+      ActiveGarageVehicle(
+        slot: slot ?? this.slot,
+        vehicleId: vehicleId ?? this.vehicleId,
+      );
+  ActiveGarageVehicle copyWithCompanion(ActiveGarageVehiclesCompanion data) {
+    return ActiveGarageVehicle(
+      slot: data.slot.present ? data.slot.value : this.slot,
+      vehicleId: data.vehicleId.present ? data.vehicleId.value : this.vehicleId,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ActiveGarageVehicle(')
+          ..write('slot: $slot, ')
+          ..write('vehicleId: $vehicleId')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(slot, vehicleId);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is ActiveGarageVehicle &&
+          other.slot == this.slot &&
+          other.vehicleId == this.vehicleId);
+}
+
+class ActiveGarageVehiclesCompanion
+    extends UpdateCompanion<ActiveGarageVehicle> {
+  final Value<int> slot;
+  final Value<int> vehicleId;
+  const ActiveGarageVehiclesCompanion({
+    this.slot = const Value.absent(),
+    this.vehicleId = const Value.absent(),
+  });
+  ActiveGarageVehiclesCompanion.insert({
+    this.slot = const Value.absent(),
+    required int vehicleId,
+  }) : vehicleId = Value(vehicleId);
+  static Insertable<ActiveGarageVehicle> custom({
+    Expression<int>? slot,
+    Expression<int>? vehicleId,
+  }) {
+    return RawValuesInsertable({
+      if (slot != null) 'slot': slot,
+      if (vehicleId != null) 'vehicle_id': vehicleId,
+    });
+  }
+
+  ActiveGarageVehiclesCompanion copyWith({
+    Value<int>? slot,
+    Value<int>? vehicleId,
+  }) {
+    return ActiveGarageVehiclesCompanion(
+      slot: slot ?? this.slot,
+      vehicleId: vehicleId ?? this.vehicleId,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (slot.present) {
+      map['slot'] = Variable<int>(slot.value);
+    }
+    if (vehicleId.present) {
+      map['vehicle_id'] = Variable<int>(vehicleId.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ActiveGarageVehiclesCompanion(')
+          ..write('slot: $slot, ')
+          ..write('vehicleId: $vehicleId')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   $AppDatabaseManager get managers => $AppDatabaseManager(this);
@@ -425,6 +1081,9 @@ abstract class _$AppDatabase extends GeneratedDatabase {
       $DiagnosticRecordsTable(this);
   late final $ModulePreferencesTable modulePreferences =
       $ModulePreferencesTable(this);
+  late final $GarageVehiclesTable garageVehicles = $GarageVehiclesTable(this);
+  late final $ActiveGarageVehiclesTable activeGarageVehicles =
+      $ActiveGarageVehiclesTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -432,7 +1091,19 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   List<DatabaseSchemaEntity> get allSchemaEntities => [
     diagnosticRecords,
     modulePreferences,
+    garageVehicles,
+    activeGarageVehicles,
   ];
+  @override
+  StreamQueryUpdateRules get streamUpdateRules => const StreamQueryUpdateRules([
+    WritePropagation(
+      on: TableUpdateQuery.onTableName(
+        'garage_vehicles',
+        limitUpdateKind: UpdateKind.delete,
+      ),
+      result: [TableUpdate('active_garage_vehicles', kind: UpdateKind.delete)],
+    ),
+  ]);
 }
 
 typedef $$DiagnosticRecordsTableCreateCompanionBuilder =
@@ -745,6 +1416,628 @@ typedef $$ModulePreferencesTableProcessedTableManager =
       ModulePreference,
       PrefetchHooks Function()
     >;
+typedef $$GarageVehiclesTableCreateCompanionBuilder =
+    GarageVehiclesCompanion Function({
+      Value<int> id,
+      required String brand,
+      required String model,
+      required String registration,
+      required String registrationKey,
+      Value<int?> year,
+      Value<String?> fuel,
+    });
+typedef $$GarageVehiclesTableUpdateCompanionBuilder =
+    GarageVehiclesCompanion Function({
+      Value<int> id,
+      Value<String> brand,
+      Value<String> model,
+      Value<String> registration,
+      Value<String> registrationKey,
+      Value<int?> year,
+      Value<String?> fuel,
+    });
+
+final class $$GarageVehiclesTableReferences
+    extends BaseReferences<_$AppDatabase, $GarageVehiclesTable, GarageVehicle> {
+  $$GarageVehiclesTableReferences(
+    super.$_db,
+    super.$_table,
+    super.$_typedResult,
+  );
+
+  static MultiTypedResultKey<
+    $ActiveGarageVehiclesTable,
+    List<ActiveGarageVehicle>
+  >
+  _activeGarageVehiclesRefsTable(_$AppDatabase db) =>
+      MultiTypedResultKey.fromTable(
+        db.activeGarageVehicles,
+        aliasName: 'garage_vehicles__id__active_garage_vehicles__vehicle_id',
+      );
+
+  $$ActiveGarageVehiclesTableProcessedTableManager
+  get activeGarageVehiclesRefs {
+    final manager = $$ActiveGarageVehiclesTableTableManager(
+      $_db,
+      $_db.activeGarageVehicles,
+    ).filter((f) => f.vehicleId.id.sqlEquals($_itemColumn<int>('id')!));
+
+    final cache = $_typedResult.readTableOrNull(
+      _activeGarageVehiclesRefsTable($_db),
+    );
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: cache),
+    );
+  }
+}
+
+class $$GarageVehiclesTableFilterComposer
+    extends Composer<_$AppDatabase, $GarageVehiclesTable> {
+  $$GarageVehiclesTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get brand => $composableBuilder(
+    column: $table.brand,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get model => $composableBuilder(
+    column: $table.model,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get registration => $composableBuilder(
+    column: $table.registration,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get registrationKey => $composableBuilder(
+    column: $table.registrationKey,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get year => $composableBuilder(
+    column: $table.year,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get fuel => $composableBuilder(
+    column: $table.fuel,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  Expression<bool> activeGarageVehiclesRefs(
+    Expression<bool> Function($$ActiveGarageVehiclesTableFilterComposer f) f,
+  ) {
+    final $$ActiveGarageVehiclesTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.activeGarageVehicles,
+      getReferencedColumn: (t) => t.vehicleId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$ActiveGarageVehiclesTableFilterComposer(
+            $db: $db,
+            $table: $db.activeGarageVehicles,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+}
+
+class $$GarageVehiclesTableOrderingComposer
+    extends Composer<_$AppDatabase, $GarageVehiclesTable> {
+  $$GarageVehiclesTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get brand => $composableBuilder(
+    column: $table.brand,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get model => $composableBuilder(
+    column: $table.model,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get registration => $composableBuilder(
+    column: $table.registration,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get registrationKey => $composableBuilder(
+    column: $table.registrationKey,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get year => $composableBuilder(
+    column: $table.year,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get fuel => $composableBuilder(
+    column: $table.fuel,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$GarageVehiclesTableAnnotationComposer
+    extends Composer<_$AppDatabase, $GarageVehiclesTable> {
+  $$GarageVehiclesTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get brand =>
+      $composableBuilder(column: $table.brand, builder: (column) => column);
+
+  GeneratedColumn<String> get model =>
+      $composableBuilder(column: $table.model, builder: (column) => column);
+
+  GeneratedColumn<String> get registration => $composableBuilder(
+    column: $table.registration,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get registrationKey => $composableBuilder(
+    column: $table.registrationKey,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get year =>
+      $composableBuilder(column: $table.year, builder: (column) => column);
+
+  GeneratedColumn<String> get fuel =>
+      $composableBuilder(column: $table.fuel, builder: (column) => column);
+
+  Expression<T> activeGarageVehiclesRefs<T extends Object>(
+    Expression<T> Function($$ActiveGarageVehiclesTableAnnotationComposer a) f,
+  ) {
+    final $$ActiveGarageVehiclesTableAnnotationComposer composer =
+        $composerBuilder(
+          composer: this,
+          getCurrentColumn: (t) => t.id,
+          referencedTable: $db.activeGarageVehicles,
+          getReferencedColumn: (t) => t.vehicleId,
+          builder:
+              (
+                joinBuilder, {
+                $addJoinBuilderToRootComposer,
+                $removeJoinBuilderFromRootComposer,
+              }) => $$ActiveGarageVehiclesTableAnnotationComposer(
+                $db: $db,
+                $table: $db.activeGarageVehicles,
+                $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+                joinBuilder: joinBuilder,
+                $removeJoinBuilderFromRootComposer:
+                    $removeJoinBuilderFromRootComposer,
+              ),
+        );
+    return f(composer);
+  }
+}
+
+class $$GarageVehiclesTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $GarageVehiclesTable,
+          GarageVehicle,
+          $$GarageVehiclesTableFilterComposer,
+          $$GarageVehiclesTableOrderingComposer,
+          $$GarageVehiclesTableAnnotationComposer,
+          $$GarageVehiclesTableCreateCompanionBuilder,
+          $$GarageVehiclesTableUpdateCompanionBuilder,
+          (GarageVehicle, $$GarageVehiclesTableReferences),
+          GarageVehicle,
+          PrefetchHooks Function({bool activeGarageVehiclesRefs})
+        > {
+  $$GarageVehiclesTableTableManager(
+    _$AppDatabase db,
+    $GarageVehiclesTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$GarageVehiclesTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$GarageVehiclesTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$GarageVehiclesTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                Value<String> brand = const Value.absent(),
+                Value<String> model = const Value.absent(),
+                Value<String> registration = const Value.absent(),
+                Value<String> registrationKey = const Value.absent(),
+                Value<int?> year = const Value.absent(),
+                Value<String?> fuel = const Value.absent(),
+              }) => GarageVehiclesCompanion(
+                id: id,
+                brand: brand,
+                model: model,
+                registration: registration,
+                registrationKey: registrationKey,
+                year: year,
+                fuel: fuel,
+              ),
+          createCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                required String brand,
+                required String model,
+                required String registration,
+                required String registrationKey,
+                Value<int?> year = const Value.absent(),
+                Value<String?> fuel = const Value.absent(),
+              }) => GarageVehiclesCompanion.insert(
+                id: id,
+                brand: brand,
+                model: model,
+                registration: registration,
+                registrationKey: registrationKey,
+                year: year,
+                fuel: fuel,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$GarageVehiclesTable, GarageVehicle>(table),
+                  $$GarageVehiclesTableReferences(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: ({activeGarageVehiclesRefs = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [
+                if (activeGarageVehiclesRefs) db.activeGarageVehicles,
+              ],
+              addJoins: null,
+              getPrefetchedDataCallback: (items) async {
+                return [
+                  if (activeGarageVehiclesRefs)
+                    await $_getPrefetchedDataByColumns<
+                      GarageVehicle,
+                      $GarageVehiclesTable,
+                      ActiveGarageVehicle,
+                      $ActiveGarageVehiclesTable
+                    >(
+                      currentTable: table,
+                      referencedTable: $$GarageVehiclesTableReferences
+                          ._activeGarageVehiclesRefsTable(db),
+                      managerFromTypedResult: (p0) =>
+                          $$GarageVehiclesTableReferences(
+                            db,
+                            table,
+                            p0,
+                          ).activeGarageVehiclesRefs,
+                      currentColumn: 'id',
+                      referencedColumn: 'vehicle_id',
+                      typedResults: items,
+                    ),
+                ];
+              },
+            );
+          },
+        ),
+      );
+}
+
+typedef $$GarageVehiclesTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $GarageVehiclesTable,
+      GarageVehicle,
+      $$GarageVehiclesTableFilterComposer,
+      $$GarageVehiclesTableOrderingComposer,
+      $$GarageVehiclesTableAnnotationComposer,
+      $$GarageVehiclesTableCreateCompanionBuilder,
+      $$GarageVehiclesTableUpdateCompanionBuilder,
+      (GarageVehicle, $$GarageVehiclesTableReferences),
+      GarageVehicle,
+      PrefetchHooks Function({bool activeGarageVehiclesRefs})
+    >;
+typedef $$ActiveGarageVehiclesTableCreateCompanionBuilder =
+    ActiveGarageVehiclesCompanion Function({
+      Value<int> slot,
+      required int vehicleId,
+    });
+typedef $$ActiveGarageVehiclesTableUpdateCompanionBuilder =
+    ActiveGarageVehiclesCompanion Function({
+      Value<int> slot,
+      Value<int> vehicleId,
+    });
+
+final class $$ActiveGarageVehiclesTableReferences
+    extends
+        BaseReferences<
+          _$AppDatabase,
+          $ActiveGarageVehiclesTable,
+          ActiveGarageVehicle
+        > {
+  $$ActiveGarageVehiclesTableReferences(
+    super.$_db,
+    super.$_table,
+    super.$_typedResult,
+  );
+
+  static $GarageVehiclesTable _vehicleIdTable(_$AppDatabase db) => db
+      .garageVehicles
+      .createAlias('active_garage_vehicles__vehicle_id__garage_vehicles__id');
+
+  $$GarageVehiclesTableProcessedTableManager get vehicleId {
+    final $_column = $_itemColumn<int>('vehicle_id')!;
+
+    final manager = $$GarageVehiclesTableTableManager(
+      $_db,
+      $_db.garageVehicles,
+    ).filter((f) => f.id.sqlEquals($_column));
+    final item = $_typedResult.readTableOrNull(_vehicleIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: [item]),
+    );
+  }
+}
+
+class $$ActiveGarageVehiclesTableFilterComposer
+    extends Composer<_$AppDatabase, $ActiveGarageVehiclesTable> {
+  $$ActiveGarageVehiclesTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get slot => $composableBuilder(
+    column: $table.slot,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  $$GarageVehiclesTableFilterComposer get vehicleId {
+    final $$GarageVehiclesTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.vehicleId,
+      referencedTable: $db.garageVehicles,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$GarageVehiclesTableFilterComposer(
+            $db: $db,
+            $table: $db.garageVehicles,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$ActiveGarageVehiclesTableOrderingComposer
+    extends Composer<_$AppDatabase, $ActiveGarageVehiclesTable> {
+  $$ActiveGarageVehiclesTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get slot => $composableBuilder(
+    column: $table.slot,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  $$GarageVehiclesTableOrderingComposer get vehicleId {
+    final $$GarageVehiclesTableOrderingComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.vehicleId,
+      referencedTable: $db.garageVehicles,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$GarageVehiclesTableOrderingComposer(
+            $db: $db,
+            $table: $db.garageVehicles,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$ActiveGarageVehiclesTableAnnotationComposer
+    extends Composer<_$AppDatabase, $ActiveGarageVehiclesTable> {
+  $$ActiveGarageVehiclesTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get slot =>
+      $composableBuilder(column: $table.slot, builder: (column) => column);
+
+  $$GarageVehiclesTableAnnotationComposer get vehicleId {
+    final $$GarageVehiclesTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.vehicleId,
+      referencedTable: $db.garageVehicles,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$GarageVehiclesTableAnnotationComposer(
+            $db: $db,
+            $table: $db.garageVehicles,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$ActiveGarageVehiclesTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $ActiveGarageVehiclesTable,
+          ActiveGarageVehicle,
+          $$ActiveGarageVehiclesTableFilterComposer,
+          $$ActiveGarageVehiclesTableOrderingComposer,
+          $$ActiveGarageVehiclesTableAnnotationComposer,
+          $$ActiveGarageVehiclesTableCreateCompanionBuilder,
+          $$ActiveGarageVehiclesTableUpdateCompanionBuilder,
+          (ActiveGarageVehicle, $$ActiveGarageVehiclesTableReferences),
+          ActiveGarageVehicle,
+          PrefetchHooks Function({bool vehicleId})
+        > {
+  $$ActiveGarageVehiclesTableTableManager(
+    _$AppDatabase db,
+    $ActiveGarageVehiclesTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$ActiveGarageVehiclesTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$ActiveGarageVehiclesTableOrderingComposer(
+                $db: db,
+                $table: table,
+              ),
+          createComputedFieldComposer: () =>
+              $$ActiveGarageVehiclesTableAnnotationComposer(
+                $db: db,
+                $table: table,
+              ),
+          updateCompanionCallback: ({
+            Value<int> slot = const Value.absent(),
+            Value<int> vehicleId = const Value.absent(),
+          }) => ActiveGarageVehiclesCompanion(slot: slot, vehicleId: vehicleId),
+          createCompanionCallback:
+              ({
+                Value<int> slot = const Value.absent(),
+                required int vehicleId,
+              }) => ActiveGarageVehiclesCompanion.insert(
+                slot: slot,
+                vehicleId: vehicleId,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$ActiveGarageVehiclesTable, ActiveGarageVehicle>(
+                    table,
+                  ),
+                  $$ActiveGarageVehiclesTableReferences(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: ({vehicleId = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [],
+              addJoins:
+                  <
+                    T extends TableManagerState<
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic
+                    >
+                  >(state) {
+                    if (vehicleId) {
+                      state = state.withJoin(
+                        currentTable: table,
+                        currentColumn: table.vehicleId,
+                        referencedTable: $$ActiveGarageVehiclesTableReferences
+                            ._vehicleIdTable(db),
+                        referencedColumn: $$ActiveGarageVehiclesTableReferences
+                            ._vehicleIdTable(db)
+                            .id,
+                      ) as T;
+                    }
+
+                    return state;
+                  },
+              getPrefetchedDataCallback: (items) async {
+                return [];
+              },
+            );
+          },
+        ),
+      );
+}
+
+typedef $$ActiveGarageVehiclesTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $ActiveGarageVehiclesTable,
+      ActiveGarageVehicle,
+      $$ActiveGarageVehiclesTableFilterComposer,
+      $$ActiveGarageVehiclesTableOrderingComposer,
+      $$ActiveGarageVehiclesTableAnnotationComposer,
+      $$ActiveGarageVehiclesTableCreateCompanionBuilder,
+      $$ActiveGarageVehiclesTableUpdateCompanionBuilder,
+      (ActiveGarageVehicle, $$ActiveGarageVehiclesTableReferences),
+      ActiveGarageVehicle,
+      PrefetchHooks Function({bool vehicleId})
+    >;
 
 class $AppDatabaseManager {
   final _$AppDatabase _db;
@@ -753,4 +2046,8 @@ class $AppDatabaseManager {
       $$DiagnosticRecordsTableTableManager(_db, _db.diagnosticRecords);
   $$ModulePreferencesTableTableManager get modulePreferences =>
       $$ModulePreferencesTableTableManager(_db, _db.modulePreferences);
+  $$GarageVehiclesTableTableManager get garageVehicles =>
+      $$GarageVehiclesTableTableManager(_db, _db.garageVehicles);
+  $$ActiveGarageVehiclesTableTableManager get activeGarageVehicles =>
+      $$ActiveGarageVehiclesTableTableManager(_db, _db.activeGarageVehicles);
 }
