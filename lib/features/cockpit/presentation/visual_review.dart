@@ -187,8 +187,9 @@ CockpitActions _noActions(BuildContext context) => CockpitActions(
 
 Future<void> showQuickSheet(
   BuildContext context,
-  ValueChanged<String> onAction,
-) => showModalBottomSheet<void>(
+  ValueChanged<String> onAction, {
+  bool fuelAvailable = false,
+}) => showModalBottomSheet<void>(
   context: context,
   isScrollControlled: true,
   useSafeArea: true,
@@ -204,9 +205,11 @@ Future<void> showQuickSheet(
             style: TextStyle(fontSize: 23, fontWeight: FontWeight.w700),
           ),
           const SizedBox(height: 8),
-          const Text(
-            'Функциите ще се активират в съответните фази.',
-            style: TextStyle(color: BubkaDesign.muted),
+          Text(
+            fuelAvailable
+                ? 'Зареждане и километраж са активни. Другите функции предстоят.'
+                : 'Функциите ще се активират в съответните фази.',
+            style: const TextStyle(color: BubkaDesign.muted),
           ),
           for (final item in const <(String, IconData)>[
             ('Зареждане', Icons.local_gas_station_outlined),

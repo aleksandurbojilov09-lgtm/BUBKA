@@ -1074,6 +1074,413 @@ class ActiveGarageVehiclesCompanion
   }
 }
 
+class $FuelEntriesTable extends FuelEntries
+    with TableInfo<$FuelEntriesTable, FuelEntryRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $FuelEntriesTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+    'id',
+    aliasedName,
+    false,
+    hasAutoIncrement: true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'PRIMARY KEY AUTOINCREMENT',
+    ),
+  );
+  static const VerificationMeta _vehicleIdMeta = const VerificationMeta(
+    'vehicleId',
+  );
+  @override
+  late final GeneratedColumn<int> vehicleId = GeneratedColumn<int>(
+    'vehicle_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'REFERENCES garage_vehicles (id) ON DELETE CASCADE',
+    ),
+  );
+  static const VerificationMeta _entryDateMeta = const VerificationMeta(
+    'entryDate',
+  );
+  @override
+  late final GeneratedColumn<String> entryDate = GeneratedColumn<String>(
+    'entry_date',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _odometerKmMeta = const VerificationMeta(
+    'odometerKm',
+  );
+  @override
+  late final GeneratedColumn<int> odometerKm = GeneratedColumn<int>(
+    'odometer_km',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _fuelMlMeta = const VerificationMeta('fuelMl');
+  @override
+  late final GeneratedColumn<int> fuelMl = GeneratedColumn<int>(
+    'fuel_ml',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _priceCentsMeta = const VerificationMeta(
+    'priceCents',
+  );
+  @override
+  late final GeneratedColumn<int> priceCents = GeneratedColumn<int>(
+    'price_cents',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    vehicleId,
+    entryDate,
+    odometerKm,
+    fuelMl,
+    priceCents,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'fuel_entries';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<FuelEntryRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('vehicle_id')) {
+      context.handle(
+        _vehicleIdMeta,
+        vehicleId.isAcceptableOrUnknown(data['vehicle_id']!, _vehicleIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_vehicleIdMeta);
+    }
+    if (data.containsKey('entry_date')) {
+      context.handle(
+        _entryDateMeta,
+        entryDate.isAcceptableOrUnknown(data['entry_date']!, _entryDateMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_entryDateMeta);
+    }
+    if (data.containsKey('odometer_km')) {
+      context.handle(
+        _odometerKmMeta,
+        odometerKm.isAcceptableOrUnknown(data['odometer_km']!, _odometerKmMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_odometerKmMeta);
+    }
+    if (data.containsKey('fuel_ml')) {
+      context.handle(
+        _fuelMlMeta,
+        fuelMl.isAcceptableOrUnknown(data['fuel_ml']!, _fuelMlMeta),
+      );
+    }
+    if (data.containsKey('price_cents')) {
+      context.handle(
+        _priceCentsMeta,
+        priceCents.isAcceptableOrUnknown(data['price_cents']!, _priceCentsMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  FuelEntryRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return FuelEntryRow(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}id'],
+      )!,
+      vehicleId: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}vehicle_id'],
+      )!,
+      entryDate: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}entry_date'],
+      )!,
+      odometerKm: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}odometer_km'],
+      )!,
+      fuelMl: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}fuel_ml'],
+      ),
+      priceCents: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}price_cents'],
+      ),
+    );
+  }
+
+  @override
+  $FuelEntriesTable createAlias(String alias) {
+    return $FuelEntriesTable(attachedDatabase, alias);
+  }
+}
+
+class FuelEntryRow extends DataClass implements Insertable<FuelEntryRow> {
+  final int id;
+  final int vehicleId;
+  final String entryDate;
+  final int odometerKm;
+  final int? fuelMl;
+  final int? priceCents;
+  const FuelEntryRow({
+    required this.id,
+    required this.vehicleId,
+    required this.entryDate,
+    required this.odometerKm,
+    this.fuelMl,
+    this.priceCents,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<int>(id);
+    map['vehicle_id'] = Variable<int>(vehicleId);
+    map['entry_date'] = Variable<String>(entryDate);
+    map['odometer_km'] = Variable<int>(odometerKm);
+    if (!nullToAbsent || fuelMl != null) {
+      map['fuel_ml'] = Variable<int>(fuelMl);
+    }
+    if (!nullToAbsent || priceCents != null) {
+      map['price_cents'] = Variable<int>(priceCents);
+    }
+    return map;
+  }
+
+  FuelEntriesCompanion toCompanion(bool nullToAbsent) {
+    return FuelEntriesCompanion(
+      id: Value(id),
+      vehicleId: Value(vehicleId),
+      entryDate: Value(entryDate),
+      odometerKm: Value(odometerKm),
+      fuelMl: fuelMl == null && nullToAbsent
+          ? const Value.absent()
+          : Value(fuelMl),
+      priceCents: priceCents == null && nullToAbsent
+          ? const Value.absent()
+          : Value(priceCents),
+    );
+  }
+
+  factory FuelEntryRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return FuelEntryRow(
+      id: serializer.fromJson<int>(json['id']),
+      vehicleId: serializer.fromJson<int>(json['vehicleId']),
+      entryDate: serializer.fromJson<String>(json['entryDate']),
+      odometerKm: serializer.fromJson<int>(json['odometerKm']),
+      fuelMl: serializer.fromJson<int?>(json['fuelMl']),
+      priceCents: serializer.fromJson<int?>(json['priceCents']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<int>(id),
+      'vehicleId': serializer.toJson<int>(vehicleId),
+      'entryDate': serializer.toJson<String>(entryDate),
+      'odometerKm': serializer.toJson<int>(odometerKm),
+      'fuelMl': serializer.toJson<int?>(fuelMl),
+      'priceCents': serializer.toJson<int?>(priceCents),
+    };
+  }
+
+  FuelEntryRow copyWith({
+    int? id,
+    int? vehicleId,
+    String? entryDate,
+    int? odometerKm,
+    Value<int?> fuelMl = const Value.absent(),
+    Value<int?> priceCents = const Value.absent(),
+  }) => FuelEntryRow(
+    id: id ?? this.id,
+    vehicleId: vehicleId ?? this.vehicleId,
+    entryDate: entryDate ?? this.entryDate,
+    odometerKm: odometerKm ?? this.odometerKm,
+    fuelMl: fuelMl.present ? fuelMl.value : this.fuelMl,
+    priceCents: priceCents.present ? priceCents.value : this.priceCents,
+  );
+  FuelEntryRow copyWithCompanion(FuelEntriesCompanion data) {
+    return FuelEntryRow(
+      id: data.id.present ? data.id.value : this.id,
+      vehicleId: data.vehicleId.present ? data.vehicleId.value : this.vehicleId,
+      entryDate: data.entryDate.present ? data.entryDate.value : this.entryDate,
+      odometerKm: data.odometerKm.present
+          ? data.odometerKm.value
+          : this.odometerKm,
+      fuelMl: data.fuelMl.present ? data.fuelMl.value : this.fuelMl,
+      priceCents: data.priceCents.present
+          ? data.priceCents.value
+          : this.priceCents,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('FuelEntryRow(')
+          ..write('id: $id, ')
+          ..write('vehicleId: $vehicleId, ')
+          ..write('entryDate: $entryDate, ')
+          ..write('odometerKm: $odometerKm, ')
+          ..write('fuelMl: $fuelMl, ')
+          ..write('priceCents: $priceCents')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(id, vehicleId, entryDate, odometerKm, fuelMl, priceCents);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is FuelEntryRow &&
+          other.id == this.id &&
+          other.vehicleId == this.vehicleId &&
+          other.entryDate == this.entryDate &&
+          other.odometerKm == this.odometerKm &&
+          other.fuelMl == this.fuelMl &&
+          other.priceCents == this.priceCents);
+}
+
+class FuelEntriesCompanion extends UpdateCompanion<FuelEntryRow> {
+  final Value<int> id;
+  final Value<int> vehicleId;
+  final Value<String> entryDate;
+  final Value<int> odometerKm;
+  final Value<int?> fuelMl;
+  final Value<int?> priceCents;
+  const FuelEntriesCompanion({
+    this.id = const Value.absent(),
+    this.vehicleId = const Value.absent(),
+    this.entryDate = const Value.absent(),
+    this.odometerKm = const Value.absent(),
+    this.fuelMl = const Value.absent(),
+    this.priceCents = const Value.absent(),
+  });
+  FuelEntriesCompanion.insert({
+    this.id = const Value.absent(),
+    required int vehicleId,
+    required String entryDate,
+    required int odometerKm,
+    this.fuelMl = const Value.absent(),
+    this.priceCents = const Value.absent(),
+  }) : vehicleId = Value(vehicleId),
+       entryDate = Value(entryDate),
+       odometerKm = Value(odometerKm);
+  static Insertable<FuelEntryRow> custom({
+    Expression<int>? id,
+    Expression<int>? vehicleId,
+    Expression<String>? entryDate,
+    Expression<int>? odometerKm,
+    Expression<int>? fuelMl,
+    Expression<int>? priceCents,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (vehicleId != null) 'vehicle_id': vehicleId,
+      if (entryDate != null) 'entry_date': entryDate,
+      if (odometerKm != null) 'odometer_km': odometerKm,
+      if (fuelMl != null) 'fuel_ml': fuelMl,
+      if (priceCents != null) 'price_cents': priceCents,
+    });
+  }
+
+  FuelEntriesCompanion copyWith({
+    Value<int>? id,
+    Value<int>? vehicleId,
+    Value<String>? entryDate,
+    Value<int>? odometerKm,
+    Value<int?>? fuelMl,
+    Value<int?>? priceCents,
+  }) {
+    return FuelEntriesCompanion(
+      id: id ?? this.id,
+      vehicleId: vehicleId ?? this.vehicleId,
+      entryDate: entryDate ?? this.entryDate,
+      odometerKm: odometerKm ?? this.odometerKm,
+      fuelMl: fuelMl ?? this.fuelMl,
+      priceCents: priceCents ?? this.priceCents,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<int>(id.value);
+    }
+    if (vehicleId.present) {
+      map['vehicle_id'] = Variable<int>(vehicleId.value);
+    }
+    if (entryDate.present) {
+      map['entry_date'] = Variable<String>(entryDate.value);
+    }
+    if (odometerKm.present) {
+      map['odometer_km'] = Variable<int>(odometerKm.value);
+    }
+    if (fuelMl.present) {
+      map['fuel_ml'] = Variable<int>(fuelMl.value);
+    }
+    if (priceCents.present) {
+      map['price_cents'] = Variable<int>(priceCents.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('FuelEntriesCompanion(')
+          ..write('id: $id, ')
+          ..write('vehicleId: $vehicleId, ')
+          ..write('entryDate: $entryDate, ')
+          ..write('odometerKm: $odometerKm, ')
+          ..write('fuelMl: $fuelMl, ')
+          ..write('priceCents: $priceCents')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   $AppDatabaseManager get managers => $AppDatabaseManager(this);
@@ -1084,6 +1491,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $GarageVehiclesTable garageVehicles = $GarageVehiclesTable(this);
   late final $ActiveGarageVehiclesTable activeGarageVehicles =
       $ActiveGarageVehiclesTable(this);
+  late final $FuelEntriesTable fuelEntries = $FuelEntriesTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -1093,6 +1501,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     modulePreferences,
     garageVehicles,
     activeGarageVehicles,
+    fuelEntries,
   ];
   @override
   StreamQueryUpdateRules get streamUpdateRules => const StreamQueryUpdateRules([
@@ -1102,6 +1511,13 @@ abstract class _$AppDatabase extends GeneratedDatabase {
         limitUpdateKind: UpdateKind.delete,
       ),
       result: [TableUpdate('active_garage_vehicles', kind: UpdateKind.delete)],
+    ),
+    WritePropagation(
+      on: TableUpdateQuery.onTableName(
+        'garage_vehicles',
+        limitUpdateKind: UpdateKind.delete,
+      ),
+      result: [TableUpdate('fuel_entries', kind: UpdateKind.delete)],
     ),
   ]);
 }
@@ -1469,6 +1885,24 @@ final class $$GarageVehiclesTableReferences
       manager.$state.copyWith(prefetchedData: cache),
     );
   }
+
+  static MultiTypedResultKey<$FuelEntriesTable, List<FuelEntryRow>>
+  _fuelEntriesRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
+    db.fuelEntries,
+    aliasName: 'garage_vehicles__id__fuel_entries__vehicle_id',
+  );
+
+  $$FuelEntriesTableProcessedTableManager get fuelEntriesRefs {
+    final manager = $$FuelEntriesTableTableManager(
+      $_db,
+      $_db.fuelEntries,
+    ).filter((f) => f.vehicleId.id.sqlEquals($_itemColumn<int>('id')!));
+
+    final cache = $_typedResult.readTableOrNull(_fuelEntriesRefsTable($_db));
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: cache),
+    );
+  }
 }
 
 class $$GarageVehiclesTableFilterComposer
@@ -1531,6 +1965,31 @@ class $$GarageVehiclesTableFilterComposer
           }) => $$ActiveGarageVehiclesTableFilterComposer(
             $db: $db,
             $table: $db.activeGarageVehicles,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+
+  Expression<bool> fuelEntriesRefs(
+    Expression<bool> Function($$FuelEntriesTableFilterComposer f) f,
+  ) {
+    final $$FuelEntriesTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.fuelEntries,
+      getReferencedColumn: (t) => t.vehicleId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$FuelEntriesTableFilterComposer(
+            $db: $db,
+            $table: $db.fuelEntries,
             $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
             joinBuilder: joinBuilder,
             $removeJoinBuilderFromRootComposer:
@@ -1645,6 +2104,31 @@ class $$GarageVehiclesTableAnnotationComposer
         );
     return f(composer);
   }
+
+  Expression<T> fuelEntriesRefs<T extends Object>(
+    Expression<T> Function($$FuelEntriesTableAnnotationComposer a) f,
+  ) {
+    final $$FuelEntriesTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.fuelEntries,
+      getReferencedColumn: (t) => t.vehicleId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$FuelEntriesTableAnnotationComposer(
+            $db: $db,
+            $table: $db.fuelEntries,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
 }
 
 class $$GarageVehiclesTableTableManager
@@ -1660,7 +2144,10 @@ class $$GarageVehiclesTableTableManager
           $$GarageVehiclesTableUpdateCompanionBuilder,
           (GarageVehicle, $$GarageVehiclesTableReferences),
           GarageVehicle,
-          PrefetchHooks Function({bool activeGarageVehiclesRefs})
+          PrefetchHooks Function({
+            bool activeGarageVehiclesRefs,
+            bool fuelEntriesRefs,
+          })
         > {
   $$GarageVehiclesTableTableManager(
     _$AppDatabase db,
@@ -1719,39 +2206,61 @@ class $$GarageVehiclesTableTableManager
                 ),
               )
               .toList(),
-          prefetchHooksCallback: ({activeGarageVehiclesRefs = false}) {
-            return PrefetchHooks(
-              db: db,
-              explicitlyWatchedTables: [
-                if (activeGarageVehiclesRefs) db.activeGarageVehicles,
-              ],
-              addJoins: null,
-              getPrefetchedDataCallback: (items) async {
-                return [
-                  if (activeGarageVehiclesRefs)
-                    await $_getPrefetchedDataByColumns<
-                      GarageVehicle,
-                      $GarageVehiclesTable,
-                      ActiveGarageVehicle,
-                      $ActiveGarageVehiclesTable
-                    >(
-                      currentTable: table,
-                      referencedTable: $$GarageVehiclesTableReferences
-                          ._activeGarageVehiclesRefsTable(db),
-                      managerFromTypedResult: (p0) =>
-                          $$GarageVehiclesTableReferences(
-                            db,
-                            table,
-                            p0,
-                          ).activeGarageVehiclesRefs,
-                      currentColumn: 'id',
-                      referencedColumn: 'vehicle_id',
-                      typedResults: items,
-                    ),
-                ];
+          prefetchHooksCallback:
+              ({activeGarageVehiclesRefs = false, fuelEntriesRefs = false}) {
+                return PrefetchHooks(
+                  db: db,
+                  explicitlyWatchedTables: [
+                    if (activeGarageVehiclesRefs) db.activeGarageVehicles,
+                    if (fuelEntriesRefs) db.fuelEntries,
+                  ],
+                  addJoins: null,
+                  getPrefetchedDataCallback: (items) async {
+                    return [
+                      if (activeGarageVehiclesRefs)
+                        await $_getPrefetchedDataByColumns<
+                          GarageVehicle,
+                          $GarageVehiclesTable,
+                          ActiveGarageVehicle,
+                          $ActiveGarageVehiclesTable
+                        >(
+                          currentTable: table,
+                          referencedTable: $$GarageVehiclesTableReferences
+                              ._activeGarageVehiclesRefsTable(db),
+                          managerFromTypedResult: (p0) =>
+                              $$GarageVehiclesTableReferences(
+                                db,
+                                table,
+                                p0,
+                              ).activeGarageVehiclesRefs,
+                          currentColumn: 'id',
+                          referencedColumn: 'vehicle_id',
+                          typedResults: items,
+                        ),
+                      if (fuelEntriesRefs)
+                        await $_getPrefetchedDataByColumns<
+                          GarageVehicle,
+                          $GarageVehiclesTable,
+                          FuelEntryRow,
+                          $FuelEntriesTable
+                        >(
+                          currentTable: table,
+                          referencedTable: $$GarageVehiclesTableReferences
+                              ._fuelEntriesRefsTable(db),
+                          managerFromTypedResult: (p0) =>
+                              $$GarageVehiclesTableReferences(
+                                db,
+                                table,
+                                p0,
+                              ).fuelEntriesRefs,
+                          currentColumn: 'id',
+                          referencedColumn: 'vehicle_id',
+                          typedResults: items,
+                        ),
+                    ];
+                  },
+                );
               },
-            );
-          },
         ),
       );
 }
@@ -1768,7 +2277,10 @@ typedef $$GarageVehiclesTableProcessedTableManager =
       $$GarageVehiclesTableUpdateCompanionBuilder,
       (GarageVehicle, $$GarageVehiclesTableReferences),
       GarageVehicle,
-      PrefetchHooks Function({bool activeGarageVehiclesRefs})
+      PrefetchHooks Function({
+        bool activeGarageVehiclesRefs,
+        bool fuelEntriesRefs,
+      })
     >;
 typedef $$ActiveGarageVehiclesTableCreateCompanionBuilder =
     ActiveGarageVehiclesCompanion Function({
@@ -2038,6 +2550,339 @@ typedef $$ActiveGarageVehiclesTableProcessedTableManager =
       ActiveGarageVehicle,
       PrefetchHooks Function({bool vehicleId})
     >;
+typedef $$FuelEntriesTableCreateCompanionBuilder =
+    FuelEntriesCompanion Function({
+      Value<int> id,
+      required int vehicleId,
+      required String entryDate,
+      required int odometerKm,
+      Value<int?> fuelMl,
+      Value<int?> priceCents,
+    });
+typedef $$FuelEntriesTableUpdateCompanionBuilder =
+    FuelEntriesCompanion Function({
+      Value<int> id,
+      Value<int> vehicleId,
+      Value<String> entryDate,
+      Value<int> odometerKm,
+      Value<int?> fuelMl,
+      Value<int?> priceCents,
+    });
+
+final class $$FuelEntriesTableReferences
+    extends BaseReferences<_$AppDatabase, $FuelEntriesTable, FuelEntryRow> {
+  $$FuelEntriesTableReferences(super.$_db, super.$_table, super.$_typedResult);
+
+  static $GarageVehiclesTable _vehicleIdTable(_$AppDatabase db) => db
+      .garageVehicles
+      .createAlias('fuel_entries__vehicle_id__garage_vehicles__id');
+
+  $$GarageVehiclesTableProcessedTableManager get vehicleId {
+    final $_column = $_itemColumn<int>('vehicle_id')!;
+
+    final manager = $$GarageVehiclesTableTableManager(
+      $_db,
+      $_db.garageVehicles,
+    ).filter((f) => f.id.sqlEquals($_column));
+    final item = $_typedResult.readTableOrNull(_vehicleIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: [item]),
+    );
+  }
+}
+
+class $$FuelEntriesTableFilterComposer
+    extends Composer<_$AppDatabase, $FuelEntriesTable> {
+  $$FuelEntriesTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get entryDate => $composableBuilder(
+    column: $table.entryDate,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get odometerKm => $composableBuilder(
+    column: $table.odometerKm,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get fuelMl => $composableBuilder(
+    column: $table.fuelMl,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get priceCents => $composableBuilder(
+    column: $table.priceCents,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  $$GarageVehiclesTableFilterComposer get vehicleId {
+    final $$GarageVehiclesTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.vehicleId,
+      referencedTable: $db.garageVehicles,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$GarageVehiclesTableFilterComposer(
+            $db: $db,
+            $table: $db.garageVehicles,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$FuelEntriesTableOrderingComposer
+    extends Composer<_$AppDatabase, $FuelEntriesTable> {
+  $$FuelEntriesTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get entryDate => $composableBuilder(
+    column: $table.entryDate,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get odometerKm => $composableBuilder(
+    column: $table.odometerKm,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get fuelMl => $composableBuilder(
+    column: $table.fuelMl,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get priceCents => $composableBuilder(
+    column: $table.priceCents,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  $$GarageVehiclesTableOrderingComposer get vehicleId {
+    final $$GarageVehiclesTableOrderingComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.vehicleId,
+      referencedTable: $db.garageVehicles,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$GarageVehiclesTableOrderingComposer(
+            $db: $db,
+            $table: $db.garageVehicles,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$FuelEntriesTableAnnotationComposer
+    extends Composer<_$AppDatabase, $FuelEntriesTable> {
+  $$FuelEntriesTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get entryDate =>
+      $composableBuilder(column: $table.entryDate, builder: (column) => column);
+
+  GeneratedColumn<int> get odometerKm => $composableBuilder(
+    column: $table.odometerKm,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get fuelMl =>
+      $composableBuilder(column: $table.fuelMl, builder: (column) => column);
+
+  GeneratedColumn<int> get priceCents => $composableBuilder(
+    column: $table.priceCents,
+    builder: (column) => column,
+  );
+
+  $$GarageVehiclesTableAnnotationComposer get vehicleId {
+    final $$GarageVehiclesTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.vehicleId,
+      referencedTable: $db.garageVehicles,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$GarageVehiclesTableAnnotationComposer(
+            $db: $db,
+            $table: $db.garageVehicles,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$FuelEntriesTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $FuelEntriesTable,
+          FuelEntryRow,
+          $$FuelEntriesTableFilterComposer,
+          $$FuelEntriesTableOrderingComposer,
+          $$FuelEntriesTableAnnotationComposer,
+          $$FuelEntriesTableCreateCompanionBuilder,
+          $$FuelEntriesTableUpdateCompanionBuilder,
+          (FuelEntryRow, $$FuelEntriesTableReferences),
+          FuelEntryRow,
+          PrefetchHooks Function({bool vehicleId})
+        > {
+  $$FuelEntriesTableTableManager(_$AppDatabase db, $FuelEntriesTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$FuelEntriesTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$FuelEntriesTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$FuelEntriesTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                Value<int> vehicleId = const Value.absent(),
+                Value<String> entryDate = const Value.absent(),
+                Value<int> odometerKm = const Value.absent(),
+                Value<int?> fuelMl = const Value.absent(),
+                Value<int?> priceCents = const Value.absent(),
+              }) => FuelEntriesCompanion(
+                id: id,
+                vehicleId: vehicleId,
+                entryDate: entryDate,
+                odometerKm: odometerKm,
+                fuelMl: fuelMl,
+                priceCents: priceCents,
+              ),
+          createCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                required int vehicleId,
+                required String entryDate,
+                required int odometerKm,
+                Value<int?> fuelMl = const Value.absent(),
+                Value<int?> priceCents = const Value.absent(),
+              }) => FuelEntriesCompanion.insert(
+                id: id,
+                vehicleId: vehicleId,
+                entryDate: entryDate,
+                odometerKm: odometerKm,
+                fuelMl: fuelMl,
+                priceCents: priceCents,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$FuelEntriesTable, FuelEntryRow>(table),
+                  $$FuelEntriesTableReferences(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: ({vehicleId = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [],
+              addJoins:
+                  <
+                    T extends TableManagerState<
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic
+                    >
+                  >(state) {
+                    if (vehicleId) {
+                      state = state.withJoin(
+                        currentTable: table,
+                        currentColumn: table.vehicleId,
+                        referencedTable: $$FuelEntriesTableReferences
+                            ._vehicleIdTable(db),
+                        referencedColumn: $$FuelEntriesTableReferences
+                            ._vehicleIdTable(db)
+                            .id,
+                      ) as T;
+                    }
+
+                    return state;
+                  },
+              getPrefetchedDataCallback: (items) async {
+                return [];
+              },
+            );
+          },
+        ),
+      );
+}
+
+typedef $$FuelEntriesTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $FuelEntriesTable,
+      FuelEntryRow,
+      $$FuelEntriesTableFilterComposer,
+      $$FuelEntriesTableOrderingComposer,
+      $$FuelEntriesTableAnnotationComposer,
+      $$FuelEntriesTableCreateCompanionBuilder,
+      $$FuelEntriesTableUpdateCompanionBuilder,
+      (FuelEntryRow, $$FuelEntriesTableReferences),
+      FuelEntryRow,
+      PrefetchHooks Function({bool vehicleId})
+    >;
 
 class $AppDatabaseManager {
   final _$AppDatabase _db;
@@ -2050,4 +2895,6 @@ class $AppDatabaseManager {
       $$GarageVehiclesTableTableManager(_db, _db.garageVehicles);
   $$ActiveGarageVehiclesTableTableManager get activeGarageVehicles =>
       $$ActiveGarageVehiclesTableTableManager(_db, _db.activeGarageVehicles);
+  $$FuelEntriesTableTableManager get fuelEntries =>
+      $$FuelEntriesTableTableManager(_db, _db.fuelEntries);
 }

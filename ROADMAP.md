@@ -29,3 +29,6 @@
 
 ## BUBKA-005A
 Phase 05 released and owner-tested; form-quality hotfix 005A in progress. Phase 06 not authorized.
+
+## Phase 06 candidate
+Fuel/odometer implementation pending verification and testing release. Phase 07/08 not authorized; phase 08 uses shared OdometerReader.

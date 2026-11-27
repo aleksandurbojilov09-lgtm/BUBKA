@@ -33,3 +33,6 @@ V5 Final Polish е приет визуално под старото име; н�
 
 ## BUBKA-005A
 0.4.1+7 candidate — searchable catalog, explicit model fallback, registration format, year and fuel validation, unchanged legacy values preserved.
+
+## 0.5.0+8 — candidate
+Local fuel and odometer history per vehicle; estimated consumption; shared odometer reader; additive schema v3. Pending CI and physical tests.

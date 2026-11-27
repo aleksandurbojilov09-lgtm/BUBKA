@@ -73,3 +73,6 @@ BUBKA-005: additive v1→v2 migration; vehicle ID auto-increment, unique normali
 
 ## BUBKA-005A
 BUBKA-005A: no schema or automatic legacy rewrite. Registration validation is format-only; cross-mode duplicate identity uses visual letter equivalents and strips separators.
+
+## BUBKA-006
+Store millilitres, integer km and integer euro cents; order by ISO local date, km and ID. Compute estimated consumption over first-to-last real fuel entries with positive distance, excluding starting litres. No tank-full flag, no historical confirmation. Manual km never contributes litres. Current km derived from remaining history.

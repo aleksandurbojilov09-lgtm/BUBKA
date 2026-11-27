@@ -1,10 +1,10 @@
 {
   "project": "BUBKA",
-  "version": "0.4.1",
-  "build_number": 7,
-  "phase": 5,
+  "version": "0.5.0",
+  "build_number": 8,
+  "phase": 6,
   "phase_status": "in_progress",
-  "branch": "phase/05-garage-validation",
+  "branch": "phase/06-fuel-odometer",
   "verified_source_commit": "cdc5626832808d006eb7d03c87f8a111edaeb37a",
   "verified_ci_url": "https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45958906447",
   "application_identity": {
@@ -12,7 +12,10 @@
     "ios_bundle_id": "io.github.aleksandurbojilov09.garage"
   },
   "architecture_implemented": true,
-  "business_modules": [],
+  "business_modules": [
+    "garage",
+    "fuel"
+  ],
   "next_phase_requires_approval": true,
   "billing_verified": false,
   "codespaces_rebuild_verified": true,
@@ -22,8 +25,8 @@
   "phase_02_status": "accepted_with_followups",
   "phase_03_authorized": true,
   "phase_04_authorized": true,
-  "target_version": "0.4.1",
-  "target_build_number": 7,
+  "target_version": "0.5.0",
+  "target_build_number": 8,
   "baseline_tag": "v0.1.0",
   "branch_protection": {
     "status": "verified_active",
@@ -40,7 +43,7 @@
     "independent_backup_verified": false
   },
   "update_channel": "testing",
-  "last_published_testing_release": "v0.4.0",
+  "last_published_testing_release": "v0.4.1",
   "last_published_release_run": "https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45960165819",
   "android_initial_install": "verified_owner_screenshot",
   "ios_initial_install": "passed_owner_report",
@@ -132,11 +135,11 @@
     "candidate_version": "0.3.0+5",
     "status": "authorized_for_PR_CI_pending_preflight"
   },
-  "status": "phase_05_hotfix_candidate_pending_ci",
-  "published_version": "0.4.0+6",
-  "candidate_version": "0.4.1+7",
+  "status": "phase_06_candidate_pending_validation",
+  "published_version": "0.4.1+7",
+  "candidate_version": "0.5.0+8",
   "phase_05_authorized": true,
-  "current_phase": 5,
+  "current_phase": 6,
   "phase_04_status": "accepted_with_followups",
   "phase_05": {
     "task_id": "BUBKA-005",
@@ -161,5 +164,13 @@
     "status": "candidate_pending_ci",
     "schema_version": 2,
     "phase06_authorized": false
+  },
+  "phase_06": {
+    "task_id": "BUBKA-006",
+    "baseline_sha": "73857439121386f7578452cb3041da4fc137cdcf",
+    "schema_version": 3,
+    "status": "candidate_pending_ci_and_physical_tests",
+    "next_phase_authorized": false,
+    "stable_release_authorized": false
   }
 }

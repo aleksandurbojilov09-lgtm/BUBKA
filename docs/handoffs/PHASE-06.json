@@ -1,0 +1,19 @@
+{
+  "project": "BUBKA",
+  "phase": 6,
+  "task_id": "BUBKA-006",
+  "status": "candidate_pending_ci_and_physical_tests",
+  "baseline_sha": "73857439121386f7578452cb3041da4fc137cdcf",
+  "candidate_version": "0.5.0+8",
+  "migration": "1→2→3 and 2→3 additive",
+  "local_preflight": "PASS: generation, format, analyze, full Flutter tests, architecture, docs and CI/release Python tests",
+  "pr": null,
+  "ci": null,
+  "release": null,
+  "physical_tests": {
+    "android": "pending",
+    "ios": "pending"
+  },
+  "next_phase_authorized": false,
+  "stable_release_authorized": false
+}

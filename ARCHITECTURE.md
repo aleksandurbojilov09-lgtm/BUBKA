@@ -27,3 +27,6 @@ Native presentation components and Canvas scene in design_system; feature-first 
 
 ## BUBKA-005 — current status (supersedes historical status)
 Phase 04: released v0.3.0+5 on main 6deb3af3c3a9fce0c25dca10a521cd3bc508d574; CI 45905060610 and release 45907834477 successful. Phase 05 candidate: garage domain, local Drift repository and shared ChangeNotifier; cockpit consumes public garage interface. Schema v2 adds two tables only.
+
+## BUBKA-006 candidate
+Single local fuel_entries table with vehicle FK cascade; a row is either fuel + odometer or odometer only. Fuel feature owns the ledger; core OdometerReader returns nullable latest km by stable vehicle ID. Composition exposes the same repository via Provider. Schema 3 additive; validation pending CI and device tests.
