@@ -101,9 +101,9 @@ class _LedgerState extends State<_Ledger> {
   Future<void> _load() async {
     final ok = await model.load();
     if (!mounted || !ok) return;
-    if (widget.initialEntry == 'fuel' || widget.initialEntry == 'odometer') {
+    if (widget.initialEntry == 'fuel') {
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        if (mounted) _edit(widget.initialEntry == 'fuel');
+        if (mounted) _edit(true);
       });
     }
   }
@@ -156,6 +156,11 @@ class _LedgerState extends State<_Ledger> {
     builder: (context, _) {
       final history = model.history;
       final average = history?.estimatedConsumption;
+      final recent =
+          history?.entries.reversed
+              .where((row) => row.draft.fuelMl != null)
+              .take(3) ??
+          const <FuelRecord>[];
       return ListView(
         padding: const EdgeInsets.fromLTRB(12, 12, 12, 24),
         children: [
@@ -214,57 +219,124 @@ class _LedgerState extends State<_Ledger> {
               onPressed: model.busy ? null : () => _edit(true),
               label: 'Добави зареждане',
             ),
-            OutlinedButton(
-              key: const Key('odometer-add'),
-              onPressed: model.busy ? null : () => _edit(false),
-              child: const Text('Добави километраж'),
-            ),
             const SizedBox(height: 16),
-            Text('История', style: Theme.of(context).textTheme.titleLarge),
+            Text(
+              'Последни зареждания',
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
             if (model.error != null)
               Text(
                 model.error!,
                 style: TextStyle(color: Theme.of(context).colorScheme.error),
               ),
-            if (history.entries.isEmpty) const Text('Все още няма записи.'),
-            for (final row in history.entries.reversed) ...[
+            if (recent.isEmpty) const Text('Все още няма зареждания.'),
+            for (final row in recent) ...[
               const SizedBox(height: 10),
-              PremiumCard(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      row.draft.fuelMl == null ? 'Километраж' : 'Зареждане',
-                      style: Theme.of(context).textTheme.titleMedium,
-                    ),
-                    Text(
-                      '${displayCalendarDate(row.draft.date)} · ${row.draft.odometerKm} км',
-                    ),
-                    if (row.draft.fuelMl != null)
-                      Text('${quantityText(row.draft.fuelMl!, 3)} л'),
-                    if (row.draft.priceCents != null)
-                      Text('${quantityText(row.draft.priceCents!, 2)} EUR'),
-                    Wrap(
-                      children: [
-                        TextButton(
-                          onPressed: model.busy
-                              ? null
-                              : () => _edit(row.draft.fuelMl != null, row),
-                          child: const Text('Редактирай'),
-                        ),
-                        TextButton(
-                          onPressed: model.busy ? null : () => _delete(row),
-                          child: const Text('Изтрий'),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+              _recordCard(context, row),
+            ],
+            if (history.entries.isNotEmpty) ...[
+              const SizedBox(height: 12),
+              OutlinedButton(
+                key: const Key('fuel-show-all'),
+                onPressed: model.busy ? null : _showHistory,
+                child: const Text('Покажи всички'),
               ),
             ],
           ],
         ],
       );
     },
+  );
+
+  // Reuse the same vehicle-scoped model so edits/deletions in the archive
+  // immediately refresh the summary and latest three on return.
+  Future<void> _showHistory() async {
+    await Navigator.of(context).push<void>(
+      MaterialPageRoute(
+        builder: (context) => Scaffold(
+          appBar: AppBar(title: const Text('История на зарежданията')),
+          body: SafeArea(
+            child: ListenableBuilder(
+              listenable: model,
+              builder: (context, _) {
+                final rows = model.history?.entries ?? const <FuelRecord>[];
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(12),
+                      child: Text(
+                        '${widget.car.name} · ${widget.car.registration}',
+                      ),
+                    ),
+                    if (model.error != null)
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                        child: Text(
+                          model.error!,
+                          style: TextStyle(
+                            color: Theme.of(context).colorScheme.error,
+                          ),
+                        ),
+                      ),
+                    if (model.busy) const LinearProgressIndicator(),
+                    Expanded(
+                      child: rows.isEmpty
+                          ? const Center(child: Text('Все още няма записи.'))
+                          : ListView.builder(
+                              key: const Key('fuel-full-history'),
+                              padding: const EdgeInsets.fromLTRB(12, 0, 12, 24),
+                              itemCount: rows.length,
+                              itemBuilder: (context, index) => Padding(
+                                padding: const EdgeInsets.only(bottom: 10),
+                                child: _recordCard(
+                                  context,
+                                  rows[rows.length - 1 - index],
+                                ),
+                              ),
+                            ),
+                    ),
+                  ],
+                );
+              },
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _recordCard(BuildContext context, FuelRecord row) => PremiumCard(
+    key: ValueKey('fuel-record-${row.id}'),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          row.draft.fuelMl == null ? 'Километраж' : 'Зареждане',
+          style: Theme.of(context).textTheme.titleMedium,
+        ),
+        Text(
+          '${displayCalendarDate(row.draft.date)} · ${row.draft.odometerKm} км',
+        ),
+        if (row.draft.fuelMl != null)
+          Text('${quantityText(row.draft.fuelMl!, 3)} л'),
+        if (row.draft.priceCents != null)
+          Text('${quantityText(row.draft.priceCents!, 2)} EUR'),
+        Wrap(
+          children: [
+            TextButton(
+              onPressed: model.busy
+                  ? null
+                  : () => _edit(row.draft.fuelMl != null, row),
+              child: const Text('Редактирай'),
+            ),
+            TextButton(
+              onPressed: model.busy ? null : () => _delete(row),
+              child: const Text('Изтрий'),
+            ),
+          ],
+        ),
+      ],
+    ),
   );
 }

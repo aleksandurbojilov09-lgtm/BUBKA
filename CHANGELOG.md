@@ -36,3 +36,6 @@ V5 Final Polish е приет визуално под старото име; н�
 
 ## 0.5.0+8 — candidate
 Local fuel and odometer history per vehicle; estimated consumption; shared odometer reader; additive schema v3. Pending CI and physical tests.
+
+## BUBKA-006 UI correction candidate
+0.5.1+9 — fuel overview displays latest three fills; a separate full history retains all entries and edit/delete; no standalone odometer creation in production UI. Schema 3 unchanged.

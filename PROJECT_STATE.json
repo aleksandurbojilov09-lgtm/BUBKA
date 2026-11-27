@@ -1,12 +1,12 @@
 {
   "project": "BUBKA",
-  "version": "0.5.0",
-  "build_number": 8,
+  "version": "0.5.1",
+  "build_number": 9,
   "phase": 6,
   "phase_status": "in_progress",
-  "branch": "phase/06-fuel-odometer",
-  "verified_source_commit": "cdc5626832808d006eb7d03c87f8a111edaeb37a",
-  "verified_ci_url": "https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45958906447",
+  "branch": "phase/06-fuel-ui-correction",
+  "verified_source_commit": "ac76d61c97242d16b71c16ff0d1d6f8e83fe1d08",
+  "verified_ci_url": "https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45970941372",
   "application_identity": {
     "android_application_id": "io.github.aleksandurbojilov09.garage",
     "ios_bundle_id": "io.github.aleksandurbojilov09.garage"
@@ -25,8 +25,8 @@
   "phase_02_status": "accepted_with_followups",
   "phase_03_authorized": true,
   "phase_04_authorized": true,
-  "target_version": "0.5.0",
-  "target_build_number": 8,
+  "target_version": "0.5.1",
+  "target_build_number": 9,
   "baseline_tag": "v0.1.0",
   "branch_protection": {
     "status": "verified_active",
@@ -43,8 +43,8 @@
     "independent_backup_verified": false
   },
   "update_channel": "testing",
-  "last_published_testing_release": "v0.4.1",
-  "last_published_release_run": "https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45960165819",
+  "last_published_testing_release": "v0.5.0",
+  "last_published_release_run": "https://github.com/aleksandurbojilov09-lgtm/BUBKA/actions/runs/45972411538",
   "android_initial_install": "verified_owner_screenshot",
   "ios_initial_install": "passed_owner_report",
   "android_update_and_data_retention": "passed_owner_report",
@@ -135,9 +135,9 @@
     "candidate_version": "0.3.0+5",
     "status": "authorized_for_PR_CI_pending_preflight"
   },
-  "status": "phase_06_candidate_pending_validation",
-  "published_version": "0.4.1+7",
-  "candidate_version": "0.5.0+8",
+  "status": "phase_06_ui_correction_candidate_pending_validation",
+  "published_version": "0.5.0+8",
+  "candidate_version": "0.5.1+9",
   "phase_05_authorized": true,
   "current_phase": 6,
   "phase_04_status": "accepted_with_followups",
@@ -169,8 +169,22 @@
     "task_id": "BUBKA-006",
     "baseline_sha": "73857439121386f7578452cb3041da4fc137cdcf",
     "schema_version": 3,
-    "status": "candidate_pending_ci_and_physical_tests",
+    "status": "published_with_owner_ui_corrections_pending",
     "next_phase_authorized": false,
-    "stable_release_authorized": false
+    "stable_release_authorized": false,
+    "pr": 9,
+    "release": "v0.5.0",
+    "merge_sha": "ac76d61c97242d16b71c16ff0d1d6f8e83fe1d08",
+    "ui_correction": {
+      "candidate_version": "0.5.1+9",
+      "schema_version": 3,
+      "owner_requested": [
+        "remove standalone odometer entry from fuel UI",
+        "show latest three fuel fills and separate full history"
+      ],
+      "physical_tests": "pending",
+      "next_phase_authorized": false,
+      "stable_release_authorized": false
+    }
   }
 }
